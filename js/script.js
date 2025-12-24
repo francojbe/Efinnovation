@@ -137,7 +137,15 @@ document.addEventListener('DOMContentLoaded', () => {
         const appendMessage = (text, sender) => {
             const msgDiv = document.createElement('div');
             msgDiv.classList.add(sender === 'ai' ? 'chat-msg-ai' : 'chat-msg-user');
-            msgDiv.textContent = text;
+
+            // Render basic markdown: bold (**), italic (*), and line breaks
+            const formattedText = text
+                .replace(/\*\*\*(.*?)\*\*\*/g, '<strong><em>$1</em></strong>')
+                .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+                .replace(/\*(.*?)\*/g, '<em>$1</em>')
+                .replace(/\n/g, '<br>');
+
+            msgDiv.innerHTML = formattedText;
             messageBox.appendChild(msgDiv);
             messageBox.scrollTop = messageBox.scrollHeight;
         };
