@@ -167,8 +167,8 @@ document.addEventListener('DOMContentLoaded', () => {
             showTyping();
 
             try {
-                // AQUÍ PEGARÁS TU WEBHOOK DE n8n
-                const response = await fetch('YOUR_n8n_WEBHOOK_URL', {
+                // AQUÍ ESTÁ TU WEBHOOK DE n8n CONECTADO
+                const response = await fetch('https://recuperadora-n8n.nojauc.easypanel.host/webhook/Efi', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ message: text })
