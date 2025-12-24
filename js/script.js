@@ -112,4 +112,96 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     initBlurText();
+
+    // AI Chatbot Logic (n8n ready)
+    const initAIChat = () => {
+        const launcher = document.getElementById('ai-chat-launcher');
+        const chatWindow = document.getElementById('ai-chat-window');
+        const closeBtn = document.getElementById('close-chat');
+        const sendBtn = document.getElementById('send-ai-msg');
+        const userInput = document.getElementById('ai-user-input');
+        const messageBox = document.getElementById('chat-messages');
+
+        // Toggle Chat
+        launcher.addEventListener('click', () => {
+            chatWindow.classList.toggle('chat-window-hidden');
+            if (!chatWindow.classList.contains('chat-window-hidden')) {
+                userInput.focus();
+            }
+        });
+
+        closeBtn.addEventListener('click', () => {
+            chatWindow.classList.add('chat-window-hidden');
+        });
+
+        const appendMessage = (text, sender) => {
+            const msgDiv = document.createElement('div');
+            msgDiv.classList.add(sender === 'ai' ? 'chat-msg-ai' : 'chat-msg-user');
+            msgDiv.textContent = text;
+            messageBox.appendChild(msgDiv);
+            messageBox.scrollTop = messageBox.scrollHeight;
+        };
+
+        const showTyping = () => {
+            const typingDiv = document.createElement('div');
+            typingDiv.classList.add('chat-msg-ai');
+            typingDiv.id = 'ai-typing';
+            typingDiv.innerHTML = '<span class="typing-dots">Efi está pensando...</span>';
+            messageBox.appendChild(typingDiv);
+            messageBox.scrollTop = messageBox.scrollHeight;
+        };
+
+        const removeTyping = () => {
+            const typing = document.getElementById('ai-typing');
+            if (typing) typing.remove();
+        };
+
+        const handleSend = async () => {
+            const text = userInput.value.trim();
+            if (!text) return;
+
+            appendMessage(text, 'user');
+            userInput.value = '';
+            userInput.style.height = 'auto';
+
+            showTyping();
+
+            try {
+                // AQUÍ PEGARÁS TU WEBHOOK DE n8n
+                const response = await fetch('YOUR_n8n_WEBHOOK_URL', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ message: text })
+                });
+
+                if (response.ok) {
+                    const data = await response.json();
+                    removeTyping();
+                    appendMessage(data.output || "He recibido tu mensaje correctamente.", 'ai');
+                } else {
+                    throw new Error('Network error');
+                }
+            } catch (err) {
+                removeTyping();
+                appendMessage("Lo siento, estoy teniendo problemas para conectarme con mi cerebro digital. ¿Podrías intentar contactarnos por WhatsApp mientras lo soluciono?", 'ai');
+                console.error('Error connecting to n8n:', err);
+            }
+        };
+
+        sendBtn.addEventListener('click', handleSend);
+        userInput.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' && !e.shiftKey) {
+                e.preventDefault();
+                handleSend();
+            }
+        });
+
+        // Auto-resize textarea
+        userInput.addEventListener('input', function () {
+            this.style.height = 'auto';
+            this.style.height = (this.scrollHeight) + 'px';
+        });
+    };
+
+    initAIChat();
 });

@@ -151,6 +151,48 @@
         <i class="fab fa-whatsapp"></i>
     </a>
 
+    <!-- AI Chatbot Interface (n8n Ready) -->
+    <div id="ai-chat-container">
+        <!-- Launcher -->
+        <button id="ai-chat-launcher" title="Hablar con Efi IA">
+            <i class="fas fa-robot"></i>
+            <span class="pulse-ring"></span>
+        </button>
+
+        <!-- Chat Window -->
+        <div id="ai-chat-window" class="chat-window-hidden">
+            <div class="chat-header">
+                <div class="chat-header-info">
+                    <div class="chat-avatar">
+                        <i class="fas fa-robot"></i>
+                        <span class="status-dot"></span>
+                    </div>
+                    <div>
+                        <h4>Efi IA</h4>
+                        <span>Agente Estratégico Online</span>
+                    </div>
+                </div>
+                <button id="close-chat"><i class="fas fa-times"></i></button>
+            </div>
+
+            <div id="chat-messages">
+                <!-- Message will be added here via JS -->
+                <div class="chat-msg-ai">
+                    ¡Hola! Soy Efi, el asistente inteligente de Efinnovation. ¿En qué desafío de automatización puedo
+                    ayudarte hoy?
+                </div>
+            </div>
+
+            <div id="chat-input-area">
+                <textarea id="ai-user-input" placeholder="Escribe tu consulta..." rows="1"></textarea>
+                <button id="send-ai-msg"><i class="fas fa-paper-plane"></i></button>
+            </div>
+            <div class="chat-footer">
+                Powered by Efinnovation AI Engine
+            </div>
+        </div>
+    </div>
+
     <div class="desktop-area">
         <div class="container">
 
