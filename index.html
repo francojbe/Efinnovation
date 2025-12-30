@@ -4,6 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://images.unsplash.com">
+    <link rel="preload" as="image"
+        href="https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2072&auto=format&fit=crop&fm=webp"
+        fetchpriority="high">
 
     <!-- SEO Meta Tags -->
     <title>Efinnovation | Soluciones de IA Empresarial</title>
@@ -19,31 +23,69 @@
     <meta property="og:title" content="Efinnovation | Soluciones de IA Empresarial">
     <meta property="og:description"
         content="Automatización inteligente para la empresa moderna. Optimizamos costos operativos mediante IA y orquestación de procesos.">
-    <meta property="og:image" content="https://efinnovation.cl/assets/img/hero-logo__.png">
+    <meta property="og:image" content="https://efinnovation.cl/assets/img/hero-logo.png">
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Efinnovation | IA Empresarial">
     <meta name="twitter:description"
         content="Lleva a tu empresa al siguiente nivel con automatización de procesos y agentes cognitivos.">
-    <meta name="twitter:image" content="https://efinnovation.cl/assets/img/hero-logo__.png">
+    <meta name="twitter:image" content="https://efinnovation.cl/assets/img/hero-logo.png">
 
     <!-- Canonical URL -->
     <link rel="canonical" href="https://www.efinnovation.cl/">
 
     <!-- Favicon -->
-    <link rel="icon" type="image/png" href="assets/img/hero-logo__.png">
+    <link rel="icon" type="image/png" href="assets/img/hero-logo.png">
 
-    <!-- Iconos (FontAwesome) -->
+    <!-- Critical CSS -->
+    <style>
+        :root {
+            --bg-desktop: #0c0c0c;
+            --win-bg: rgba(32, 32, 32, 0.85);
+            --win-border: rgba(255, 255, 255, 0.08);
+            --accent: #60cdff;
+            --corporate-blue: #0078d4;
+            --text-main: #ffffff;
+            --text-muted: #aeb2b6;
+            --font-sys: "Segoe UI Variable", "Segoe UI", "Inter", sans-serif;
+        }
+
+        body {
+            font-family: var(--font-sys);
+            background-color: var(--bg-desktop);
+            color: var(--text-main);
+            margin: 0;
+            background-image: url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2072&auto=format&fit=crop&fm=webp');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+
+        .navbar-glass {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(12, 12, 12, 0.7);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 10px 0;
+        }
+    </style>
+
+    <!-- Async CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
-
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="css/style.css">
+        media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="css/style.css" media="print" onload="this.media='all'">
+    <noscript>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+        <link rel="stylesheet" href="css/style.css">
+    </noscript>
 
     <!-- Custom JS -->
-    <script src="js/script.js?v=1.1" defer></script>
+    <script src="js/script.js?v=1.2" defer></script>
 
     <!-- Security Metadata -->
     <meta http-equiv="Content-Security-Policy"
@@ -61,7 +103,7 @@
       "@type": "Organization",
       "name": "Efinnovation IA Automation Agency",
       "url": "https://www.efinnovation.cl",
-      "logo": "https://www.efinnovation.cl/assets/img/hero-logo__.png",
+      "logo": "https://www.efinnovation.cl/assets/img/hero-logo.png",
       "description": "Consultora líder en Automatización de Procesos e Inteligencia Artificial para empresas en Chile. Especialistas en integración de sistemas ERP/CRM y agentes autónomos.",
       "contactPoint": {
         "@type": "ContactPoint",
@@ -130,7 +172,7 @@
     <nav class="navbar-glass">
         <div class="nav-container">
             <a href="#inicio" class="nav-logo">
-                <img src="assets/img/hero-logo.png" alt="Efinnovation">
+                <img src="assets/img/hero-logo.png" alt="Efinnovation" fetchpriority="high">
                 <div class="logo-text">
                     <span class="logo-main-text">EFINNOVATION</span>
                     <span class="logo-sub-text">IA Automation Agency</span>
@@ -462,35 +504,38 @@
                         <div class="loop-track scroll-left" data-speed="40">
                             <!-- AI Items -->
                             <div class="loop-item" title="LangChain"><img src="assets/img/logos/langchain.webp"
-                                    alt="LangChain"></div>
+                                    alt="LangChain" loading="lazy" decoding="async"></div>
                             <div class="loop-item" title="LlamaIndex"><img src="assets/img/logos/llamaindex.webp"
-                                    alt="LlamaIndex"></div>
+                                    alt="LlamaIndex" loading="lazy" decoding="async"></div>
                             <div class="loop-item" title="Hugging Face"><img src="assets/img/logos/Hugging-face.webp"
-                                    alt="Hugging Face"></div>
+                                    alt="Hugging Face" loading="lazy" decoding="async"></div>
                             <div class="loop-item" title="Cohere"><img src="assets/img/logos/Cohere-Logo.webp"
-                                    alt="Cohere"></div>
+                                    alt="Cohere" loading="lazy" decoding="async"></div>
                             <div class="loop-item" title="Pinecone"><img src="assets/img/logos/Pinecone.webp"
-                                    alt="Pinecone"></div>
+                                    alt="Pinecone" loading="lazy" decoding="async"></div>
                             <div class="loop-item" title="TensorFlow"><img src="assets/img/logos/tensorflow.webp"
-                                    alt="TensorFlow"></div>
+                                    alt="TensorFlow" loading="lazy" decoding="async"></div>
                             <div class="loop-item" title="PyTorch"><img src="assets/img/logos/pytorch.webp"
-                                    alt="PyTorch"></div>
+                                    alt="PyTorch" loading="lazy" decoding="async"></div>
                             <div class="loop-item" title="OpenAI"><img src="assets/img/logos/logo-aliado-01.webp"
-                                    alt="OpenAI"></div> <!-- Fallback usage if needed -->
+                                    alt="OpenAI" loading="lazy" decoding="async"></div>
+                            <!-- Fallback usage if needed -->
 
                             <!-- Cloud/Infra Items -->
                             <div class="loop-item" title="Google Cloud"><img src="assets/img/logos/Google-Cloud.webp"
-                                    alt="Google Cloud"></div>
-                            <div class="loop-item" title="Docker"><img src="assets/img/logos/docker.webp" alt="Docker">
+                                    alt="Google Cloud" loading="lazy" decoding="async"></div>
+                            <div class="loop-item" title="Docker"><img src="assets/img/logos/docker.webp" alt="Docker"
+                                    loading="lazy" decoding="async">
                             </div>
                             <div class="loop-item" title="Kubernetes"><img src="assets/img/logos/kubernetes.webp"
-                                    alt="Kubernetes"></div>
-                            <div class="loop-item" title="Python"><img src="assets/img/logos/python.webp" alt="Python">
+                                    alt="Kubernetes" loading="lazy" decoding="async"></div>
+                            <div class="loop-item" title="Python"><img src="assets/img/logos/python.webp" alt="Python"
+                                    loading="lazy" decoding="async">
                             </div>
                             <div class="loop-item" title="FastAPI"><img src="assets/img/logos/FastAPI.webp"
-                                    alt="FastAPI"></div>
+                                    alt="FastAPI" loading="lazy" decoding="async"></div>
                             <div class="loop-item" title="Elasticsearch"><img src="assets/img/logos/Elasticsearch.webp"
-                                    alt="Elasticsearch"></div>
+                                    alt="Elasticsearch" loading="lazy" decoding="async"></div>
                         </div>
                     </div>
 
@@ -498,30 +543,38 @@
                     <div class="loop-row">
                         <div class="loop-track scroll-right" data-speed="45">
                             <!-- Automation -->
-                            <div class="loop-item" title="Make"><img src="assets/img/logos/make.webp" alt="Make"></div>
-                            <div class="loop-item" title="n8n"><img src="assets/img/logos/n8n.webp" alt="n8n"></div>
+                            <div class="loop-item" title="Make"><img src="assets/img/logos/make.webp" alt="Make"
+                                    loading="lazy" decoding="async"></div>
+                            <div class="loop-item" title="n8n"><img src="assets/img/logos/n8n.webp" alt="n8n"
+                                    loading="lazy" decoding="async"></div>
                             <div class="loop-item" title="Power Automate"><img
-                                    src="assets/img/logos/power-automate.webp" alt="Power Automate"></div>
-                            <div class="loop-item" title="Zapier"><img src="assets/img/logos/zapier.webp" alt="Zapier">
+                                    src="assets/img/logos/power-automate.webp" alt="Power Automate" loading="lazy"
+                                    decoding="async"></div>
+                            <div class="loop-item" title="Zapier"><img src="assets/img/logos/zapier.webp" alt="Zapier"
+                                    loading="lazy" decoding="async">
                             </div>
 
                             <!-- Integrations -->
                             <div class="loop-item" title="Salesforce"><img src="assets/img/logos/sales-force.webp"
-                                    alt="Salesforce"></div>
+                                    alt="Salesforce" loading="lazy" decoding="async"></div>
                             <div class="loop-item" title="HubSpot"><img src="assets/img/logos/hubspot.webp"
-                                    alt="HubSpot"></div>
-                            <div class="loop-item" title="Slack"><img src="assets/img/logos/slack.webp" alt="Slack">
+                                    alt="HubSpot" loading="lazy" decoding="async"></div>
+                            <div class="loop-item" title="Slack"><img src="assets/img/logos/slack.webp" alt="Slack"
+                                    loading="lazy" decoding="async">
                             </div>
                             <div class="loop-item" title="WhatsApp"><img src="assets/img/logos/whatsapp.webp"
-                                    alt="WhatsApp"></div>
+                                    alt="WhatsApp" loading="lazy" decoding="async"></div>
                             <div class="loop-item" title="Shopify"><img src="assets/img/logos/shopify.webp"
-                                    alt="Shopify"></div>
-                            <div class="loop-item" title="Stripe"><img src="assets/img/logos/stripe.webp" alt="Stripe">
+                                    alt="Shopify" loading="lazy" decoding="async"></div>
+                            <div class="loop-item" title="Stripe"><img src="assets/img/logos/stripe.webp" alt="Stripe"
+                                    loading="lazy" decoding="async">
                             </div>
                             <div class="loop-item" title="Google Workspace"><img
-                                    src="assets/img/logos/google-workspace.webp" alt="Google Workspace"></div>
+                                    src="assets/img/logos/google-workspace.webp" alt="Google Workspace" loading="lazy"
+                                    decoding="async"></div>
                             <div class="loop-item" title="Zoho"><img
-                                    src="assets/img/logos/Zoho-Mail-Logo-2048x1152.webp" alt="Zoho"></div>
+                                    src="assets/img/logos/Zoho-Mail-Logo-2048x1152.webp" alt="Zoho" loading="lazy"
+                                    decoding="async"></div>
                         </div>
                     </div>
 

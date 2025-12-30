@@ -10,8 +10,6 @@ document.addEventListener('DOMContentLoaded', () => {
                         behavior: 'smooth',
                         block: 'start'
                     });
-
-                    // Actualizar clase activa (opcional)
                     document.querySelectorAll('.nav-links a').forEach(icon => icon.classList.remove('active'));
                     this.classList.add('active');
                 }
@@ -19,16 +17,11 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Infinite Logo Loop Logic
     const enableInfiniteLoop = () => {
         const tracks = document.querySelectorAll('.loop-track');
-
         tracks.forEach(track => {
-            // Check if already duplicated to avoid exponential growth on resize if we were watching that
             if (track.getAttribute('data-duplicated') === 'true') return;
-
             const content = track.innerHTML;
-            // Duplicate content 4 times to ensure enough buffer for big screens
             track.innerHTML = content + content + content + content;
             track.setAttribute('data-duplicated', 'true');
         });
@@ -36,26 +29,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
     enableInfiniteLoop();
 
-    // BlurText Logic
     const initBlurText = () => {
         const elements = document.querySelectorAll('[data-blur-text]');
-
         elements.forEach(el => {
-            // Process text nodes into spans
             const processNode = (node) => {
-                if (node.nodeType === 3) { // Text node
+                if (node.nodeType === 3) {
                     const text = node.textContent;
-                    if (!text.trim()) return node; // Skip empty whitespace
-
+                    if (!text.trim()) return node;
                     const fragment = document.createDocumentFragment();
-                    const words = text.split(/(\s+)/); // Split by whitespace but keep delimiters to preserve spacing
-
+                    const words = text.split(/(\s+)/);
                     words.forEach(word => {
                         if (word.match(/^\s+$/)) {
-                            // It's whitespace
                             fragment.appendChild(document.createTextNode(word));
                         } else if (word.trim()) {
-                            // It's a word
                             const span = document.createElement('span');
                             span.classList.add('blur-word');
                             span.textContent = word;
@@ -63,8 +49,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         }
                     });
                     return fragment;
-                } else if (node.nodeType === 1) { // Element node (like <br> or <span>)
-                    // Recurse for children if any, otherwise just leave it
+                } else if (node.nodeType === 1) {
                     const childNodes = Array.from(node.childNodes);
                     childNodes.forEach(child => {
                         const newChild = processNode(child);
@@ -85,7 +70,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             });
 
-            // Observer to trigger animation
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
@@ -97,23 +81,20 @@ document.addEventListener('DOMContentLoaded', () => {
                             }, 50);
                         });
                     } else {
-                        // Reset when leaving the view so it can animate again
                         const words = entry.target.querySelectorAll('.blur-word');
                         words.forEach((word) => {
-                            word.style.transitionDelay = '0ms'; // No delay when resetting
+                            word.style.transitionDelay = '0ms';
                             word.classList.remove('visible');
                         });
                     }
                 });
             }, { threshold: 0.1 });
-
             observer.observe(el);
         });
     };
 
-    initBlurText();
+    // initBlurText();
 
-    // AI Chatbot Logic (n8n ready)
     const initAIChat = () => {
         const launcher = document.getElementById('ai-chat-launcher');
         const chatWindow = document.getElementById('ai-chat-window');
@@ -122,7 +103,6 @@ document.addEventListener('DOMContentLoaded', () => {
         const userInput = document.getElementById('ai-user-input');
         const messageBox = document.getElementById('chat-messages');
 
-        // Toggle Chat
         launcher.addEventListener('click', () => {
             chatWindow.classList.toggle('chat-window-hidden');
             if (!chatWindow.classList.contains('chat-window-hidden')) {
@@ -137,14 +117,11 @@ document.addEventListener('DOMContentLoaded', () => {
         const appendMessage = (text, sender) => {
             const msgDiv = document.createElement('div');
             msgDiv.classList.add(sender === 'ai' ? 'chat-msg-ai' : 'chat-msg-user');
-
-            // Render basic markdown: bold (**), italic (*), and line breaks
             const formattedText = text
                 .replace(/\*\*\*(.*?)\*\*\*/g, '<strong><em>$1</em></strong>')
                 .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
                 .replace(/\*(.*?)\*/g, '<em>$1</em>')
                 .replace(/\n/g, '<br>');
-
             msgDiv.innerHTML = formattedText;
             messageBox.appendChild(msgDiv);
             messageBox.scrollTop = messageBox.scrollHeight;
@@ -167,21 +144,16 @@ document.addEventListener('DOMContentLoaded', () => {
         const handleSend = async () => {
             const text = userInput.value.trim();
             if (!text) return;
-
             appendMessage(text, 'user');
             userInput.value = '';
             userInput.style.height = 'auto';
-
             showTyping();
-
             try {
-                // AQUÍ ESTÁ TU WEBHOOK DE n8n CONECTADO
                 const response = await fetch('https://auto.efinnovation.cl/webhook/Efi', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ message: text })
                 });
-
                 if (response.ok) {
                     const data = await response.json();
                     removeTyping();
@@ -204,7 +176,6 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
-        // Auto-resize textarea
         userInput.addEventListener('input', function () {
             this.style.height = 'auto';
             this.style.height = (this.scrollHeight) + 'px';
