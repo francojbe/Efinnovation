@@ -114,6 +114,8 @@ body {
     margin-bottom: 35px;
     position: relative;
     overflow: hidden;
+    display: flex;
+    flex-direction: column;
     animation: openWindow 0.8s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
@@ -1509,14 +1511,15 @@ body {
     display: flex;
     justify-content: space-around;
     align-items: center;
-    padding: 15px 20px;
-    background: rgba(0, 0, 0, 0.4);
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.6);
     border-top: 1px solid var(--win-border);
-    margin-top: auto;
-    /* Aligns to bottom of flex parent if applicable */
+    margin: auto -40px -40px -40px;
+    /* Cubre el padding del padre */
     border-bottom-left-radius: 12px;
     border-bottom-right-radius: 12px;
-    backdrop-filter: blur(5px);
+    backdrop-filter: blur(10px);
+    z-index: 10;
 }
 
 .impact-item {
