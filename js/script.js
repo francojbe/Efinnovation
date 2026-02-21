@@ -149,7 +149,7 @@ document.addEventListener('DOMContentLoaded', () => {
             userInput.style.height = 'auto';
             showTyping();
             try {
-                const response = await fetch('/api/webhook/Efi', {
+                const response = await fetch('https://auto.efinnovation.cl/webhook/Efi', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ message: text })
