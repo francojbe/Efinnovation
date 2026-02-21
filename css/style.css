@@ -1,18 +1,21 @@
 /* --- Windows 11 Dark Theme Variables --- */
 :root {
     --bg-desktop: #0c0c0c;
-    --win-bg: rgba(32, 32, 32, 0.85);
-    --win-border: rgba(255, 255, 255, 0.08);
-    --taskbar-bg: rgba(20, 20, 20, 0.9);
+    --win-bg: rgba(18, 18, 18, 0.85);
+    --win-border: rgba(255, 255, 255, 0.05);
+    --taskbar-bg: rgba(10, 10, 10, 0.9);
     --accent: #60cdff;
+    --accent-glow: rgba(96, 205, 255, 0.3);
     --accent-hover: #4cc2ff;
     --corporate-blue: #0078d4;
     --text-main: #ffffff;
     --text-muted: #aeb2b6;
-    --glass-blur: blur(25px);
-    --radius-lg: 12px;
-    --shadow-win: 0 20px 50px rgba(0, 0, 0, 0.6);
-    --font-sys: "Segoe UI Variable", "Segoe UI", "Inter", sans-serif;
+    --glass-blur: blur(20px);
+    /* Optimizado para rendimiento móvil */
+    --shadow-win: 0 15px 40px rgba(0, 0, 0, 0.5);
+    --font-heading: 'Outfit', sans-serif;
+    --font-sys: 'Outfit', sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
     --whatsapp-color: #25D366;
 }
 
@@ -34,10 +37,11 @@ body {
     height: 100vh;
     display: flex;
     flex-direction: column;
-    background-image: url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2072&auto=format&fit=crop&fm=webp');
+    background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('../assets/img/hero-bg-premium.webp');
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
+    will-change: transform;
 }
 
 /* Scrollbar */
@@ -106,10 +110,35 @@ body {
     border: 1px solid var(--win-border);
     border-radius: var(--radius-lg);
     box-shadow: var(--shadow-win);
-    padding: 35px;
-    margin-bottom: 25px;
+    padding: 40px;
+    margin-bottom: 35px;
     position: relative;
-    animation: openWindow 0.6s cubic-bezier(0.1, 0.9, 0.2, 1);
+    overflow: hidden;
+    animation: openWindow 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Border Beam Animation */
+.window-panel::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 200%;
+    height: 1.5px;
+    background: linear-gradient(90deg, transparent, var(--accent), transparent);
+    animation: borderBeam 6s linear infinite;
+    z-index: 5;
+    pointer-events: none;
+}
+
+@keyframes borderBeam {
+    from {
+        transform: translateX(0);
+    }
+
+    to {
+        transform: translateX(100%);
+    }
 }
 
 .window-titlebar {
@@ -182,23 +211,27 @@ body {
 
 .badge-corp {
     display: inline-block;
-    padding: 4px 12px;
-    background: rgba(96, 205, 255, 0.1);
-    border: 1px solid rgba(96, 205, 255, 0.3);
+    padding: 6px 14px;
+    background: rgba(0, 0, 0, 0.4);
+    border: 1px solid var(--accent);
     color: var(--accent);
     border-radius: 4px;
-    font-size: 0.8rem;
-    margin-bottom: 20px;
-    letter-spacing: 1px;
+    font-size: 0.7rem;
+    font-family: var(--font-mono);
+    margin-bottom: 25px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    box-shadow: 0 0 15px var(--accent-glow);
 }
 
 .hero-text h1 {
-    font-size: 2.8rem;
+    font-family: var(--font-heading);
+    font-size: 3.2rem;
     line-height: 1.1;
     font-weight: 700;
-    margin-bottom: 15px;
+    margin-bottom: 20px;
     color: #ffffff;
-    /* Aseguramos visibilidad inmediata */
+    letter-spacing: -0.03em;
 }
 
 .hero-text p {
@@ -212,15 +245,16 @@ body {
 .btn-corp-primary {
     background: var(--corporate-blue);
     color: white;
-    padding: 12px 28px;
-    border-radius: 6px;
+    padding: 12px 32px;
+    border-radius: 8px;
     font-weight: 600;
     text-decoration: none;
     display: inline-flex;
     align-items: center;
-    gap: 8px;
-    transition: 0.2s;
+    gap: 10px;
+    transition: all 0.3s ease;
     border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 4px 15px rgba(0, 120, 212, 0.4);
 }
 
 .btn-corp-primary:hover {
@@ -814,20 +848,18 @@ body {
 }
 
 .logo-main-text {
-    font-size: 1.1rem;
+    font-size: 1.2rem;
     font-weight: 700;
     color: white;
-    letter-spacing: 0.5px;
-    line-height: 1;
+    letter-spacing: 1px;
 }
 
 .logo-sub-text {
-    font-size: 0.7rem;
-    font-weight: 400;
+    font-size: 0.65rem;
+    font-family: var(--font-mono);
     color: var(--accent);
-    letter-spacing: 1px;
     text-transform: uppercase;
-    margin-top: 3px;
+    letter-spacing: 2px;
 }
 
 .nav-logo:hover img {
@@ -843,13 +875,15 @@ body {
 }
 
 .nav-links a {
-    color: var(--text-muted);
     text-decoration: none;
-    font-size: 0.85rem;
-    font-weight: 600;
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: 0.3s;
+    letter-spacing: 0.5px;
+    font-family: 'Outfit', sans-serif;
+    /* Added font-family */
     text-transform: uppercase;
-    letter-spacing: 1.5px;
-    transition: color 0.3s ease;
     position: relative;
     padding: 5px 0;
 }
