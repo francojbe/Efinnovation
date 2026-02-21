@@ -1071,12 +1071,24 @@ body {
         font-size: 2.2rem;
     }
 
+    /* Flotantes simétricos en móvil */
     .whatsapp-float {
-        bottom: 80px;
+        bottom: 20px;
         right: 20px;
         width: 50px;
         height: 50px;
         font-size: 25px;
+    }
+
+    #ai-chat-container {
+        bottom: 20px;
+        left: 20px;
+    }
+
+    #ai-chat-launcher {
+        width: 50px;
+        height: 50px;
+        font-size: 20px;
     }
 }
 
@@ -1670,6 +1682,7 @@ body {
         min-width: 45%;
     }
 }
+
 /* --- Diagnostic Form Styles --- */
 .diagnostic-form {
     max-width: 600px;
@@ -1750,8 +1763,15 @@ body {
 }
 
 @keyframes fadeInForm {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 /* === DIAGNOSTIC FORM FIXES === */
@@ -1784,15 +1804,15 @@ button.btn-corp-accent {
 }
 
 /* label inside form-group must be block */
-.form-group > label,
-.form-group div > label {
+.form-group>label,
+.form-group div>label {
     display: block;
     margin-bottom: 4px;
 }
 
 /* ensure inputs inside form-group divs also get the styling */
-.form-group div > input,
-.form-group div > select {
+.form-group div>input,
+.form-group div>select {
     width: 100%;
     background: rgba(255, 255, 255, 0.03);
     border: 1px solid var(--win-border);
@@ -1803,8 +1823,8 @@ button.btn-corp-accent {
     transition: all 0.3s ease;
 }
 
-.form-group div > input:focus,
-.form-group div > select:focus {
+.form-group div>input:focus,
+.form-group div>select:focus {
     outline: none;
     border-color: var(--accent);
     background: rgba(255, 255, 255, 0.07);
