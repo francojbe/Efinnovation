@@ -198,6 +198,7 @@
                 <li><a href="#inicio" class="active">Inicio</a></li>
                 <li><a href="#soluciones">Soluciones</a></li>
                 <li><a href="#industrias">Industrias</a></li>
+                <li><a href="#diagnostico">Diagnóstico</a></li>
                 <li><a href="#metodologia">Metodología</a></li>
                 <li><a href="#contacto">Contacto</a></li>
             </ul>
@@ -278,12 +279,12 @@
                             Artificial y orquestación de procesos. Integramos sus sistemas legacy con agentes autónomos
                             de última generación.</p>
 
-                        <div style="margin-bottom: 30px;">
-                            <a href="#contacto" class="btn-corp-primary">
-                                <span>Solicitar Consultoría</span> <i class="fas fa-arrow-right"></i>
+                        <div style="margin-bottom: 30px; display: flex; flex-wrap: wrap; gap: 10px;">
+                            <a href="#diagnostico" class="btn-corp-accent">
+                                <i class="fas fa-magic"></i> <span>Diagnóstico IA Gratis</span>
                             </a>
-                            <a href="#tecnologias" class="btn-corp-secondary">
-                                <i class="fas fa-search"></i> Ver Tecnologías
+                            <a href="#contacto" class="btn-corp-primary">
+                                <span>Consultoría</span> <i class="fas fa-arrow-right"></i>
                             </a>
                         </div>
 
@@ -487,6 +488,67 @@
                             <p>Extracción de datos contables y lectura de contratos vinculados al SII.</p>
                         </article>
                     </div>
+                </div>
+            </section>
+
+            <!-- Ventana: Diagnóstico IA (Lead Magnet) -->
+            <section id="diagnostico" class="window-panel">
+                <div class="window-titlebar">
+                    <span>Efinnovation Smart Scorer v1.0</span>
+                    <div class="win-controls">
+                        <div class="win-btn close"></div>
+                    </div>
+                </div>
+
+                <div class="window-content-padding">
+                    <div style="text-align: center; margin-bottom: 40px;">
+                        <h2 class="title-accent">¿Tu empresa está lista para la IA?</h2>
+                        <p class="subtitle-muted">Descubre tu potencial de ahorro y automatización en 30 segundos.</p>
+                    </div>
+
+                    <form id="lead-magnet-form" class="diagnostic-form">
+                        <div class="form-group" style="display: flex; flex-direction: row; gap: 15px;">
+                            <div style="flex: 1;">
+                                <label for="diag-name">Nombre y Empresa</label>
+                                <input type="text" id="diag-name" name="name" placeholder="Ej: Juan Pérez - Retail S.A."
+                                    required>
+                            </div>
+                            <div style="flex: 1;">
+                                <label for="diag-industry">Industria</label>
+                                <select id="diag-industry" name="industry" required style="width: 100%;">
+                                    <option value="" disabled selected>Selecciona tu rubro...</option>
+                                    <option value="retail">Retail y E-commerce</option>
+                                    <option value="logistica">Logística y Distribución</option>
+                                    <option value="legal">Legal y Contabilidad</option>
+                                    <option value="mineria">Minería y Energía</option>
+                                    <option value="otro">Otro</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="diag-pain">¿Cuál es tu mayor cuello de botella?</label>
+                            <select id="diag-pain" name="pain" required>
+                                <option value="" disabled selected>Selecciona un desafío...</option>
+                                <option value="manual-data">Mucho ingreso manual de datos</option>
+                                <option value="customer-support">Atención al cliente saturada</option>
+                                <option value="disconnected-systems">Sistemas que no se comunican</option>
+                                <option value="reporting">Reportes lentos o manuales</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="diag-contact">Email o WhatsApp Corporativo</label>
+                            <input type="text" id="diag-contact" name="contact"
+                                placeholder="Ej: juan@empresa.cl o +569..." required>
+                        </div>
+
+                        <button type="submit" class="btn-corp-accent diagnostic-submit">
+                            <span>Generar Hoja de Ruta Gratis</span> <i class="fas fa-bolt"></i>
+                        </button>
+
+                        <div id="form-status" class="form-status"></div>
+                    </form>
                 </div>
             </section>
 

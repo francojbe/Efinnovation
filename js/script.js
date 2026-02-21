@@ -182,5 +182,57 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     };
 
+    const initLeadMagnet = () => {
+        const form = document.getElementById('lead-magnet-form');
+        const statusDiv = document.getElementById('form-status');
+        const submitBtn = form.querySelector('button[type="submit"]');
+
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            // UI State: Loading
+            submitBtn.disabled = true;
+            const originalBtnText = submitBtn.innerHTML;
+            submitBtn.innerHTML = '<span>Procesando Diagnóstico...</span> <i class="fas fa-spinner fa-spin"></i>';
+            statusDiv.className = 'form-status';
+            statusDiv.style.display = 'none';
+
+            const formData = new FormData(form);
+            const data = Object.fromEntries(formData.entries());
+
+            try {
+                const webhookUrl = 'https://auto.efinnovation.cl/webhook/captura';
+
+                const response = await fetch(webhookUrl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        ...data,
+                        source: 'Lead Magnet - Web',
+                        timestamp: new Date().toISOString()
+                    })
+                });
+
+                if (response.ok) {
+                    statusDiv.textContent = "¡Excelente! Tu diagnóstico está siendo generado. Recibirás un correo con tu hoja de ruta en unos instantes.";
+                    statusDiv.classList.add('success');
+                    statusDiv.style.display = 'block';
+                    form.reset();
+                } else {
+                    throw new Error('Server responded with error');
+                }
+            } catch (err) {
+                statusDiv.textContent = "Hubo un problema al enviar tus datos. ¿Podrías contactarnos directamente por WhatsApp?";
+                statusDiv.classList.add('error');
+                statusDiv.style.display = 'block';
+                console.error('Lead Magnet Error:', err);
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = originalBtnText;
+            }
+        });
+    };
+
     initAIChat();
+    initLeadMagnet();
 });

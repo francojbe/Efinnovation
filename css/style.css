@@ -284,6 +284,45 @@ body {
     border-color: var(--text-muted);
 }
 
+.btn-corp-accent {
+    background: linear-gradient(135deg, var(--accent), #0078d4);
+    color: #000;
+    padding: 12px 32px;
+    border-radius: 8px;
+    font-weight: 700;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    border: none;
+    box-shadow: 0 0 20px rgba(96, 205, 255, 0.4);
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-corp-accent::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transform: rotate(45deg);
+    transition: 0.6s;
+    pointer-events: none;
+}
+
+.btn-corp-accent:hover {
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 0 30px rgba(96, 205, 255, 0.6);
+}
+
+.btn-corp-accent:hover::after {
+    left: 100%;
+}
+
 /* --- Tech Stack --- */
 .tech-stack {
     display: flex;
@@ -1626,4 +1665,87 @@ body {
     .impact-item {
         min-width: 45%;
     }
+}
+/* --- Diagnostic Form Styles --- */
+.diagnostic-form {
+    max-width: 600px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.form-group label {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--win-border);
+    border-radius: 8px;
+    padding: 12px 15px;
+    color: white;
+    font-family: var(--font-sys);
+    transition: all 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--accent);
+    background: rgba(255, 255, 255, 0.07);
+    box-shadow: 0 0 10px rgba(96, 205, 255, 0.2);
+}
+
+.diagnostic-submit {
+    margin-top: 10px;
+    padding: 15px;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.diagnostic-submit:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.form-status {
+    text-align: center;
+    padding: 15px;
+    border-radius: 8px;
+    display: none;
+    font-size: 0.9rem;
+    animation: fadeInForm 0.4s ease;
+}
+
+.form-status.success {
+    display: block;
+    background: rgba(39, 201, 63, 0.1);
+    color: #27c93f;
+    border: 1px solid #27c93f;
+}
+
+.form-status.error {
+    display: block;
+    background: rgba(255, 95, 86, 0.1);
+    color: #ff5f56;
+    border: 1px solid #ff5f56;
+}
+
+@keyframes fadeInForm {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
 }
