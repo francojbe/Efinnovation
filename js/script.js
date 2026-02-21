@@ -149,7 +149,7 @@ document.addEventListener('DOMContentLoaded', () => {
             userInput.style.height = 'auto';
             showTyping();
             try {
-                const response = await fetch('https://auto.efinnovation.cl/webhook/Efi', {
+                const response = await fetch('/api/webhook/Efi', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ message: text })
@@ -201,7 +201,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const data = Object.fromEntries(formData.entries());
 
             try {
-                const webhookUrl = 'https://auto.efinnovation.cl/webhook/captura';
+                const webhookUrl = '/api/webhook/captura';
 
                 const response = await fetch(webhookUrl, {
                     method: 'POST',
