@@ -110,7 +110,7 @@ body {
     border: 1px solid var(--win-border);
     border-radius: var(--radius-lg);
     box-shadow: var(--shadow-win);
-    padding: 40px;
+    padding: 75px 40px 40px 40px;
     margin-bottom: 35px;
     position: relative;
     overflow: hidden;
