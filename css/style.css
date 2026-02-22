@@ -371,6 +371,27 @@ body {
     transition: all 0.3s ease;
     border: 1px solid rgba(255, 255, 255, 0.1);
     box-shadow: 0 4px 15px rgba(0, 120, 212, 0.4);
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-corp-primary::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -150%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(45deg,
+            transparent 0%,
+            rgba(255, 255, 255, 0) 45%,
+            rgba(255, 255, 255, 0.2) 50%,
+            rgba(255, 255, 255, 0) 55%,
+            transparent 100%);
+    transform: rotate(45deg);
+    animation: ctaShine 5s infinite 1s;
+    /* Un poco más lento y desfasado */
+    pointer-events: none;
 }
 
 .btn-corp-primary:hover {
@@ -419,13 +440,32 @@ body {
     content: '';
     position: absolute;
     top: -50%;
-    left: -50%;
+    left: -150%;
     width: 200%;
     height: 200%;
-    background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    background: linear-gradient(45deg,
+            transparent 0%,
+            rgba(255, 255, 255, 0) 45%,
+            rgba(255, 255, 255, 0.4) 50%,
+            rgba(255, 255, 255, 0) 55%,
+            transparent 100%);
     transform: rotate(45deg);
-    transition: 0.6s;
+    animation: ctaShine 4s infinite;
     pointer-events: none;
+}
+
+@keyframes ctaShine {
+    0% {
+        left: -150%;
+    }
+
+    15% {
+        left: 100%;
+    }
+
+    100% {
+        left: 100%;
+    }
 }
 
 .btn-corp-accent:hover {
@@ -434,7 +474,10 @@ body {
 }
 
 .btn-corp-accent:hover::after {
+    animation: none;
+    /* Dejar que el hover manual tome control si es necesario, o mantenerlo */
     left: 100%;
+    transition: 0.5s;
 }
 
 /* --- Tech Stack --- */
