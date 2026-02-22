@@ -165,13 +165,12 @@ body {
     left: 0;
     width: 100vw;
     height: 100vh;
-    background: rgba(0, 0, 0, 0.85);
-    /* Fondo más oscuro para contraste */
-    backdrop-filter: blur(12px);
-    /* Desenfoque más fuerte */
-    -webkit-backdrop-filter: blur(12px);
+    background: rgba(0, 0, 0, 0.45);
+    /* Overlay más sutil */
+    backdrop-filter: blur(15px);
+    /* Desenfoque potente estilo cristal */
+    -webkit-backdrop-filter: blur(15px);
     z-index: 9999;
-    /* Por encima de TODO */
     display: none;
     align-items: center;
     justify-content: center;
@@ -179,21 +178,32 @@ body {
 }
 
 .diagnostic-modal {
-    background: rgba(25, 25, 25, 0.95);
-    /* Color corporativo sólido */
-    border: 1px solid rgba(255, 255, 255, 0.15);
+    background: var(--win-bg);
+    backdrop-filter: var(--glass-blur);
+    border: 1px solid var(--win-border);
     border-radius: var(--radius-lg);
-    box-shadow: 0 0 50px rgba(0, 0, 0, 0.8), 0 0 20px rgba(0, 163, 255, 0.2);
+    box-shadow: var(--shadow-win);
     width: 100%;
     max-width: 850px;
-    /* Un poco más ancho para lectura cómoda */
-    max-height: 90vh;
-    /* Que no se pase de la pantalla */
+    max-height: 85vh;
     display: flex;
     flex-direction: column;
     position: relative;
     overflow: hidden;
-    animation: modalZoom 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    animation: modalZoom 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.diagnostic-modal::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 200%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--accent), transparent);
+    animation: borderBeam 4s linear infinite;
+    z-index: 10;
+    pointer-events: none;
 }
 
 .diagnostic-modal .window-titlebar {
