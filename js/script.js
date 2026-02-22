@@ -225,6 +225,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (response.ok) {
                     const result = await response.json();
 
+                    // Manejar si n8n devuelve un Array [ { output: ... } ]
+                    const data = Array.isArray(result) ? result[0] : result;
+
                     statusDiv.textContent = "¡Excelente! Diagnóstico generado correctamente.";
                     statusDiv.classList.add('success');
                     statusDiv.style.display = 'block';
@@ -236,7 +239,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
                     if (resultsWindow && resultsContent) {
                         // Inyectar el contenido que viene de n8n (asumiendo que viene en 'data' o 'output')
-                        const markdownText = result.output || result.data || result.message || JSON.stringify(result);
+                        const markdownText = data.output || data.data || data.message || JSON.stringify(data);
 
                         // Formateo básico de markdown para la ventana
                         resultsContent.innerHTML = markdownText
