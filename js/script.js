@@ -207,6 +207,27 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }
 
+        // CONTROL DE OPCIONES "OTRO"
+        const setupOtherOption = (selectId, customInputId) => {
+            const select = document.getElementById(selectId);
+            const customInput = document.getElementById(customInputId);
+            if (!select || !customInput) return;
+
+            select.addEventListener('change', (e) => {
+                if (e.target.value === 'otro') {
+                    customInput.style.display = 'block';
+                    customInput.required = true;
+                    customInput.focus();
+                } else {
+                    customInput.style.display = 'none';
+                    customInput.required = false;
+                }
+            });
+        };
+
+        setupOtherOption('diag-industry', 'diag-industry-custom');
+        setupOtherOption('diag-pain', 'diag-pain-custom');
+
         const submitBtn = form.querySelector('button[type="submit"]');
 
         form.addEventListener('submit', async (e) => {
@@ -221,6 +242,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
             const formData = new FormData(form);
             const data = Object.fromEntries(formData.entries());
+
+            // Normalizar datos si es "otro"
+            if (data.industry === 'otro') data.industry = data.industry_custom;
+            if (data.pain === 'otro') data.pain = data.pain_custom;
 
             // Capturar el teléfono formateado (con código de país)
             if (iti) {
