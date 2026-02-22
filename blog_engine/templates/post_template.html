@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{title}} | Efinnovation Blog</title>
+    <meta name="description" content="{{description}}">
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="../../assets/img/hero-logo.png">
+
+    <!-- Fonts & Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <!-- Base Styles -->
+    <link rel="stylesheet" href="../../css/style.css">
+
+    <style>
+        :root {
+            --blog-accent: var(--accent);
+        }
+
+        body {
+            background-image: none;
+            background-color: #050508;
+            height: auto;
+            min-height: 100vh;
+        }
+
+        .post-hero {
+            padding: 100px 20px 60px;
+            text-align: center;
+            background: radial-gradient(circle at center, rgba(0, 120, 212, 0.1) 0%, transparent 70%);
+        }
+
+        .post-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+        }
+
+        .post-meta {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .post-content {
+            color: var(--text-main);
+            line-height: 1.8;
+            font-size: 1.1rem;
+        }
+
+        .post-content h2,
+        .post-content h3 {
+            color: var(--blog-accent);
+            margin: 40px 0 20px;
+        }
+
+        .chile-impact {
+            margin-top: 50px;
+            padding: 30px;
+            background: rgba(37, 211, 102, 0.05);
+            border-left: 4px solid #25D366;
+            border-radius: 0 12px 12px 0;
+        }
+
+        .chile-impact h3 {
+            color: #25D366 !important;
+            margin-top: 0 !important;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .back-to-blog {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--accent);
+            text-decoration: none;
+            margin-bottom: 40px;
+            font-weight: 600;
+        }
+
+        .back-to-blog:hover {
+            text-decoration: underline;
+        }
+
+        .post-footer {
+            margin-top: 60px;
+            text-align: center;
+            padding-top: 40px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="post-hero">
+        <a href="../blog.html" class="back-to-blog">
+            <i class="fas fa-arrow-left"></i> Volver al Blog
+        </a>
+        <h1 class="title-accent" style="font-size: 3rem; margin-bottom: 20px;">{{title}}</h1>
+        <div class="post-meta">
+            <span><i class="far fa-calendar"></i> {{date}}</span>
+            <span><i class="far fa-clock"></i> {{read_time}} min lectura</span>
+            <span><i class="far fa-user"></i> Análisis Efinnovation</span>
+        </div>
+    </div>
+
+    <main class="post-container">
+        <article class="post-content">
+            {{content}}
+
+            <div class="chile-impact">
+                <h3><i class="fas fa-flag"></i> Impacto Estratégico en Chile</h3>
+                <p>{{chile_impact}}</p>
+            </div>
+        </article>
+
+        <div class="post-footer">
+            <h3>¿Listo para transformar su empresa con estas innovaciones?</h3>
+            <p style="color: var(--text-muted); margin-bottom: 30px;">Agende un diagnóstico gratuito y descubra el
+                potencial de la IA personalizada.</p>
+            <a href="../../index.html#contacto" class="btn-corp-accent"
+                style="display: inline-flex; width: auto; padding: 15px 40px;">
+                Contactar Especialista
+            </a>
+        </div>
+    </main>
+
+    <footer class="footer-modern" style="margin-top: 100px;">
+        <div class="footer-bottom">
+            <p>&copy; 2023 Efinnovation | IA Automation Agency. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+</body>
+
+</html>
