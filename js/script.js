@@ -264,6 +264,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 });
 
                 if (response.ok) {
+                    // EVENTO DE CONVERSIÓN GOOGLE
+                    if (typeof gtag !== 'undefined') {
+                        gtag('event', 'generate_lead', {
+                            'event_category': 'diagnostic_form',
+                            'event_label': data.industry || 'no_specified'
+                        });
+                    }
+
                     const responseText = await response.text();
                     let result = null;
 
