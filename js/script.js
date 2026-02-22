@@ -223,19 +223,31 @@ document.addEventListener('DOMContentLoaded', () => {
                 });
 
                 if (response.ok) {
-                    statusDiv.textContent = "¡Excelente! Tu diagnóstico está siendo generado.";
+                    const result = await response.json();
+
+                    statusDiv.textContent = "¡Excelente! Diagnóstico generado correctamente.";
                     statusDiv.classList.add('success');
                     statusDiv.style.display = 'block';
                     form.reset();
 
-                    // MEJORA: Abrir el Chat IA para mostrar la respuesta
-                    setTimeout(() => {
-                        const aiLauncher = document.getElementById('ai-chat-launcher');
-                        const chatWindow = document.getElementById('ai-chat-window');
-                        if (chatWindow && chatWindow.classList.contains('chat-window-hidden')) {
-                            aiLauncher.click();
-                        }
-                    }, 1500);
+                    // MOSTRAR VENTANA DE RESULTADOS
+                    const resultsWindow = document.getElementById('resultados-diagnostico');
+                    const resultsContent = document.getElementById('diagnostico-resultado-content');
+
+                    if (resultsWindow && resultsContent) {
+                        // Inyectar el contenido que viene de n8n (asumiendo que viene en 'data' o 'output')
+                        const markdownText = result.output || result.data || result.message || JSON.stringify(result);
+
+                        // Formateo básico de markdown para la ventana
+                        resultsContent.innerHTML = markdownText
+                            .replace(/\*\*\*(.*?)\*\*\*/g, '<strong><em>$1</em></strong>')
+                            .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+                            .replace(/\*(.*?)\*/g, '<em>$1</em>')
+                            .replace(/\n/g, '<br>');
+
+                        resultsWindow.style.display = 'flex';
+                        resultsWindow.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    }
 
                 } else {
                     throw new Error('Server responded with error');
