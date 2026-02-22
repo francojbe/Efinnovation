@@ -103,6 +103,11 @@ document.addEventListener('DOMContentLoaded', () => {
         const userInput = document.getElementById('ai-user-input');
         const messageBox = document.getElementById('chat-messages');
 
+        if (!launcher || !chatWindow || !userInput || !messageBox || !sendBtn) {
+            console.warn('AI Chat components missing, skipping init.');
+            return;
+        }
+
         launcher.addEventListener('click', () => {
             chatWindow.classList.toggle('chat-window-hidden');
             if (!chatWindow.classList.contains('chat-window-hidden')) {
@@ -183,9 +188,10 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     const initLeadMagnet = () => {
-        const form = document.getElementById('lead-magnet-form');
-        const statusDiv = document.getElementById('form-status');
-        const submitBtn = form.querySelector('button[type="submit"]');
+        if (!form) {
+            console.warn('Lead Magnet form missing, skipping init.');
+            return;
+        }
 
         form.addEventListener('submit', async (e) => {
             e.preventDefault();
