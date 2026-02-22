@@ -102,7 +102,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <!-- Custom JS -->
-    <script src="js/script.js?v=3.4" defer></script>
+    <script src="js/script.js?v=3.6" defer></script>
 
     <meta http-equiv="Content-Security-Policy"
         content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://kit.fontawesome.com https://www.googletagmanager.com https://cdnjs.cloudflare.com https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://ka-p.fontawesome.com https://cdnjs.cloudflare.com; font-src 'self' data: https://fonts.gstatic.com https://ka-p.fontawesome.com https://cdnjs.cloudflare.com; img-src 'self' data: https:; connect-src 'self' https://ka-p.fontawesome.com https://auto.efinnovation.cl https://static.cloudflareinsights.com https://cloudflareinsights.com;">
@@ -554,27 +554,35 @@
                 </div>
             </section>
 
-            <!-- Ventana: Resultados del Diagnóstico (OCULTA POR DEFECTO) -->
-            <section id="resultados-diagnostico" class="window-panel" style="display: none;">
-                <div class="window-titlebar">
-                    <span>Smart Scorer - Informe Generado</span>
-                    <div class="win-controls">
-                        <div class="win-btn close"
-                            onclick="document.getElementById('resultados-diagnostico').style.display='none'"></div>
+            <!-- Modal: Resultados del Diagnóstico (Popup Moderno) -->
+            <div id="modal-resultados" class="modal-overlay">
+                <div class="diagnostic-modal">
+                    <div class="window-titlebar">
+                        <span>Smart Scorer - Informe de IA</span>
+                        <div class="win-controls">
+                            <div class="win-btn close"
+                                onclick="document.getElementById('modal-resultados').style.display='none'"></div>
+                        </div>
+                    </div>
+                    <div class="results-scroll">
+                        <div style="text-align: center; margin-bottom: 25px;">
+                            <h2 class="title-accent">Análisis Estratégico</h2>
+                            <p class="subtitle-muted">Generado por Efi IA en tiempo real</p>
+                        </div>
+                        <div id="diagnostico-resultado-content" class="results-text"
+                            style="line-height: 1.8; font-size: 1.1rem; color: var(--win-fg); text-align: justify;">
+                            <!-- La respuesta de n8n se inyectará aquí -->
+                        </div>
+                        <div style="margin-top: 30px; text-align: center;">
+                            <button class="btn-corp-accent"
+                                onclick="document.getElementById('modal-resultados').style.display='none'"
+                                style="width: auto; padding: 12px 30px;">
+                                Entendido <i class="fas fa-check"></i>
+                            </button>
+                        </div>
                     </div>
                 </div>
-
-                <div class="window-content-padding" id="diagnostico-resultado-container">
-                    <div style="text-align: center; margin-bottom: 20px;">
-                        <h2 class="title-accent">Tu Diagnóstico Estratégico</h2>
-                        <p class="subtitle-muted">Basado en el análisis de Efi IA.</p>
-                    </div>
-                    <div id="diagnostico-resultado-content" class="results-text"
-                        style="line-height: 1.6; font-size: 1.05rem; color: var(--win-fg);">
-                        <!-- Aquí se inyectará la respuesta de n8n -->
-                    </div>
-                </div>
-            </section>
+            </div>
 
             <!-- Ventana: Metodología (NUEVA) -->
             <section id="metodologia" class="window-panel">

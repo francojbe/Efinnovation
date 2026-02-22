@@ -223,33 +223,40 @@ document.addEventListener('DOMContentLoaded', () => {
                 });
 
                 if (response.ok) {
-                    const result = await response.json();
+                    const responseText = await response.text();
+                    let result = null;
 
-                    // Manejar si n8n devuelve un Array [ { output: ... } ]
-                    const data = Array.isArray(result) ? result[0] : result;
+                    try {
+                        result = responseText ? JSON.parse(responseText) : null;
+                    } catch (e) {
+                        console.error("Response is not JSON:", responseText);
+                    }
 
                     statusDiv.textContent = "¡Excelente! Diagnóstico generado correctamente.";
                     statusDiv.classList.add('success');
                     statusDiv.style.display = 'block';
                     form.reset();
 
-                    // MOSTRAR VENTANA DE RESULTADOS
-                    const resultsWindow = document.getElementById('resultados-diagnostico');
+                    // MOSTRAR MODAL DE RESULTADOS (POPUP)
+                    const resultsModal = document.getElementById('modal-resultados');
                     const resultsContent = document.getElementById('diagnostico-resultado-content');
 
-                    if (resultsWindow && resultsContent) {
-                        // Inyectar el contenido que viene de n8n (asumiendo que viene en 'data' o 'output')
-                        const markdownText = data.output || data.data || data.message || JSON.stringify(data);
+                    if (resultsModal && resultsContent) {
+                        let contentToShow = "Estamos procesando tu informe. Si no aparece en unos segundos, revisa tu correo electrónico.";
+
+                        if (result) {
+                            const data = Array.isArray(result) ? result[0] : result;
+                            contentToShow = data.output || data.data || data.message || JSON.stringify(data);
+                        }
 
                         // Formateo básico de markdown para la ventana
-                        resultsContent.innerHTML = markdownText
+                        resultsContent.innerHTML = contentToShow
                             .replace(/\*\*\*(.*?)\*\*\*/g, '<strong><em>$1</em></strong>')
                             .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
                             .replace(/\*(.*?)\*/g, '<em>$1</em>')
                             .replace(/\n/g, '<br>');
 
-                        resultsWindow.style.display = 'flex';
-                        resultsWindow.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                        resultsModal.style.display = 'flex';
                     }
 
                 } else {

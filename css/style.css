@@ -147,6 +147,72 @@ body {
     }
 }
 
+@keyframes modalZoom {
+    from {
+        opacity: 0;
+        transform: scale(0.9) translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    z-index: 3000;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.diagnostic-modal {
+    background: var(--win-bg);
+    border: 1px solid var(--win-border);
+    border-radius: var(--radius-lg);
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+    width: 100%;
+    max-width: 700px;
+    max-height: 80vh;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+    animation: modalZoom 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.diagnostic-modal .window-titlebar {
+    position: relative;
+    top: 0;
+    width: 100%;
+    border-bottom: 1px solid var(--win-border);
+}
+
+.diagnostic-modal .results-scroll {
+    overflow-y: auto;
+    padding: 30px;
+    scrollbar-width: thin;
+    scrollbar-color: var(--accent) transparent;
+}
+
+.diagnostic-modal .results-scroll::-webkit-scrollbar {
+    width: 6px;
+}
+
+.diagnostic-modal .results-scroll::-webkit-scrollbar-thumb {
+    background-color: var(--accent);
+    border-radius: 10px;
+}
+
 .window-titlebar {
     position: absolute;
     top: 0;
