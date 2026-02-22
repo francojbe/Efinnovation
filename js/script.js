@@ -201,7 +201,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const data = Object.fromEntries(formData.entries());
 
             try {
-                const webhookUrl = 'https://auto.efinnovation.cl/webhook/captura';
+                const webhookUrl = '/api/webhook/captura';
 
                 const response = await fetch(webhookUrl, {
                     method: 'POST',
