@@ -1,7 +1,7 @@
 # Utilizar una imagen ligera de Nginx
 FROM nginx:alpine
 
-# Cache busting - invalidates layer cache on every build
+# Force Docker layer cache invalidation on every build
 ARG CACHEBUST=1
 
 # Copiar todos los archivos del proyecto al directorio de Nginx

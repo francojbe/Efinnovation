@@ -8,7 +8,6 @@ Este documento detalla las herramientas y habilidades (skills) disponibles para 
 *   **`senior-architect`**: Análisis de arquitectura escalable (HTML, JS, CSS).
 
 ## 2. Rendimiento y SEO
-*   **`web-performance-optimization`**: Optimización de velocidad, Core Web Vitals y recursos (imágenes, scripts).
 *   **`seo-audit`**: Análisis de indexación, meta-etiquetas y estrategia de contenido para buscadores.
 
 ## 3. Diseño y Experiencia de Usuario (UX/UI)

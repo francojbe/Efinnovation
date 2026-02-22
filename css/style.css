@@ -38,14 +38,16 @@ body {
     background-color: var(--bg-desktop);
     color: var(--text-main);
     overflow-x: hidden;
+    min-height: 100vh;
+    min-height: 100dvh;
     height: 100vh;
+    height: 100dvh;
     display: flex;
     flex-direction: column;
     background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('../assets/img/hero-bg-premium.webp');
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
-    will-change: transform;
 }
 
 /* Scrollbar */
@@ -1250,24 +1252,26 @@ body {
         font-size: 2.2rem;
     }
 
-    /* Flotantes simétricos en móvil */
+    /* Flotantes proporcionales en móvil - Adaptables a cualquier pantalla */
     .whatsapp-float {
-        bottom: 20px;
-        right: 20px;
-        width: 50px;
-        height: 50px;
-        font-size: 25px;
+        bottom: calc(5dvh + env(safe-area-inset-bottom, 0px));
+        right: 5vw;
+        width: clamp(50px, 12vw, 65px);
+        height: clamp(50px, 12vw, 65px);
+        font-size: clamp(24px, 6vw, 32px);
+        z-index: 9999;
     }
 
     #ai-chat-container {
-        bottom: 20px;
-        left: 20px;
+        bottom: calc(5dvh + env(safe-area-inset-bottom, 0px));
+        left: 5vw;
+        z-index: 9999;
     }
 
     #ai-chat-launcher {
-        width: 50px;
-        height: 50px;
-        font-size: 20px;
+        width: clamp(50px, 12vw, 65px);
+        height: clamp(50px, 12vw, 65px);
+        font-size: clamp(20px, 5vw, 28px);
     }
 }
 
