@@ -188,10 +188,15 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     const initLeadMagnet = () => {
+        const form = document.getElementById('lead-magnet-form');
+        const statusDiv = document.getElementById('form-status');
+
         if (!form) {
             console.warn('Lead Magnet form missing, skipping init.');
             return;
         }
+
+        const submitBtn = form.querySelector('button[type="submit"]');
 
         form.addEventListener('submit', async (e) => {
             e.preventDefault();
@@ -207,9 +212,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const data = Object.fromEntries(formData.entries());
 
             try {
-                const webhookUrl = '/api/webhook/captura';
-
-                const response = await fetch(webhookUrl, {
+                const response = await fetch('https://auto.efinnovation.cl/webhook/captura', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({
@@ -220,15 +223,25 @@ document.addEventListener('DOMContentLoaded', () => {
                 });
 
                 if (response.ok) {
-                    statusDiv.textContent = "¡Excelente! Tu diagnóstico está siendo generado. Recibirás un correo con tu hoja de ruta en unos instantes.";
+                    statusDiv.textContent = "¡Excelente! Tu diagnóstico está siendo generado.";
                     statusDiv.classList.add('success');
                     statusDiv.style.display = 'block';
                     form.reset();
+
+                    // MEJORA: Abrir el Chat IA para mostrar la respuesta
+                    setTimeout(() => {
+                        const aiLauncher = document.getElementById('ai-chat-launcher');
+                        const chatWindow = document.getElementById('ai-chat-window');
+                        if (chatWindow && chatWindow.classList.contains('chat-window-hidden')) {
+                            aiLauncher.click();
+                        }
+                    }, 1500);
+
                 } else {
                     throw new Error('Server responded with error');
                 }
             } catch (err) {
-                statusDiv.textContent = "Hubo un problema al enviar tus datos. ¿Podrías contactarnos directamente por WhatsApp?";
+                statusDiv.textContent = "Hubo un problema. ¿Podrías contactarnos por WhatsApp?";
                 statusDiv.classList.add('error');
                 statusDiv.style.display = 'block';
                 console.error('Lead Magnet Error:', err);
