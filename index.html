@@ -100,6 +100,7 @@
     <!-- CSS Principal (Bloqueante para evitar FOUC) -->
     <link rel="stylesheet" href="css/style.css?v=3.1">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/intl-tel-input@24.5.1/build/css/intlTelInput.css">
 
     <!-- Custom JS -->
     <script src="js/script.js?v=3.6" defer></script>
@@ -539,10 +540,16 @@
                             </select>
                         </div>
 
-                        <div class="form-group">
-                            <label for="diag-contact">Email o WhatsApp Corporativo</label>
-                            <input type="text" id="diag-contact" name="contact"
-                                placeholder="Ej: juan@empresa.cl o +569..." required>
+                        <div class="form-group" style="display: flex; flex-direction: row; gap: 15px;">
+                            <div style="flex: 1;">
+                                <label for="diag-email">Email Corporativo</label>
+                                <input type="email" id="diag-email" name="email" placeholder="ejemplo@empresa.cl"
+                                    required>
+                            </div>
+                            <div style="flex: 1;">
+                                <label for="diag-phone">WhatsApp / Teléfono</label>
+                                <input type="tel" id="diag-phone" name="phone" required style="width: 100%;">
+                            </div>
                         </div>
 
                         <button type="submit" class="btn-corp-accent diagnostic-submit">
@@ -808,6 +815,8 @@
 
 
 
+        <!-- Phone Picker JS -->
+        <script src="https://cdn.jsdelivr.net/npm/intl-tel-input@24.5.1/build/js/intlTelInput.min.js"></script>
 </body>
 
 </html>

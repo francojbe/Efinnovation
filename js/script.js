@@ -190,10 +190,21 @@ document.addEventListener('DOMContentLoaded', () => {
     const initLeadMagnet = () => {
         const form = document.getElementById('lead-magnet-form');
         const statusDiv = document.getElementById('form-status');
+        const phoneInput = document.getElementById('diag-phone');
 
         if (!form) {
             console.warn('Lead Magnet form missing, skipping init.');
             return;
+        }
+
+        // INICIALIZAR SELECTOR DE PAISES (Solo si existe el input y la libreria)
+        let iti;
+        if (phoneInput && typeof intlTelInput !== 'undefined') {
+            iti = intlTelInput(phoneInput, {
+                initialCountry: "cl",
+                separateDialCode: true,
+                utilsScript: "https://cdn.jsdelivr.net/npm/intl-tel-input@24.5.1/build/js/utils.js",
+            });
         }
 
         const submitBtn = form.querySelector('button[type="submit"]');
@@ -204,12 +215,17 @@ document.addEventListener('DOMContentLoaded', () => {
             // UI State: Loading
             submitBtn.disabled = true;
             const originalBtnText = submitBtn.innerHTML;
-            submitBtn.innerHTML = '<span>Procesando Diagnóstico...</span> <i class="fas fa-spinner fa-spin"></i>';
+            submitBtn.innerHTML = '<span>Analizando con Efi AI...</span> <i class="fas fa-spinner fa-spin"></i>';
             statusDiv.className = 'form-status';
             statusDiv.style.display = 'none';
 
             const formData = new FormData(form);
             const data = Object.fromEntries(formData.entries());
+
+            // Capturar el teléfono formateado (con código de país)
+            if (iti) {
+                data.full_phone = iti.getNumber();
+            }
 
             try {
                 const response = await fetch('https://auto.efinnovation.cl/webhook/captura', {
