@@ -343,7 +343,7 @@
     </div>
 
     <script>
-        
+
 
         const welcomeView = document.getElementById('welcome-view');
         const chatView = document.getElementById('chat-view');
@@ -464,7 +464,7 @@
             chatView.appendChild(messageDiv);
 
             // Re-initialize lucide icons inside the new message
-            
+
 
             // Smooth scroll to bottom
             setTimeout(() => {
@@ -574,7 +574,7 @@
                             <button type="button" onclick="closeLeadModal()" class="mt-6 bg-brand-accent text-white w-full py-2.5 rounded-xl font-medium shadow-md hover:bg-[#4f46e5] transition-colors">Volver al chat</button>
                         </div>
                     `;
-                    
+
                 }
             } catch (error) {
                 console.error('Error saving lead:', error);
@@ -582,8 +582,8 @@
         });
 
         function closeLeadModal() {
-            modalOverlay.classList.add('hidde
-     modalOverlay.classList.remove('flex');
+            modalOverlay.classList.add('hidden');
+            modalOverlay.classList.remove('flex');
         }
     </script>
 </body>
