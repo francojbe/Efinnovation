@@ -515,7 +515,7 @@
             chatView.scrollTop = chatView.scrollHeight;
 
             try {
-                const response = await fetch('http://localhost:8000/chat', {
+                const response = await fetch('https://recuperadora-agente-afi.nojauc.easypanel.host/chat', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ message: message })
@@ -551,7 +551,7 @@
             if (!nombre || !email || !phone) return;
 
             try {
-                const response = await fetch('http://localhost:8000/lead', {
+                const response = await fetch('https://recuperadora-agente-afi.nojauc.easypanel.host/lead', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ nombre: nombre, email: email, phone: phone })
@@ -587,8 +587,8 @@
         });
 
         function closeLeadModal() {
-            modalOverlay.classList.add('hidden');
-            modalOverlay.classList.remove('flex');
+            modalOverlay.classList.add('hidde
+     modalOverlay.classList.remove('flex');
         }
     </script>
 </body>
