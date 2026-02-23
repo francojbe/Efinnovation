@@ -12,7 +12,7 @@
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <!-- Lucide Icons -->
-    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <script>
         tailwind.config = {
@@ -111,7 +111,7 @@
             <div class="mb-12 cursor-pointer hover:scale-110 transition-transform">
                 <div
                     class="w-12 h-12 bg-white rounded-2xl shadow-sm flex items-center justify-center border border-slate-100">
-                    <i data-lucide="bot" class="w-7 h-7 text-slate-700"></i>
+                    <i class="fa-solid fa-robot w-7 h-7 text-slate-700"></i>
                 </div>
             </div>
 
@@ -119,30 +119,30 @@
             <nav class="flex flex-col gap-6 w-full items-center">
                 <button
                     class="w-10 h-10 rounded-full bg-white shadow-sm flex items-center justify-center text-slate-400 hover:text-brand-accent hover:shadow-md transition-all">
-                    <i data-lucide="search" class="w-5 h-5"></i>
+                    <i class="fa-solid fa-magnifying-glass w-5 h-5"></i>
                 </button>
                 <button
                     class="w-10 h-10 rounded-full bg-white shadow-sm flex items-center justify-center text-slate-400 hover:text-brand-accent hover:shadow-md transition-all">
-                    <i data-lucide="clock" class="w-5 h-5"></i>
+                    <i class="fa-regular fa-clock w-5 h-5"></i>
                 </button>
                 <button
                     class="w-10 h-10 rounded-full bg-white shadow-sm flex items-center justify-center text-brand-accent shadow-md transition-all">
-                    <i data-lucide="store" class="w-5 h-5"></i>
+                    <i class="fa-solid fa-store w-5 h-5"></i>
                 </button>
                 <button
                     class="w-10 h-10 rounded-full bg-white shadow-sm flex items-center justify-center text-slate-400 hover:text-brand-accent hover:shadow-md transition-all">
-                    <i data-lucide="layout-grid" class="w-5 h-5"></i>
+                    <i class="fa-solid fa-border-all w-5 h-5"></i>
                 </button>
                 <button
                     class="w-10 h-10 rounded-full bg-white shadow-sm flex items-center justify-center text-slate-400 hover:text-brand-accent hover:shadow-md transition-all">
-                    <i data-lucide="slack" class="w-5 h-5"></i>
+                    <i class="fa-brands fa-slack w-5 h-5"></i>
                 </button>
             </nav>
 
             <div class="mt-auto">
                 <button
                     class="w-10 h-10 rounded-full bg-white shadow-sm flex items-center justify-center text-slate-400 hover:text-brand-accent hover:shadow-md transition-all">
-                    <i data-lucide="settings" class="w-5 h-5"></i>
+                    <i class="fa-solid fa-gear w-5 h-5"></i>
                 </button>
             </div>
         </aside>
@@ -165,13 +165,13 @@
             <!-- Top Header -->
             <header class="w-full px-8 py-6 flex justify-between items-center relative z-20">
                 <div class="flex items-center gap-2">
-                    <i data-lucide="bot" class="w-6 h-6 text-slate-700"></i>
+                    <i class="fa-solid fa-robot w-6 h-6 text-slate-700"></i>
                     <span class="font-bold text-lg text-slate-800">EFI AI</span>
                 </div>
                 <a href="https://wa.me/56974263408?text=Hola,%20me%20interesa%20el%20Plan%20Premium" target="_blank"
                     rel="noopener noreferrer"
                     class="bg-dark hover:bg-slate-800 text-white text-sm font-medium px-5 py-2.5 rounded-xl transition-all shadow-md inline-flex items-center gap-2">
-                    <i data-lucide="sparkles" class="w-4 h-4"></i> Suscribirme
+                    <i class="fa-solid fa-wand-magic-sparkles w-4 h-4"></i> Suscribirme
                 </a>
             </header>
 
@@ -214,7 +214,7 @@
                     <div id="pro-promo"
                         class="glass-panel p-4 rounded-2xl flex justify-between items-center shadow-sm w-full mb-2">
                         <div class="flex items-center gap-3">
-                            <i data-lucide="gem" class="w-5 h-5 text-slate-500"></i>
+                            <i class="fa-regular fa-gem w-5 h-5 text-slate-500"></i>
                             <span class="text-sm font-medium text-slate-700">Desbloquea consultas ilimitadas con el
                                 Plan Pro</span>
                         </div>
@@ -236,12 +236,12 @@
                             <div class="flex items-center gap-2 pr-2 shrink-0">
                                 <button type="button" onclick="showToast('Función de voz disponible muy pronto 🎙️')"
                                     class="p-2 text-slate-400 hover:text-slate-700 transition-colors rounded-full hover:bg-white/50">
-                                    <i data-lucide="mic" class="w-5 h-5"></i>
+                                    <i class="fa-solid fa-microphone w-5 h-5"></i>
                                 </button>
                                 <button type="submit"
                                     class="p-2 w-10 h-10 text-white bg-dark hover:bg-slate-800 transition-colors rounded-full shadow-md flex items-center justify-center group">
-                                    <i data-lucide="send"
-                                        class="w-4 h-4 ml-0.5 group-hover:translate-x-0.5 transition-transform"></i>
+                                    <i
+                                        class="fa-solid fa-paper-plane w-4 h-4 ml-0.5 group-hover:translate-x-0.5 transition-transform"></i>
                                 </button>
                             </div>
                         </form>
@@ -251,23 +251,23 @@
                     <div id="quick-pills" class="flex flex-wrap justify-center gap-2 mt-2">
                         <button
                             class="px-4 py-1.5 rounded-full bg-white/60 border border-slate-200 text-xs font-medium text-slate-600 hover:bg-white hover:shadow-sm transition-all flex items-center gap-1.5">
-                            <i data-lucide="file-text" class="w-3.5 h-3.5"></i> F29
+                            <i class="fa-solid fa-file-lines w-3.5 h-3.5"></i> F29
                         </button>
                         <button
                             class="px-4 py-1.5 rounded-full bg-white/60 border border-slate-200 text-xs font-medium text-slate-600 hover:bg-white hover:shadow-sm transition-all flex items-center gap-1.5">
-                            <i data-lucide="landmark" class="w-3.5 h-3.5"></i> Operación Renta
+                            <i class="fa-solid fa-landmark w-3.5 h-3.5"></i> Operación Renta
                         </button>
                         <button
                             class="px-4 py-1.5 rounded-full bg-white/60 border border-slate-200 text-xs font-medium text-slate-600 hover:bg-white hover:shadow-sm transition-all flex items-center gap-1.5">
-                            <i data-lucide="users" class="w-3.5 h-3.5"></i> Remuneraciones
+                            <i class="fa-solid fa-users w-3.5 h-3.5"></i> Remuneraciones
                         </button>
                         <button
                             class="px-4 py-1.5 rounded-full bg-white/60 border border-slate-200 text-xs font-medium text-slate-600 hover:bg-white hover:shadow-sm transition-all flex items-center gap-1.5">
-                            <i data-lucide="receipt" class="w-3.5 h-3.5"></i> Facturación
+                            <i class="fa-solid fa-receipt w-3.5 h-3.5"></i> Facturación
                         </button>
                         <button
                             class="px-4 py-1.5 rounded-full bg-white/60 border border-slate-200 text-xs font-medium text-slate-600 hover:bg-white hover:shadow-sm transition-all flex items-center gap-1.5">
-                            <i data-lucide="alert-circle" class="w-3.5 h-3.5"></i> Errores SII
+                            <i class="fa-solid fa-circle-exclamation w-3.5 h-3.5"></i> Errores SII
                         </button>
                     </div>
 
@@ -285,12 +285,12 @@
             style="transform: scale(1);">
             <button id="close-modal"
                 class="absolute top-6 right-6 text-slate-400 hover:text-slate-600 transition-colors">
-                <i data-lucide="x" class="w-5 h-5"></i>
+                <i class="fa-solid fa-xmark w-5 h-5"></i>
             </button>
 
             <div class="flex items-center gap-3 mb-6">
                 <div class="w-10 h-10 rounded-xl bg-brand-blue flex items-center justify-center text-brand-accent">
-                    <i data-lucide="sparkles" class="w-5 h-5"></i>
+                    <i class="fa-solid fa-wand-magic-sparkles w-5 h-5"></i>
                 </div>
                 <h2 class="text-2xl font-semibold text-slate-800 tracking-tight">¡Únete a la Comunidad!</h2>
             </div>
@@ -325,7 +325,7 @@
                 <button type="submit"
                     class="mt-4 bg-dark text-white w-full py-3.5 rounded-xl font-medium shadow-md hover:bg-slate-800 hover:shadow-lg transition-all flex items-center justify-center gap-2 group">
                     Continuar Chateando
-                    <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+                    <i class="fa-solid fa-arrow-right w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
                 </button>
                 <p class="text-center text-xs text-slate-400 mt-2">No enviaremos spam, solo respuestas tributarias.</p>
             </form>
@@ -337,13 +337,13 @@
         class="fixed top-6 left-1/2 -translate-x-1/2 z-[100] transition-all duration-300 transform -translate-y-10 opacity-0 pointer-events-none">
         <div
             class="bg-dark text-white px-5 py-3 rounded-2xl shadow-2xl flex items-center gap-3 border border-slate-700">
-            <i data-lucide="info" class="w-4 h-4 text-brand-accent"></i>
+            <i class="fa-solid fa-circle-info w-4 h-4 text-brand-accent"></i>
             <span id="toast-message" class="text-sm font-medium"></span>
         </div>
     </div>
 
     <script>
-        lucide.createIcons();
+        
 
         const welcomeView = document.getElementById('welcome-view');
         const chatView = document.getElementById('chat-view');
@@ -420,7 +420,7 @@
             if (sources.length > 0) {
                 sourcesHtml = `
                     <div class="mt-3 pt-3 border-t ${isUser ? 'border-white/20' : 'border-slate-100'} text-[11px] opacity-80 flex flex-col gap-1">
-                        <span class="font-semibold flex items-center gap-1"><i data-lucide="book-open" class="w-3 h-3"></i> Fuentes referenciadas:</span>
+                        <span class="font-semibold flex items-center gap-1"><i class="fa-solid fa-book-open w-3 h-3"></i> Fuentes referenciadas:</span>
                         <ul class="list-disc list-inside">
                             ${sources.slice(0, 3).map(s => `<li>${s}</li>`).join('')}
                         </ul>
@@ -432,7 +432,7 @@
             if (limitReached) {
                 premiumCtaHtml = `
                     <div class="mt-4 pt-3 border-t border-brand-accent/20">
-                        <a href="https://wa.me/56974263408?text=Hola%20EFI,%20alcanc%C3%A9%20el%20l%C3%ADmite%20de%20mi%20cuenta%20gratuita%20y%20me%20gustar%C3%ADa%20suscribirme%20a%20Premium." target="_blank" rel="noopener noreferrer" class="block w-full text-center bg-gradient-to-r from-brand-accent to-[#4f46e5] text-white py-2 rounded-xl text-[13px] font-semibold flex items-center justify-center gap-2 shadow-md hover:shadow-lg transition-all"><i data-lucide="sparkles" class="w-4 h-4"></i> Suscribirse a Premium</a>
+                        <a href="https://wa.me/56974263408?text=Hola%20EFI,%20alcanc%C3%A9%20el%20l%C3%ADmite%20de%20mi%20cuenta%20gratuita%20y%20me%20gustar%C3%ADa%20suscribirme%20a%20Premium." target="_blank" rel="noopener noreferrer" class="block w-full text-center bg-gradient-to-r from-brand-accent to-[#4f46e5] text-white py-2 rounded-xl text-[13px] font-semibold flex items-center justify-center gap-2 shadow-md hover:shadow-lg transition-all"><i class="fa-solid fa-wand-magic-sparkles w-4 h-4"></i> Suscribirse a Premium</a>
                     </div>
                 `;
             }
@@ -464,7 +464,7 @@
             chatView.appendChild(messageDiv);
 
             // Re-initialize lucide icons inside the new message
-            lucide.createIcons();
+            
 
             // Smooth scroll to bottom
             setTimeout(() => {
@@ -567,14 +567,14 @@
                     leadForm.innerHTML = `
                         <div class="text-center py-4">
                             <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                                <i data-lucide="check" class="w-8 h-8 text-green-500"></i>
+                                <i class="fa-solid fa-check w-8 h-8 text-green-500"></i>
                             </div>
                             <h3 class="text-xl font-semibold text-slate-800 mb-2">¡Genial, ${nombre}!</h3>
                             <p class="text-slate-600 text-sm">Tu registro fue exitoso. Ya puedes continuar con tus dudas.</p>
                             <button type="button" onclick="closeLeadModal()" class="mt-6 bg-brand-accent text-white w-full py-2.5 rounded-xl font-medium shadow-md hover:bg-[#4f46e5] transition-colors">Volver al chat</button>
                         </div>
                     `;
-                    lucide.createIcons();
+                    
                 }
             } catch (error) {
                 console.error('Error saving lead:', error);
