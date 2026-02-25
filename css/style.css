@@ -1137,6 +1137,22 @@ body {
     width: 100%;
 }
 
+.nav-toggle {
+    display: none;
+    background: transparent;
+    border: none;
+    color: white;
+    font-size: 1.5rem;
+    cursor: pointer;
+    z-index: 1001;
+    padding: 5px;
+    transition: 0.3s;
+}
+
+.nav-toggle:hover {
+    color: var(--accent);
+}
+
 /* --- Process / Methodology Section --- */
 .process-grid {
     display: grid;
@@ -1229,8 +1245,55 @@ body {
         padding: 10px 15px;
     }
 
+    .nav-toggle {
+        display: block;
+    }
+
     .nav-links {
         display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: rgba(12, 12, 12, 0.95);
+        backdrop-filter: blur(20px);
+        flex-direction: column;
+        gap: 0;
+        padding: 20px 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        animation: fadeInDown 0.3s ease;
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+
+    .nav-links li {
+        width: 100%;
+        text-align: center;
+    }
+
+    .nav-links a {
+        display: block;
+        padding: 15px;
+        width: 100%;
+    }
+
+    .nav-links a::after {
+        display: none;
+        /* No underlines on mobile */
+    }
+
+    @keyframes fadeInDown {
+        from {
+            opacity: 0;
+            transform: translateY(-10px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
     }
 
     /* Simplified mobile handling for now */
