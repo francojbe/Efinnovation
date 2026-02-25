@@ -227,6 +227,7 @@ document.addEventListener('DOMContentLoaded', () => {
             iti = intlTelInput(phoneInput, {
                 initialCountry: "cl",
                 separateDialCode: true,
+                placeholderNumberType: "MOBILE",
                 utilsScript: "https://cdn.jsdelivr.net/npm/intl-tel-input@24.5.1/build/js/utils.js",
             });
         }
