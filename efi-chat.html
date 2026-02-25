@@ -444,11 +444,21 @@
                 `;
             }
 
+            // Formateo básico de Markdown (Negritas y Listas)
+            let formattedText = text
+                .replace(/\*\*(.*?)\*\*/g, '<strong class="font-bold text-slate-900">$1</strong>')
+                .replace(/^\s*[\-\*]\s+(.*)$/gm, '<li class="ml-4 list-disc">$1</li>');
+
+            if (formattedText.includes('<li')) {
+                // Envolver listas en <ul> si existen
+                formattedText = formattedText.replace(/(<li.*<\/li>)/s, '<ul class="my-2">$1</ul>');
+            }
+
             // Using premium design for bubbles
             if (isUser) {
                 messageDiv.innerHTML = `
                     <div class="bg-dark text-white p-4 rounded-2xl rounded-tr-sm shadow-md max-w-[80%] md:max-w-[70%]">
-                        <p class="text-[15px] leading-relaxed whitespace-pre-wrap">${text}</p>
+                        <p class="text-[15px] leading-relaxed whitespace-pre-wrap">${formattedText}</p>
                         <div class="text-right mt-1 opacity-50 text-[10px]">${time}</div>
                     </div>
                 `;
@@ -459,7 +469,7 @@
                             <img src="https://api.dicebear.com/7.x/bottts/svg?seed=EFI&backgroundColor=transparent&baseColor=e0e7ff" class="w-6 h-6 object-contain" />
                         </div>
                         <div class="glass-panel p-4 rounded-2xl rounded-tl-sm shadow-sm border border-slate-100/50 text-slate-800">
-                            <p class="text-[15px] leading-relaxed whitespace-pre-wrap ${limitReached ? 'font-medium' : ''}">${text}</p>
+                            <p class="text-[15px] leading-relaxed whitespace-pre-wrap ${limitReached ? 'font-medium' : ''}">${formattedText}</p>
                             ${sourcesHtml}
                             ${premiumCtaHtml}
                             <div class="text-left mt-2 opacity-40 text-[10px] font-medium">${time}</div>
