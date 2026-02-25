@@ -348,6 +348,35 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     };
 
+    const initTracking = () => {
+        // Trackear apertura de AI Chat
+        const launcher = document.getElementById('ai-chat-launcher');
+        if (launcher) {
+            launcher.addEventListener('click', () => {
+                window.dataLayer = window.dataLayer || [];
+                window.dataLayer.push({
+                    'event': 'conversion',
+                    'event_category': 'ai_chat',
+                    'event_label': 'open_chat'
+                });
+            });
+        }
+
+        // Trackear clics en WhatsApp (incluyendo botones flotantes y enlaces)
+        const whatsappLinks = document.querySelectorAll('a[href*="wa.me"], a.whatsapp-float');
+        whatsappLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                window.dataLayer = window.dataLayer || [];
+                window.dataLayer.push({
+                    'event': 'generate_lead',
+                    'event_category': 'whatsapp',
+                    'event_label': 'click_to_chat'
+                });
+            });
+        });
+    };
+
     initAIChat();
     initLeadMagnet();
+    initTracking();
 });
