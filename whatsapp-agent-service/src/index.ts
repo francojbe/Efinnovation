@@ -4,12 +4,16 @@ import dotenv from 'dotenv';
 import { createClient } from '@supabase/supabase-js';
 import { getAssistantResponse, createThread } from './openaiService';
 import { sendWhatsAppMessage } from './evolutionService';
+import axios from 'axios';
+import fs from 'fs';
+import path from 'path';
+import FormData from 'form-data';
 
 dotenv.config();
 
 const app = express();
+app.use(express.json()); // Moved before cors as per edit
 app.use(cors());
-app.use(express.json());
 
 const PORT = process.env.PORT || 3000;
 
@@ -17,6 +21,50 @@ const PORT = process.env.PORT || 3000;
 const supabaseUrl = process.env.SUPABASE_URL || '';
 const supabaseKey = process.env.SUPABASE_KEY || '';
 const supabase = createClient(supabaseUrl, supabaseKey);
+
+// Cola de mensajes para evitar respuestas múltiples (Debounce)
+const messageQueues: { [key: string]: { timeout: NodeJS.Timeout, messages: string[] } } = {};
+const WAIT_TIME = 4000; // 4 segundos de espera para ver si el usuario envía más mensajes
+
+// --- Utilidades de Audio y Naturalidad ---
+
+async function transcribeAudio(audioBuffer: Buffer): Promise<string> {
+    const openai = new (require('openai'))({ apiKey: process.env.OPENAI_API_KEY });
+
+    // Guardar temporalmente para OpenAI (requiere archivo con nombre)
+    const tempFile = path.join(__dirname, `temp_audio_${Date.now()}.ogg`);
+    fs.writeFileSync(tempFile, audioBuffer);
+
+    try {
+        const response = await openai.audio.transcriptions.create({
+            file: fs.createReadStream(tempFile),
+            model: "whisper-1",
+            language: "es" // Forzamos español
+        });
+        return response.text;
+    } finally {
+        if (fs.existsSync(tempFile)) fs.unlinkSync(tempFile);
+    }
+}
+
+async function sendNaturalResponses(remoteJid: string, fullText: string) {
+    // Dividimos por puntos seguidos de espacio para crear fragmentos
+    const fragments = fullText.split(/\. /).filter(f => f.trim().length > 0);
+
+    for (let i = 0; i < fragments.length; i++) {
+        let textToSend = fragments[i].trim();
+        // Le devolvemos el punto si se lo quitamos en el split y no es el último fragmento
+        if (i < fragments.length - 1 && !textToSend.endsWith('.')) textToSend += '.';
+
+        await sendWhatsAppMessage(remoteJid, textToSend);
+
+        // Si hay más mensajes, esperamos un poco para simular lectura/escritura
+        if (i < fragments.length - 1) {
+            const delay = Math.min(2000, 500 + textToSend.length * 15);
+            await new Promise(r => setTimeout(r, delay));
+        }
+    }
+}
 
 // Nombre de la tabla: 'whatsapp_threads' 
 // Esquema esperado: { phone: string, thread_id: string }
@@ -34,68 +82,101 @@ app.post('/webhook/evolution', async (req, res) => {
         console.log('-------------------------------------------');
         console.log(`⚠️ Webhook recibido - Evento: ${data.event}`);
 
-        // Validamos que sea un evento de mensaje
-        if (data.event !== 'messages.upsert') {
-            console.log(`ℹ️ Evento ignorado: ${data.event}`);
-            return res.status(200).send('Event Ignored');
-        }
-
-        // Evitar bucles (no responder a mensajes enviados por el propio bot)
-        if (data.data?.key?.fromMe) {
-            console.log('ℹ️ Mensaje enviado por mí, ignorando para evitar bucle.');
-            return res.status(200).send('Ignored self message');
+        // Validamos que sea un evento de mensaje y no sea de nosotros
+        if (data.event !== 'messages.upsert' || data.data?.key?.fromMe) {
+            console.log(`ℹ️ Evento ignorado: ${data.event} o mensaje propio.`);
+            return res.status(200).send('Ignored');
         }
 
         const remoteJid = data.data?.key?.remoteJid;
-        // La Evolution API v2 puede enviar el texto en varios lugares según el tipo de mensaje
-        const messageText =
-            data.data?.message?.conversation ||
-            data.data?.message?.extendedTextMessage?.text ||
-            data.data?.message?.imageMessage?.caption ||
-            "";
+        let incomingContent = "";
 
-        if (!messageText || messageText.trim() === "") {
-            console.log('ℹ️ El mensaje no contiene texto procesable.');
-            return res.status(200).send('No text content');
-        }
-
-        console.log(`📩 Mensaje de ${remoteJid}: "${messageText}"`);
-
-        // 1. Buscamos o creamos el Thread ID en Supabase
-        let threadId: string | null = null;
-        const { data: threadData } = await supabase
-            .from('whatsapp_threads')
-            .select('thread_id')
-            .eq('phone', remoteJid)
-            .maybeSingle();
-
-        if (threadData) {
-            threadId = threadData.thread_id;
-            console.log(`🧵 Usando hilo existente: ${threadId}`);
+        // Verificamos si es audio
+        const audioData = data.data?.message?.audioMessage;
+        if (audioData) {
+            console.log(`🎤 Nota de voz recibida de ${remoteJid}. Transcribiendo...`);
+            // Evolution API envía el audio en base64 en el data.data.base64 si está configurado,
+            // o debemos descargarlo. Si no viene en el webhook, hay que pedirlo a la API.
+            // Para simplicidad en este MVP, asumimos que viene o lo ignoramos si no hay buffer.
+            if (data.data.base64) {
+                const buffer = Buffer.from(data.data.base64, 'base64');
+                incomingContent = await transcribeAudio(buffer);
+                console.log(`📝 Transcripción: "${incomingContent}"`);
+            } else {
+                incomingContent = "[Nota de voz sin contenido procesable]";
+                console.log('ℹ️ Nota de voz sin base64 en el webhook, ignorando.');
+            }
         } else {
-            console.log(`🆕 Creando nuevo hilo para ${remoteJid}...`);
-            threadId = await createThread();
-            await supabase
-                .from('whatsapp_threads')
-                .insert([{ phone: remoteJid, thread_id: threadId }]);
+            incomingContent =
+                data.data?.message?.conversation ||
+                data.data?.message?.extendedTextMessage?.text ||
+                data.data?.message?.imageMessage?.caption ||
+                "";
         }
 
-        if (!threadId) throw new Error('No se pudo gestionar el Thread ID');
+        if (!incomingContent || incomingContent.trim() === "") {
+            console.log('ℹ️ El mensaje no contiene texto procesable.');
+            return res.status(200).send('No content');
+        }
 
-        // 2. Obtenemos respuesta de la IA (Alejandro)
-        console.log('🤖 Consultando a Alejandro (OpenAI)...');
-        const aiResponse = await getAssistantResponse(threadId, messageText);
-        console.log(`🤖 Alejandro dice: "${aiResponse.substring(0, 50)}..."`);
+        console.log(`📩 Mensaje de ${remoteJid}: "${incomingContent}"`);
 
-        // 3. Enviamos de vuelta a WhatsApp
-        await sendWhatsAppMessage(remoteJid, aiResponse);
-        console.log(`✅ Respuesta enviada con éxito a ${remoteJid}`);
+        // --- LÓGICA DE ESPERA (DEBOUNCE) ---
+        if (!messageQueues[remoteJid]) {
+            messageQueues[remoteJid] = { timeout: setTimeout(() => { }, 0), messages: [] };
+        }
 
-        res.status(200).send('OK');
+        clearTimeout(messageQueues[remoteJid].timeout);
+        messageQueues[remoteJid].messages.push(incomingContent);
+
+        messageQueues[remoteJid].timeout = setTimeout(async () => {
+            const allMessages = messageQueues[remoteJid].messages.join(" ");
+            messageQueues[remoteJid].messages = []; // Limpiamos para la siguiente vez
+
+            console.log(`-------------------------------------------`);
+            console.log(`📩 Procesando acumulado de ${remoteJid}: "${allMessages}"`);
+
+            try {
+                // 1. Buscamos o creamos el Thread ID en Supabase
+                let threadId: string | null = null;
+                const { data: threadData } = await supabase
+                    .from('whatsapp_threads')
+                    .select('thread_id')
+                    .eq('phone', remoteJid)
+                    .maybeSingle();
+
+                if (threadData) {
+                    threadId = threadData.thread_id;
+                    console.log(`🧵 Usando hilo existente: ${threadId}`);
+                } else {
+                    console.log(`🆕 Creando nuevo hilo para ${remoteJid}...`);
+                    threadId = await createThread();
+                    await supabase
+                        .from('whatsapp_threads')
+                        .insert([{ phone: remoteJid, thread_id: threadId }]);
+                }
+
+                if (!threadId) throw new Error('No se pudo gestionar el Thread ID');
+
+                // 2. IA Alejandro (Pasamos el cliente de Supabase para que pueda guardar leads)
+                console.log('🤖 Consultando a Alejandro...');
+                const aiResponse = await getAssistantResponse(threadId, allMessages, supabase);
+                console.log(`🤖 Alejandro dice: "${aiResponse.substring(0, 50)}..."`);
+
+                // 3. Enviamos de vuelta a WhatsApp de forma fragmentada
+                await sendNaturalResponses(remoteJid, aiResponse);
+                console.log(`✅ Respuesta enviada con éxito a ${remoteJid}`);
+
+            } catch (err) {
+                console.error('❌ Error procesando respuesta en cola:', err);
+            }
+        }, WAIT_TIME);
+
+        res.status(200).send('Queued');
 
     } catch (error) {
         console.error('❌ Error en el Webhook:', error);
-        res.status(200).send('Error but handled'); // Respondemos 200 para que Evolution no reintente infinitamente
+        res.status(200).send('Error handled'); // Respondemos 200 para que Evolution no reintente infinitamente
     }
 });
 

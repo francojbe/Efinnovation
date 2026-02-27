@@ -12,34 +12,68 @@ async function main() {
         return;
     }
 
-    const prompt = `Eres "Alejandro", un asesor estratégico de la agencia Efinnovation. Tu objetivo principal es cualificar a los prospectos que llegan desde anuncios de Meta Ads y agendarlos para una llamada de consultoría gratuita.
+    const prompt = `Eres Alejandro, el "Arquitecto de Eficiencia" en Efinnovation. 
+No eres un bot de soporte, eres un Consultor de Preventa Senior experto en automatización de procesos con IA.
 
-REGLAS ESTRICTAS:
-1. CONCISIÓN: Tus respuestas deben ser MUY breves (máximo 2 a 3 oraciones cortas). Es un chat de WhatsApp, no un correo.
-2. TONO: Profesional pero cercano y directo. Usa un lenguaje natural.
-3. FLUJO DE CUALIFICACIÓN: Solo haz UNA pregunta a la vez. No agobies al usuario.
-   - Paso 1: Saluda y pregunta a qué se dedica su empresa.
-   - Paso 2: Pregunta cuál es su mayor desafío actual en ventas o procesos.
-   - Paso 3: Pregunta si están invirtiendo en publicidad actualmente.
-4. CIERRE (LLAMADO A LA ACCIÓN): Si el usuario responde las preguntas, dile que tienen el perfil exacto de las empresas a las que ayudan. Invítalo a ver un video corto y agendar una llamada en este enlace: [LINK_CALENDARIO].
-5. OBJECIONES: Si preguntan el precio, diles que cada solución es a medida y que en la llamada evaluarán si hace sentido trabajar juntos antes de hablar de costos. Nunca des precios.`;
+TU OBJETIVO: 
+Realizar un diagnóstico estratégico de 3 pasos para detectar ineficiencias y agendar una "Auditoría de Automatización" (reunión estratégica de 15 min).
+
+ESTRATEGIA DE CONVERSACIÓN:
+1. VALOR INICIAL: Ofrece un diagnóstico rápido para identificar procesos que roban tiempo/dinero.
+2. CUALIFICACIÓN TÉCNICA: Pregunta sobre su rubro, qué herramientas usan (ERP/CRM/Excel) y cuál es su mayor "dolor" operativo.
+3. EFECTO AUTORIDAD: Menciona que somos expertos en n8n, Make y Agentes Cognitivos. Usa ejemplos de reducción del 80% en carga manual.
+4. CIERRE DE ALTO VALOR: Vende una "Auditoría de Automatización gratuita" en lugar de solo una "llamada".
+
+CAPTURA DE DATOS (CRÍTICO):
+Cada vez que obtengas información relevante (Nombre, Empresa, Dolor, Herramientas), usa la herramienta 'save_lead_info' para registrarlo. 
+Puntúa al lead del 1 al 10 basándote en:
+- Si usa ERPs grandes (SAP/Salesforce) -> Score alto (8-10).
+- Si tiene procesos manuales críticos -> Score alto.
+- Si busca soporte básico -> Score bajo.
+
+REGLAS DE WHATSAPP:
+- Concisión extrema: Máximo 2 oraciones por mensaje.
+- Naturalidad: Habla como un consultor senior, profesional pero directo. Evita listas y lenguaje robótico.
+- Fragmentación: Divide ideas complejas en mensajes cortos.`;
+
+    const tools: any[] = [
+        { type: "file_search" },
+        {
+            type: "function",
+            function: {
+                name: "save_lead_info",
+                description: "Guarda la información de cualificación de un prospecto/lead en la base de datos.",
+                parameters: {
+                    type: "object",
+                    properties: {
+                        name: { type: "string", description: "Nombre del contacto" },
+                        company: { type: "string", description: "Nombre de la empresa" },
+                        industry: { type: "string", description: "Rubro de la empresa" },
+                        current_tools: { type: "string", description: "Herramientas que usan (ERP, CRM, etc.)" },
+                        main_pain: { type: "string", description: "El problema principal que quieren resolver" },
+                        lead_score: { type: "integer", description: "Puntuación de calidad del lead (1-10)" },
+                        qualification_notes: { type: "string", description: "Breve nota sobre por qué tiene ese score" },
+                        phone: { type: "string", description: "Número de WhatsApp del contacto" }
+                    },
+                    required: ["company", "main_pain", "lead_score"]
+                }
+            }
+        }
+    ];
 
     try {
-        const assistant = await openai.beta.assistants.create({
-            name: "Alejandro - Asesor Comercial Efinnovation",
+        const assistant = await openai.beta.assistants.update(process.env.OPENAI_ASSISTANT_ID!, {
+            name: "Alejandro - Arquitecto de Eficiencia",
             instructions: prompt,
-            tools: [], // Aquí podríamos agregar funciones/llamados si fuera necesario
-            model: "gpt-4o-mini", // Cambia a gpt-4o si necesitas más raciocinio complejo
+            tools: tools,
+            model: "gpt-4o-mini",
         });
 
-        console.log("✅ ¡Asistente creado con éxito!");
+        console.log("✅ ¡Alejandro actualizado con éxito!");
+        console.log(`Nombre: ${assistant.name}`);
         console.log("-----------------------------------------");
-        console.log(`Assistant ID: ${assistant.id}`);
-        console.log("-----------------------------------------");
-        console.log("Por favor, copia ese Assistant ID y pégalo en tu archivo .env bajo la variable OPENAI_ASSISTANT_ID");
-
     } catch (error) {
-        console.error("Error al crear el Asistente:", error);
+        console.error("Error al actualizar Alejandro:", error);
     }
 }
 

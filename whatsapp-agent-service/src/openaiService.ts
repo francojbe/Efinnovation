@@ -18,43 +18,83 @@ export async function createThread() {
 }
 
 /**
- * Añade un mensaje al hilo y ejecuta el asistente para obtener una respuesta.
- * @param threadId El ID del hilo de OpenAI.
- * @param message El mensaje enviado por el usuario en WhatsApp.
+ * Añade un mensaje al hilo y ejecuta el asistente.
+ * Maneja llamadas a funciones (tools) para guardar leads.
  */
-export async function getAssistantResponse(threadId: string, message: string): Promise<string> {
-    // 1. Añadimos el mensaje del usuario al hilo
+export async function getAssistantResponse(threadId: string, message: string, supabaseClient?: any): Promise<string> {
+    // 1. Añadimos el mensaje del usuario
     await openai.beta.threads.messages.create(threadId, {
         role: 'user',
         content: message,
     });
 
-    // 2. Ejecutamos el asistente (Run)
-    const run = await openai.beta.threads.runs.create(threadId, {
+    // 2. Ejecutamos el asistente
+    let run = await openai.beta.threads.runs.create(threadId, {
         assistant_id: assistantId,
     });
 
-    // 3. Esperamos a que el asistente termine de procesar (polling)
-    let runStatus = await openai.beta.threads.runs.retrieve(threadId, run.id);
+    // 3. Polling con manejo de herramientas (Function Calling)
+    while (true) {
+        run = await openai.beta.threads.runs.retrieve(threadId, run.id);
 
-    while (runStatus.status !== 'completed') {
-        if (runStatus.status === 'failed' || runStatus.status === 'cancelled' || runStatus.status === 'expired') {
-            throw new Error(`OpenAI Run failed with status: ${runStatus.status}`);
+        if (run.status === 'completed') {
+            break;
+        } else if (run.status === 'requires_action') {
+            const toolCalls = run.required_action?.submit_tool_outputs.tool_calls || [];
+            const toolOutputs = [];
+
+            for (const toolCall of toolCalls) {
+                if (toolCall.function.name === 'save_lead_info') {
+                    const args = JSON.parse(toolCall.function.arguments);
+                    console.log(`📝 Herramienta llamada: save_lead_info para ${args.company || args.name}`);
+
+                    if (supabaseClient) {
+                        try {
+                            const { error } = await supabaseClient
+                                .from('leads')
+                                .upsert({
+                                    phone: args.phone || "unknown",
+                                    name: args.name,
+                                    company: args.company,
+                                    industry: args.industry,
+                                    current_tools: args.current_tools,
+                                    main_pain: args.main_pain,
+                                    lead_score: args.lead_score || 0,
+                                    qualification_notes: args.qualification_notes
+                                }, { onConflict: 'phone' });
+
+                            if (error) console.error('❌ Error guardando lead:', error);
+                            else console.log('✅ Lead guardado/actualizado en Supabase.');
+                        } catch (e) {
+                            console.error('❌ Error técnico guardando lead:', e);
+                        }
+                    }
+
+                    toolOutputs.push({
+                        tool_call_id: toolCall.id,
+                        output: JSON.stringify({ success: true, message: "Lead info saved correctly" })
+                    });
+                }
+            }
+
+            // Enviamos los resultados de las herramientas de vuelta a OpenAI
+            await openai.beta.threads.runs.submitToolOutputs(threadId, run.id, {
+                tool_outputs: toolOutputs
+            });
+        } else if (['failed', 'cancelled', 'expired'].includes(run.status)) {
+            throw new Error(`OpenAI Run falló con estado: ${run.status}`);
         }
-        // Esperamos un poco antes de volver a preguntar
-        await new Promise((resolve) => setTimeout(resolve, 1000));
-        runStatus = await openai.beta.threads.runs.retrieve(threadId, run.id);
+
+        await new Promise(resolve => setTimeout(resolve, 1000));
     }
 
-    // 4. Obtenemos los mensajes del hilo
+    // 4. Obtenemos los mensajes
     const messages = await openai.beta.threads.messages.list(threadId);
-
-    // El último mensaje del asistente es el primero de la lista (orden descendente por defecto)
     const lastMessage = messages.data[0];
 
     if (lastMessage.role === 'assistant' && lastMessage.content[0].type === 'text') {
         return lastMessage.content[0].text.value;
     }
 
-    return 'Lo siento, no pude procesar tu mensaje en este momento.';
+    return 'Lo siento, tuve un pequeño problema procesando eso. ¿Podrías repetirlo?';
 }
