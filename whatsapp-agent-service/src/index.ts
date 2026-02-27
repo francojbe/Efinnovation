@@ -88,9 +88,9 @@ async function sendNaturalResponses(remoteJid: string, fullText: string) {
 
                 // Si el ID empieza por http, es un botón de URL (v2 lo soporta)
                 if (btnId.startsWith('http')) {
-                    buttons.push({ title: "url", displayText: btnText, url: btnId });
+                    buttons.push({ type: "url", displayText: btnText, url: btnId });
                 } else {
-                    buttons.push({ title: "reply", displayText: btnText, id: btnId });
+                    buttons.push({ type: "reply", displayText: btnText, id: btnId });
                 }
             }
         }

@@ -21,8 +21,31 @@ export async function createThread() {
  * Añade un mensaje al hilo y ejecuta el asistente.
  * Maneja llamadas a funciones (tools) para guardar leads.
  * Optimiza el uso de tokens usando modelos híbridos.
+ * Previene errores de 'Run Active' esperando a que terminen ejecuciones previas.
  */
 export async function getAssistantResponse(threadId: string, message: string, supabaseClient?: any): Promise<string> {
+    // 0. Pre-verificación: ¿Hay un run activo? (Evita error 400)
+    let activeRuns = await openai.beta.threads.runs.list(threadId);
+    let activeRun = activeRuns.data.find(r => ["in_progress", "queued", "requires_action"].includes(r.status));
+
+    if (activeRun) {
+        console.log(`⏳ Esperando a que el run previo (${activeRun.id}) termine...`);
+        // Esperamos hasta 10 segundos o hasta que no haya runs activos
+        for (let i = 0; i < 10; i++) {
+            await new Promise(resolve => setTimeout(resolve, 1000));
+            activeRuns = await openai.beta.threads.runs.list(threadId);
+            activeRun = activeRuns.data.find(r => ["in_progress", "queued", "requires_action"].includes(r.status));
+            if (!activeRun) break;
+        }
+
+        // Si sigue activo después de 10s, forzamos cancelación (o tiramos error controlado)
+        if (activeRun) {
+            console.log(`⚠️ Cancelando run persistente ${activeRun.id}`);
+            await openai.beta.threads.runs.cancel(threadId, activeRun.id);
+            await new Promise(resolve => setTimeout(resolve, 1000)); // Pausa tras cancelación
+        }
+    }
+
     // 1. Obtener el historial para decidir el modelo (Eficiencia de tokens)
     const messagesList = await openai.beta.threads.messages.list(threadId);
     const messageCount = messagesList.data.length;
