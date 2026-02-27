@@ -30,57 +30,72 @@ app.post('/webhook/evolution', async (req, res) => {
     try {
         const data = req.body;
 
-        // Validamos que sea un evento de mensaje enviado por el cliente (no por nosotros)
-        if (data.event !== 'messages.upsert' || data.data.key.fromMe) {
+        // LOG DE DEPURACIÓN: Ver qué llega exactamente
+        console.log('-------------------------------------------');
+        console.log(`⚠️ Webhook recibido - Evento: ${data.event}`);
+
+        // Validamos que sea un evento de mensaje
+        if (data.event !== 'messages.upsert') {
+            console.log(`ℹ️ Evento ignorado: ${data.event}`);
             return res.status(200).send('Event Ignored');
         }
 
-        const remoteJid = data.data.key.remoteJid;
-        const messageText = data.data.message?.conversation ||
-            data.data.message?.extendedTextMessage?.text;
-
-        if (!messageText) {
-            return res.status(200).send('No text found in message');
+        // Evitar bucles (no responder a mensajes enviados por el propio bot)
+        if (data.data?.key?.fromMe) {
+            console.log('ℹ️ Mensaje enviado por mí, ignorando para evitar bucle.');
+            return res.status(200).send('Ignored self message');
         }
 
-        console.log(`📩 Mensaje de ${remoteJid}: ${messageText}`);
+        const remoteJid = data.data?.key?.remoteJid;
+        // La Evolution API v2 puede enviar el texto en varios lugares según el tipo de mensaje
+        const messageText =
+            data.data?.message?.conversation ||
+            data.data?.message?.extendedTextMessage?.text ||
+            data.data?.message?.imageMessage?.caption ||
+            "";
 
-        // 1. Buscamos el Thread ID en Supabase para este usuario
+        if (!messageText || messageText.trim() === "") {
+            console.log('ℹ️ El mensaje no contiene texto procesable.');
+            return res.status(200).send('No text content');
+        }
+
+        console.log(`📩 Mensaje de ${remoteJid}: "${messageText}"`);
+
+        // 1. Buscamos o creamos el Thread ID en Supabase
         let threadId: string | null = null;
-
-        const { data: threadData, error: dbError } = await supabase
+        const { data: threadData } = await supabase
             .from('whatsapp_threads')
             .select('thread_id')
             .eq('phone', remoteJid)
-            .single();
+            .maybeSingle();
 
         if (threadData) {
             threadId = threadData.thread_id;
+            console.log(`🧵 Usando hilo existente: ${threadId}`);
         } else {
-            console.log(`🆕 No hay hilo previo para ${remoteJid}. Creando uno nuevo...`);
+            console.log(`🆕 Creando nuevo hilo para ${remoteJid}...`);
             threadId = await createThread();
-
-            // Guardamos el nuevo hilo en la base de datos
-            const { error: insertError } = await supabase
+            await supabase
                 .from('whatsapp_threads')
                 .insert([{ phone: remoteJid, thread_id: threadId }]);
-
-            if (insertError) console.error('Error guardando thread en Supabase:', insertError);
         }
 
-        if (!threadId) throw new Error('No se pudo obtener un ID de hilo.');
+        if (!threadId) throw new Error('No se pudo gestionar el Thread ID');
 
-        // 2. Obtenemos respuesta de la IA (Esto puede tardar unos segundos)
+        // 2. Obtenemos respuesta de la IA (Alejandro)
+        console.log('🤖 Consultando a Alejandro (OpenAI)...');
         const aiResponse = await getAssistantResponse(threadId, messageText);
+        console.log(`🤖 Alejandro dice: "${aiResponse.substring(0, 50)}..."`);
 
-        // 3. Enviamos la respuesta de vuelta a WhatsApp
+        // 3. Enviamos de vuelta a WhatsApp
         await sendWhatsAppMessage(remoteJid, aiResponse);
+        console.log(`✅ Respuesta enviada con éxito a ${remoteJid}`);
 
         res.status(200).send('OK');
 
     } catch (error) {
-        console.error('Error procesando webhook:', error);
-        res.status(500).send('Internal Error');
+        console.error('❌ Error en el Webhook:', error);
+        res.status(200).send('Error but handled'); // Respondemos 200 para que Evolution no reintente infinitamente
     }
 });
 
