@@ -20,20 +20,30 @@ export async function createThread() {
 /**
  * Añade un mensaje al hilo y ejecuta el asistente.
  * Maneja llamadas a funciones (tools) para guardar leads.
+ * Optimiza el uso de tokens usando modelos híbridos.
  */
 export async function getAssistantResponse(threadId: string, message: string, supabaseClient?: any): Promise<string> {
-    // 1. Añadimos el mensaje del usuario
+    // 1. Obtener el historial para decidir el modelo (Eficiencia de tokens)
+    const messagesList = await openai.beta.threads.messages.list(threadId);
+    const messageCount = messagesList.data.length;
+
+    // Si son los primeros mensajes, usamos el modelo barato. 
+    // Si la charla avanza, activamos el modelo inteligente.
+    const selectedModel = messageCount < 6 ? "gpt-4o-mini" : "gpt-4o";
+
+    // 2. Añadimos el mensaje del usuario
     await openai.beta.threads.messages.create(threadId, {
         role: 'user',
         content: message,
     });
 
-    // 2. Ejecutamos el asistente
+    // 3. Ejecutamos el asistente con el modelo dinámico
     let run = await openai.beta.threads.runs.create(threadId, {
         assistant_id: assistantId,
+        model: selectedModel // Sobrescribimos el modelo por eficiencia
     });
 
-    // 3. Polling con manejo de herramientas (Function Calling)
+    // 4. Polling con manejo de herramientas
     while (true) {
         run = await openai.beta.threads.runs.retrieve(threadId, run.id);
 
@@ -66,8 +76,20 @@ export async function getAssistantResponse(threadId: string, message: string, su
                                     qualification_notes: args.qualification_notes
                                 }, { onConflict: 'phone' });
 
-                            if (error) console.error('❌ Error guardando lead:', error);
-                            else console.log('✅ Lead guardado/actualizado en Supabase.');
+                            if (error) {
+                                console.error('❌ Error guardando lead:', error);
+                            } else {
+                                console.log('✅ Lead guardado/actualizado en Supabase.');
+
+                                // ALERTA DE PEZ GORDO (A Franco)
+                                if (args.lead_score >= 8) {
+                                    const { sendWhatsAppMessage } = require('./evolutionService');
+                                    const alertMsg = `🔥 *HOT LEAD DETECTADO* 🔥\n\n*Empresa:* ${args.company}\n*Nombre:* ${args.name || 'N/A'}\n*Dolor:* ${args.main_pain}\n*Score:* ${args.lead_score}/10\n*Tipo:* ${args.lead_type || 'N/A'}\n\nAlejandro está manejando el cierre ahora mismo.`;
+                                    // Se envía al número configurado de Franco
+                                    await sendWhatsAppMessage("56974263408@s.whatsapp.net", alertMsg);
+                                    console.log('📢 Alerta enviada a Franco por WhatsApp');
+                                }
+                            }
                         } catch (e) {
                             console.error('❌ Error técnico guardando lead:', e);
                         }
@@ -80,7 +102,6 @@ export async function getAssistantResponse(threadId: string, message: string, su
                 }
             }
 
-            // Enviamos los resultados de las herramientas de vuelta a OpenAI
             await openai.beta.threads.runs.submitToolOutputs(threadId, run.id, {
                 tool_outputs: toolOutputs
             });
@@ -91,9 +112,9 @@ export async function getAssistantResponse(threadId: string, message: string, su
         await new Promise(resolve => setTimeout(resolve, 1000));
     }
 
-    // 4. Obtenemos los mensajes
-    const messages = await openai.beta.threads.messages.list(threadId);
-    const lastMessage = messages.data[0];
+    // 5. Devolver respuesta final
+    const finalMessages = await openai.beta.threads.messages.list(threadId);
+    const lastMessage = finalMessages.data[0];
 
     if (lastMessage.role === 'assistant' && lastMessage.content[0].type === 'text') {
         return lastMessage.content[0].text.value;
