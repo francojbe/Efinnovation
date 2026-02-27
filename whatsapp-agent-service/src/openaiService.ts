@@ -60,6 +60,9 @@ export async function getAssistantResponse(threadId: string, message: string, su
                                     current_tools: args.current_tools,
                                     main_pain: args.main_pain,
                                     lead_score: args.lead_score || 0,
+                                    lead_type: args.lead_type,
+                                    urgency_level: args.urgency_level,
+                                    commitment_confirmed: args.commitment_confirmed || false,
                                     qualification_notes: args.qualification_notes
                                 }, { onConflict: 'phone' });
 
