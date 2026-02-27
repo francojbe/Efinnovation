@@ -1,7 +1,7 @@
 import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
-import { createClient } from '@supabase/supabase-client';
+import { createClient } from '@supabase/supabase-js';
 import { getAssistantResponse, createThread } from './openaiService';
 import { sendWhatsAppMessage } from './evolutionService';
 
