@@ -237,23 +237,81 @@ app.post('/webhook/evolution', async (req, res) => {
 
                 if (!threadId) throw new Error('No se pudo gestionar el Thread ID');
 
+                // --- GESTIÓN DE INACTIVIDAD (NUDGE) ---
+                const inactivityTimers: { [key: string]: NodeJS.Timeout } = {};
+                const NUDGE_WAIT_TIME = 15 * 60 * 1000; // 15 minutos
+
+                async function scheduleInactivityNudge(remoteJid: string, threadId: string) {
+                    if (inactivityTimers[remoteJid]) clearTimeout(inactivityTimers[remoteJid]);
+
+                    inactivityTimers[remoteJid] = setTimeout(async () => {
+                        try {
+                            // Verificar si el hilo sigue activo y si ya se mandó un nudge recientemente
+                            const { data } = await supabase.from('whatsapp_threads').select('last_nudge_sent_at').eq('phone', remoteJid).single();
+
+                            const lastNudge = data?.last_nudge_sent_at ? new Date(data.last_nudge_sent_at).getTime() : 0;
+                            const now = Date.now();
+
+                            // Solo enviar si pasaron más de 2 horas desde el último nudge para no ser SPAM
+                            if (now - lastNudge > 2 * 60 * 60 * 1000) {
+                                const nudgeMsg = "¿Sigues por ahí? 🤔 Me gustaría asegurarme de que no tengas dudas pendientes para poder avanzar con tu estrategia de IA.";
+                                await sendWhatsAppMessage(remoteJid, nudgeMsg);
+                                await supabase.from('whatsapp_threads').update({ last_nudge_sent_at: new Date().toISOString() }).eq('phone', remoteJid);
+                                console.log(`🔔 Nudge de inactividad enviado a ${remoteJid}`);
+                            }
+                        } catch (e) {
+                            console.error('❌ Error enviando nudge:', e);
+                        }
+                    }, NUDGE_WAIT_TIME);
+                }
+
+                // --- UTILIDADES DE EXTRACCIÓN PASIVA ---
+                function extractPassiveData(text: string) {
+                    const emailRegex = /[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}/g;
+                    const rutRegex = /\b\d{1,2}\.?\d{3}\.?\d{3}-[\dkK]\b/g;
+
+                    const email = text.match(emailRegex)?.[0];
+                    const rut = text.match(rutRegex)?.[0];
+
+                    return { email, rut };
+                }
+
+                // ... rest of the code ...
+
                 // EXTRA: Sincronización de Foto de Perfil (Inspirado en PitonB)
                 const profilePic = await getWhatsAppProfilePicture(remoteJid);
-                if (profilePic) {
+
+                // EXTRA: Extracción Pasiva de datos (RUT/Email)
+                const passiveData = extractPassiveData(allMessages);
+
+                if (profilePic || passiveData.email || passiveData.rut) {
                     await supabase.from('leads').upsert({
                         phone: remoteJid,
-                        metadata: { profile_picture: profilePic }
+                        email: passiveData.email,
+                        metadata: {
+                            profile_picture: profilePic,
+                            rut_detected: passiveData.rut
+                        }
                     }, { onConflict: 'phone' });
                 }
 
                 // 2. IA Alejandro (Pasamos el cliente de Supabase para que pueda guardar leads)
                 console.log('🤖 Consultando a Alejandro...');
-                const aiResponse = await getAssistantResponse(threadId, allMessages, supabase);
+
+                // EXTRA: Inyectar reglas aprendidas (RAG de aprendizaje simplificado)
+                const { data: learnings } = await supabase.from('agent_learnings').select('proposed_rule').eq('status', 'approved').limit(5);
+                const learningContext = learnings?.map(l => l.proposed_rule).join('\n') || "";
+                const messageWithContext = learningContext ? `CONTEXTO DE APRENDIZAJE:\n${learningContext}\n\nMENSAJE USUARIO: ${allMessages}` : allMessages;
+
+                const aiResponse = await getAssistantResponse(threadId, messageWithContext, supabase);
                 console.log(`🤖 Alejandro dice: "${aiResponse.substring(0, 50)}..."`);
 
                 // 3. Enviamos de vuelta a WhatsApp de forma fragmentada
                 await sendNaturalResponses(remoteJid, aiResponse);
                 console.log(`✅ Respuesta enviada con éxito a ${remoteJid}`);
+
+                // Programar Nudge de Inactividad
+                scheduleInactivityNudge(remoteJid, threadId);
 
             } catch (err) {
                 console.error('❌ Error procesando respuesta en cola:', err);
