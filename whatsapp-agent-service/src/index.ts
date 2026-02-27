@@ -158,8 +158,15 @@ app.post('/webhook/evolution', async (req, res) => {
         let incomingContent = "";
 
         // Detectar media (MinIO/S3) o Base64
-        const mediaUrl = data.data?.mediaUrl || data.data?.message?.audioMessage?.url || data.data?.message?.imageMessage?.url;
-        const base64 = data.data?.base64;
+        // Buscamos en el top-level (API v2) y en data (API v1)
+        let mediaUrl = data.mediaUrl || data.data?.mediaUrl;
+
+        if (mediaUrl && (mediaUrl.includes('whatsapp.net') || mediaUrl.includes('mmg.whatsapp.net'))) {
+            console.log('ℹ️ URL detectada es de WhatsApp (encriptada). Ignorando para buscar Base64 decrypted.');
+            mediaUrl = null;
+        }
+
+        const base64 = data.base64 || data.data?.base64 || data.data?.message?.base64;
 
         // Verificamos si es audio
         const audioData = data.data?.message?.audioMessage;
@@ -168,18 +175,19 @@ app.post('/webhook/evolution', async (req, res) => {
             let audioBuffer: Buffer | null = null;
 
             if (mediaUrl) {
-                console.log(`📥 Descargando audio desde MinIO: ${mediaUrl}`);
+                console.log(`📥 Descargando audio desde S3/MinIO: ${mediaUrl}`);
                 audioBuffer = await downloadMedia(mediaUrl);
             } else if (base64) {
+                console.log('🧬 Usando Base64 para transcripción (decodificando)...');
                 audioBuffer = Buffer.from(base64, 'base64');
             }
 
-            if (audioBuffer) {
+            if (audioBuffer && audioBuffer.length > 100) {
                 incomingContent = await transcribeAudio(audioBuffer);
                 console.log(`📝 Transcripción: "${incomingContent}"`);
             } else {
-                incomingContent = "[Nota de voz sin contenido procesable]";
-                console.log('ℹ️ No se pudo obtener el audio (ni URL ni base64).');
+                incomingContent = "[Nota de voz no procesable]";
+                console.log('⚠️ No se pudo obtener el audio válido (URL externa o Base64 ausente).');
             }
         } else {
             incomingContent =
@@ -303,7 +311,7 @@ app.post('/webhook/evolution', async (req, res) => {
                 const learningContext = learnings?.map(l => l.proposed_rule).join('\n') || "";
                 const messageWithContext = learningContext ? `CONTEXTO DE APRENDIZAJE:\n${learningContext}\n\nMENSAJE USUARIO: ${allMessages}` : allMessages;
 
-                const aiResponse = await getAssistantResponse(threadId, messageWithContext, supabase);
+                const aiResponse = await getAssistantResponse(threadId, messageWithContext, supabase, remoteJid);
                 console.log(`🤖 Alejandro dice: "${aiResponse.substring(0, 50)}..."`);
 
                 // 3. Enviamos de vuelta a WhatsApp de forma fragmentada

@@ -23,7 +23,7 @@ export async function createThread() {
  * Optimiza el uso de tokens usando modelos híbridos.
  * Previene errores de 'Run Active' esperando a que terminen ejecuciones previas.
  */
-export async function getAssistantResponse(threadId: string, message: string, supabaseClient?: any): Promise<string> {
+export async function getAssistantResponse(threadId: string, message: string, supabaseClient?: any, userPhone?: string): Promise<string> {
     // 0. Pre-verificación: ¿Hay un run activo? (Evita error 400)
     let activeRuns = await openai.beta.threads.runs.list(threadId);
     let activeRun = activeRuns.data.find(r => ["in_progress", "queued", "requires_action"].includes(r.status));
@@ -86,7 +86,7 @@ export async function getAssistantResponse(threadId: string, message: string, su
                             const { error } = await supabaseClient
                                 .from('leads')
                                 .upsert({
-                                    phone: args.phone || "unknown",
+                                    phone: args.phone || userPhone || "unknown",
                                     name: args.name,
                                     company: args.company,
                                     industry: args.industry,
