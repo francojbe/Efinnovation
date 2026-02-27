@@ -3,7 +3,7 @@ import cors from 'cors';
 import dotenv from 'dotenv';
 import { createClient } from '@supabase/supabase-js';
 import { getAssistantResponse, createThread } from './openaiService';
-import { sendWhatsAppMessage } from './evolutionService';
+import { sendWhatsAppMessage, sendWhatsAppButtons } from './evolutionService';
 import axios from 'axios';
 import fs from 'fs';
 import path from 'path';
@@ -47,7 +47,7 @@ async function transcribeAudio(audioBuffer: Buffer): Promise<string> {
     }
 }
 
-import { sendWhatsAppMessage, sendWhatsAppButtons } from './evolutionService';
+
 
 /**
  * Envía respuestas fragmentadas y maneja la detección de botones interactivos.
