@@ -14,18 +14,18 @@ const instanceName = process.env.EVOLUTION_INSTANCE_NAME;
  */
 export async function sendWhatsAppMessage(remoteJid: string, text: string) {
     try {
-        const url = `${apiUrl}/message/sendText/${instanceName}`;
+        // Codificamos el nombre de la instancia por si tiene espacios
+        const safeInstanceName = encodeURIComponent(instanceName || '');
+        const url = `${apiUrl}/message/sendText/${safeInstanceName}`;
+
+        console.log(`📤 Enviando a Evolution API (${safeInstanceName})...`);
 
         const response = await axios.post(url, {
-            number: remoteJid,
-            options: {
-                delay: 1200, // Un pequeño retraso para parecer más humano
-                presence: 'composing', // Muestra "escribiendo..." en WhatsApp
-                linkPreview: false,
-            },
-            textMessage: {
-                text: text
-            }
+            number: remoteJid, // Evolution v2 acepta JID completo
+            text: text,
+            delay: 1200,
+            linkPreview: false,
+            presence: 'composing'
         }, {
             headers: {
                 'apikey': apiKey,
@@ -35,6 +35,8 @@ export async function sendWhatsAppMessage(remoteJid: string, text: string) {
 
         return response.data;
     } catch (error: any) {
-        console.error('Error enviando mensaje a Evolution API:', error?.response?.data || error.message);
+        const errorData = error?.response?.data || error.message;
+        console.error('❌ Error enviando mensaje a Evolution API:', JSON.stringify(errorData, null, 2));
+        throw error; // Re-lanzamos para que index.ts sepa que falló
     }
 }
