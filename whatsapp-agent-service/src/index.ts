@@ -26,6 +26,22 @@ const supabase = createClient(supabaseUrl, supabaseKey);
 const messageQueues: { [key: string]: { timeout: NodeJS.Timeout, messages: string[] } } = {};
 const WAIT_TIME = 4000; // 4 segundos de espera para ver si el usuario envía más mensajes
 
+/**
+ * Guarda un mensaje en el historial de Supabase.
+ */
+async function saveMessageToHistory(phone: string, role: string, content: string, metadata: any = {}) {
+    try {
+        await supabase.from('messages').insert([{
+            phone,
+            role,
+            content,
+            metadata: { ...metadata, timestamp: new Date().toISOString() }
+        }]);
+    } catch (e) {
+        console.error('❌ Error guardando historial:', e);
+    }
+}
+
 // --- Utilidades de Audio y Naturalidad ---
 
 /**
@@ -100,6 +116,7 @@ async function sendNaturalResponses(remoteJid: string, fullText: string) {
         textToSend = textToSend.replace(/(automatización|IA|Efinnovation|ROI|Auditoría|ahorro)/gi, '*$1*');
 
         await sendWhatsAppMessage(remoteJid, textToSend);
+        await saveMessageToHistory(remoteJid, 'assistant', textToSend);
 
         const delay = Math.min(2500, 800 + textToSend.length * 15);
         await new Promise(r => setTimeout(r, delay));
@@ -128,6 +145,7 @@ async function sendNaturalResponses(remoteJid: string, fullText: string) {
         if (buttons.length > 0) {
             console.log("🔘 Enviando botones interactivos...");
             await sendWhatsAppButtons(remoteJid, title, description, buttons);
+            await saveMessageToHistory(remoteJid, 'assistant', `${title}\n${description}`, { type: 'buttons', buttons });
         }
     }
 }
@@ -222,6 +240,7 @@ app.post('/webhook/evolution', async (req, res) => {
 
             console.log(`-------------------------------------------`);
             console.log(`📩 Procesando acumulado de ${remoteJid}: "${allMessages}"`);
+            await saveMessageToHistory(remoteJid, 'user', allMessages);
 
             try {
                 // 1. Buscamos o creamos el Thread ID en Supabase
@@ -264,6 +283,7 @@ app.post('/webhook/evolution', async (req, res) => {
                             if (now - lastNudge > 2 * 60 * 60 * 1000) {
                                 const nudgeMsg = "¿Sigues por ahí? 🤔 Me gustaría asegurarme de que no tengas dudas pendientes para poder avanzar con tu estrategia de IA.";
                                 await sendWhatsAppMessage(remoteJid, nudgeMsg);
+                                await saveMessageToHistory(remoteJid, 'assistant', nudgeMsg, { type: 'nudge' });
                                 await supabase.from('whatsapp_threads').update({ last_nudge_sent_at: new Date().toISOString() }).eq('phone', remoteJid);
                                 console.log(`🔔 Nudge de inactividad enviado a ${remoteJid}`);
                             }
