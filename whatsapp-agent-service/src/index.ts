@@ -47,21 +47,57 @@ async function transcribeAudio(audioBuffer: Buffer): Promise<string> {
     }
 }
 
+import { sendWhatsAppMessage, sendWhatsAppButtons } from './evolutionService';
+
+/**
+ * Envía respuestas fragmentadas y maneja la detección de botones interactivos.
+ * Formato esperado de la IA: [[BUTTONS: Título | Descripción | Texto Botón 1 | ID1 | ...]]
+ */
 async function sendNaturalResponses(remoteJid: string, fullText: string) {
-    // Dividimos por puntos seguidos de espacio para crear fragmentos
-    const fragments = fullText.split(/\. /).filter(f => f.trim().length > 0);
+    // 1. Detectar si hay botones en el texto
+    const buttonRegex = /\[\[BUTTONS:\s*(.*?)\s*\]\]/s;
+    const match = fullText.match(buttonRegex);
+    let cleanText = fullText.replace(buttonRegex, '').trim();
+
+    // 2. Dividir y enviar el texto normal
+    const fragments = cleanText.split(/\n\n|\. /).filter(f => f.trim().length > 0);
 
     for (let i = 0; i < fragments.length; i++) {
         let textToSend = fragments[i].trim();
-        // Le devolvemos el punto si se lo quitamos en el split y no es el último fragmento
         if (i < fragments.length - 1 && !textToSend.endsWith('.')) textToSend += '.';
+
+        // Formateo estético (Negritas para énfasis)
+        textToSend = textToSend.replace(/(automatización|IA|Efinnovation|ROI|Auditoría|ahorro)/gi, '*$1*');
 
         await sendWhatsAppMessage(remoteJid, textToSend);
 
-        // Si hay más mensajes, esperamos un poco para simular lectura/escritura
-        if (i < fragments.length - 1) {
-            const delay = Math.min(2000, 500 + textToSend.length * 15);
-            await new Promise(r => setTimeout(r, delay));
+        const delay = Math.min(2500, 800 + textToSend.length * 15);
+        await new Promise(r => setTimeout(r, delay));
+    }
+
+    // 3. Si hay botones, enviarlos al final
+    if (match) {
+        const parts = match[1].split('|').map(p => p.trim());
+        const [title, description, ...btnPairs] = parts;
+
+        const buttons = [];
+        for (let i = 0; i < btnPairs.length; i += 2) {
+            if (btnPairs[i] && btnPairs[i + 1]) {
+                const btnText = btnPairs[i];
+                const btnId = btnPairs[i + 1];
+
+                // Si el ID empieza por http, es un botón de URL (v2 lo soporta)
+                if (btnId.startsWith('http')) {
+                    buttons.push({ title: "url", displayText: btnText, url: btnId });
+                } else {
+                    buttons.push({ title: "reply", displayText: btnText, id: btnId });
+                }
+            }
+        }
+
+        if (buttons.length > 0) {
+            console.log("🔘 Enviando botones interactivos...");
+            await sendWhatsAppButtons(remoteJid, title, description, buttons);
         }
     }
 }

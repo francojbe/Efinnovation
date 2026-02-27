@@ -8,25 +8,74 @@ const apiKey = process.env.EVOLUTION_API_KEY;
 const instanceName = process.env.EVOLUTION_INSTANCE_NAME;
 
 /**
- * Envía un mensaje de texto a través de Evolution API.
- * @param remoteJid El ID del contacto (ej: 56912345678@s.whatsapp.net).
- * @param text El contenido del mensaje.
+ * Envía un mensaje de texto con formato humanizado.
  */
 export async function sendWhatsAppMessage(remoteJid: string, text: string) {
-    try {
-        // Codificamos el nombre de la instancia por si tiene espacios
-        const safeInstanceName = encodeURIComponent(instanceName || '');
-        const url = `${apiUrl}/message/sendText/${safeInstanceName}`;
+    return callEvolutionAPI('sendText', {
+        number: remoteJid,
+        text: text,
+        delay: 1500,
+        linkPreview: true,
+        presence: 'composing'
+    });
+}
 
-        console.log(`📤 Enviando a Evolution API (${safeInstanceName})...`);
+/**
+ * Envía un mensaje con botones interactivos (Ideal para CTAs de Auditoría).
+ */
+export async function sendWhatsAppButtons(remoteJid: string, title: string, description: string, buttons: any[], footer: string = "Efinnovation") {
+    return callEvolutionAPI('sendButtons', {
+        number: remoteJid,
+        title: title,
+        description: description,
+        footer: footer,
+        buttons: buttons
+    });
+}
 
-        const response = await axios.post(url, {
-            number: remoteJid, // Evolution v2 acepta JID completo
-            text: text,
+/**
+ * Envía un menú de lista (Ideal para elegir servicios).
+ */
+export async function sendWhatsAppList(remoteJid: string, title: string, description: string, buttonText: string, sections: any[]) {
+    return callEvolutionAPI('sendList', {
+        number: remoteJid,
+        title: title,
+        description: description,
+        buttonText: buttonText,
+        footerText: "Efinnovation - Consultoría",
+        values: sections
+    });
+}
+
+/**
+ * Envía contenido multimedia (Imágenes/Docs) con caption formateado.
+ */
+export async function sendWhatsAppMedia(remoteJid: string, mediaUrl: string, mediaType: 'image' | 'document' | 'video', caption: string, fileName: string = "file") {
+    return callEvolutionAPI('sendMedia', {
+        number: remoteJid,
+        mediatype: mediaType,
+        mimetype: mediaType === 'image' ? 'image/png' : 'application/pdf',
+        caption: caption,
+        media: mediaUrl,
+        fileName: fileName,
+        options: {
             delay: 1200,
-            linkPreview: false,
             presence: 'composing'
-        }, {
+        }
+    });
+}
+
+/**
+ * Función base para centralizar los llamados a Evolution API.
+ */
+async function callEvolutionAPI(endpoint: string, payload: any) {
+    try {
+        const safeInstanceName = encodeURIComponent(instanceName || '');
+        const url = `${apiUrl}/message/${endpoint}/${safeInstanceName}`;
+
+        console.log(`📤 Enviando a Evolution API (${endpoint})...`);
+
+        const response = await axios.post(url, payload, {
             headers: {
                 'apikey': apiKey,
                 'Content-Type': 'application/json'
@@ -36,7 +85,7 @@ export async function sendWhatsAppMessage(remoteJid: string, text: string) {
         return response.data;
     } catch (error: any) {
         const errorData = error?.response?.data || error.message;
-        console.error('❌ Error enviando mensaje a Evolution API:', JSON.stringify(errorData, null, 2));
-        throw error; // Re-lanzamos para que index.ts sepa que falló
+        console.error(`❌ Error en Evolution API (${endpoint}):`, JSON.stringify(errorData, null, 2));
+        throw error;
     }
 }
