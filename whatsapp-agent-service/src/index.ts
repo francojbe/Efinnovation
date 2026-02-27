@@ -28,6 +28,36 @@ const WAIT_TIME = 4000; // 4 segundos de espera para ver si el usuario envía m�
 
 // --- Utilidades de Audio y Naturalidad ---
 
+/**
+ * Descarga archivos multimedia desde una URL (MinIO/S3).
+ */
+async function downloadMedia(url: string): Promise<Buffer> {
+    const response = await axios.get(url, { responseType: 'arraybuffer' });
+    return Buffer.from(response.data, 'binary');
+}
+
+/**
+ * Obtiene la foto de perfil de WhatsApp desde Evolution API.
+ */
+async function getWhatsAppProfilePicture(remoteJid: string): Promise<string | null> {
+    try {
+        const instanceName = process.env.EVOLUTION_INSTANCE_NAME;
+        const apiKey = process.env.EVOLUTION_API_KEY;
+        const apiUrl = process.env.EVOLUTION_API_URL;
+        const number = remoteJid.split('@')[0];
+
+        const response = await axios.post(`${apiUrl}/chat/fetchProfilePictureUrl/${instanceName}`,
+            { number },
+            { headers: { 'apikey': apiKey } }
+        );
+
+        return response.data?.profilePictureUrl || response.data?.url || null;
+    } catch (e) {
+        console.error('⚠️ Error buscando foto de perfil:', e);
+        return null;
+    }
+}
+
 async function transcribeAudio(audioBuffer: Buffer): Promise<string> {
     const openai = new (require('openai'))({ apiKey: process.env.OPENAI_API_KEY });
 
@@ -127,20 +157,29 @@ app.post('/webhook/evolution', async (req, res) => {
         const remoteJid = data.data?.key?.remoteJid;
         let incomingContent = "";
 
+        // Detectar media (MinIO/S3) o Base64
+        const mediaUrl = data.data?.mediaUrl || data.data?.message?.audioMessage?.url || data.data?.message?.imageMessage?.url;
+        const base64 = data.data?.base64;
+
         // Verificamos si es audio
         const audioData = data.data?.message?.audioMessage;
         if (audioData) {
-            console.log(`🎤 Nota de voz recibida de ${remoteJid}. Transcribiendo...`);
-            // Evolution API envía el audio en base64 en el data.data.base64 si está configurado,
-            // o debemos descargarlo. Si no viene en el webhook, hay que pedirlo a la API.
-            // Para simplicidad en este MVP, asumimos que viene o lo ignoramos si no hay buffer.
-            if (data.data.base64) {
-                const buffer = Buffer.from(data.data.base64, 'base64');
-                incomingContent = await transcribeAudio(buffer);
+            console.log(`🎤 Nota de voz recibida de ${remoteJid}. Procesando...`);
+            let audioBuffer: Buffer | null = null;
+
+            if (mediaUrl) {
+                console.log(`📥 Descargando audio desde MinIO: ${mediaUrl}`);
+                audioBuffer = await downloadMedia(mediaUrl);
+            } else if (base64) {
+                audioBuffer = Buffer.from(base64, 'base64');
+            }
+
+            if (audioBuffer) {
+                incomingContent = await transcribeAudio(audioBuffer);
                 console.log(`📝 Transcripción: "${incomingContent}"`);
             } else {
                 incomingContent = "[Nota de voz sin contenido procesable]";
-                console.log('ℹ️ Nota de voz sin base64 en el webhook, ignorando.');
+                console.log('ℹ️ No se pudo obtener el audio (ni URL ni base64).');
             }
         } else {
             incomingContent =
@@ -148,6 +187,10 @@ app.post('/webhook/evolution', async (req, res) => {
                 data.data?.message?.extendedTextMessage?.text ||
                 data.data?.message?.imageMessage?.caption ||
                 "";
+
+            if (data.data?.message?.imageMessage) {
+                incomingContent = `[IMAGEN RECIBIDA: ${mediaUrl || 'S/URL'}] ${incomingContent}`;
+            }
         }
 
         if (!incomingContent || incomingContent.trim() === "") {
@@ -193,6 +236,15 @@ app.post('/webhook/evolution', async (req, res) => {
                 }
 
                 if (!threadId) throw new Error('No se pudo gestionar el Thread ID');
+
+                // EXTRA: Sincronización de Foto de Perfil (Inspirado en PitonB)
+                const profilePic = await getWhatsAppProfilePicture(remoteJid);
+                if (profilePic) {
+                    await supabase.from('leads').upsert({
+                        phone: remoteJid,
+                        metadata: { profile_picture: profilePic }
+                    }, { onConflict: 'phone' });
+                }
 
                 // 2. IA Alejandro (Pasamos el cliente de Supabase para que pueda guardar leads)
                 console.log('🤖 Consultando a Alejandro...');
