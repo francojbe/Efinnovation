@@ -108,7 +108,6 @@ export async function getAssistantResponse(threadId: string, message: string, su
                                 if (args.lead_score >= 8) {
                                     const { sendWhatsAppMessage } = require('./evolutionService');
                                     const alertMsg = `🔥 *HOT LEAD DETECTADO* 🔥\n\n*Empresa:* ${args.company}\n*Nombre:* ${args.name || 'N/A'}\n*Dolor:* ${args.main_pain}\n*Score:* ${args.lead_score}/10\n*Tipo:* ${args.lead_type || 'N/A'}\n\nAlejandro está manejando el cierre ahora mismo.`;
-                                    // Se envía al número configurado de Franco
                                     await sendWhatsAppMessage("56974263408@s.whatsapp.net", alertMsg);
                                     console.log('📢 Alerta enviada a Franco por WhatsApp');
                                 }
@@ -121,6 +120,19 @@ export async function getAssistantResponse(threadId: string, message: string, su
                     toolOutputs.push({
                         tool_call_id: toolCall.id,
                         output: JSON.stringify({ success: true, message: "Lead info saved correctly" })
+                    });
+                } else if (toolCall.function.name === 'transfer_to_human') {
+                    const args = JSON.parse(toolCall.function.arguments);
+                    console.log(`🆘 SOLICITUD DE TRANSFERENCIA: ${args.reason}`);
+
+                    const { sendWhatsAppMessage } = require('./evolutionService');
+                    const alertMsg = `🆘 *INTERVENCIÓN HUMANA REQUERIDA* 🆘\n\n*Motivo:* ${args.reason}\n*Resumen:* ${args.summary}\n*Teléfono:* ${userPhone}\n\nPor favor, entra al chat para atender este lead de inmediato.`;
+
+                    await sendWhatsAppMessage("56974263408@s.whatsapp.net", alertMsg);
+
+                    toolOutputs.push({
+                        tool_call_id: toolCall.id,
+                        output: JSON.stringify({ success: true, message: "SOS Alert sent to team. A human will take over shortly." })
                     });
                 }
             }
