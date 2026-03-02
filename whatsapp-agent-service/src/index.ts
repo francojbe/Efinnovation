@@ -96,6 +96,27 @@ async function transcribeAudio(audioBuffer: Buffer): Promise<string> {
 
 
 /**
+ * Normaliza el texto para que suene humano en WhatsApp.
+ * Elimina artefactos de IA (negritas markdown innecesarias, signos extraños, etc.)
+ */
+function normalizeTextForWhatsApp(text: string): string {
+    return text
+        // 1. Eliminar artefactos de negritas markdown comunes (*texto* -> texto) 
+        // Solo dejamos las que explícitamente queremos resaltar después.
+        .replace(/\*\*/g, '')
+        // 2. Limpiar signos de puntuación extraños o repetidos (ej: ??, ?¡, !!)
+        .replace(/\?¡/g, '?')
+        .replace(/\?{2,}/g, '?')
+        .replace(/!{2,}/g, '!')
+        // 3. Asegurar que las oraciones empiecen con mayúscula después de un punto
+        .replace(/\.\s+([a-z])/g, (match, char) => `. ${char.toUpperCase()}`)
+        // 4. Quitar espacios múltiples
+        .replace(/\s{2,}/g, ' ')
+        // 5. Ajustar el tono (opcional: podrías reemplazar "Usted" por "Tú" si el cliente lo prefiere)
+        .trim();
+}
+
+/**
  * Envía respuestas fragmentadas y maneja la detección de botones interactivos.
  * Formato esperado de la IA: [[BUTTONS: Título | Descripción | Texto Botón 1 | ID1 | ...]]
  */
@@ -103,9 +124,12 @@ async function sendNaturalResponses(remoteJid: string, fullText: string) {
     // 1. Detectar si hay botones en el texto
     const buttonRegex = /\[\[BUTTONS:\s*(.*?)\s*\]\]/s;
     const match = fullText.match(buttonRegex);
-    let cleanText = fullText.replace(buttonRegex, '').trim();
+    let rawText = fullText.replace(buttonRegex, '').trim();
 
-    // 2. Dividir y enviar el texto normal
+    // 2. Normalización Humana
+    let cleanText = normalizeTextForWhatsApp(rawText);
+
+    // 3. Dividir y enviar el texto normal
     // Split por double newline o por periodo seguido de espacio, pero EVITANDO split en números de lista (e.g. "1. ")
     const fragments = cleanText
         .split(/\n\n|(?<!\d)\. /)
