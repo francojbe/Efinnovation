@@ -106,14 +106,20 @@ async function sendNaturalResponses(remoteJid: string, fullText: string) {
     let cleanText = fullText.replace(buttonRegex, '').trim();
 
     // 2. Dividir y enviar el texto normal
-    const fragments = cleanText.split(/\n\n|\. /).filter(f => f.trim().length > 0);
+    // Split por double newline o por periodo seguido de espacio, pero EVITANDO split en números de lista (e.g. "1. ")
+    const fragments = cleanText
+        .split(/\n\n|(?<!\d)\. /)
+        .filter(f => f.trim().length > 0);
 
     for (let i = 0; i < fragments.length; i++) {
         let textToSend = fragments[i].trim();
-        if (i < fragments.length - 1 && !textToSend.endsWith('.')) textToSend += '.';
+        // Si el fragmento no termina en punto y no es un número de lista, le ponemos punto
+        if (i < fragments.length - 1 && !textToSend.endsWith('.') && !/^\d+\.$/.test(textToSend)) {
+            textToSend += '.';
+        }
 
-        // Formateo estético (Negritas para énfasis)
-        textToSend = textToSend.replace(/(automatización|IA|Efinnovation|ROI|Auditoría|ahorro)/gi, '*$1*');
+        // Formateo estético (Negritas para énfasis - USANDO \b para evitar falsos positivos como "Genial" o "Eficiencia")
+        textToSend = textToSend.replace(/\b(automatización|IA|Efinnovation|ROI|Auditoría|ahorro|Orquestación)\b/gi, '*$1*');
 
         await sendWhatsAppMessage(remoteJid, textToSend);
         await saveMessageToHistory(remoteJid, 'assistant', textToSend);

@@ -46,12 +46,12 @@ export async function getAssistantResponse(threadId: string, message: string, su
         }
     }
 
-    // 1. Obtener el historial para decidir el modelo (Eficiencia de tokens)
+    // 1. Obtener el historial para decidir el modelo (Ahorro de costos: PitonB Optimized)
     const messagesList = await openai.beta.threads.messages.list(threadId);
     const messageCount = messagesList.data.length;
 
-    // Si son los primeros mensajes, usamos el modelo barato. 
-    // Si la charla avanza, activamos el modelo inteligente.
+    // Primeros 5 mensajes: GPT-4o-mini (Rapidez y ahorro)
+    // Mensaje 6+: GPT-4o (Precisión para cierres)
     const selectedModel = messageCount < 6 ? "gpt-4o-mini" : "gpt-4o";
 
     // 2. Añadimos el mensaje del usuario
@@ -60,10 +60,11 @@ export async function getAssistantResponse(threadId: string, message: string, su
         content: message,
     });
 
-    // 3. Ejecutamos el asistente con el modelo dinámico
+    // 3. Ejecutamos el asistente con el modelo dinámico y acceso a archivos (RAG)
     let run = await openai.beta.threads.runs.create(threadId, {
         assistant_id: assistantId,
-        model: selectedModel // Sobrescribimos el modelo por eficiencia
+        model: selectedModel,
+        tools: [{ type: "file_search" }] // Habilitamos la búsqueda en documentos de conocimiento
     });
 
     // 4. Polling con manejo de herramientas
