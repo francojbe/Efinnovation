@@ -142,8 +142,19 @@ async function sendNaturalResponses(remoteJid: string, fullText: string) {
             textToSend += '.';
         }
 
-        // Formateo estético (Negritas para énfasis - USANDO \b para evitar falsos positivos como "Genial" o "Eficiencia")
-        textToSend = textToSend.replace(/\b(automatización|IA|Efinnovation|ROI|Auditoría|ahorro|Orquestación)\b/gi, '*$1*');
+        // Pre-procesamiento: Quitar sintaxis de links Markdown [texto](url) -> url
+        // WhatsApp no los soporta y confunden a la IA/Usuario
+        textToSend = textToSend.replace(/\[.*?\]\((https?:\/\/.*?)\)/g, '$1');
+
+        // Formateo estético (Negritas para énfasis)
+        // Usamos una función para evitar negritas dentro de URLs
+        textToSend = textToSend.replace(/\b(automatización|IA|Efinnovation|ROI|Auditoría|ahorro|Orquestación)\b/gi, (match, word, offset, fullString) => {
+            // Verificamos si la palabra está precedida por algo que parezca una URL (http, /, ., etc)
+            const prevText = fullString.substring(0, offset);
+            const isInsideUrl = /https?:\/\/[^\s]*$/.test(prevText) || /[\/\.][^\s]*$/.test(prevText);
+
+            return isInsideUrl ? match : `*${match}*`;
+        });
 
         await sendWhatsAppMessage(remoteJid, textToSend);
         await saveMessageToHistory(remoteJid, 'assistant', textToSend);
