@@ -1,5 +1,6 @@
 import OpenAI from 'openai';
 import dotenv from 'dotenv';
+import { getAvailableSlots } from './calendlyService';
 
 dotenv.config();
 
@@ -134,6 +135,14 @@ export async function getAssistantResponse(threadId: string, message: string, su
                     toolOutputs.push({
                         tool_call_id: toolCall.id,
                         output: JSON.stringify({ success: true, message: "SOS Alert sent to team. A human will take over shortly." })
+                    });
+                } else if (toolCall.function.name === 'get_available_slots') {
+                    console.log(`📅 Consultando disponibilidad en Calendly...`);
+                    const slots = await getAvailableSlots();
+
+                    toolOutputs.push({
+                        tool_call_id: toolCall.id,
+                        output: JSON.stringify({ success: true, slots: slots })
                     });
                 }
             }

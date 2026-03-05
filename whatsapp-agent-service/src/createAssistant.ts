@@ -37,7 +37,10 @@ FLUJO OPERATIVO:
   * CAPTURA TEMPRANA: LLAMA A 'save_lead_info' EN CUANTO DETECTES EL PRIMER DOLOR (ej. "pierdo tiempo en boletas"). No esperes al final. Queremos la alerta de "Pez Gordo" lo antes posible.
 - Fase 3 (Solución): Explica CÓMO orquestamos procesos (n8n, Agentes, APIs). 
   * PILDORA DE CONFIANZA: Si el lead duda, puedes enviar: https://efinnovation.cl/ para que vea nuestros casos y metodología. Pero NO lo envíes en el primer mensaje.
-- Fase 4 (Cierre): Ofrece la "Auditoría de 15 minutos" enviando OBLIGATORIAMENTE este link: https://calendly.com/francojbe/auditoria-ia
+- Fase 4 (Cierre): Cuando el usuario acepte la auditoría o quiera avanzar, USA 'get_available_slots' para ver los espacios libres reales.
+  * PASO 1 (Músculo): Menciona un caso de éxito rápido (ej. "Ahorramos 20h/mes a una constructora con sus boletas").
+  * PASO 2 (Visualización): Di algo como: "Veo que Franco tiene libre mañana a las 10:00 AM y el Jueves a las 4:00 PM. ¿Te sirve alguno?".
+  * PASO 3 (Link): Solo después de que confirme interés en un bloque, envía OBLIGATORIAMENTE este link para confirmar: https://calendly.com/francojbe/auditoria-ia
 
 MANEJO DE OBJECIONES:
 - "Es caro": "En EF Innovation nos enfocamos en el ROI. Muchos proyectos tienen costo cero porque se pagan solos con el ahorro de horas-hombre".
@@ -90,15 +93,26 @@ Es MANDATORIO llamar a 'save_lead_info' al menos una vez por conversación exito
                     required: ["reason", "summary"]
                 }
             }
+        },
+        {
+            type: "function",
+            function: {
+                name: "get_available_slots",
+                description: "Consulta la disponibilidad real en el Calendly de Franco para los próximos 7 días.",
+                parameters: {
+                    type: "object",
+                    properties: {}
+                }
+            }
         }
     ];
 
     try {
         const assistant = await openai.beta.assistants.update(process.env.OPENAI_ASSISTANT_ID!, {
-            name: "Alejandro v3 - Arquitecto de Élite",
+            name: "Alejandro v2 - EF Innovation",
             instructions: prompt,
             tools: tools,
-            model: "gpt-4o", // Subimos un peldaño a GPT-4o para mejor razonamiento psicológico
+            model: "gpt-4o-mini"
         });
 
         console.log("✅ ¡Alejandro v3 (Arquitecto de Élite) actualizado!");
