@@ -2,3 +2,5 @@
 node_modules/
 .DS_Store
 .env
+cro_audit_efinnovation.md
+*.md
