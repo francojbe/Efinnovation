@@ -364,10 +364,14 @@ document.addEventListener('DOMContentLoaded', () => {
         chatbotLoaded = true;
         initAIChat();
     }
+    // En mobile, solo cargar el chatbot cuando el usuario interactúa (no automáticamente)
+    const isMobile = window.innerWidth < 768;
     window.addEventListener('scroll', loadEfiChatbot, { once: true, passive: true });
-    window.addEventListener('mousemove', loadEfiChatbot, { once: true });
+    if (!isMobile) {
+        window.addEventListener('mousemove', loadEfiChatbot, { once: true });
+    }
     window.addEventListener('touchstart', loadEfiChatbot, { once: true, passive: true });
-    setTimeout(loadEfiChatbot, 5000);
+    setTimeout(loadEfiChatbot, isMobile ? 10000 : 5000);
     
     initLeadMagnet();
     initTracking();
