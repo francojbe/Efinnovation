@@ -46,7 +46,7 @@ document.addEventListener('DOMContentLoaded', () => {
         tracks.forEach(track => {
             if (track.getAttribute('data-duplicated') === 'true') return;
             const content = track.innerHTML;
-            track.innerHTML = content + content + content + content;
+            track.innerHTML = content + content;
             track.setAttribute('data-duplicated', 'true');
         });
     };
@@ -212,7 +212,7 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     const initLeadMagnet = () => {
-        const form = document.getElementById('lead-magnet-form');
+        const form = document.getElementById('auditoria-form');
         const statusDiv = document.getElementById('form-status');
         const phoneInput = document.getElementById('diag-phone');
 
@@ -306,32 +306,14 @@ document.addEventListener('DOMContentLoaded', () => {
                         console.error("Response is not JSON:", responseText);
                     }
 
-                    statusDiv.textContent = "¡Excelente! Diagnóstico generado correctamente.";
+                    statusDiv.textContent = "¡Excelente! Diagnóstico generado correctamente. Redirigiendo...";
                     statusDiv.classList.add('success');
                     statusDiv.style.display = 'block';
                     form.reset();
 
-                    // MOSTRAR MODAL DE RESULTADOS (POPUP)
-                    const resultsModal = document.getElementById('modal-resultados');
-                    const resultsContent = document.getElementById('diagnostico-resultado-content');
+                    window.location.href = '/gracias.html';
 
-                    if (resultsModal && resultsContent) {
-                        let contentToShow = "Estamos procesando tu informe. Si no aparece en unos segundos, revisa tu correo electrónico.";
-
-                        if (result) {
-                            const data = Array.isArray(result) ? result[0] : result;
-                            contentToShow = data.output || data.data || data.message || JSON.stringify(data);
-                        }
-
-                        // Formateo básico de markdown para la ventana
-                        resultsContent.innerHTML = contentToShow
-                            .replace(/\*\*\*(.*?)\*\*\*/g, '<strong><em>$1</em></strong>')
-                            .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
-                            .replace(/\*(.*?)\*/g, '<em>$1</em>')
-                            .replace(/\n/g, '<br>');
-
-                        resultsModal.style.display = 'flex';
-                    }
+                    // (Popup de resultados eliminado en favor de página de gracias)
 
                 } else {
                     throw new Error('Server responded with error');
@@ -376,7 +358,17 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     };
 
-    initAIChat();
+    var chatbotLoaded = false;
+    function loadEfiChatbot() {
+        if (chatbotLoaded) return;
+        chatbotLoaded = true;
+        initAIChat();
+    }
+    window.addEventListener('scroll', loadEfiChatbot, { once: true, passive: true });
+    window.addEventListener('mousemove', loadEfiChatbot, { once: true });
+    window.addEventListener('touchstart', loadEfiChatbot, { once: true, passive: true });
+    setTimeout(loadEfiChatbot, 5000);
+    
     initLeadMagnet();
     initTracking();
 });

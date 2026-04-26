@@ -29,7 +29,7 @@
     new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
     j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-    })(window,document,'script','dataLayer','GTM-XXXXXXX');</script>
+    })(window,document,'script','dataLayer','GTM-5RBKKPMJ');</script>
     <!-- End Google Tag Manager -->
 
     <link rel="preload" as="image" href="assets/img/hero-bg-premium.webp" fetchpriority="high">
@@ -218,7 +218,7 @@
 
 <body>
     <!-- Google Tag Manager (noscript) -->
-    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-XXXXXXX" height="0" width="0"
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5RBKKPMJ" height="0" width="0"
             style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
 
@@ -226,7 +226,7 @@
     <nav class="navbar-glass">
         <div class="nav-container">
             <a href="#inicio" class="nav-logo">
-                <img src="assets/img/hero-logo.png" alt="Efinnovation" fetchpriority="high">
+                <img src="assets/img/hero-logo.png" alt="Efinnovation" fetchpriority="high" loading="eager" decoding="async" width="150" height="40">
                 <div class="logo-text">
                     <span class="logo-main-text">EFINNOVATION</span>
                     <span class="logo-sub-text">IA Automation Agency</span>
@@ -249,7 +249,7 @@
 
     <!-- Botón Flotante de WhatsApp -->
     <a href="https://wa.me/56974263408?text=Hola%20Efinnovation,%20me%20gustaría%20recibir%20más%20información."
-        class="whatsapp-float" target="_blank" title="Chat en WhatsApp" rel="noopener noreferrer">
+        class="whatsapp-float" target="_blank" title="Chat en WhatsApp" rel="noopener noreferrer" aria-label="Contactar a Efinnovation por WhatsApp">
         <div class="whatsapp-pulse-ring"></div>
         <i class="fab fa-whatsapp"></i>
     </a>
@@ -271,7 +271,7 @@
                         <span class="status-dot"></span>
                     </div>
                     <div>
-                        <h4>Efi IA</h4>
+                        <p style="font-weight:bold; font-size: 0.95rem; margin:0; line-height:1;">Efi IA</p>
                         <span>Agente Estratégico Online</span>
                     </div>
                 </div>
@@ -364,7 +364,7 @@
                                         <i class="fas fa-robot"></i>
                                     </div>
                                     <div class="header-info">
-                                        <h4>Agente ERP</h4>
+                                        <p style="font-weight:bold; font-size: 0.95rem; margin:0; line-height:1;">Agente ERP</p>
                                         <span>Online <i class="fas fa-bolt"
                                                 style="font-size:0.6rem; margin-left:2px;"></i></span>
                                     </div>
@@ -759,7 +759,7 @@
                                 tu operación.</strong></p>
                     </div>
 
-                    <form id="lead-magnet-form" class="diagnostic-form" method="POST"
+                    <form id="auditoria-form" class="diagnostic-form" method="POST"
                         action="https://auto.efinnovation.cl/webhook/captura">
                         <div class="form-group" style="display: flex; flex-direction: row; gap: 15px;">
                             <div style="flex: 1;">
@@ -1216,7 +1216,7 @@
                 <footer class="footer-modern">
                     <div class="footer-container">
                         <div class="footer-brand">
-                            <img src="assets/img/hero-logo.png" alt="Efinnovation Logo" class="footer-logo">
+                            <img src="assets/img/hero-logo.png" alt="Efinnovation Logo" class="footer-logo" loading="lazy" decoding="async" width="150" height="40">
                             <p>Llevando a las empresas al siguiente nivel mediante la automatización inteligente y
                                 agentes autónomos de última generación.</p>
                         </div>
@@ -1227,7 +1227,7 @@
                             <p><i class="fas fa-location-dot"></i> Santiago, Chile</p>
                         </div>
                         <div class="footer-social">
-                            <h4>Síguenos</h4>
+                            <p style="font-weight:bold; font-size: 1.1rem; margin-bottom: 15px;">Síguenos</p>
                             <div class="social-links">
                                 <a href="https://www.linkedin.com/company/efinnovation" target="_blank"
                                     rel="noopener"><i class="fab fa-linkedin"></i></a>
@@ -1237,7 +1237,7 @@
                         </div>
                     </div>
                     <div class="footer-bottom">
-                        <p>&copy; 2023 Efinnovation | IA Automation Agency. Todos los derechos reservados.</p>
+                        <p>&copy; 2026 Efinnovation | IA Automation Agency. Todos los derechos reservados.</p>
                     </div>
                 </footer>
             </div>
@@ -1245,6 +1245,23 @@
 
         <!-- Phone Picker JS -->
         <script src="https://cdn.jsdelivr.net/npm/intl-tel-input@24.5.1/build/js/intlTelInput.min.js"></script>
+
+        <!-- Conversions Tracking (TAREA 4) -->
+        <script>
+        (function() {
+          var form = document.getElementById('auditoria-form') || document.querySelector('form');
+          if (form) {
+            form.addEventListener('submit', function() {
+              window.dataLayer = window.dataLayer || [];
+              window.dataLayer.push({
+                'event': 'lead_form_submit',
+                'form_id': 'auditoria-form',
+                'form_name': 'Auditoría Gratuita'
+              });
+            });
+          }
+        })();
+        </script>
 </body>
 
 </html>
