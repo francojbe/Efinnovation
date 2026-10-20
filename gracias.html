@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://kit.fontawesome.com https://www.googletagmanager.com https://www.google-analytics.com https://ssl.google-analytics.com https://googleads.g.doubleclick.net https://www.googleadservices.com https://cdnjs.cloudflare.com https://static.cloudflareinsights.com https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://ka-p.fontawesome.com https://cdnjs.cloudflare.com https://cdn.jsdelivr.net; font-src 'self' data: https://fonts.gstatic.com https://ka-p.fontawesome.com https://cdnjs.cloudflare.com; img-src 'self' data: https:; connect-src 'self' https://ka-p.fontawesome.com https://auto.efinnovation.cl https://www.google-analytics.com https://analytics.google.com https://region1.google-analytics.com https://stats.g.doubleclick.net https://www.google.com https://www.google.cl https://www.googletagmanager.com https://static.cloudflareinsights.com https://cloudflareinsights.com;">
     <title>¡Gracias por tu solicitud! | Efinnovation</title>
 
     <meta name="robots" content="noindex, nofollow">
@@ -23,7 +24,19 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/style.css?v=4.1">
+
+    <style>
+        .thanks-wrapper { display: flex; flex-direction: column; min-height: 100vh; justify-content: space-between; text-align: center; }
+        .thanks-main { flex: 1; display: flex; align-items: center; justify-content: center; padding: 120px 24px 60px; }
+        .thanks-card { max-width: 640px; width: 100%; background: linear-gradient(180deg, #111827 0%, #0B0F17 100%); border: 1px solid rgba(16,185,129,0.3); border-radius: 16px; padding: 48px 36px; box-shadow: 0 20px 50px rgba(0,0,0,0.5); }
+        .thanks-icon { font-size: 3.2rem; color: #10B981; margin-bottom: 18px; }
+        .thanks-title { font-family: var(--font-heading); font-size: clamp(2rem, 4vw, 2.6rem); color: #F8FAFC; margin-bottom: 14px; font-weight: 700; }
+        .thanks-text { font-size: 1.06rem; color: #94a3b8; max-width: 540px; margin: 0 auto 28px; line-height: 1.65; }
+        .thanks-founder { display: inline-flex; align-items: center; gap: 14px; background: rgba(255,255,255,0.03); border: 1px solid rgba(56,189,248,0.22); border-radius: 12px; padding: 12px 18px; margin-bottom: 28px; text-align: left; }
+        .thanks-founder img { width: 48px; height: 48px; border-radius: 50%; object-fit: cover; border: 2px solid #38BDF8; }
+        .thanks-actions { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+    </style>
 
     <!-- Conversion Script -->
     <script>
@@ -32,33 +45,61 @@
     </script>
 </head>
 
-<body style="display: flex; flex-direction: column; min-height: 100vh; justify-content: center; align-items: center; text-align: center;">
+<body class="thanks-wrapper">
     <!-- Google Tag Manager (noscript) -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5RBKKPMJ"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
 
-    <nav class="navbar-glass" style="position: absolute; top: 0; width: 100%;">
+    <nav class="navbar-glass">
         <div class="nav-container" style="justify-content: center;">
             <a href="/" class="nav-logo">
-                <img src="assets/img/hero-logo.png" alt="Efinnovation" style="height: 40px;">
+                <img src="assets/img/hero-logo.png" alt="Efinnovation" loading="eager" decoding="async" width="40" height="40">
                 <div class="logo-text">
                     <span class="logo-main-text">EFINNOVATION</span>
-                    <span class="logo-sub-text">IA Automation Agency</span>
+                    <span class="logo-sub-text">Consultoría, Automatización e IA</span>
                 </div>
             </a>
         </div>
     </nav>
 
-    <div class="container" style="margin-top: 100px;">
-        <h1 style="font-size: 3rem; color: var(--accent); margin-bottom: 20px;">¡Solicitud recibida!</h1>
-        <p style="font-size: 1.2rem; color: var(--text-muted); max-width: 600px; margin: 0 auto 40px;">Te contactaremos en menos de 24 horas hábiles para coordinar tu auditoría estratégica gratuita.</p>
-        <a href="/" class="btn-corp-accent" style="display: inline-flex;">Volver al inicio</a>
-    </div>
+    <main class="thanks-main">
+        <div class="thanks-card">
+            <div class="thanks-icon"><i class="fas fa-check-circle"></i></div>
+            <h1 class="thanks-title">¡Solicitud recibida!</h1>
+            <p class="thanks-text">Revisaré personalmente tus antecedentes y te contactaré en menos de 24 horas hábiles para coordinar tu diagnóstico inicial sin costo. Si deseas avanzar de inmediato, confirma tu solicitud por WhatsApp.</p>
+            <div class="thanks-founder">
+                <img src="assets/img/founder-franco.webp" alt="Franco Blanco — Fundador de Efinnovation" width="48" height="48">
+                <div>
+                    <strong style="color:#F8FAFC; display:block; font-size:0.95rem;">Franco Blanco · Fundador de Efinnovation</strong>
+                    <span style="color:#38BDF8; font-size:0.8rem; font-family:var(--font-mono);">Ing. en Informática · Magíster en Seguridad de la Información</span>
+                </div>
+            </div>
+            <div class="thanks-actions">
+                <a href="/" class="btn-corp-secondary" style="display: inline-flex; align-items: center; gap: 8px;">
+                    <i class="fas fa-arrow-left"></i> Volver al inicio
+                </a>
+                <a id="thanks-wa-btn" href="https://wa.me/56974263408?text=Hola%20Franco%20(Efinnovation),%20acabo%20de%20enviar%20el%20formulario%20de%20diagn%C3%B3stico%20y%20me%20gustar%C3%ADa%20coordinar%20la%20reuni%C3%B3n." target="_blank" rel="noopener noreferrer" class="btn-corp-primary" style="display: inline-flex; align-items: center; gap: 8px;">
+                    <i class="fab fa-whatsapp"></i> Confirmar por WhatsApp
+                </a>
+            </div>
+        </div>
+    </main>
+    <script>
+        (function() {
+            try {
+                var savedWa = sessionStorage.getItem('efi_last_wa_url');
+                var btn = document.getElementById('thanks-wa-btn');
+                if (savedWa && btn) {
+                    btn.href = savedWa;
+                }
+            } catch (_) {}
+        })();
+    </script>
 
-    <footer style="position: absolute; bottom: 0; width: 100%; border-top: 1px solid rgba(255,255,255,0.05); padding: 20px 0;">
+    <footer style="border-top: 1px solid rgba(255,255,255,0.05); padding: 20px 0;">
         <div class="container">
-            <p style="color: var(--text-muted); margin: 0;">&copy; 2026 Efinnovation | IA Automation Agency. Todos los derechos reservados.</p>
+            <p style="color: #94a3b8; font-size: 0.85rem; margin: 0;">&copy; 2026 Efinnovation | Consultoría, Automatización e IA. Todos los derechos reservados.</p>
         </div>
     </footer>
 </body>

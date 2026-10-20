@@ -4,25 +4,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Efinnovation | IA y Automatización de Procesos en Chile</title>
+    <title>Efinnovation | Consultoría en IA y Automatización en Chile</title>
 
     <!-- SEO Básico -->
-    <meta name="description" content="Automatizamos procesos críticos de empresas chilenas con IA y RPA. Reducimos costos y errores en menos de 90 días. Solicita tu auditoría gratuita.">
+    <meta name="description" content="Consultoría e implementación de IA, automatización de procesos con n8n y desarrollo de software a medida para empresas en Chile. Seguridad desde el diseño.">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://efinnovation.cl/">
 
     <!-- Open Graph (WhatsApp, LinkedIn, Facebook) -->
     <meta property="og:type" content="website">
-    <meta property="og:title" content="Efinnovation | IA y Automatización de Procesos en Chile">
-    <meta property="og:description" content="Automatizamos ERP, CRM, finanzas y logística con IA y RPA para retail y logística en Chile. Auditoría gratuita disponible.">
+    <meta property="og:title" content="Efinnovation | Consultoría, Automatización de Procesos e IA Aplicada en Chile">
+    <meta property="og:description" content="Automatización con n8n, agentes de IA (OpenAI, Claude, Gemini), desarrollo a medida y capacitación empresarial. Dirigido por Ingeniero en Informática y Magíster en Seguridad de la Información.">
     <meta property="og:url" content="https://efinnovation.cl/">
     <meta property="og:image" content="https://efinnovation.cl/assets/og-image.jpg">
     <meta property="og:locale" content="es_CL">
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Efinnovation | IA y Automatización de Procesos en Chile">
-    <meta name="twitter:description" content="Automatizamos procesos críticos con IA y RPA en Chile. Auditoría gratuita.">
+    <meta name="twitter:title" content="Efinnovation | Consultoría, Automatización de Procesos e IA en Chile">
+    <meta name="twitter:description" content="Automatizamos procesos, integramos agentes de IA y desarrollamos software a medida con enfoque en Seguridad de la Información.">
+    <meta name="twitter:image" content="https://efinnovation.cl/assets/og-image.jpg">
 
     <!-- Google Tag Manager -->
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -32,119 +33,65 @@
     })(window,document,'script','dataLayer','GTM-5RBKKPMJ');</script>
     <!-- End Google Tag Manager -->
 
-    <link rel="preload" as="image" href="assets/img/hero-bg-premium.webp" fetchpriority="high">
-
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="assets/img/hero-logo.png">
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 
-    <!-- Critical CSS -->
-    <style>
-        :root {
-            --bg-desktop: #0c0c0c;
-            --win-bg: rgba(22, 22, 22, 0.82);
-            --win-border: rgba(255, 255, 255, 0.05);
-            --accent: #60cdff;
-            --corporate-blue: #0078d4;
-            --text-main: #ffffff;
-            --text-muted: #aeb2b6;
-            --font-heading: 'Outfit', sans-serif;
-            --font-sys: 'Outfit', sans-serif;
-            --font-mono: 'JetBrains Mono', monospace;
-        }
-
-        body {
-            font-family: var(--font-sys);
-            background-color: var(--bg-desktop);
-            color: var(--text-main);
-            margin: 0;
-            background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('assets/img/hero-bg-premium.webp?v=2.0');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-            position: relative;
-            will-change: transform;
-        }
-
-        /* Noise Overlay for a premium textured look */
-        body::before {
-            content: "";
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
-            opacity: 0.04;
-            pointer-events: none;
-            z-index: 9999;
-        }
-
-        .navbar-glass {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            z-index: 1000;
-            background: rgba(12, 12, 12, 0.7);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-            padding: 10px 0;
-        }
-    </style>
-
-    <!-- CSS Principal (Bloqueante para evitar FOUC) -->
-    <link rel="stylesheet" href="css/style.css?v=3.4">
+    <!-- CSS Principal -->
+    <link rel="stylesheet" href="css/style.css?v=4.1">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/intl-tel-input@24.5.1/build/css/intlTelInput.css">
 
     <!-- Custom JS -->
-    <script src="js/script.js?v=3.8" defer></script>
+    <script src="js/script.js?v=4.0" defer></script>
 
+    <!-- Content Security Policy (Actualizada para permitir GTM, GA4 y Google Ads sin bloqueo) -->
     <meta http-equiv="Content-Security-Policy"
-        content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://kit.fontawesome.com https://www.googletagmanager.com https://cdnjs.cloudflare.com https://static.cloudflareinsights.com https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://ka-p.fontawesome.com https://cdnjs.cloudflare.com https://cdn.jsdelivr.net; font-src 'self' data: https://fonts.gstatic.com https://ka-p.fontawesome.com https://cdnjs.cloudflare.com; img-src 'self' data: https:; connect-src 'self' https://ka-p.fontawesome.com https://auto.efinnovation.cl https://static.cloudflareinsights.com https://cloudflareinsights.com;">
+        content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://kit.fontawesome.com https://www.googletagmanager.com https://www.google-analytics.com https://ssl.google-analytics.com https://googleads.g.doubleclick.net https://www.googleadservices.com https://cdnjs.cloudflare.com https://static.cloudflareinsights.com https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://ka-p.fontawesome.com https://cdnjs.cloudflare.com https://cdn.jsdelivr.net; font-src 'self' data: https://fonts.gstatic.com https://ka-p.fontawesome.com https://cdnjs.cloudflare.com; img-src 'self' data: https:; connect-src 'self' https://ka-p.fontawesome.com https://auto.efinnovation.cl https://www.google-analytics.com https://analytics.google.com https://region1.google-analytics.com https://stats.g.doubleclick.net https://www.google.com https://www.google.cl https://www.googletagmanager.com https://static.cloudflareinsights.com https://cloudflareinsights.com;">
     <meta name="referrer" content="strict-origin-when-cross-origin">
+    <meta name="theme-color" content="#0B0F17">
 
-    <!-- Browser UI -->
-    <meta name="theme-color" content="#0e0e11">
-
-    <!-- Schema.org JSON-LD for AI & Search Engines -->
+    <!-- Schema.org JSON-LD: Organization -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "Organization",
-      "name": "Efinnovation IA Automation Agency",
-      "url": "https://www.efinnovation.cl",
-      "logo": "https://www.efinnovation.cl/assets/img/hero-logo.png",
-      "description": "Consultora líder en Automatización de Procesos e Inteligencia Artificial para empresas en Chile. Especialistas en integración de sistemas ERP/CRM y agentes autónomos.",
+      "name": "Efinnovation",
+      "url": "https://efinnovation.cl",
+      "logo": "https://efinnovation.cl/assets/img/hero-logo.png",
+      "description": "Consultoría e implementación en Automatización de Procesos (n8n), Agentes de Inteligencia Artificial, Desarrollo de Software a Medida y Adopción Segura de IA para empresas en Chile.",
       "contactPoint": {
         "@type": "ContactPoint",
         "telephone": "+56-9-7426-3408",
+        "email": "contacto@efinnovation.cl",
         "contactType": "sales",
         "areaServed": "CL",
         "availableLanguage": "Spanish"
       },
       "sameAs": [
+        "https://www.linkedin.com/in/francojbe/",
         "https://www.linkedin.com/company/efinnovation",
         "https://www.instagram.com/efinnovation"
       ],
       "address": {
         "@type": "PostalAddress",
+        "addressLocality": "Santiago",
+        "addressRegion": "Región Metropolitana",
         "addressCountry": "CL"
       }
     }
     </script>
+
+    <!-- Schema.org JSON-LD: Services -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "Service",
-      "serviceType": "Automatización de IA",
+      "serviceType": "Consultoría en IA, Automatización de Procesos y Desarrollo de Software",
       "provider": {
         "@type": "Organization",
         "name": "Efinnovation"
@@ -155,33 +102,56 @@
       },
       "hasOfferCatalog": {
         "@type": "OfferCatalog",
-        "name": "Servicios de Automatización",
+        "name": "Líneas de Servicio Efinnovation",
         "itemListElement": [
           {
             "@type": "Offer",
             "itemOffered": {
               "@type": "Service",
-              "name": "Implementación de Agentes de IA"
+              "name": "Automatización de procesos e integración de herramientas (n8n y APIs)"
             }
           },
           {
             "@type": "Offer",
             "itemOffered": {
               "@type": "Service",
-              "name": "Automatización de Procesos de Negocio (BPA)"
+              "name": "Agentes y asistentes de IA con control documental"
             }
           },
           {
             "@type": "Offer",
             "itemOffered": {
               "@type": "Service",
-              "name": "Integración CRM y ERP"
+              "name": "Desarrollo de aplicaciones web y software a medida"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Sitios web y landing pages conectadas a procesos comerciales"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Consultoría y diagnóstico de oportunidades de IA"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Capacitación y acompañamiento para la adopción de IA"
             }
           }
         ]
       }
     }
     </script>
+
+    <!-- Schema.org JSON-LD: FAQPage (Sincronizado 100% con el HTML visible) -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -189,26 +159,34 @@
       "mainEntity": [
         {
           "@type": "Question",
-          "name": "¿Cómo ayuda la IA a reducir costos operativos?",
+          "name": "¿Necesito tener un área de informática o saber de tecnología para trabajar con ustedes?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "La IA reduce costos eliminando tareas manuales repetitivas, disminuyendo el margen de error humano y permitiendo que su equipo se enfoque en tareas de alto valor estratégico."
+            "text": "No. Traducimos tus objetivos y problemas operativos a lenguaje claro de negocio. Si no tienes equipo de TI, nos encargamos de toda la configuración e implementación; si ya cuentas con un área de sistemas, trabajamos en conjunto respetando sus políticas de infraestructura y seguridad."
           }
         },
         {
           "@type": "Question",
-          "name": "¿Es difícil integrar IA con mis sistemas actuales (ERP/CRM)?",
+          "name": "¿Tengo que cambiar los programas o el sistema que ya usa mi empresa?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "No. Somos especialistas en conectar sistemas legacy a través de APIs o automatización de interfaz (RPA), asegurando una integración fluida sin necesidad de cambiar su infraestructura actual."
+            "text": "En la mayoría de los casos, no. Priorizamos conectar y aprovechar las herramientas que ya utilizas (Google Workspace, Microsoft 365, tu CRM, tu ERP, facturación electrónica o WhatsApp) mediante integraciones seguras con n8n y APIs. Solo proponemos desarrollar software nuevo cuando realmente te falta una herramienta para operar."
           }
         },
         {
           "@type": "Question",
-          "name": "¿Cuánto tiempo toma ver resultados de una automatización?",
+          "name": "¿Qué pasa si la Inteligencia Artificial se equivoca o recibe una consulta compleja?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Nuestra metodología permite ver los primeros resultados en menos de 4 semanas mediante despliegues ágiles y controlados."
+            "text": "Ningún modelo de IA es infalible en todos los escenarios. Por eso diseñamos flujos con reglas de validación, consulta acotada a documentos oficiales de tu empresa y supervisión humana (Human-in-the-Loop) para aprobar acciones críticas o derivar casos sensibles a tu equipo."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Cuánto toma implementar un proyecto y cómo se define el valor?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Depende del alcance. Una automatización puntual o un sitio web conectado a tu flujo comercial suele estar operativo en 2 a 4 semanas. Proyectos de integración entre varios sistemas o aplicaciones a medida toman entre 4 y 8 semanas por fases. Tras una conversación inicial de diagnóstico sin costo, entregamos una propuesta cerrada con entregables, plazos y valores claros."
           }
         }
       ]
@@ -222,1051 +200,797 @@
             style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
 
-    <!-- Modern Top Navigation -->
-    <nav class="navbar-glass">
+    <!-- Navegación Principal -->
+    <nav class="navbar-glass" aria-label="Navegación principal">
         <div class="nav-container">
             <a href="#inicio" class="nav-logo">
                 <img src="assets/img/hero-logo.png" alt="Efinnovation" fetchpriority="high" loading="eager" decoding="async" width="150" height="40">
                 <div class="logo-text">
                     <span class="logo-main-text">EFINNOVATION</span>
-                    <span class="logo-sub-text">IA Automation Agency</span>
+                    <span class="logo-sub-text">Consultoría, Automatización e IA</span>
                 </div>
             </a>
             <ul class="nav-links">
                 <li><a href="#inicio" class="active">Inicio</a></li>
                 <li><a href="#servicios">Servicios</a></li>
-                <li><a href="#industrias">Casos</a></li>
-                <li><a href="#planes">Planes</a></li>
-                <li><a href="#diagnostico">Auditoría</a></li>
-                <li><a href="efi-chat.html" style="color: var(--accent); font-weight: bold;"><i
-                            class="fas fa-sparkles"></i> Probar EFI</a></li>
+                <li><a href="#segmentos">Empresas</a></li>
+                <li><a href="#metodologia">Cómo trabajamos</a></li>
+                <li><a href="#liderazgo">Liderazgo y Seguridad</a></li>
+                <li><a href="#faq">Preguntas</a></li>
+                <li><a href="#diagnostico" class="nav-cta-btn">Solicitar diagnóstico</a></li>
             </ul>
-            <button class="nav-toggle" aria-label="Abrir menú">
+            <button class="nav-toggle" aria-label="Abrir menú de navegación" aria-expanded="false">
                 <i class="fas fa-bars"></i>
             </button>
         </div>
     </nav>
 
-    <!-- Botón Flotante de WhatsApp -->
-    <a href="https://wa.me/56974263408?text=Hola%20Efinnovation,%20me%20gustaría%20recibir%20más%20información."
-        class="whatsapp-float" target="_blank" title="Chat en WhatsApp" rel="noopener noreferrer" aria-label="Contactar a Efinnovation por WhatsApp">
-        <div class="whatsapp-pulse-ring"></div>
+    <!-- Botón Flotante Único de WhatsApp -->
+    <a href="https://wa.me/56974263408?text=Hola%20Efinnovation,%20me%20gustar%C3%ADa%20conversar%20sobre%20automatizaci%C3%B3n%20o%20IA%20para%20mi%20empresa."
+        class="whatsapp-float" data-cta-location="floating_button" target="_blank" title="Conversar por WhatsApp" rel="noopener noreferrer" aria-label="Contactar a Efinnovation por WhatsApp">
         <i class="fab fa-whatsapp"></i>
     </a>
 
-    <!-- AI Chatbot Interface (n8n Ready) -->
-    <div id="ai-chat-container">
-        <!-- Launcher -->
-        <button id="ai-chat-launcher" title="Hablar con Efi IA">
-            <i class="fas fa-robot"></i>
-            <span class="pulse-ring"></span>
-        </button>
-
-        <!-- Chat Window -->
-        <div id="ai-chat-window" class="chat-window-hidden">
-            <div class="chat-header">
-                <div class="chat-header-info">
-                    <div class="chat-avatar">
-                        <i class="fas fa-robot"></i>
-                        <span class="status-dot"></span>
-                    </div>
-                    <div>
-                        <p style="font-weight:bold; font-size: 0.95rem; margin:0; line-height:1;">Efi IA</p>
-                        <span>Agente Estratégico Online</span>
-                    </div>
-                </div>
-                <button id="close-chat"><i class="fas fa-times"></i></button>
-            </div>
-
-            <div id="chat-messages">
-                <!-- Message will be added here via JS -->
-                <div class="chat-msg-ai">
-                    ¡Hola! Soy Efi, el asistente inteligente de Efinnovation. ¿En qué desafío de automatización puedo
-                    ayudarte hoy?
-                </div>
-            </div>
-
-            <div id="chat-input-area">
-                <textarea id="ai-user-input" placeholder="Escribe tu consulta..." rows="1"></textarea>
-                <button id="send-ai-msg"><i class="fas fa-paper-plane"></i></button>
-            </div>
-            <div class="chat-footer">
-                Powered by Efinnovation AI Engine
-            </div>
-        </div>
-    </div>
-
-    <div class="desktop-area">
+    <main class="desktop-area">
         <div class="container">
 
-            <!-- Ventana Principal -->
-            <section id="inicio" class="window-panel" style="margin-top: 30px;">
-                <div class="window-titlebar">
-                    <span>EFINNOVATION</span>
-                    <div class="win-controls" aria-label="Controles de ventana">
-                        <div class="win-btn close" title="Cerrar"></div>
-                        <div class="win-btn min" title="Minimizar"></div>
-                        <div class="win-btn max" title="Maximizar"></div>
-                    </div>
-                </div>
-
+            <!-- ==============================================================
+                 BLOQUE 1: HERO & ARQUITECTURA DE TRABAJO
+                 ============================================================== -->
+            <section id="inicio" class="section-block section-elevated">
                 <div class="hero-split">
                     <header class="hero-text">
+                        <span class="badge-corp">
+                            <i class="fas fa-shield-halved"></i> Ingeniería, Automatización e IA en Chile
+                        </span>
+                        <h1>Ayudamos a tu empresa a ahorrar horas de trabajo manual e incorporar <span style="color: var(--accent);">Inteligencia Artificial</span> de forma práctica y segura.</h1>
+                        <p class="hero-lead">
+                            Desde automatizar procesos entre tus herramientas actuales y desplegar asistentes de IA, hasta desarrollar aplicaciones web a medida o capacitar a tu equipo. Proyectos diseñados e implementados directamente por un <strong>Ingeniero en Informática y Magíster en Seguridad de la Información</strong>.
+                        </p>
 
-
-                        <span class="badge-corp">SOLUCIONES B2B CHILE</span>
-                        <h1 data-blur-text>Automatizamos procesos críticos de empresas chilenas (ERP, CRM, finanzas y
-                            logística) con <span style="color: var(--accent);">IA y RPA</span> para reducir costos y
-                            errores en <br />menos de 90 días.</h1>
-                        <p>Para retail, e-commerce y operadores logísticos que quieren escalar sin aumentar su equipo
-                            operativo.</p>
-
-                        <div style="margin-bottom: 30px; display: flex; flex-wrap: wrap; gap: 10px;">
-                            <a href="https://wa.me/56974263408?text=Hola%20Efinnovation%2C%20quiero%20una%20auditor%C3%ADa%20gratuita" class="btn-corp-accent" target="_blank" rel="noopener noreferrer" aria-label="Hablar con un especialista por WhatsApp">
-                                <i class="fab fa-whatsapp" style="margin-right:6px;"></i> <span>Hablar con un especialista</span>
-                            </a>
+                        <div class="hero-cta-group">
                             <a href="#diagnostico" class="btn-corp-primary">
-                                <span>Ver auditoría gratuita</span> <i class="fas fa-arrow-right"></i>
+                                <span>Solicitar diagnóstico inicial</span>
+                                <i class="fas fa-arrow-right"></i>
+                            </a>
+                            <a href="https://wa.me/56974263408?text=Hola%20Efinnovation%2C%20quiero%20evaluar%20un%20proyecto%20de%20automatizaci%C3%B3n%20o%20IA"
+                                class="btn-whatsapp-outline" data-cta-location="hero_secondary" target="_blank" rel="noopener noreferrer">
+                                <i class="fab fa-whatsapp"></i>
+                                <span>Conversar por WhatsApp</span>
                             </a>
                         </div>
 
-                        <!-- Stack Tecnológico Corporativo -->
-                        <div class="tech-stack" aria-label="Tecnologías utilizadas">
-                            <span
-                                style="font-size: 0.8rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px;">Powered
-                                by:</span>
-                            <div class="tech-item" title="Microsoft Power Automate"><i
-                                    class="fas fa-project-diagram"></i> Power Automate</div>
-                            <div class="tech-item" title="Make"><i class="fas fa-infinity"></i> Make</div>
-                            <div class="tech-item" title="n8n"><i class="fas fa-network-wired"></i> n8n</div>
+                        <div class="hero-trust-note">
+                            <span><i class="fas fa-check-circle"></i> Pequeñas, medianas y grandes empresas</span>
+                            <span><i class="fas fa-check-circle"></i> Seguridad de la Información desde el diseño</span>
+                            <span><i class="fas fa-location-dot"></i> Santiago, Chile</span>
                         </div>
                     </header>
 
-                    <!-- Demo Teléfono (Refinado) -->
-                    <div class="phone-wrapper" aria-hidden="true">
-                        <div class="phone-frame">
-                            <div class="status-bar">
-                                <span class="time">9:41</span>
-                                <div class="status-icons">
-                                    <i class="fas fa-signal"></i>
-                                    <i class="fas fa-wifi"></i>
-                                    <i class="fas fa-battery-full"></i>
+                    <!-- Diagrama de Arquitectura Real de Trabajo -->
+                    <aside class="arch-card" aria-label="Arquitectura de integración e IA de Efinnovation">
+                        <div class="arch-header">
+                            <span class="arch-title">Arquitectura de Solución B2B</span>
+                            <span class="arch-status"><i class="fas fa-lock"></i> Diseño Seguro</span>
+                        </div>
+
+                        <div class="arch-flow">
+                            <div class="arch-node">
+                                <div class="arch-icon"><i class="fas fa-layer-group"></i></div>
+                                <div class="arch-node-body">
+                                    <h3>1. Canales y Fuentes de Datos</h3>
+                                    <p>Formularios web, WhatsApp, correos, documentos PDF/XML, planillas o bases de datos internas.</p>
                                 </div>
                             </div>
-                            <div class="phone-notch">
-                                <div class="notch-camera"></div>
+
+                            <div class="arch-connector"><i class="fas fa-arrow-down"></i></div>
+
+                            <div class="arch-node highlight">
+                                <div class="arch-icon"><i class="fas fa-network-wired"></i></div>
+                                <div class="arch-node-body">
+                                    <h3>2. Automatización e IA Multimodelo</h3>
+                                    <p>Integración de procesos mediante APIs y agentes basados en modelos de OpenAI, Anthropic (Claude) y Google Gemini según la tarea.</p>
+                                </div>
                             </div>
 
-                            <div class="chat-screen">
-                                <!-- App Header -->
-                                <div class="app-header">
-                                    <div class="avatar-bot">
-                                        <i class="fas fa-robot"></i>
-                                    </div>
-                                    <div class="header-info">
-                                        <p style="font-weight:bold; font-size: 0.95rem; margin:0; line-height:1;">Agente ERP</p>
-                                        <span>Online <i class="fas fa-bolt"
-                                                style="font-size:0.6rem; margin-left:2px;"></i></span>
-                                    </div>
-                                </div>
+                            <div class="arch-connector"><i class="fas fa-arrow-down"></i></div>
 
-                                <!-- Msj 1 -->
-                                <div class="chat-msg msg-ai msg-1">
-                                    Alerta: El stock en bodega norte está al 10%. ¿Inicio la orden de compra en SAP?
+                            <div class="arch-node security-node">
+                                <div class="arch-icon"><i class="fas fa-user-shield"></i></div>
+                                <div class="arch-node-body">
+                                    <h3>3. Control, Privacidad y Supervisión Humana</h3>
+                                    <p>Consulta documental controlada (RAG), permisos de mínimo privilegio y aprobación humana en pasos críticos.</p>
                                 </div>
+                            </div>
 
-                                <!-- Msj 2 -->
-                                <div class="chat-msg msg-user msg-2">
-                                    Sí, autorizar orden #9021.
-                                </div>
+                            <div class="arch-connector"><i class="fas fa-arrow-down"></i></div>
 
-                                <!-- Typing 1 -->
-                                <div class="typing-indicator typ-1">
-                                    <div class="typing-dot"></div>
-                                    <div class="typing-dot" style="animation-delay: 0.2s"></div>
-                                    <div class="typing-dot" style="animation-delay: 0.4s"></div>
-                                </div>
-
-                                <!-- Msj 3 -->
-                                <div class="chat-msg msg-ai msg-3">
-                                    <i class="fas fa-check-circle" style="color:#27c93f; margin-right:5px;"></i>
-                                    Procesando con Power Automate...<br>
-                                    <span style="opacity:0.7; font-size:0.8rem; display:block; margin-top:5px;">
-                                        ✓ Orden creada en SAP.<br>
-                                        ✓ Proveedor notificado.
-                                    </span>
-                                </div>
-
-                                <!-- Typing 2 -->
-                                <div class="typing-indicator typ-2" style="position: absolute; bottom: 100px;">
-                                    <div class="typing-dot"></div>
-                                    <div class="typing-dot" style="animation-delay: 0.2s"></div>
-                                    <div class="typing-dot" style="animation-delay: 0.4s"></div>
-                                </div>
-
-                                <!-- Msj 4 -->
-                                <div class="chat-msg msg-ai msg-4">
-                                    Reporte enviado a Finanzas. ¿Algo más?
+                            <div class="arch-node">
+                                <div class="arch-icon"><i class="fas fa-laptop-code"></i></div>
+                                <div class="arch-node-body">
+                                    <h3>4. Sistemas, Aplicaciones y Gestión</h3>
+                                    <p>Actualización limpia en tu CRM/ERP, portales web a medida, reportes gerenciales y respuesta oportuna al cliente.</p>
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </aside>
                 </div>
 
-                <!-- Impact Strip (Integrado como barra de estado de la ventana principal) -->
+                <!-- Pilares de Valor Verificables -->
                 <div class="impact-strip-contained">
                     <div class="impact-item">
-                        <span class="impact-value">+500h</span>
-                        <span class="impact-label">Mensuales Ahorradas</span>
+                        <span class="impact-value"><i class="fas fa-user-tie"></i> Trato Senior Directo</span>
+                        <span class="impact-label">Hablas y trabajas directamente con el ingeniero que diseña e implementa tu solución.</span>
                     </div>
                     <div class="impact-item">
-                        <span class="impact-value">24/7</span>
-                        <span class="impact-label">Operación IA</span>
+                        <span class="impact-value"><i class="fas fa-shield-alt"></i> Seguridad Integrada</span>
+                        <span class="impact-label">Respaldo de Magíster en Seguridad de la Información para proteger datos críticos.</span>
                     </div>
                     <div class="impact-item">
-                        <span class="impact-value">99%</span>
-                        <span class="impact-label">Precisión</span>
+                        <span class="impact-value"><i class="fas fa-plug"></i> Sin Cambiar Todo</span>
+                        <span class="impact-label">Conectamos tus sistemas actuales o construimos solo la pieza de software que te falta.</span>
                     </div>
                     <div class="impact-item">
-                        <span class="impact-value">-30%</span>
-                        <span class="impact-label">Costos</span>
+                        <span class="impact-value"><i class="fas fa-sliders"></i> Alcance Realista</span>
+                        <span class="impact-label">Proyectos por etapas claras, ajustados al tamaño y madurez de tu organización.</span>
                     </div>
                 </div>
             </section>
 
-            <!-- Integrations Bar (CRO Improvement) -->
-            <section class="integration-bar" style="text-align: center; margin: 40px 0;">
-                <p style="color: var(--text-muted); font-size: 0.9rem; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 20px;">Integramos con los sistemas que ya usas</p>
-                <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 30px; opacity: 0.7; font-weight: bold; font-size: 1.2rem; color: var(--win-fg);">
-                    <span><i class="fas fa-server"></i> SAP</span>
-                    <span><i class="fas fa-bolt"></i> Power Automate</span>
-                    <span><i class="fas fa-shopping-cart"></i> Shopify</span>
-                    <span><i class="fas fa-box"></i> Mercado Libre</span>
-                    <span><i class="fas fa-file-invoice-dollar"></i> SII</span>
-                    <span><i class="fas fa-database"></i> Oracle</span>
-                    <span><i class="fab fa-whatsapp"></i> WhatsApp API</span>
-                </div>
-            </section>
-
-            <!-- Ventana: Casos de Éxito -->
-            <section id="casos-exito" class="window-panel">
-                <div class="window-titlebar">
-                    <span>Casos de Éxito y Resultados</span>
-                    <div class="win-controls" aria-label="Controles de ventana">
-                        <div class="win-btn close"></div>
-                    </div>
-                </div>
-
-                <h2 style="font-size: 1.8rem; margin-bottom: 10px;">Resultados en el Mundo Real</h2>
-                <p style="color: var(--text-muted); margin-bottom: 30px;">Impacto medible en operaciones reales.</p>
-
-                <div style="display: flex; flex-direction: column; gap: 20px;">
-                    <!-- Caso 1 -->
-                    <article
-                        style="background: rgba(255, 255, 255, 0.03); border-left: 4px solid var(--accent); padding: 25px; border-radius: 4px 12px 12px 4px;">
-                        <span
-                            style="display: inline-block; background: rgba(96, 205, 255, 0.1); color: var(--accent); padding: 5px 12px; border-radius: 20px; font-size: 0.8rem; font-weight: bold; margin-bottom: 15px;">Retail
-                            y eCommerce Mediano</span>
-                        <p style="color: var(--win-fg); margin-bottom: 10px;"><strong>Problema:</strong> Cada devolución
-                            de producto tomaba 20 minutos de cruce de datos y llamadas entre áreas, con clientes
-                            insatisfechos por la demora.</p>
-                        <p style="color: var(--win-fg); margin-bottom: 10px;"><strong>Solución:</strong> Implementación
-                            de Bot de WhatsApp integrado a su plataforma de eCommerce y ERP logístico para realizar
-                            procesos de RMA de manera automática.</p>
-                        <p style="color: var(--accent); font-weight: bold;">Resultado: 40% del tiempo ahorrado en
-                            gestión y devoluciones procesadas en 3 minutos.</p>
-                    </article>
-
-                    <!-- Caso 2 -->
-                    <article
-                        style="background: rgba(255, 255, 255, 0.03); border-left: 4px solid var(--accent); padding: 25px; border-radius: 4px 12px 12px 4px;">
-                        <span
-                            style="display: inline-block; background: rgba(96, 205, 255, 0.1); color: var(--accent); padding: 5px 12px; border-radius: 20px; font-size: 0.8rem; font-weight: bold; margin-bottom: 15px;">Operador
-                            Logístico Regional</span>
-                        <p style="color: var(--win-fg); margin-bottom: 10px;"><strong>Problema:</strong> Choferes
-                            enviando fotos de despachos en WhatsApp que debían ser transcritas manualmente al sistema,
-                            causando retrasos de reportería.</p>
-                        <p style="color: var(--win-fg); margin-bottom: 10px;"><strong>Solución:</strong> Sistema RPA que
-                            extrae imágenes, aplica OCR para digitalizar datos y envía la comprobación de entrega
-                            directo al cliente y al ERP.</p>
-                        <p style="color: var(--accent); font-weight: bold;">Resultado: Eliminación total de horas extras
-                            por digitación y reportes de rutas en tiempo real.</p>
-                    </article>
-
-                    <!-- Testimonio Placeholder -->
-                    <div
-                        style="display: none; margin-top: 30px; font-style: italic; color: var(--text-muted); padding: 30px; background: rgba(255, 255, 255, 0.02); text-align: center; border-radius: 12px;">
-                        <h3
-                            style="font-size: 3rem; margin: 0; padding: 0; color: var(--accent); opacity: 0.3; line-height: 0.5;">
-                            "</h3>
-                        <p style="font-size: 1.1rem; max-width: 600px; margin: 15px auto;">La integración no requirió
-                            que cambiáramos de software, operó silenciosamente en segundo plano y nuestro equipo pudo
-                            por fin enfocarse en vender, no en actualizar planillas.</p>
-                        <span style="display: block; font-weight: bold; font-size: 0.9rem; margin-top: 15px;">- Próximo
-                            Testimonio Validado.</span>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Ventana: Sectores / A quién ayudamos -->
-            <section id="industrias" class="window-panel">
-                <div class="window-titlebar">
-                    <span>A quién ayudamos</span>
-                    <div class="win-controls">
-                        <div class="win-btn close"></div>
-                    </div>
-                </div>
-
-                <div class="window-content-padding">
-                    <h2 class="title-accent">Sectores Especializados</h2>
-                    <p class="subtitle-muted" style="margin-bottom: 30px;">Soluciones concretas para dolores específicos
-                        en empresas chilenas.</p>
-
-                    <div style="display: flex; flex-direction: column; gap: 30px;">
-
-                        <!-- Retail y e-commerce -->
-                        <div
-                            style="background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 12px; padding: 25px;">
-                            <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 20px;">
-                                <div class="industry-icon" style="color: var(--accent); font-size: 2rem;"><i
-                                        class="fas fa-shopping-cart"></i></div>
-                                <h3 style="font-size: 1.5rem; margin: 0;">Retail y E-commerce</h3>
-                            </div>
-                            <ul
-                                style="list-style: none; padding: 0; margin: 0; color: var(--text-muted); line-height: 1.6;">
-                                <li style="margin-bottom: 12px;"><strong style="color: var(--text-main);">Problemas
-                                        típicos:</strong> Alto volumen de tickets de soporte, devoluciones manuales
-                                    desordenadas y equipos saturados en temporada alta (Cyber).</li>
-                                <li style="margin-bottom: 12px;"><strong style="color: var(--text-main);">Nuestra
-                                        solución:</strong> Automatización de atención al cliente (Nivel 1) y gestión de
-                                    devoluciones. Agentes de IA conectados a tu ERP y plataforma e-commerce resolviendo
-                                    dudas por WhatsApp.</li>
-                                <li style="margin-bottom: 12px;"><strong
-                                        style="color: var(--text-main);">Beneficios:</strong> -40% de horas en tareas
-                                    manuales, cero tickets "perdidos", atención instantánea 24/7 y mejor experiencia de
-                                    usuario.</li>
-                            </ul>
-                        </div>
-
-                        <!-- Logística y última milla -->
-                        <div
-                            style="background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 12px; padding: 25px;">
-                            <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 20px;">
-                                <div class="industry-icon" style="color: var(--accent); font-size: 2rem;"><i
-                                        class="fas fa-truck-fast"></i></div>
-                                <h3 style="font-size: 1.5rem; margin: 0;">Logística y Última Milla (3PL)</h3>
-                            </div>
-                            <ul
-                                style="list-style: none; padding: 0; margin: 0; color: var(--text-muted); line-height: 1.6;">
-                                <li style="margin-bottom: 12px;"><strong style="color: var(--text-main);">Problemas
-                                        típicos:</strong> Clientes consultando "¿dónde está mi pedido?", falta de
-                                    visibilidad en rutas y operadores gastando horas copiando guías de despacho.</li>
-                                <li style="margin-bottom: 12px;"><strong style="color: var(--text-main);">Nuestra
-                                        solución:</strong> Bot de seguimiento en WhatsApp en tiempo real, extracción
-                                    automatizada de datos (OCR) y sincronización con Sistemas de Gestión de Transporte
-                                    (TMS).</li>
-                                <li style="margin-bottom: 12px;"><strong
-                                        style="color: var(--text-main);">Beneficios:</strong> Reducción drástica en
-                                    llamadas de reclamo, -30% de llamadas por estado de entrega, y eliminación de
-                                    errores de digitación en despachos.</li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <div style="margin-top: 40px; text-align: center;">
-                        <a href="#contacto" class="btn-corp-accent">Agendar llamada de 20 minutos</a>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Ventana: Status Quo vs IA (NUEVA ESTRATEGIA CRO) -->
-            <section id="status-quo" class="window-panel" style="margin-bottom: 40px; margin-top: 20px;">
-                <div class="window-titlebar">
-                    <span>El Problema vs La Solución Eficiente</span>
-                    <div class="win-controls">
-                        <div class="win-btn close"></div>
-                    </div>
-                </div>
-
-                <div class="window-content-padding">
-                    <h2 class="title-accent" style="text-align: center; margin-bottom: 5px;">Por qué el flujo
-                        tradicional ya no es suficiente</h2>
-                    <p
-                        style="text-align: center; margin-bottom: 30px; color: var(--text-muted); font-size: 1.1rem; max-width: 700px; margin-inline: auto;">
-                        No vendemos tecnología por tecnología; ayudamos a reducir costos, errores y tiempos mediante
-                        automatización e IA.
+            <!-- ==============================================================
+                 BLOQUE 2: PROBLEMAS QUE RESOLVEMOS (TRANSVERSAL)
+                 ============================================================== -->
+            <section id="problemas" class="section-block section-open">
+                <div class="section-header">
+                    <span class="eyebrow"><i class="fas fa-triangle-exclamation"></i> Diagnóstico Operativo</span>
+                    <h2 class="section-title">¿Dónde se está quedando atrapado el tiempo de tu equipo?</h2>
+                    <p class="section-subtitle">
+                        No necesitas un proyecto interminable para ver mejoras reales. Resolvemos cuellos de botella concretos que hoy frenan la operación y el crecimiento comercial en empresas de distintos rubros.
                     </p>
+                </div>
 
-                    <div style="display: flex; flex-wrap: wrap; gap: 20px;">
-                        <!-- Status Quo (Lo tradicional) -->
-                        <div
-                            style="flex: 1; min-width: 300px; background: rgba(255, 50, 50, 0.05); border: 1px solid rgba(255, 50, 50, 0.2); border-radius: 15px; padding: 25px;">
-                            <h3
-                                style="color: #ff6b6b; margin-bottom: 20px; display: flex; align-items: center; gap: 10px; font-size: 1.3rem;">
-                                <i class="fas fa-times-circle"></i> La Forma Tradicional
-                            </h3>
-                            <ul style="list-style: none; padding: 0; margin: 0; color: var(--win-fg);">
-                                <li
-                                    style="margin-bottom: 15px; display: flex; align-items: flex-start; gap: 10px; line-height: 1.5;">
-                                    <i class="fas fa-xmark" style="color: #ff6b6b; margin-top: 4px;"></i> Contratar más
-                                    personal para copiar y pegar datos entre pantallas.
-                                </li>
-                                <li
-                                    style="margin-bottom: 15px; display: flex; align-items: flex-start; gap: 10px; line-height: 1.5;">
-                                    <i class="fas fa-xmark" style="color: #ff6b6b; margin-top: 4px;"></i> Atención al
-                                    cliente limitada a horario de oficina con respuestas lentas.
-                                </li>
-                                <li
-                                    style="margin-bottom: 15px; display: flex; align-items: flex-start; gap: 10px; line-height: 1.5;">
-                                    <i class="fas fa-xmark" style="color: #ff6b6b; margin-top: 4px;"></i> Reportes
-                                    financieros que llegan la quincena siguiente.
-                                </li>
-                                <li
-                                    style="margin-bottom: 15px; display: flex; align-items: flex-start; gap: 10px; line-height: 1.5;">
-                                    <i class="fas fa-xmark" style="color: #ff6b6b; margin-top: 4px;"></i> Riesgo
-                                    constante de errores humanos que cuestan dinero y prestigio.
-                                </li>
+                <div class="problems-grid">
+                    <article class="problem-card">
+                        <div class="problem-icon"><i class="fas fa-copy"></i></div>
+                        <div class="problem-content">
+                            <h3>Tareas manuales entre sistemas que no conversan</h3>
+                            <p>Personas clave invirtiendo horas todas las semanas en copiar datos entre correos, planillas Excel, portales como el SII, el CRM o el sistema contable, generando atrasos y reprocesos.</p>
+                        </div>
+                    </article>
+
+                    <article class="problem-card">
+                        <div class="problem-icon"><i class="fas fa-clock"></i></div>
+                        <div class="problem-content">
+                            <h3>Consultas comerciales y clientes esperando respuesta</h3>
+                            <p>Oportunidades de venta o solicitudes de post-venta que llegan por la web o WhatsApp y demoran horas en responderse, no se filtran o no quedan registradas para hacerles seguimiento.</p>
+                        </div>
+                    </article>
+
+                    <article class="problem-card">
+                        <div class="problem-icon"><i class="fas fa-unlock-keyhole"></i></div>
+                        <div class="problem-content">
+                            <h3>Uso improvisado de IA sin criterios de seguridad</h3>
+                            <p>Equipos que ya intentan usar herramientas como ChatGPT, Claude o Gemini por su cuenta, pero sin lineamientos, sin conexión a los procesos de la empresa y con riesgo de exponer información sensible.</p>
+                        </div>
+                    </article>
+
+                    <article class="problem-card">
+                        <div class="problem-icon"><i class="fas fa-puzzle-piece"></i></div>
+                        <div class="problem-content">
+                            <h3>Procesos propios que no caben en una planilla</h3>
+                            <p>Operaciones que superaron la capacidad de Excel pero donde un software enlatado es rígido o excesivamente caro, requiriendo una aplicación web a medida o un sitio comercial conectado a la operación.</p>
+                        </div>
+                    </article>
+                </div>
+            </section>
+
+            <!-- ==============================================================
+                 BLOQUE 3: SERVICIOS ORGANIZADOS CON JERARQUÍA CLARA
+                 ============================================================== -->
+            <section id="servicios" class="section-block section-elevated">
+                <div class="section-header">
+                    <span class="eyebrow"><i class="fas fa-cubes"></i> Oferta Integrada</span>
+                    <h2 class="section-title">Cómo podemos ayudar a tu empresa</h2>
+                    <p class="section-subtitle">
+                        Organizamos nuestras capacidades para que puedas partir por una necesidad puntual —como automatizar un flujo crítico o evaluar oportunidades— y escalar hacia agentes de IA o software a medida cuando tu operación lo requiera.
+                    </p>
+                </div>
+
+                <!-- GRUPO 1: CORE (AUTOMATIZACIÓN E IA) -->
+                <div class="services-group-block">
+                    <div class="group-label">
+                        <span class="group-badge">Núcleo Operativo</span>
+                        <span class="group-title">Automatización de Procesos e Inteligencia Artificial Aplicada</span>
+                    </div>
+                    <div class="services-grid">
+                        <article class="service-card featured">
+                            <div class="service-top">
+                                <div class="service-icon-row">
+                                    <div class="service-icon"><i class="fas fa-diagram-project"></i></div>
+                                    <span class="service-num">LÍNEA 01 · PRINCIPAL</span>
+                                </div>
+                                <h3>Automatización de procesos e integración de herramientas</h3>
+                                <p>Diseñamos e implementamos flujos automatizados (especialmente con <strong>n8n</strong> y conexiones API) para que tus sistemas actuales trabajen coordinados sin intervención manual repetitiva.</p>
+                            </div>
+                            <ul class="service-deliverables">
+                                <li><i class="fas fa-check"></i> Conexión entre correo, Google Workspace / Microsoft 365, CRM, ERP y WhatsApp.</li>
+                                <li><i class="fas fa-check"></i> Extracción y cruce automatizado de documentos, órdenes, facturas o reportes.</li>
+                                <li><i class="fas fa-check"></i> Alertas operativas, manejo de errores y trazabilidad de cada ejecución.</li>
                             </ul>
-                        </div>
+                        </article>
 
-                        <!-- Efinnovation (La solución) -->
-                        <div
-                            style="flex: 1; min-width: 300px; background: rgba(0, 255, 150, 0.05); border: 1px solid var(--accent); border-radius: 15px; padding: 25px; position: relative;">
-                            <div
-                                style="position: absolute; top: -12px; right: 20px; background: var(--accent); color: black; font-size: 0.7rem; font-weight: bold; padding: 4px 10px; border-radius: 20px; letter-spacing: 0.5px;">
-                                LA VENTAJA INTEGRADA</div>
-                            <h3
-                                style="color: var(--accent); margin-bottom: 20px; display: flex; align-items: center; gap: 10px; font-size: 1.3rem;">
-                                <i class="fas fa-check-circle"></i> La Vía Efinnovation
-                            </h3>
-                            <ul style="list-style: none; padding: 0; margin: 0; color: var(--win-fg);">
-                                <li
-                                    style="margin-bottom: 15px; display: flex; align-items: flex-start; gap: 10px; line-height: 1.5;">
-                                    <i class="fas fa-check" style="color: var(--accent); margin-top: 4px;"></i>
-                                    Conectamos tu ERP a un ecosistema validado que trabaja 24/7 sin descanso.
-                                </li>
-                                <li
-                                    style="margin-bottom: 15px; display: flex; align-items: flex-start; gap: 10px; line-height: 1.5;">
-                                    <i class="fas fa-check" style="color: var(--accent); margin-top: 4px;"></i> Agentes
-                                    de IA resuelven dudas tributarias y soporte de Nivel 1 en segundos.
-                                </li>
-                                <li
-                                    style="margin-bottom: 15px; display: flex; align-items: flex-start; gap: 10px; line-height: 1.5;">
-                                    <i class="fas fa-check" style="color: var(--accent); margin-top: 4px;"></i>
-                                    Dashboards y notificaciones proactivas directo al WhatsApp de gerencia.
-                                </li>
-                                <li
-                                    style="margin-bottom: 15px; display: flex; align-items: flex-start; gap: 10px; line-height: 1.5;">
-                                    <i class="fas fa-check" style="color: var(--accent); margin-top: 4px;"></i> Cero
-                                    errores digitales de digitación: trazabilidad del 100%.
-                                </li>
+                        <article class="service-card featured">
+                            <div class="service-top">
+                                <div class="service-icon-row">
+                                    <div class="service-icon"><i class="fas fa-robot"></i></div>
+                                    <span class="service-num">LÍNEA 02 · IA APLICADA</span>
+                                </div>
+                                <h3>Agentes y asistentes de IA con control documental</h3>
+                                <p>Implementamos asistentes basados en modelos de <strong>OpenAI, Anthropic (Claude) y Google Gemini</strong> conectados de forma segura al conocimiento, catálogos o flujos de tu empresa.</p>
+                            </div>
+                            <ul class="service-deliverables">
+                                <li><i class="fas fa-check"></i> Asistentes internos para consulta rápida de procedimientos, contratos o bases técnicas.</li>
+                                <li><i class="fas fa-check"></i> Agentes de atención comercial y pre-calificación en web o WhatsApp con derivación a humanos.</li>
+                                <li><i class="fas fa-check"></i> Clasificación, resumen y extracción de datos desde documentos no estructurados.</li>
                             </ul>
-                        </div>
+                        </article>
+                    </div>
+                </div>
+
+                <!-- GRUPO 2: DESARROLLO A MEDIDA Y WEB COMERCIAL -->
+                <div class="services-group-block">
+                    <div class="group-label">
+                        <span class="group-badge">Construcción Digital</span>
+                        <span class="group-title">Desarrollo de Software a Medida y Sitios Conectados</span>
+                    </div>
+                    <div class="services-grid">
+                        <article class="service-card">
+                            <div class="service-top">
+                                <div class="service-icon-row">
+                                    <div class="service-icon"><i class="fas fa-code"></i></div>
+                                    <span class="service-num">LÍNEA 03 · SOFTWARE</span>
+                                </div>
+                                <h3>Desarrollo de aplicaciones web y software a medida</h3>
+                                <p>Cuando tus procesos requieren una interfaz propia, construimos aplicaciones web modernas, seguras y rápidas utilizando ingeniería de software asistida por IA.</p>
+                            </div>
+                            <ul class="service-deliverables">
+                                <li><i class="fas fa-check"></i> Paneles operativos internos, portales de clientes/proveedores y sistemas de gestión acotados.</li>
+                                <li><i class="fas fa-check"></i> Reemplazo de planillas críticas por bases de datos con control de usuarios y roles.</li>
+                                <li><i class="fas fa-check"></i> Conectado desde el inicio a tus flujos de automatización e infraestructura.</li>
+                            </ul>
+                        </article>
+
+                        <article class="service-card">
+                            <div class="service-top">
+                                <div class="service-icon-row">
+                                    <div class="service-icon"><i class="fas fa-globe"></i></div>
+                                    <span class="service-num">LÍNEA 04 · COMERCIAL</span>
+                                </div>
+                                <h3>Sitios web y landing pages conectadas a procesos comerciales</h3>
+                                <p>Desarrollamos sitios corporativos y páginas de aterrizaje rápidas, claras y conectadas directamente a tu flujo de ventas para que ningún contacto quede sin gestión.</p>
+                            </div>
+                            <ul class="service-deliverables">
+                                <li><i class="fas fa-check"></i> Diseño orientado a conversión B2B, SEO técnico y medición analítica (GTM / GA4).</li>
+                                <li><i class="fas fa-check"></i> Registro automático de prospectos en tu CRM o planilla y notificación inmediata por WhatsApp/correo.</li>
+                                <li><i class="fas fa-check"></i> Integración con agenda de reuniones y seguimiento automatizado.</li>
+                            </ul>
+                        </article>
+                    </div>
+                </div>
+
+                <!-- GRUPO 3: CONSULTORÍA Y CAPACITACIÓN -->
+                <div class="services-group-block">
+                    <div class="group-label">
+                        <span class="group-badge">Estrategia y Adopción</span>
+                        <span class="group-title">Consultoría, Diagnóstico y Capacitación para Equipos</span>
+                    </div>
+                    <div class="services-grid">
+                        <article class="service-card">
+                            <div class="service-top">
+                                <div class="service-icon-row">
+                                    <div class="service-icon"><i class="fas fa-magnifying-glass-chart"></i></div>
+                                    <span class="service-num">LÍNEA 05 · CONSULTORÍA</span>
+                                </div>
+                                <h3>Consultoría y diagnóstico de oportunidades de IA</h3>
+                                <p>Para empresas que quieren incorporar IA y automatización con criterio financiero y técnico, evitando gastar en herramientas de moda que no resuelven el problema real.</p>
+                            </div>
+                            <ul class="service-deliverables">
+                                <li><i class="fas fa-check"></i> Levantamiento de procesos y detección de cuellos de botella con mayor retorno operativo.</li>
+                                <li><i class="fas fa-check"></i> Evaluación de arquitectura, costos de licencias/APIs y riesgos de seguridad de datos.</li>
+                                <li><i class="fas fa-check"></i> Hoja de ruta priorizada por impacto y factibilidad de implementación.</li>
+                            </ul>
+                        </article>
+
+                        <article class="service-card">
+                            <div class="service-top">
+                                <div class="service-icon-row">
+                                    <div class="service-icon"><i class="fas fa-chalkboard-user"></i></div>
+                                    <span class="service-num">LÍNEA 06 · ADOPCIÓN</span>
+                                </div>
+                                <h3>Capacitación y acompañamiento para la adopción</h3>
+                                <p>La tecnología fracasa si el equipo no la adopta. Entrenamos a equipos directivos, administrativos y técnicos en el uso práctico y responsable de herramientas de IA.</p>
+                            </div>
+                            <ul class="service-deliverables">
+                                <li><i class="fas fa-check"></i> Talleres prácticos con casos reales de tu empresa (OpenAI, Claude, Gemini, automatizaciones).</li>
+                                <li><i class="fas fa-check"></i> Buenas prácticas de seguridad: qué información subir, cómo evitar filtraciones y cómo validar respuestas.</li>
+                                <li><i class="fas fa-check"></i> Acompañamiento posterior para asegurar que los nuevos flujos se mantengan en uso.</li>
+                            </ul>
+                        </article>
                     </div>
                 </div>
             </section>
 
-            <!-- Ventana: Soluciones y Paquetes -->
-            <section id="servicios" class="window-panel" style="margin-top: 40px;">
-                <div class="window-titlebar">
-                    <span>Soluciones</span>
-                    <div class="win-controls">
-                        <div class="win-btn close"></div>
-                    </div>
+            <!-- ==============================================================
+                 BLOQUE 4: SEGMENTACIÓN POR TAMAÑO Y NECESIDAD DE EMPRESA
+                 ============================================================== -->
+            <section id="segmentos" class="section-block section-open">
+                <div class="section-header">
+                    <span class="eyebrow"><i class="fas fa-building"></i> Para Quién Trabajamos</span>
+                    <h2 class="section-title">Alcance adaptado a la realidad de tu empresa</h2>
+                    <p class="section-subtitle">
+                        Trabajamos con organizaciones de distintos sectores (servicios profesionales, comercio, industria, logística, salud, finanzas, educación y tecnología), ajustando la complejidad de cada proyecto a tu etapa y capacidad operativa.
+                    </p>
                 </div>
 
-                <div class="window-content-padding">
-                    <div style="text-align: center; margin-bottom: 40px;">
-                        <h2 class="title-accent">Soluciones paquetizadas para tu operación</h2>
-                        <p class="subtitle-muted">Proyectos de inicio a fin con tiempos y resultados claros.</p>
-                    </div>
+                <div class="segments-grid">
+                    <!-- Pequeñas Empresas -->
+                    <article class="segment-card">
+                        <span class="segment-tag">Etapa de Crecimiento</span>
+                        <h3>Pequeñas Empresas</h3>
+                        <p class="segment-context">Negocios que necesitan ordenar su operación comercial y administrativa sin contratar un área de informática ni comprometerse con licencias costosas.</p>
+                        <ul class="segment-list">
+                            <li><i class="fas fa-check-circle"></i> Sitios web y landings conectadas a WhatsApp, correo y registro automático de clientes.</li>
+                            <li><i class="fas fa-check-circle"></i> Automatizaciones puntuales en n8n (cotizaciones, avisos de cobro, seguimiento comercial).</li>
+                            <li><i class="fas fa-check-circle"></i> Capacitación práctica para que el equipo ahorre horas semanales usando IA.</li>
+                        </ul>
+                        <div class="segment-meta">Plazo habitual: 2 a 4 semanas · Inversión acotada por entregable</div>
+                    </article>
 
-                    <div style="display: flex; flex-direction: column; gap: 30px;">
-                        <!-- Paquete 1 -->
-                        <div
-                            style="background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 12px; padding: 25px;">
-                            <h3 style="color: var(--accent); margin-bottom: 10px; font-size: 1.4rem;">Automatización de
-                                Atención y Devoluciones</h3>
-                            <p style="color: var(--win-fg); margin-bottom: 15px;"><strong>El problema:</strong> Equipo
-                                de post-venta saturado respondiendo las mismas preguntas de trazabilidad o tramitando
-                                garantías a mano.</p>
-                            <p style="color: var(--win-fg); margin-bottom: 15px;"><strong>Qué implementamos:</strong>
-                                Asistente de IA en WhatsApp conectado a tu ERP y logística. Atiende 24/7, procesa
-                                devoluciones y genera tickets estructurados de manera autónoma.</p>
-                            <p style="color: var(--win-fg); margin-bottom: 15px;"><strong>Plazo:</strong> En 6–8
-                                semanas.</p>
-                            <p style="color: var(--win-fg); margin-bottom: 20px;"><strong>Resultado esperado:</strong>
-                                -30% de horas operativas y +40% de satisfacción final.</p>
-                        </div>
+                    <!-- Medianas Empresas -->
+                    <article class="segment-card highlight">
+                        <span class="segment-tag">Escalamiento Operativo</span>
+                        <h3>Medianas Empresas</h3>
+                        <p class="segment-context">Empresas con equipos comerciales, administrativos y de operaciones que sufren por sistemas desconectados, reprocesos y reportería manual.</p>
+                        <ul class="segment-list">
+                            <li><i class="fas fa-check-circle"></i> Integración entre CRM, ERP, facturación electrónica (SII), correo y canales de atención.</li>
+                            <li><i class="fas fa-check-circle"></i> Asistentes de IA conectados a documentación interna o post-venta con supervisión humana.</li>
+                            <li><i class="fas fa-check-circle"></i> Desarrollo de aplicaciones web internas y paneles operativos a medida.</li>
+                        </ul>
+                        <div class="segment-meta">Plazo habitual: 4 a 8 semanas por fases · Retorno medible por proceso</div>
+                    </article>
 
-                        <!-- Paquete 2 -->
-                        <div
-                            style="background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 12px; padding: 25px;">
-                            <h3 style="color: var(--accent); margin-bottom: 10px; font-size: 1.4rem;">Automatización
-                                Contable y Conciliación (SII)</h3>
-                            <p style="color: var(--win-fg); margin-bottom: 15px;"><strong>El problema:</strong> Días
-                                enteros gastados en cuadrar facturas, bajar XML del SII y cruzar datos con la cuenta
-                                bancaria.</p>
-                            <p style="color: var(--win-fg); margin-bottom: 15px;"><strong>Qué implementamos:</strong>
-                                Sistema RPA que extrae información del portal bancario y del SII, hace match automático
-                                y aprueba todo directo en tu ERP.</p>
-                            <p style="color: var(--win-fg); margin-bottom: 15px;"><strong>Plazo:</strong> En 4–6
-                                semanas.</p>
-                            <p style="color: var(--win-fg); margin-bottom: 20px;"><strong>Resultado esperado:</strong>
-                                Cierre contable 5 días antes y cero errores de digitación.</p>
-                        </div>
-
-                        <!-- Paquete 3 -->
-                        <div
-                            style="background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 12px; padding: 25px;">
-                            <h3 style="color: var(--accent); margin-bottom: 10px; font-size: 1.4rem;">Optimización de
-                                Rutas y Última Milla</h3>
-                            <p style="color: var(--win-fg); margin-bottom: 15px;"><strong>El problema:</strong>
-                                Vehículos en rutas ineficientes, nula visibilidad para el cliente y manejo físico lento
-                                de las guías de despacho.</p>
-                            <p style="color: var(--win-fg); margin-bottom: 15px;"><strong>Qué implementamos:</strong>
-                                Orquestación entre el conductor, el TMS y WhatsApp. Alertas automáticas de ETA, lectura
-                                OCR de facturas y centralización de despachadores.</p>
-                            <p style="color: var(--win-fg); margin-bottom: 15px;"><strong>Plazo:</strong> En 6–8
-                                semanas.</p>
-                            <p style="color: var(--win-fg); margin-bottom: 20px;"><strong>Resultado esperado:</strong>
-                                -20% en costos logísticos y caída drástica de reclamos por atrasos.</p>
-                        </div>
-                    </div>
-
-                    <div style="margin-top: 40px; text-align: center; display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
-                        <a href="https://wa.me/56974263408?text=Hola%2C%20me%20interesa%20una%20soluci%C3%B3n%20de%20automatizaci%C3%B3n" class="btn-corp-accent" target="_blank" rel="noopener noreferrer">
-                            <i class="fab fa-whatsapp" style="margin-right:6px;"></i> Hablar por WhatsApp
-                        </a>
-                        <a href="#diagnostico" class="btn-corp-primary">Solicitar auditoría gratuita <i class="fas fa-arrow-right"></i></a>
-                    </div>
+                    <!-- Grandes Empresas -->
+                    <article class="segment-card">
+                        <span class="segment-tag">Áreas y Equipos Corporativos</span>
+                        <h3>Grandes Empresas</h3>
+                        <p class="segment-context">Gerencias o departamentos que necesitan resolver cuellos de botella específicos o validar pilotos de IA cumpliendo estándares estrictos de seguridad.</p>
+                        <ul class="segment-list">
+                            <li><i class="fas fa-check-circle"></i> Diagnóstico de oportunidades de IA y evaluación de riesgos de Seguridad de la Información.</li>
+                            <li><i class="fas fa-check-circle"></i> Pruebas de concepto (PoC) y flujos departamentales desplegados en infraestructura propia del cliente.</li>
+                            <li><i class="fas fa-check-circle"></i> Programas de capacitación ejecutiva y técnica en adopción segura de IA.</li>
+                        </ul>
+                        <div class="segment-meta">Alcance modular por área · Documentación técnica y transferencia</div>
+                    </article>
                 </div>
             </section>
 
-            <!-- Ventana: Diagnóstico IA (Lead Magnet) -->
-            <section id="diagnostico" class="window-panel" style="margin-top: 40px;">
-                <div class="window-titlebar">
-                    <span>Auditoría Gratuita de Procesos</span>
-                    <div class="win-controls">
-                        <div class="win-btn close"></div>
-                    </div>
+            <!-- ==============================================================
+                 BLOQUE 5: MÉTODO DE TRABAJO
+                 ============================================================== -->
+            <section id="metodologia" class="section-block section-open">
+                <div class="section-header">
+                    <span class="eyebrow"><i class="fas fa-route"></i> Metodología</span>
+                    <h2 class="section-title">Cómo trabajamos: ingeniería clara, sin cajas negras</h2>
+                    <p class="section-subtitle">
+                        Cada proyecto avanza por etapas verificables. Sabes desde el primer día qué se va a construir, cómo se protegen tus datos y quién aprueba cada paso.
+                    </p>
                 </div>
-
-                <div class="window-content-padding">
-                    <div style="text-align: center; margin-bottom: 40px;">
-                        <h2 class="title-accent">Descubre qué procesos te hacen perder dinero hoy</h2>
-                        <p class="subtitle-muted" style="max-width: 600px; margin: 0 auto;">Auditoría estratégica en 30
-                            segundos. Evaluaremos tu stack tecnológico y agendaremos una llamada de 15 min <strong
-                                style="color: var(--accent);">solo si vemos que podemos generar un ROI positivo real en
-                                tu operación.</strong></p>
-                    </div>
-
-                    <form id="auditoria-form" class="diagnostic-form" method="POST"
-                        action="https://auto.efinnovation.cl/webhook/captura">
-                        <div class="form-group" style="display: flex; flex-direction: row; gap: 15px;">
-                            <div style="flex: 1;">
-                                <label for="diag-name">Nombre y Empresa</label>
-                                <input type="text" id="diag-name" name="name" placeholder="Ej: Juan Pérez - Retail S.A."
-                                    required>
-                            </div>
-                            <div style="flex: 1;">
-                                <label for="diag-industry">Industria</label>
-                                <select id="diag-industry" name="industry" required style="width: 100%;">
-                                    <option value="" disabled selected>Selecciona tu rubro...</option>
-                                    <option value="retail">Retail y E-commerce</option>
-                                    <option value="logistica">Logística y Distribución</option>
-                                    <option value="legal">Legal y Contabilidad</option>
-                                    <option value="mineria">Minería y Energía</option>
-                                    <option value="otro">Otro (Especificar...)</option>
-                                </select>
-                                <input type="text" id="diag-industry-custom" name="industry_custom"
-                                    placeholder="¿Cuál es tu rubro?" style="display: none; margin-top: 10px;">
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="diag-pain">¿Cuál es tu mayor cuello de botella?</label>
-                            <select id="diag-pain" name="pain" required>
-                                <option value="" disabled selected>Selecciona un desafío...</option>
-                                <option value="manual-data">Mucho ingreso manual de datos</option>
-                                <option value="customer-support">Atención al cliente saturada</option>
-                                <option value="disconnected-systems">Sistemas que no se comunican</option>
-                                <option value="reporting">Reportes lentos o manuales</option>
-                                <option value="otro">Otro (Especificar...)</option>
-                            </select>
-                            <input type="text" id="diag-pain-custom" name="pain_custom"
-                                placeholder="Cuéntanos tu desafío..." style="display: none; margin-top: 10px;">
-                        </div>
-
-                        <div class="form-group" style="display: flex; flex-direction: row; gap: 15px;">
-                            <div style="flex: 1;">
-                                <label for="diag-email">Email Corporativo</label>
-                                <input type="email" id="diag-email" name="email" placeholder="ejemplo@empresa.cl"
-                                    required>
-                            </div>
-                            <div style="flex: 1;">
-                                <label for="diag-phone">WhatsApp / Teléfono</label>
-                                <input type="tel" id="diag-phone" name="phone" required style="width: 100%;">
-                            </div>
-                        </div>
-
-                        <button type="submit" class="btn-corp-accent diagnostic-submit">
-                            <span>Solicitar Mi Auditoría Gratuita</span> <i class="fas fa-arrow-right"></i>
-                        </button>
-                        <p style="text-align: center; font-size: 0.8rem; color: var(--text-muted); margin-top: 15px;">
-                            <i class="fas fa-lock" style="color: #27c93f;"></i> Sin spam. Tus datos están protegidos. Respondemos en menos de 24 horas hábiles.
-                        </p>
-                        <p style="text-align: center; font-size: 0.75rem; color: var(--text-muted); margin-top: 8px;">
-                            Al enviar aceptas nuestra <a href="/privacidad.html" target="_blank" style="color: var(--accent);">Política de Privacidad</a>.
-                        </p>
-
-                        <div id="form-status" class="form-status"></div>
-                    </form>
-                </div>
-            </section>
-
-            <!-- Modal: Resultados del Diagnóstico (Popup Moderno) -->
-            <div id="modal-resultados" class="modal-overlay">
-                <div class="diagnostic-modal">
-                    <div class="window-titlebar">
-                        <span>Smart Scorer - Informe de IA</span>
-                        <div class="win-controls">
-                            <div class="win-btn close"
-                                onclick="document.getElementById('modal-resultados').style.display='none'"></div>
-                        </div>
-                    </div>
-                    <div class="results-scroll">
-                        <div style="text-align: center; margin-bottom: 25px;">
-                            <h2 class="title-accent">Análisis Estratégico</h2>
-                            <p class="subtitle-muted">Generado por Efi IA en tiempo real</p>
-                        </div>
-                        <div id="diagnostico-resultado-content" class="results-text"
-                            style="line-height: 1.8; font-size: 1.1rem; color: var(--win-fg); text-align: justify;">
-                            <!-- La respuesta de n8n se inyectará aquí -->
-                        </div>
-                        <div style="margin-top: 30px; text-align: center;">
-                            <button class="btn-corp-accent"
-                                onclick="document.getElementById('modal-resultados').style.display='none'"
-                                style="width: auto; padding: 12px 30px;">
-                                Entendido <i class="fas fa-check"></i>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Ventana: Metodología (NUEVA) -->
-            <section id="metodologia" class="window-panel">
-                <div class="window-titlebar">
-                    <span>Plan de Implementación</span>
-                    <div class="win-controls" aria-label="Controles de ventana">
-                        <div class="win-btn close"></div>
-                    </div>
-                </div>
-
-                <h2 style="font-size: 1.8rem; margin-bottom: 10px;">Metodología de Implementación</h2>
-                <p style="color: var(--text-muted); margin-bottom: 30px;">Nuestro proceso para desplegar Inteligencia
-                    Artificial de forma estratégica y segura.</p>
 
                 <div class="process-grid">
-                    <!-- Phase 1 -->
                     <div class="process-card">
-                        <div class="step-number">01</div>
-                        <div class="process-content">
-                            <div class="process-icon"><i class="fas fa-magnifying-glass-chart"></i></div>
-                            <h3>Diagnóstico y Entendimiento</h3>
-                            <p>Entendemos tus retos, objetivos y procesos. Analizamos datos clave, creamos hoja de ruta
-                                y co-diseñamos plan de implementación con casos de uso, tecnologías, métricas y flujos
-                                definidos.</p>
-                        </div>
+                        <span class="step-badge">ETAPA 01</span>
+                        <h3>Diagnóstico y Alcance</h3>
+                        <p>Revisamos tu flujo actual, identificamos dónde se pierde tiempo o dinero y definimos por escrito los entregables, plazos, requisitos técnicos y presupuesto cerrado antes de iniciar.</p>
                     </div>
 
-                    <!-- Phase 2 -->
                     <div class="process-card">
-                        <div class="step-number">02</div>
-                        <div class="process-content">
-                            <div class="process-icon"><i class="fas fa-laptop-code"></i></div>
-                            <h3>Desarrollo e Integración</h3>
-                            <p>Ajustamos prompts y modelos, preparamos pipelines y APIs. Integramos con seguridad, SSO y
-                                permisos. Garantizamos calidad con QA, pruebas A/B y control de costos, liberando por
-                                fases.</p>
-                        </div>
+                        <span class="step-badge">ETAPA 02</span>
+                        <h3>Diseño Seguro y Prototipo</h3>
+                        <p>Diseñamos la arquitectura de integración o aplicación aplicando criterios de seguridad (mínimo privilegio, resguardo de credenciales) y validamos contigo un avance funcional temprano.</p>
                     </div>
 
-                    <!-- Phase 3 -->
                     <div class="process-card">
-                        <div class="step-number">03</div>
-                        <div class="process-content">
-                            <div class="process-icon"><i class="fas fa-network-wired"></i></div>
-                            <h3>Entrenamiento y Despliegue</h3>
-                            <p>Entrenamos con tus datos, optimizamos precisión, latencia y costos. Ajustamos umbrales,
-                                aplicamos feedback humano y desplegamos controladamente con monitoreo en tiempo real.
-                            </p>
-                        </div>
+                        <span class="step-badge">ETAPA 03</span>
+                        <h3>Implementación y Control Humano</h3>
+                        <p>Conectamos los sistemas, configuramos el manejo de excepciones y establecemos puntos de supervisión humana para cualquier acción sensible (pagos, registros contables, envíos críticos).</p>
                     </div>
 
-                    <!-- Phase 4 -->
                     <div class="process-card">
-                        <div class="step-number">04</div>
-                        <div class="process-content">
-                            <div class="process-icon"><i class="fas fa-clipboard-check"></i></div>
-                            <h3>Validación y Acompañamiento</h3>
-                            <p>Medimos desempeño con KPIs y feedback real. Mantenemos mejora continua con monitoreo y
-                                playbooks, actualizamos documentación y te acompañamos con Customer Success.</p>
-                        </div>
+                        <span class="step-badge">ETAPA 04</span>
+                        <h3>Entrega y Acompañamiento</h3>
+                        <p>Desplegamos en producción con monitoreo, entregamos la documentación técnica, capacitamos a tu equipo para operar con autonomía y acordamos soporte evolutivo si lo necesitas.</p>
                     </div>
                 </div>
             </section>
 
-
-
-            <!-- Ventana: Planes y Pricing -->
-            <section id="planes" class="window-panel" style="margin-top: 40px;">
-                <div class="window-titlebar">
-                    <span>Inversión y Garantía</span>
-                    <div class="win-controls">
-                        <div class="win-btn close"></div>
-                    </div>
-                </div>
-
-                <div class="window-content-padding">
-                    <div style="text-align: center; margin-bottom: 40px;">
-                        <h2 class="title-accent">Transparencia Total</h2>
-                        <p class="subtitle-muted">Sin costos ocultos. Diseñado para garantizar resultados en tu
-                            operación.</p>
-                    </div>
-
-                    <div
-                        style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; margin-bottom: 40px;">
-                        <!-- Plan Starter -->
-                        <div class="pricing-card">
-                            <h3 style="color: var(--text-muted); margin-bottom: 10px;">Starter Automations</h3>
-                            <div style="font-size: 2rem; font-weight: bold; margin-bottom: 20px; color: white;">A medida
-                                <span
-                                    style="font-size: 1rem; color: var(--text-muted); font-weight: normal;">/setup</span>
-                            </div>
-                            <ul
-                                style="list-style: none; padding: 0; margin-bottom: 30px; color: var(--text-muted); font-size: 0.95rem;">
-                                <li style="margin-bottom: 15px;"><i class="fas fa-check"
-                                        style="color: var(--accent); margin-right: 8px;"></i> 1 a 2 flujos automatizados
-                                </li>
-                                <li style="margin-bottom: 15px;"><i class="fas fa-check"
-                                        style="color: var(--accent); margin-right: 8px;"></i> Agente IA Básico (FAQ /
-                                    Web)</li>
-                                <li style="margin-bottom: 15px;"><i class="fas fa-check"
-                                        style="color: var(--accent); margin-right: 8px;"></i> Integración API Simple
-                                </li>
-                                <li style="margin-bottom: 15px;"><i class="fas fa-check"
-                                        style="color: var(--accent); margin-right: 8px;"></i> Soporte Técnico Asíncrono
-                                </li>
-                            </ul>
-                            <a href="#diagnostico" class="btn-corp-secondary"
-                                style="width: 100%; text-align: center; display: block;">Agendar Evaluación</a>
-                        </div>
-
-                        <!-- Plan Business (Destacado) -->
-                        <div class="pricing-card"
-                            style="border: 1px solid var(--accent); transform: scale(1.05); position: relative; background: rgba(56, 189, 248, 0.05); z-index: 10;">
-                            <div
-                                style="position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: var(--accent); color: black; font-size: 0.75rem; font-weight: bold; padding: 4px 15px; border-radius: 20px; text-transform: uppercase;">
-                                MÁS ELEGIDO B2B</div>
-                            <h3 style="color: var(--accent); margin-bottom: 10px;">Corporate AI</h3>
-                            <div style="font-size: 2rem; font-weight: bold; margin-bottom: 20px; color: white;">ROI
-                                Positivo <span
-                                    style="font-size: 1rem; color: var(--text-muted); font-weight: normal;">Garantizado</span>
-                            </div>
-                            <ul
-                                style="list-style: none; padding: 0; margin-bottom: 30px; color: var(--win-fg); font-size: 0.95rem;">
-                                <li style="margin-bottom: 15px;"><i class="fas fa-check"
-                                        style="color: var(--accent); margin-right: 8px;"></i> Agentes Cognitivos
-                                    Omnicanal</li>
-                                <li style="margin-bottom: 15px;"><i class="fas fa-check"
-                                        style="color: var(--accent); margin-right: 8px;"></i> Conexión a ERP / CRM Local
-                                </li>
-                                <li style="margin-bottom: 15px;"><i class="fas fa-check"
-                                        style="color: var(--accent); margin-right: 8px;"></i> Orquestación Compleja de
-                                    Datos</li>
-                                <li style="margin-bottom: 15px;"><i class="fas fa-check"
-                                        style="color: var(--accent); margin-right: 8px;"></i> Analítica WhatsApp de
-                                    Gerencia</li>
-                            </ul>
-                            <a href="#diagnostico" class="btn-corp-accent"
-                                style="width: 100%; text-align: center; display: block;">Quiero ver el Retorno</a>
-                        </div>
-
-                        <!-- Plan Enterprise -->
-                        <div class="pricing-card">
-                            <h3 style="color: var(--text-muted); margin-bottom: 10px;">Enterprise & Legacy</h3>
-                            <div style="font-size: 2rem; font-weight: bold; margin-bottom: 20px; color: white;">Custom
-                                <span
-                                    style="font-size: 1rem; color: var(--text-muted); font-weight: normal;">/project</span>
-                            </div>
-                            <ul
-                                style="list-style: none; padding: 0; margin-bottom: 30px; color: var(--text-muted); font-size: 0.95rem;">
-                                <li style="margin-bottom: 15px;"><i class="fas fa-check"
-                                        style="color: var(--accent); margin-right: 8px;"></i> Modernización de Sistemas
-                                    Legacy</li>
-                                <li style="margin-bottom: 15px;"><i class="fas fa-check"
-                                        style="color: var(--accent); margin-right: 8px;"></i> Modelos LLM Propios
-                                    (On-Premise)</li>
-                                <li style="margin-bottom: 15px;"><i class="fas fa-check"
-                                        style="color: var(--accent); margin-right: 8px;"></i> Auditoría Continua de
-                                    Procesos</li>
-                                <li style="margin-bottom: 15px;"><i class="fas fa-check"
-                                        style="color: var(--accent); margin-right: 8px;"></i> SLA Dedicado e
-                                    Infraestructura</li>
-                            </ul>
-                            <a href="#diagnostico" class="btn-corp-secondary"
-                                style="width: 100%; text-align: center; display: block;">Hablemos</a>
-                        </div>
-                    </div>
-
-                    <!-- Garantía Risk-Free -->
-                    <div
-                        style="background: rgba(37, 211, 102, 0.1); border: 1px solid rgba(37, 211, 102, 0.3); border-radius: 12px; padding: 25px; text-align: center; max-width: 800px; margin: 0 auto;">
-                        <i class="fas fa-shield-halved"
-                            style="font-size: 2.5rem; color: #25D366; margin-bottom: 15px;"></i>
-                        <h3 style="color: white; margin-bottom: 10px; font-size: 1.5rem;">Garantía de Despliegue
-                            Zero-Riesgos</h3>
-                        <p style="color: var(--text-muted); margin: 0; font-size: 1.05rem; line-height: 1.6;">Nos
-                            obsesiona el impacto. Si después de implementar nuestra solución no demostramos un
-                            <strong>Ahorro Operativo Medible o ROI Positivo en los primeros 30 días</strong> de
-                            operación, costearemos nosotros el 100% de la infraestructura y mantenimiento el siguiente
-                            mes mientras lo optimizamos.<br><em style="color: white;">No pagas por tecnología, pagas por
-                                resultados.</em>
-                        </p>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Ventana: Tecnologías -->
-            <section id="tecnologias" class="window-panel" style="margin-top: 40px;">
-                <div class="window-titlebar">
-                    <span>Ecosistema Tecnológico</span>
-                    <div class="win-controls" aria-label="Controles de ventana">
-                        <div class="win-btn close"></div>
-                    </div>
-                </div>
-
-                <div style="text-align: center; margin-bottom: 30px;">
-                    <h2 style="font-size: 1.8rem; margin-bottom: 10px;">Expertos en IA y Automatización</h2>
-                    <p style="color: var(--text-muted);">Implementamos con tecnología de punta para máxima eficacia y
-                        flexibilidad.</p>
-                </div>
-
-                <!-- Infinite Loops -->
-                <div class="logo-loop-section">
-
-                    <!-- Row 1: IA & Cloud (Left) -->
-                    <div class="loop-row">
-                        <div class="loop-track scroll-left" data-speed="40">
-                            <!-- AI Items -->
-                            <div class="loop-item" title="LangChain"><img src="assets/img/logos/langchain.webp"
-                                    alt="Integración con LangChain para agentes de IA" loading="lazy" decoding="async">
-                            </div>
-                            <div class="loop-item" title="LlamaIndex"><img src="assets/img/logos/llamaindex.webp"
-                                    alt="LlamaIndex para gestión de conocimiento corporativo" loading="lazy"
-                                    decoding="async"></div>
-                            <div class="loop-item" title="Hugging Face"><img src="assets/img/logos/Hugging-face.webp"
-                                    alt="Modelos de lenguaje Hugging Face" loading="lazy" decoding="async"></div>
-                            <div class="loop-item" title="Cohere"><img src="assets/img/logos/Cohere-Logo.webp"
-                                    alt="IA Generativa avanzada con Cohere" loading="lazy" decoding="async"></div>
-                            <div class="loop-item" title="Pinecone"><img src="assets/img/logos/Pinecone.webp"
-                                    alt="Base de datos vectorial Pinecone para IA" loading="lazy" decoding="async">
-                            </div>
-                            <div class="loop-item" title="TensorFlow"><img src="assets/img/logos/tensorflow.webp"
-                                    alt="Desarrollo de modelos con TensorFlow" loading="lazy" decoding="async"></div>
-                            <div class="loop-item" title="PyTorch"><img src="assets/img/logos/pytorch.webp"
-                                    alt="Machine Learning avanzado con PyTorch" loading="lazy" decoding="async"></div>
-                            <div class="loop-item" title="OpenAI"><img src="assets/img/logos/logo-aliado-01.webp"
-                                    alt="Implementación oficial de OpenAI GPT" loading="lazy" decoding="async"></div>
-                            <!-- Cloud/Infra Items -->
-                            <div class="loop-item" title="Google Cloud"><img src="assets/img/logos/Google-Cloud.webp"
-                                    alt="Infraestructura escalable en Google Cloud" loading="lazy" decoding="async">
-                            </div>
-                            <div class="loop-item" title="Docker"><img src="assets/img/logos/docker.webp"
-                                    alt="Contenerización con Docker" loading="lazy" decoding="async">
-                            </div>
-                            <div class="loop-item" title="Kubernetes"><img src="assets/img/logos/kubernetes.webp"
-                                    alt="Orquestación profesional con Kubernetes" loading="lazy" decoding="async"></div>
-                            <div class="loop-item" title="Python"><img src="assets/img/logos/python.webp"
-                                    alt="Desarrollo en Python para automatización" loading="lazy" decoding="async">
-                            </div>
-                            <div class="loop-item" title="FastAPI"><img src="assets/img/logos/FastAPI.webp"
-                                    alt="APIs de alto rendimiento con FastAPI" loading="lazy" decoding="async"></div>
-                            <div class="loop-item" title="Elasticsearch"><img src="assets/img/logos/Elasticsearch.webp"
-                                    alt="Búsqueda avanzada con Elasticsearch" loading="lazy" decoding="async"></div>
-                        </div>
-                    </div>
-
-                    <!-- Row 2: Business & Automation (Right) -->
-                    <div class="loop-row">
-                        <div class="loop-track scroll-right" data-speed="45">
-                            <!-- Automation -->
-                            <div class="loop-item" title="Make"><img src="assets/img/logos/make.webp"
-                                    alt="Automatización de flujos con Make" loading="lazy" decoding="async"></div>
-                            <div class="loop-item" title="n8n"><img src="assets/img/logos/n8n.webp"
-                                    alt="Orquestación auto-hospedada con n8n" loading="lazy" decoding="async"></div>
-                            <div class="loop-item" title="Power Automate"><img
-                                    src="assets/img/logos/power-automate.webp"
-                                    alt="Microsoft Power Automate corporativo" loading="lazy" decoding="async"></div>
-                            <div class="loop-item" title="Zapier"><img src="assets/img/logos/zapier.webp"
-                                    alt="Integraciones con Zapier" loading="lazy" decoding="async">
-                            </div>
-
-                            <!-- Integrations -->
-                            <div class="loop-item" title="Salesforce"><img src="assets/img/logos/sales-force.webp"
-                                    alt="Automatización para Salesforce CRM" loading="lazy" decoding="async"></div>
-                            <div class="loop-item" title="HubSpot"><img src="assets/img/logos/hubspot.webp"
-                                    alt="Integración inteligente con HubSpot" loading="lazy" decoding="async"></div>
-                            <div class="loop-item" title="Slack"><img src="assets/img/logos/slack.webp"
-                                    alt="Agentes de IA para Slack" loading="lazy" decoding="async">
-                            </div>
-                            <div class="loop-item" title="WhatsApp"><img src="assets/img/logos/whatsapp.webp"
-                                    alt="Chatbots de WhatsApp Business" loading="lazy" decoding="async"></div>
-                            <div class="loop-item" title="Shopify"><img src="assets/img/logos/shopify.webp"
-                                    alt="Automatización para e-commerce Shopify" loading="lazy" decoding="async"></div>
-                            <div class="loop-item" title="Stripe"><img src="assets/img/logos/stripe.webp"
-                                    alt="Pagos automáticos con Stripe" loading="lazy" decoding="async">
-                            </div>
-                            <div class="loop-item" title="Google Workspace"><img
-                                    src="assets/img/logos/google-workspace.webp"
-                                    alt="Automatización de Google Workspace" loading="lazy" decoding="async"></div>
-                            <div class="loop-item" title="Zoho"><img
-                                    src="assets/img/logos/Zoho-Mail-Logo-2048x1152.webp" alt="Ecosistema Zoho CRM"
-                                    loading="lazy" decoding="async"></div>
-                        </div>
-                    </div>
-
-                </div>
-
-            </section>
-
-            <!-- Ventana: FAQ (Preguntas Frecuentes) -->
-            <section id="faq" class="window-panel">
-                <div class="window-titlebar">
-                    <span>Preguntas Frecuentes</span>
-                    <div class="win-controls">
-                        <div class="win-btn close"></div>
-                    </div>
-                </div>
-                <div class="window-content-padding">
-                    <h2 class="title-accent">Despeja tus dudas sobre IA</h2>
-                    <div class="faq-grid" style="margin-top: 20px;">
-                        <div class="faq-item">
-                            <h4>¿Cómo ayuda la IA a reducir costos operativos?</h4>
-                            <p>Eliminando tareas manuales, reduciendo errores y acelerando tiempos de respuesta.</p>
-                        </div>
-                        <div class="faq-item">
-                            <h4>¿Es segura la integración con mis datos?</h4>
-                            <p>Sí, utilizamos protocolos de seguridad empresarial y cumplimos con estándares de
-                                privacidad.</p>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <div id="contacto" class="contact-wrapper">
-                <!-- Left: Text -->
-                <div class="contact-info">
-                    <h2 style="font-size: 2.2rem; margin-bottom: 20px; line-height: 1.1;">Conversamos sobre <br><span
-                            style="color: #25D366;">Escalabilidad e IA</span></h2>
-                    <p style="color: var(--text-muted); margin-bottom: 30px; line-height: 1.6;">
-                        Agende una sesión estratégica para evaluar la madurez digital de su empresa.
-                        Sin compromisos, solo oportunidades claras.
+            <!-- ==============================================================
+                 BLOQUE 6 Y 7: PERFIL DEL FUNDADOR Y SEGURIDAD DE LA INFORMACIÓN
+                 ============================================================== -->
+            <section id="liderazgo" class="section-block section-elevated section-security-accent">
+                <div class="section-header">
+                    <span class="eyebrow security"><i class="fas fa-shield-halved"></i> Respaldo Profesional y Gobernanza</span>
+                    <h2 class="section-title">Quién está detrás de Efinnovation y cómo protegemos tu operación</h2>
+                    <p class="section-subtitle">
+                        El mayor riesgo al contratar automatización o IA es dejar datos críticos de tu negocio en manos de implementadores improvisados sin formación en arquitectura ni seguridad.
                     </p>
-                    <div style="display: flex; gap: 15px; margin-bottom: 30px;">
-                        <div
-                            style="background: rgba(255,255,255,0.05); padding: 10px 15px; border-radius: 8px; font-size: 0.8rem;">
-                            <i class="fas fa-bolt" style="color: var(--accent); margin-right: 5px;"></i> Respuesta < 1h
+                </div>
+
+                <div class="founder-grid">
+                    <!-- Perfil Profesional del Fundador -->
+                    <div class="founder-profile-box">
+                        <div>
+                            <div class="founder-header-row">
+                                <img src="assets/img/founder-franco.webp" alt="Franco Blanco — Fundador de Efinnovation" class="founder-photo" width="96" height="96" loading="lazy" decoding="async">
+                                <div class="founder-title-group">
+                                    <span class="eyebrow" style="margin-bottom: 4px; padding: 3px 10px; font-size: 0.68rem;">Fundador y Director Técnico</span>
+                                    <h3>Franco Blanco</h3>
+                                    <p>Ing. en Informática · Magíster en Seguridad de la Información</p>
                                 </div>
-                                <div
-                                    style="background: rgba(255,255,255,0.05); padding: 10px 15px; border-radius: 8px; font-size: 0.8rem;">
-                                    <i class="fas fa-shield-alt" style="color: var(--accent); margin-right: 5px;"></i>
-                                    100% Confidencial
-                                </div>
+                            </div>
+                            <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.6;">
+                                En muchas agencias tecnológicas conversas con un vendedor y tu proyecto queda a cargo de perfiles sin experiencia en infraestructura ni seguridad. En <strong>Efinnovation</strong> trabajas directamente en Santiago de Chile con quien analiza tus procesos, diseña la arquitectura técnica y responde por la calidad de cada entrega.
+                            </p>
+
+                            <ul class="founder-credentials-list">
+                                <li>
+                                    <i class="fas fa-graduation-cap"></i>
+                                    <span><strong>Ingeniero en Informática:</strong> Base sólida en arquitectura de software, bases de datos e integración de sistemas.</span>
+                                </li>
+                                <li>
+                                    <i class="fas fa-lock"></i>
+                                    <span><strong>Magíster en Seguridad de la Información:</strong> Gestión de riesgos, control de accesos, privacidad y protección de activos digitales.</span>
+                                </li>
+                                <li>
+                                    <i class="fas fa-server"></i>
+                                    <span><strong>Infraestructura, Automatización e IA:</strong> Experiencia en servidores, desarrollo web/aplicaciones e integración con modelos de OpenAI, Anthropic y Google.</span>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="founder-cta-row">
+                            <a href="https://www.linkedin.com/in/francojbe/" target="_blank" rel="noopener noreferrer" class="btn-corp-secondary founder-btn">
+                                <i class="fab fa-linkedin" style="color: var(--accent);"></i> Conectar en LinkedIn
+                            </a>
+                            <a href="#diagnostico" class="btn-corp-primary founder-btn">
+                                Conversar directamente <i class="fas fa-arrow-right"></i>
+                            </a>
                         </div>
                     </div>
 
-                    <!-- Right: Modern Form -->
-                    <form id="whatsappForm" class="contact-form" onsubmit="sendToWhatsapp(event)">
-                        <div class="form-grid">
-                            <input type="text" id="name" class="form-input" placeholder="Nombre completo" required>
-                            <input type="text" id="company" class="form-input" placeholder="Empresa / Cargo">
-                            <textarea id="message" class="form-input" style="height: 120px; resize: none;"
-                                placeholder="¿Qué desafío de automatización tienen hoy?" required></textarea>
+                    <!-- 4 Pilares de Seguridad y Responsabilidad en IA -->
+                    <div class="security-pillars-grid">
+                        <article class="security-card">
+                            <h3><i class="fas fa-file-shield"></i> Consulta documental sin entrenar modelos públicos</h3>
+                            <p>Cuando conectamos un asistente de IA a tus documentos o bases de datos (arquitectura RAG), la información se consulta de forma acotada para responder a tu equipo o clientes; no entregamos tus datos privados para entrenar modelos públicos de terceros.</p>
+                        </article>
 
-                            <button type="submit" class="form-submit-btn">
-                                <i class="fab fa-whatsapp"></i> Iniciar Conversación
-                            </button>
-                            <p style="font-size: 0.75rem; color: #555; text-align: center; margin: 0;">
-                                Será redirigido a WhatsApp Web/App
-                            </p>
-                        </div>
-                    </form>
+                        <article class="security-card">
+                            <h3><i class="fas fa-cloud-lock"></i> Opción de infraestructura bajo tu control</h3>
+                            <p>Si tu política interna lo requiere, podemos desplegar los motores de automatización (como n8n) y las bases de datos directamente en tu propia infraestructura cloud o servidores privados, manteniendo la soberanía de tu información.</p>
+                        </article>
+
+                        <article class="security-card">
+                            <h3><i class="fas fa-key"></i> Mínimo privilegio y trazabilidad</h3>
+                            <p>Cada conexión API o credencial se configura únicamente con los permisos indispensables para cumplir su función específica, registrando bitácoras (logs) de ejecución para auditoría y diagnóstico rápido ante cambios externos.</p>
+                        </article>
+
+                        <article class="security-card">
+                            <h3><i class="fas fa-user-check"></i> Supervisión humana en decisiones sensibles</h3>
+                            <p>No prometemos sistemas infalibles sin control. Diseñamos flujos donde la IA clasifica, extrae datos o prepara borradores, y una persona responsable de tu equipo valida y aprueba cualquier operación financiera, tributaria o crítica.</p>
+                        </article>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ==============================================================
+                 BLOQUE 8: ESCENARIOS DE APLICACIÓN Y STACK TECNOLÓGICO REAL
+                 ============================================================== -->
+            <section id="escenarios" class="section-block section-open">
+                <div class="section-header">
+                    <span class="eyebrow"><i class="fas fa-laptop-code"></i> Aplicaciones Prácticas</span>
+                    <h2 class="section-title">Ejemplos concretos de qué podemos construir o automatizar</h2>
+                    <p class="section-subtitle">
+                        Escenarios representativos de arquitectura e implementación que aplicamos según las necesidades de cada empresa.
+                    </p>
                 </div>
 
-                <script>
-                    function sendToWhatsapp(e) {
-                        e.preventDefault();
-                        const name = document.getElementById('name').value;
-                        const company = document.getElementById('company').value;
-                        const message = document.getElementById('message').value;
+                <div class="scenarios-grid">
+                    <!-- Escenario 1 -->
+                    <article class="scenario-card">
+                        <span class="scenario-badge">ESCENARIO DE APLICACIÓN 01</span>
+                        <h3>Captación comercial, clasificación con IA y seguimiento</h3>
+                        <p class="scenario-detail"><strong>Necesidad habitual:</strong> Consultas que entran por el sitio web, correo o WhatsApp y demoran horas en ser atendidas o no quedan registradas en un embudo ordenado.</p>
+                        <p class="scenario-detail" style="margin-bottom: 0;"><strong>Solución técnica:</strong> Sitio o landing conectada a tu flujo comercial que registra el prospecto al instante, clasifica la necesidad con IA y notifica al responsable comercial con el contexto listo.</p>
+                    </article>
 
-                        const text = `Hola Efinnovation, soy ${name} ${company ? 'de ' + company : ''}.%0A%0A${message}`;
-                        window.open(`https://wa.me/56974263408?text=${text}`, '_blank');
-                    }
-                </script>
-                <!-- Footer Corporativo -->
-                <footer class="footer-modern">
-                    <div class="footer-container">
-                        <div class="footer-brand">
-                            <img src="assets/img/hero-logo.png" alt="Efinnovation Logo" class="footer-logo" loading="lazy" decoding="async" width="150" height="40">
-                            <p>Llevando a las empresas al siguiente nivel mediante la automatización inteligente y
-                                agentes autónomos de última generación.</p>
+                    <!-- Escenario 2 -->
+                    <article class="scenario-card">
+                        <span class="scenario-badge">ESCENARIO DE APLICACIÓN 02</span>
+                        <h3>Procesamiento de documentos, guías y conciliación</h3>
+                        <p class="scenario-detail"><strong>Necesidad habitual:</strong> Equipos administrativos u operativos transcribiendo manualmente facturas, órdenes de compra o comprobantes de entrega hacia el ERP o sistema central.</p>
+                        <p class="scenario-detail" style="margin-bottom: 0;"><strong>Solución técnica:</strong> Extracción automatizada de datos mediante modelos de visión/OCR, cruce con reglas de negocio y bandeja de validación humana para aprobar excepciones en minutos.</p>
+                    </article>
+
+                    <!-- Escenario 3 -->
+                    <article class="scenario-card">
+                        <span class="scenario-badge">ESCENARIO DE APLICACIÓN 03</span>
+                        <h3>Aplicación web a medida para operaciones internas</h3>
+                        <p class="scenario-detail"><strong>Necesidad habitual:</strong> Procesos clave de la empresa gestionados en múltiples hojas de cálculo que se desconfiguran, sin control de acceso por rol ni historial de cambios.</p>
+                        <p class="scenario-detail" style="margin-bottom: 0;"><strong>Solución técnica:</strong> Desarrollo ágil de una aplicación web privada con autenticación segura, base de datos estructurada, panel de estado en tiempo real y reportes automáticos.</p>
+                    </article>
+                </div>
+
+                <!-- Enlaces a Soluciones Verticales Específicas -->
+                <div style="background: rgba(56, 189, 248, 0.05); border: 1px solid rgba(56, 189, 248, 0.2); border-radius: var(--radius-md); padding: 20px 24px; margin-bottom: 36px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px;">
+                    <div>
+                        <strong style="color: var(--text-main); display: block; font-size: 0.98rem;">¿Buscas un caso de uso sectorial específico?</strong>
+                        <span style="color: var(--text-muted); font-size: 0.88rem;">Revisa nuestras propuestas dedicadas para operaciones frecuentes en Chile:</span>
+                    </div>
+                    <div style="display: flex; flex-wrap: wrap; gap: 10px;">
+                        <a href="/retail.html" class="btn-corp-secondary" style="padding: 8px 14px; font-size: 0.84rem;">Post-Venta y E-Commerce</a>
+                        <a href="/logistica.html" class="btn-corp-secondary" style="padding: 8px 14px; font-size: 0.84rem;">Logística y Última Milla</a>
+                        <a href="/contabilidad.html" class="btn-corp-secondary" style="padding: 8px 14px; font-size: 0.84rem;">Procesos Contables y SII</a>
+                    </div>
+                </div>
+
+                <!-- Stack Tecnológico Real y Organizado -->
+                <div class="section-header" style="margin-bottom: 20px;">
+                    <h3 style="font-family: var(--font-heading); font-size: 1.3rem; color: var(--text-main); margin-bottom: 6px;">Tecnologías y herramientas con las que trabajamos</h3>
+                    <p style="color: var(--text-muted); font-size: 0.94rem;">Seleccionamos la herramienta adecuada según tu infraestructura actual y el costo de mantenimiento a largo plazo.</p>
+                </div>
+
+                <div class="stack-grid">
+                    <div class="stack-box">
+                        <h4>Automatización e Integración</h4>
+                        <div class="stack-tags">
+                            <span class="stack-tag">n8n</span>
+                            <span class="stack-tag">APIs REST / Webhooks</span>
+                            <span class="stack-tag">Make</span>
+                            <span class="stack-tag">Google Workspace</span>
+                            <span class="stack-tag">Microsoft 365</span>
+                            <span class="stack-tag">WhatsApp Business API</span>
                         </div>
-                        <div class="footer-info">
-                            <h4>Contacto</h4>
-                            <p><i class="fas fa-envelope"></i> contacto@efinnovation.cl</p>
-                            <p><i class="fab fa-whatsapp"></i> +56 9 7426 3408</p>
-                            <p><i class="fas fa-location-dot"></i> Santiago, Chile</p>
+                    </div>
+
+                    <div class="stack-box">
+                        <h4>Modelos y Agentes de IA</h4>
+                        <div class="stack-tags">
+                            <span class="stack-tag">OpenAI (GPT)</span>
+                            <span class="stack-tag">Anthropic (Claude)</span>
+                            <span class="stack-tag">Google Gemini</span>
+                            <span class="stack-tag">Arquitecturas RAG</span>
+                            <span class="stack-tag">OCR Documental</span>
                         </div>
-                        <div class="footer-social">
-                            <p style="font-weight:bold; font-size: 1.1rem; margin-bottom: 15px;">Síguenos</p>
-                            <div class="social-links">
-                                <a href="https://www.linkedin.com/company/efinnovation" target="_blank"
-                                    rel="noopener"><i class="fab fa-linkedin"></i></a>
-                                <a href="https://www.instagram.com/efinnovation" target="_blank" rel="noopener"><i
-                                        class="fab fa-instagram"></i></a>
+                    </div>
+
+                    <div class="stack-box">
+                        <h4>Desarrollo e Infraestructura</h4>
+                        <div class="stack-tags">
+                            <span class="stack-tag">Aplicaciones Web</span>
+                            <span class="stack-tag">Python / JS</span>
+                            <span class="stack-tag">PostgreSQL / SQL</span>
+                            <span class="stack-tag">Docker</span>
+                            <span class="stack-tag">Linux / Cloud VPS</span>
+                        </div>
+                    </div>
+
+                    <div class="stack-box">
+                        <h4>Seguridad y Gobernanza</h4>
+                        <div class="stack-tags">
+                            <span class="stack-tag">Control de Accesos</span>
+                            <span class="stack-tag">Despliegue Privado</span>
+                            <span class="stack-tag">Auditoría de Logs</span>
+                            <span class="stack-tag">Resguardo de Datos</span>
+                            <span class="stack-tag">Human-in-the-Loop</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ==============================================================
+                 BLOQUE 9: PREGUNTAS FRECUENTES (FAQ)
+                 ============================================================== -->
+            <section id="faq" class="section-block section-open">
+                <div class="section-header">
+                    <span class="eyebrow"><i class="fas fa-circle-question"></i> Preguntas Frecuentes</span>
+                    <h2 class="section-title">Respuestas claras antes de conversar</h2>
+                    <p class="section-subtitle">
+                        Resolvemos las dudas más habituales de gerencias, dueños de empresas y líderes de área al evaluar proyectos de automatización e IA.
+                    </p>
+                </div>
+
+                <div class="faq-grid">
+                    <article class="faq-item">
+                        <h3>¿Necesito tener un área de informática o saber de tecnología para trabajar con ustedes?</h3>
+                        <p>No. Traducimos tus objetivos y problemas operativos a lenguaje claro de negocio. Si no tienes equipo de TI, nos encargamos de toda la configuración e implementación; si ya cuentas con un área de sistemas, trabajamos en conjunto respetando sus políticas de infraestructura y seguridad.</p>
+                    </article>
+
+                    <article class="faq-item">
+                        <h3>¿Tengo que cambiar los programas o el sistema que ya usa mi empresa?</h3>
+                        <p>En la mayoría de los casos, no. Priorizamos conectar y aprovechar las herramientas que ya utilizas (Google Workspace, Microsoft 365, tu CRM, tu ERP, facturación electrónica o WhatsApp) mediante integraciones seguras con n8n y APIs. Solo proponemos desarrollar software nuevo cuando realmente te falta una herramienta para operar.</p>
+                    </article>
+
+                    <article class="faq-item">
+                        <h3>¿Qué pasa si la Inteligencia Artificial se equivoca o recibe una consulta compleja?</h3>
+                        <p>Ningún modelo de IA es infalible en todos los escenarios. Por eso diseñamos flujos con reglas de validación, consulta acotada a documentos oficiales de tu empresa y supervisión humana (<em>Human-in-the-Loop</em>) para aprobar acciones críticas o derivar casos sensibles a tu equipo.</p>
+                    </article>
+
+                    <article class="faq-item">
+                        <h3>¿Cuánto toma implementar un proyecto y cómo se define el valor?</h3>
+                        <p>Depende del alcance. Una automatización puntual o un sitio web conectado a tu flujo comercial suele estar operativo en <strong>2 a 4 semanas</strong>. Proyectos de integración entre varios sistemas o aplicaciones a medida toman entre <strong>4 y 8 semanas</strong> por fases. Tras una conversación inicial de diagnóstico sin costo, entregamos una propuesta cerrada con entregables, plazos y valores claros.</p>
+                    </article>
+                </div>
+            </section>
+
+            <!-- ==============================================================
+                 BLOQUE 10: CONTACTO Y DIAGNÓSTICO INICIAL UNIFICADO
+                 ============================================================== -->
+            <section id="diagnostico" class="section-block section-elevated section-cta-accent">
+                <div id="contacto" class="contact-split">
+                    <!-- Columna Izquierda: Información y Vías Directas -->
+                    <div class="contact-info">
+                        <span class="eyebrow"><i class="fas fa-comments"></i> Siguiente Paso</span>
+                        <h2 class="section-title">Conversemos sobre tu operación</h2>
+                        <p class="section-subtitle" style="margin-bottom: 20px;">
+                            Cuéntanos qué proceso quieres optimizar, qué sistema necesitas construir o en qué área buscas incorporar IA. Evaluaremos tu caso y te responderemos en <strong>menos de 24 horas hábiles</strong> para coordinar una sesión breve de diagnóstico (20–30 minutos) sin costo.
+                        </p>
+
+                        <div class="contact-channels">
+                            <a href="https://wa.me/56974263408?text=Hola%20Efinnovation%2C%20me%20gustar%C3%ADa%20coordinar%20una%20conversaci%C3%B3n%20de%20diagn%C3%B3stico."
+                                target="_blank" rel="noopener noreferrer" class="channel-card" data-cta-location="contact_section_whatsapp">
+                                <div class="channel-icon whatsapp"><i class="fab fa-whatsapp"></i></div>
+                                <div class="channel-info">
+                                    <strong>WhatsApp Directo: +56 9 7426 3408</strong>
+                                    <span>Ideal para consultas rápidas o coordinar reunión por chat.</span>
+                                </div>
+                            </a>
+
+                            <a href="mailto:contacto@efinnovation.cl?subject=Solicitud%20de%20Diagn%C3%B3stico%20-%20Efinnovation" class="channel-card">
+                                <div class="channel-icon"><i class="fas fa-envelope"></i></div>
+                                <div class="channel-info">
+                                    <strong>Correo: contacto@efinnovation.cl</strong>
+                                    <span>Para enviarnos antecedentes técnicos o requerimientos formales.</span>
+                                </div>
+                            </a>
+
+                            <div class="channel-card" style="cursor: default;">
+                                <div class="channel-icon"><i class="fas fa-shield-halved"></i></div>
+                                <div class="channel-info">
+                                    <strong>Confidencialidad y Trato Directo</strong>
+                                    <span>Tu información es evaluada directamente por dirección técnica bajo reserva profesional.</span>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <div class="footer-bottom">
-                        <p>&copy; 2026 Efinnovation | IA Automation Agency. Todos los derechos reservados. &nbsp;|&nbsp; <a href="/privacidad.html" target="_blank" style="color: var(--text-muted); text-decoration: underline;">Política de Privacidad</a></p>
+
+                    <!-- Columna Derecha: Formulario Único de Diagnóstico -->
+                    <div>
+                        <form id="auditoria-form" class="diagnostic-form" method="POST" action="#">
+                            <div style="margin-bottom: 4px;">
+                                <h3 style="font-family: var(--font-heading); font-size: 1.3rem; color: var(--text-main); margin-bottom: 4px;">Solicitar diagnóstico inicial</h3>
+                                <p style="font-size: 0.88rem; color: var(--text-muted); margin: 0;">Completa tus datos y te contactaremos dentro de 1 día hábil.</p>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="diag-name">Nombre y Apellido *</label>
+                                    <input type="text" id="diag-name" name="name" placeholder="Ej: Carolina Muñoz" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="diag-company">Empresa y Cargo</label>
+                                    <input type="text" id="diag-company" name="company" placeholder="Ej: Empresa SpA - Operaciones">
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="diag-email">Correo Electrónico *</label>
+                                    <input type="email" id="diag-email" name="email" placeholder="nombre@tuempresa.cl" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="diag-phone">WhatsApp / Teléfono *</label>
+                                    <input type="tel" id="diag-phone" name="phone" required>
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="diag-pain">¿Qué necesitas resolver primero? *</label>
+                                    <select id="diag-pain" name="pain" required>
+                                        <option value="" disabled selected>Selecciona una prioridad...</option>
+                                        <option value="automatizacion-n8n">Automatizar procesos / integrar sistemas (n8n)</option>
+                                        <option value="agentes-ia">Implementar agentes o asistentes de IA</option>
+                                        <option value="desarrollo-medida">Desarrollar aplicación web o software a medida</option>
+                                        <option value="web-comercial">Sitio web o landing conectada al proceso comercial</option>
+                                        <option value="consultoria-capacitacion">Consultoría, diagnóstico o capacitación en IA</option>
+                                        <option value="otro">Otro desafío (Especificar...)</option>
+                                    </select>
+                                    <input type="text" id="diag-pain-custom" name="pain_custom"
+                                        placeholder="Cuéntanos cuál es tu prioridad..." style="display: none; margin-top: 8px;">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="diag-industry">Tamaño / Tipo de Organización *</label>
+                                    <select id="diag-industry" name="industry" required>
+                                        <option value="" disabled selected>Selecciona tamaño o rubro...</option>
+                                        <option value="pyme">Pequeña empresa (1 a 25 personas)</option>
+                                        <option value="mediana">Mediana empresa (26 a 200 personas)</option>
+                                        <option value="grande">Gran empresa / Corporativo (+200 personas)</option>
+                                        <option value="profesional">Consultora / Estudio profesional</option>
+                                        <option value="otro">Otro (Especificar...)</option>
+                                    </select>
+                                    <input type="text" id="diag-industry-custom" name="industry_custom"
+                                        placeholder="Especifica tu rubro o tamaño..." style="display: none; margin-top: 8px;">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="diag-message">Contexto breve (Opcional)</label>
+                                <textarea id="diag-message" name="message" rows="3" placeholder="Ej: Queremos automatizar el cruce de órdenes y facturas, o necesitamos un sistema interno para nuestro equipo..."></textarea>
+                            </div>
+
+                            <button type="submit" class="btn-corp-accent diagnostic-submit">
+                                <span>Enviar solicitud de diagnóstico</span>
+                                <i class="fas fa-arrow-right"></i>
+                            </button>
+
+                            <p style="text-align: center; font-size: 0.8rem; color: var(--text-muted); margin-top: 6px;">
+                                <i class="fas fa-lock" style="color: var(--security-green); margin-right: 4px;"></i>
+                                Tus datos son confidenciales y no se comparten con terceros. Al enviar aceptas nuestra <a href="/privacidad.html" target="_blank" style="color: var(--accent);">Política de Privacidad</a>.
+                            </p>
+
+                            <div id="form-status" class="form-status" role="status" aria-live="polite"></div>
+                        </form>
                     </div>
-                </footer>
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <!-- Footer Corporativo -->
+    <footer class="footer-modern">
+        <div class="footer-container">
+            <div class="footer-brand">
+                <img src="assets/img/hero-logo.png" alt="Efinnovation Logo" class="footer-logo" loading="lazy" decoding="async" width="150" height="42">
+                <p>Consultoría e ingeniería en Automatización de Procesos (n8n), Inteligencia Artificial Aplicada, Desarrollo de Software a Medida y Seguridad de la Información para empresas en Chile.</p>
+            </div>
+            <div class="footer-info">
+                <h4>Contacto Directo</h4>
+                <p><i class="fas fa-envelope"></i> <a href="mailto:contacto@efinnovation.cl">contacto@efinnovation.cl</a></p>
+                <p><i class="fab fa-whatsapp"></i> <a href="https://wa.me/56974263408" target="_blank" rel="noopener noreferrer">+56 9 7426 3408</a></p>
+                <p><i class="fas fa-location-dot"></i> Santiago, Chile</p>
+            </div>
+            <div class="footer-social">
+                <h4>Enlaces y Redes</h4>
+                <div class="social-links" style="margin-bottom: 16px;">
+                    <a href="https://www.linkedin.com/in/francojbe/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn de Franco Blanco"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://www.instagram.com/efinnovation" target="_blank" rel="noopener noreferrer" aria-label="Instagram de Efinnovation"><i class="fab fa-instagram"></i></a>
+                </div>
+                <p style="font-size: 0.85rem; color: var(--text-muted);">
+                    <a href="/retail.html" style="color: var(--text-muted); text-decoration: none;">Retail</a> · 
+                    <a href="/logistica.html" style="color: var(--text-muted); text-decoration: none;">Logística</a> · 
+                    <a href="/contabilidad.html" style="color: var(--text-muted); text-decoration: none;">Contabilidad SII</a>
+                </p>
             </div>
         </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Efinnovation · Consultoría en Ingeniería, Automatización e IA. Todos los derechos reservados. &nbsp;|&nbsp; <a href="/privacidad.html" target="_blank" style="color: var(--text-muted); text-decoration: underline;">Política de Privacidad</a></p>
+        </div>
+    </footer>
 
-        <!-- Phone Picker JS -->
-        <script src="https://cdn.jsdelivr.net/npm/intl-tel-input@24.5.1/build/js/intlTelInput.min.js"></script>
-
-        <!-- Conversions Tracking (TAREA 4) -->
-        <script>
-        (function() {
-          var form = document.getElementById('auditoria-form') || document.querySelector('form');
-          if (form) {
-            form.addEventListener('submit', function() {
-              window.dataLayer = window.dataLayer || [];
-              window.dataLayer.push({
-                'event': 'lead_form_submit',
-                'form_id': 'auditoria-form',
-                'form_name': 'Auditoría Gratuita'
-              });
-            });
-          }
-        })();
-        </script>
+    <!-- Phone Picker JS -->
+    <script src="https://cdn.jsdelivr.net/npm/intl-tel-input@24.5.1/build/js/intlTelInput.min.js"></script>
 </body>
 
 </html>
