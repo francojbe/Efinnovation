@@ -1,0 +1,1079 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Flyer A5 Ejecutivo B2B - EFINNOVATION</title>
+  
+  <!-- Google Fonts: Outfit & Inter & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&family=Outfit:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <style>
+    /* =========================================================
+       SISTEMA DE DISEÑO NANOBANANA × EFINNOVATION (DARK LUXURY)
+       ========================================================= */
+    :root {
+      --bg-black: #07090E;
+      --bg-obsidian: #0B0F17;
+      --bg-surface: #111827;
+      --bg-card: rgba(17, 24, 39, 0.75);
+      
+      --cyan: #38BDF8;
+      --cyan-light: #7DD3FC;
+      --cyan-glow: rgba(56, 189, 248, 0.35);
+      
+      --emerald: #22C55E;
+      --emerald-glow: rgba(34, 197, 94, 0.35);
+      
+      --amber: #F59E0B;
+      --rose: #F43F5E;
+      
+      --border-subtle: rgba(255, 255, 255, 0.08);
+      --border-glow: rgba(56, 189, 248, 0.4);
+      
+      --text-white: #F8FAFC;
+      --text-muted: #94A3B8;
+      --text-dim: #64748B;
+      
+      --font-display: 'Outfit', sans-serif;
+      --font-body: 'Inter', sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html, body {
+      background-color: #0F172A;
+      color: var(--text-white);
+      font-family: var(--font-body);
+      -webkit-font-smoothing: antialiased;
+      -webkit-print-color-adjust: exact !important;
+      print-color-adjust: exact !important;
+      color-adjust: exact !important;
+    }
+
+    /* BARRA SUPERIOR DE CONTROL (Oculta en PDF/Print) */
+    .screen-toolbar {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(11, 15, 23, 0.95);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border-subtle);
+      padding: 12px 24px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      font-size: 13px;
+    }
+
+    .toolbar-title {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .toolbar-title strong {
+      color: var(--cyan);
+      font-family: var(--font-display);
+      font-size: 15px;
+      letter-spacing: 0.05em;
+    }
+
+    .toolbar-badge {
+      background: rgba(56, 189, 248, 0.12);
+      color: var(--cyan);
+      border: 1px solid var(--cyan-glow);
+      padding: 2px 8px;
+      border-radius: 999px;
+      font-size: 11px;
+      font-weight: 600;
+    }
+
+    .toolbar-actions {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      background: var(--bg-surface);
+      color: var(--text-white);
+      border: 1px solid var(--border-subtle);
+      padding: 7px 14px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 12px;
+      font-weight: 600;
+      font-family: var(--font-body);
+      transition: all 0.2s ease;
+    }
+
+    .btn:hover, .btn.active {
+      background: var(--cyan);
+      color: var(--bg-black);
+      border-color: var(--cyan);
+      box-shadow: 0 0 15px var(--cyan-glow);
+    }
+
+    .btn-print {
+      background: var(--emerald);
+      border-color: var(--emerald);
+      color: #052e16;
+      font-weight: 700;
+    }
+
+    .btn-print:hover {
+      background: #16A34A;
+      color: #FFFFFF;
+      box-shadow: 0 0 18px var(--emerald-glow);
+    }
+
+    /* ESPACIO DE TRABAJO */
+    .workspace {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 36px;
+      padding: 36px 16px 80px;
+    }
+
+    .page-indicator {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--cyan);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .page-indicator::before {
+      content: "";
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--cyan);
+      box-shadow: 0 0 10px var(--cyan);
+    }
+
+    /* =========================================================
+       CANVAS A5 (148mm × 210mm) + MODO SANGRADO (154mm × 216mm)
+       ========================================================= */
+    .a5-canvas {
+      width: 148mm;
+      height: 210mm;
+      position: relative;
+      overflow: hidden;
+      background-color: var(--bg-black);
+      background-image: 
+        radial-gradient(circle at 90% 12%, rgba(56, 189, 248, 0.18) 0%, transparent 45%),
+        radial-gradient(circle at 10% 85%, rgba(34, 197, 94, 0.14) 0%, transparent 48%),
+        linear-gradient(180deg, #07090E 0%, #0B0F17 50%, #07090E 100%);
+      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.85), 0 0 0 1px rgba(255, 255, 255, 0.08);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 11mm 11mm 10mm 11mm;
+      page-break-after: always;
+      break-after: page;
+      transition: all 0.25s ease;
+    }
+
+    /* Modo Sangrado para Imprenta (+3mm por lado) */
+    body.bleed-mode .a5-canvas {
+      width: 154mm;
+      height: 216mm;
+      padding: 14mm 14mm 13mm 14mm;
+    }
+
+    .crop-marks {
+      display: none;
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 50;
+    }
+    body.bleed-mode .crop-marks {
+      display: block;
+    }
+    .crop-mark {
+      position: absolute;
+      width: 3.5mm;
+      height: 3.5mm;
+      border-color: rgba(255, 255, 255, 0.7);
+      border-style: solid;
+      border-width: 0;
+    }
+    .crop-tl { top: 0; left: 0; border-right-width: 0.3mm; border-bottom-width: 0.3mm; }
+    .crop-tr { top: 0; right: 0; border-left-width: 0.3mm; border-bottom-width: 0.3mm; }
+    .crop-bl { bottom: 0; left: 0; border-right-width: 0.3mm; border-top-width: 0.3mm; }
+    .crop-br { bottom: 0; right: 0; border-left-width: 0.3mm; border-top-width: 0.3mm; }
+
+    /* Fondo Holográfico Nanobanana con Trama y Líneas Isométricas */
+    .bg-grid {
+      position: absolute;
+      inset: 0;
+      background-image: 
+        linear-gradient(to right, rgba(56, 189, 248, 0.04) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(56, 189, 248, 0.04) 1px, transparent 1px);
+      background-size: 8mm 8mm;
+      mask-image: radial-gradient(circle at 50% 50%, black 40%, transparent 90%);
+      -webkit-mask-image: radial-gradient(circle at 50% 50%, black 40%, transparent 90%);
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .circuit-glow {
+      position: absolute;
+      pointer-events: none;
+      z-index: 1;
+      opacity: 0.55;
+    }
+    .circuit-tr { top: -5mm; right: -5mm; width: 60mm; height: 60mm; }
+    .circuit-bl { bottom: -5mm; left: -5mm; width: 55mm; height: 55mm; transform: rotate(180deg); opacity: 0.35; }
+
+    .content-layer {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 100%;
+      width: 100%;
+    }
+
+    /* EDICIÓN EN VIVO */
+    [contenteditable="true"]:focus {
+      outline: 1.5px dashed var(--cyan);
+      outline-offset: 3px;
+      border-radius: 3px;
+    }
+
+    /* =========================================================
+       CARA A: PORTADA DE IMPACTO Y GANCHO COMERCIAL
+       ========================================================= */
+    .front-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 3.5mm;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+    }
+
+    .brand-group {
+      display: flex;
+      align-items: center;
+      gap: 3mm;
+    }
+
+    .brand-logo-img {
+      height: 7.5mm;
+      width: auto;
+      display: block;
+      filter: drop-shadow(0 0 10px rgba(56, 189, 248, 0.35));
+    }
+
+    .brand-text {
+      font-family: var(--font-display);
+      font-size: 14pt;
+      font-weight: 900;
+      letter-spacing: 0.08em;
+      color: var(--text-white);
+      line-height: 1;
+    }
+
+    .brand-text span {
+      color: var(--cyan);
+    }
+
+    .badge-location {
+      background: rgba(34, 197, 94, 0.1);
+      border: 1px solid var(--emerald-glow);
+      color: var(--emerald);
+      font-size: 6.5pt;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 1.2mm 2.8mm;
+      border-radius: 999px;
+      display: inline-flex;
+      align-items: center;
+      gap: 1.2mm;
+    }
+
+    .badge-location::before {
+      content: "";
+      width: 1.8mm;
+      height: 1.8mm;
+      border-radius: 50%;
+      background: var(--emerald);
+      box-shadow: 0 0 6px var(--emerald);
+    }
+
+    /* Hero Headline con alto contraste */
+    .hero-wrap {
+      margin: 3.8mm 0 4.2mm;
+      text-align: left;
+    }
+
+    .hero-kicker {
+      font-family: var(--font-mono);
+      font-size: 7.2pt;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--cyan);
+      margin-bottom: 1.8mm;
+      display: block;
+    }
+
+    .hero-title {
+      font-family: var(--font-display);
+      font-size: 15.5pt;
+      font-weight: 900;
+      line-height: 1.22;
+      letter-spacing: -0.02em;
+      color: var(--text-white);
+    }
+
+    .hero-title .highlight-cyan {
+      color: var(--cyan);
+      text-shadow: 0 0 20px rgba(56, 189, 248, 0.4);
+    }
+
+    .hero-title .highlight-amber {
+      color: #FBBF24;
+    }
+
+    /* BENTO-GRID DE SOLUCIONES (3 TARJETAS HUD) */
+    .bento-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 3.6mm;
+      flex: 1;
+      justify-content: center;
+      margin: 1mm 0;
+    }
+
+    .bento-card {
+      background: linear-gradient(135deg, rgba(17, 24, 39, 0.85) 0%, rgba(11, 15, 23, 0.95) 100%);
+      border: 1px solid var(--border-glow);
+      border-radius: 3.2mm;
+      padding: 3.8mm 4.4mm;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+      display: grid;
+      grid-template-columns: 13.5mm 1fr;
+      gap: 3.8mm;
+      align-items: center;
+    }
+
+    .bento-card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 2.5px;
+      height: 100%;
+      background: var(--cyan);
+    }
+
+    .bento-card.card-emerald::before {
+      background: var(--emerald);
+    }
+    
+    .bento-card.card-purple::before {
+      background: #A855F7;
+    }
+
+    .card-icon-wrap {
+      width: 13.5mm;
+      height: 13.5mm;
+      border-radius: 2.6mm;
+      background: radial-gradient(circle at 30% 30%, rgba(56, 189, 248, 0.2), rgba(11, 15, 23, 0.9));
+      border: 1px solid rgba(56, 189, 248, 0.45);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      box-shadow: 0 0 14px rgba(56, 189, 248, 0.15);
+    }
+
+    .card-emerald .card-icon-wrap {
+      background: radial-gradient(circle at 30% 30%, rgba(34, 197, 94, 0.2), rgba(11, 15, 23, 0.9));
+      border-color: rgba(34, 197, 94, 0.45);
+      box-shadow: 0 0 14px rgba(34, 197, 94, 0.15);
+    }
+
+    .card-purple .card-icon-wrap {
+      background: radial-gradient(circle at 30% 30%, rgba(168, 85, 247, 0.2), rgba(11, 15, 23, 0.9));
+      border-color: rgba(168, 85, 247, 0.45);
+      box-shadow: 0 0 14px rgba(168, 85, 247, 0.15);
+    }
+
+    .card-icon-wrap svg {
+      width: 8mm;
+      height: 8mm;
+    }
+
+    .card-main {
+      display: flex;
+      flex-direction: column;
+      gap: 1.2mm;
+    }
+
+    .card-header-line {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .card-title {
+      font-family: var(--font-display);
+      font-size: 10.2pt;
+      font-weight: 800;
+      color: var(--text-white);
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+      line-height: 1.1;
+    }
+
+    .card-metric-badge {
+      font-family: var(--font-mono);
+      font-size: 6.8pt;
+      font-weight: 700;
+      color: var(--cyan);
+      background: rgba(56, 189, 248, 0.12);
+      border: 1px solid rgba(56, 189, 248, 0.3);
+      padding: 0.8mm 2mm;
+      border-radius: 4px;
+      white-space: nowrap;
+    }
+
+    .card-emerald .card-metric-badge {
+      color: var(--emerald);
+      background: rgba(34, 197, 94, 0.12);
+      border-color: rgba(34, 197, 94, 0.3);
+    }
+
+    .card-purple .card-metric-badge {
+      color: #C084FC;
+      background: rgba(168, 85, 247, 0.12);
+      border-color: rgba(168, 85, 247, 0.3);
+    }
+
+    .card-desc {
+      font-size: 8.8pt;
+      line-height: 1.38;
+      color: var(--text-muted);
+    }
+
+    /* FOOTER AUTORIDAD / FRANCO BLANCO */
+    .front-footer {
+      margin-top: 3.5mm;
+      padding-top: 3.5mm;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 3mm;
+    }
+
+    .founder-lockup {
+      display: flex;
+      align-items: center;
+      gap: 2.8mm;
+    }
+
+    .founder-photo {
+      width: 10.5mm;
+      height: 10.5mm;
+      border-radius: 50%;
+      border: 1.8px solid var(--cyan);
+      object-fit: cover;
+      box-shadow: 0 0 10px rgba(56, 189, 248, 0.4);
+      flex-shrink: 0;
+    }
+
+    .founder-info h4 {
+      font-family: var(--font-display);
+      font-size: 8.8pt;
+      font-weight: 800;
+      color: var(--text-white);
+      line-height: 1.2;
+    }
+
+    .founder-info p {
+      font-size: 7.2pt;
+      color: var(--emerald);
+      font-weight: 600;
+      line-height: 1.2;
+    }
+
+    .web-anchor {
+      text-align: right;
+      font-family: var(--font-mono);
+      font-size: 7.5pt;
+      color: var(--cyan);
+      font-weight: 700;
+      letter-spacing: 0.02em;
+    }
+
+    .web-anchor span {
+      display: block;
+      font-size: 6.5pt;
+      color: var(--text-dim);
+      font-family: var(--font-body);
+    }
+
+    /* =========================================================
+       CARA B: EL DORSO (COMPARATIVA, CONFIANZA & QR ESCANEABLE)
+       ========================================================= */
+    .back-header {
+      text-align: center;
+      padding-bottom: 3.2mm;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+    }
+
+    .back-header h2 {
+      font-family: var(--font-display);
+      font-size: 13.2pt;
+      font-weight: 800;
+      color: var(--text-white);
+      line-height: 1.25;
+      letter-spacing: -0.01em;
+    }
+
+    .back-header p {
+      font-size: 7.8pt;
+      color: var(--cyan);
+      font-weight: 600;
+      margin-top: 1.2mm;
+    }
+
+    /* TABLA COMPARATIVA ANTES VS DESPUÉS */
+    .compare-section {
+      margin: 3.5mm 0;
+    }
+
+    .compare-table {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 2.2mm 0;
+    }
+
+    .compare-col {
+      width: 50%;
+      background: rgba(17, 24, 39, 0.7);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 2.8mm;
+      padding: 3mm 3.2mm;
+    }
+
+    .compare-col.col-bad {
+      border-top: 2.5px solid var(--rose);
+      background: linear-gradient(180deg, rgba(244, 63, 94, 0.06) 0%, rgba(17, 24, 39, 0.6) 100%);
+    }
+
+    .compare-col.col-good {
+      border-top: 2.5px solid var(--emerald);
+      background: linear-gradient(180deg, rgba(34, 197, 94, 0.08) 0%, rgba(17, 24, 39, 0.6) 100%);
+      box-shadow: 0 0 16px rgba(34, 197, 94, 0.1);
+    }
+
+    .compare-heading {
+      font-family: var(--font-display);
+      font-size: 8.2pt;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 2mm;
+      display: flex;
+      align-items: center;
+      gap: 1.5mm;
+    }
+
+    .col-bad .compare-heading { color: var(--rose); }
+    .col-good .compare-heading { color: var(--emerald); }
+
+    .compare-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 1.8mm;
+    }
+
+    .compare-list li {
+      font-size: 7.6pt;
+      line-height: 1.35;
+      color: var(--text-muted);
+      display: flex;
+      align-items: flex-start;
+      gap: 1.6mm;
+    }
+
+    .col-bad .compare-list li::before {
+      content: "✕";
+      color: var(--rose);
+      font-weight: 900;
+      font-size: 7.5pt;
+      flex-shrink: 0;
+    }
+
+    .col-good .compare-list li::before {
+      content: "✓";
+      color: var(--emerald);
+      font-weight: 900;
+      font-size: 8pt;
+      flex-shrink: 0;
+    }
+
+    .col-good .compare-list li strong {
+      color: var(--text-white);
+    }
+
+    /* BARRA DE SEGURIDAD Y PRIVACIDAD */
+    .security-bar {
+      background: rgba(34, 197, 94, 0.06);
+      border: 1px solid var(--emerald-glow);
+      border-radius: 2.5mm;
+      padding: 2.5mm 3.5mm;
+      margin: 2mm 0 3.5mm;
+      display: flex;
+      align-items: center;
+      gap: 2.5mm;
+    }
+
+    .security-icon {
+      width: 6mm;
+      height: 6mm;
+      flex-shrink: 0;
+      color: var(--emerald);
+    }
+
+    .security-text {
+      font-size: 7.2pt;
+      line-height: 1.3;
+      color: var(--text-white);
+    }
+
+    .security-text strong {
+      color: var(--emerald);
+    }
+
+    /* CAJA PRINCIPAL DE ACCIÓN & QR CODE REAL ESCANEABLE */
+    .cta-card {
+      background: linear-gradient(135deg, rgba(15, 23, 42, 0.95) 0%, rgba(11, 15, 23, 0.98) 100%);
+      border: 1.5px solid var(--cyan);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6), 0 0 25px rgba(56, 189, 248, 0.2);
+      border-radius: 3.5mm;
+      padding: 4mm 4.5mm;
+      display: grid;
+      grid-template-columns: 1fr 28mm;
+      gap: 4mm;
+      align-items: center;
+    }
+
+    .cta-info h3 {
+      font-family: var(--font-display);
+      font-size: 11pt;
+      font-weight: 800;
+      color: var(--text-white);
+      line-height: 1.2;
+      text-transform: uppercase;
+      margin-bottom: 1.2mm;
+    }
+
+    .cta-info p {
+      font-size: 7.8pt;
+      color: var(--text-muted);
+      line-height: 1.35;
+      margin-bottom: 2.2mm;
+    }
+
+    .cta-contacts {
+      display: flex;
+      flex-direction: column;
+      gap: 1.2mm;
+      font-size: 7.6pt;
+    }
+
+    .contact-row {
+      display: flex;
+      align-items: center;
+      gap: 1.8mm;
+      color: var(--text-white);
+      font-family: var(--font-mono);
+      font-weight: 600;
+    }
+
+    .contact-row.wa {
+      color: var(--emerald);
+      font-size: 8.4pt;
+      font-weight: 800;
+    }
+
+    .qr-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.2mm;
+      background: #FFFFFF;
+      padding: 2mm;
+      border-radius: 2.8mm;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+    }
+
+    .qr-img {
+      width: 24mm;
+      height: 24mm;
+      display: block;
+    }
+
+    .qr-label {
+      font-family: var(--font-mono);
+      font-size: 5.5pt;
+      font-weight: 800;
+      color: #0F172A;
+      letter-spacing: 0.05em;
+      text-align: center;
+    }
+
+    /* CONTROLES VISUALES DE PANTALLA */
+    body.show-only-front .wrap-back { display: none !important; }
+    body.show-only-back .wrap-front { display: none !important; }
+
+    /* =========================================================
+       REGLAS ESTRICTAS DE IMPRESIÓN Y EXPORTACIÓN A PDF A5
+       ========================================================= */
+    @page {
+      size: 148mm 210mm;
+      margin: 0mm;
+    }
+
+    @media print {
+      html, body {
+        background: #07090E !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        width: 148mm;
+      }
+
+      .screen-toolbar,
+      .page-indicator {
+        display: none !important;
+      }
+
+      .workspace {
+        padding: 0 !important;
+        margin: 0 !important;
+        gap: 0 !important;
+        display: block !important;
+      }
+
+      .a5-canvas {
+        margin: 0 !important;
+        box-shadow: none !important;
+        width: 148mm !important;
+        height: 210mm !important;
+        page-break-after: always;
+        break-after: page;
+      }
+
+      .a5-canvas:last-of-type {
+        page-break-after: auto;
+        break-after: auto;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- DEFINICIÓN DE ICONOS SVG LIMPIOS (Cero dependencias externas) -->
+  <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+    <!-- Icono 1: WhatsApp Bot Automatizado -->
+    <symbol id="icon-bot-whatsapp" viewBox="0 0 48 48" fill="none">
+      <path d="M24 6C14.06 6 6 13.79 6 23.4C6 26.83 7.03 30.03 8.81 32.72L6.6 41.4L15.65 39.24C18.18 40.59 21.01 41.34 24 41.34C33.94 41.34 42 33.55 42 23.94C42 14.33 33.94 6 24 6Z" stroke="#38BDF8" stroke-width="2.6" stroke-linejoin="round"/>
+      <path d="M16 23.5H32M24 16.5V30.5" stroke="#22C55E" stroke-width="2.5" stroke-linecap="round"/>
+      <circle cx="24" cy="23.5" r="5" fill="rgba(34, 197, 94, 0.25)" stroke="#22C55E" stroke-width="1.8"/>
+      <path d="M37 10L42 5M42 5H36M42 5V11" stroke="#38BDF8" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+    </symbol>
+
+    <!-- Icono 2: SII + Conciliación Bancaria Automática -->
+    <symbol id="icon-sii-bank" viewBox="0 0 48 48" fill="none">
+      <rect x="8" y="8" width="22" height="30" rx="3" stroke="#38BDF8" stroke-width="2.4"/>
+      <path d="M14 16H24M14 22H24M14 28H20" stroke="#38BDF8" stroke-width="2" stroke-linecap="round"/>
+      <circle cx="33" cy="29" r="8" fill="#111827" stroke="#22C55E" stroke-width="2.4"/>
+      <path d="M29.5 29L32 31.5L37 26.5" stroke="#22C55E" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+    </symbol>
+
+    <!-- Icono 3: Sistemas Web a Medida sin Licencias -->
+    <symbol id="icon-web-stack" viewBox="0 0 48 48" fill="none">
+      <rect x="7" y="10" width="34" height="25" rx="3.5" stroke="#A855F7" stroke-width="2.4"/>
+      <path d="M7 17H41" stroke="#A855F7" stroke-width="2"/>
+      <circle cx="11.5" cy="13.5" r="1.3" fill="#22C55E"/>
+      <circle cx="15.5" cy="13.5" r="1.3" fill="#38BDF8"/>
+      <circle cx="19.5" cy="13.5" r="1.3" fill="#F43F5E"/>
+      <path d="M17 24L13 27.5L17 31M31 24L35 27.5L31 31" stroke="#38BDF8" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M26 22.5L22 32.5" stroke="#22C55E" stroke-width="2" stroke-linecap="round"/>
+      <path d="M17 39H31M24 35V39" stroke="#A855F7" stroke-width="2.4" stroke-linecap="round"/>
+    </symbol>
+
+    <!-- Circuito decorativo Nanobanana -->
+    <symbol id="corner-circuit" viewBox="0 0 160 160" fill="none">
+      <path d="M160 20H90L65 45H10" stroke="#38BDF8" stroke-width="1.6"/>
+      <circle cx="10" cy="45" r="3.2" fill="#38BDF8"/>
+      <path d="M160 50H110L80 80V130" stroke="#22C55E" stroke-width="1.6"/>
+      <circle cx="80" cy="130" r="3.2" fill="#22C55E"/>
+      <path d="M160 85H130L110 105H65" stroke="#38BDF8" stroke-width="1"/>
+      <circle cx="65" cy="105" r="2.2" fill="#38BDF8"/>
+    </symbol>
+
+    <!-- Icono Escudo de Seguridad -->
+    <symbol id="icon-shield-check" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+      <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="m9 12 2 2 4-4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    </symbol>
+  </svg>
+
+  <!-- BARRA DE CONTROL EN PANTALLA -->
+  <header class="screen-toolbar">
+    <div class="toolbar-title">
+      <strong>EFINNOVATION · Flyer Ejecutivo A5</strong>
+      <span class="toolbar-badge">Diseño Nanobanana Dark</span>
+    </div>
+    <div class="toolbar-actions">
+      <button class="btn active" onclick="setMode('both', this)">Ambas Caras (Frente + Dorso)</button>
+      <button class="btn" onclick="setMode('front', this)">Solo Frente (Cara A)</button>
+      <button class="btn" onclick="setMode('back', this)">Solo Dorso (Cara B)</button>
+      <button class="btn" id="bleed-toggle" onclick="toggleBleed(this)">Sangrado Imprenta (3mm): OFF</button>
+      <button class="btn btn-print" onclick="window.print()">🖨️ Imprimir / Guardar PDF</button>
+    </div>
+  </header>
+
+  <main class="workspace">
+
+    <!-- =========================================================
+         CARA A: FRENTE DE ALTO IMPACTO (GANCHO B2B)
+         ========================================================= -->
+    <div class="page-indicator wrap-front">Cara A · Frente de Impacto Comercial (Gancho y Dolor Operativo)</div>
+    <section class="a5-canvas wrap-front" aria-label="Cara Frontal A5">
+      <div class="crop-marks">
+        <span class="crop-mark crop-tl"></span>
+        <span class="crop-mark crop-tr"></span>
+        <span class="crop-mark crop-bl"></span>
+        <span class="crop-mark crop-br"></span>
+      </div>
+      <div class="bg-grid"></div>
+      <svg class="circuit-glow circuit-tr"><use href="#corner-circuit"/></svg>
+      <svg class="circuit-glow circuit-bl"><use href="#corner-circuit"/></svg>
+
+      <div class="content-layer">
+        <!-- Encabezado de Marca -->
+        <header class="front-top">
+          <div class="brand-group">
+            <img src="assets/img/hero-logo.png" alt="Logo" class="brand-logo-img" onerror="this.style.display='none'">
+            <div class="brand-text"><span>EF</span>INNOVATION</div>
+          </div>
+          <div class="badge-location">
+            <span>Santiago Centro · Atención Presencial</span>
+          </div>
+        </header>
+
+        <!-- Titular Gancho -->
+        <div class="hero-wrap">
+          <span class="hero-kicker" contenteditable="true" spellcheck="false">// INGENIERÍA EN AUTOMATIZACIÓN & INTELIGENCIA ARTIFICIAL</span>
+          <h1 class="hero-title" contenteditable="true" spellcheck="false">
+            ¿Tu empresa <span class="highlight-cyan">pierde ventas por tardar en WhatsApp</span> o pierde horas <span class="highlight-amber">cuadrando facturas en Excel?</span>
+          </h1>
+        </div>
+
+        <!-- Bento-Grid de 3 Soluciones Concretas -->
+        <div class="bento-grid">
+          
+          <!-- Tarjeta 1: WhatsApp -->
+          <article class="bento-card">
+            <div class="card-icon-wrap">
+              <svg><use href="#icon-bot-whatsapp"/></svg>
+            </div>
+            <div class="card-main">
+              <div class="card-header-line">
+                <h2 class="card-title" contenteditable="true" spellcheck="false">WhatsApp de Ventas 24/7</h2>
+                <span class="card-metric-badge">Respuesta &lt; 3 seg</span>
+              </div>
+              <p class="card-desc" contenteditable="true" spellcheck="false">
+                Cotizaciones automáticas conectadas a tu stock real para no perder clientes mientras tu equipo atiende el mesón.
+              </p>
+            </div>
+          </article>
+
+          <!-- Tarjeta 2: SII & Contabilidad -->
+          <article class="bento-card card-emerald">
+            <div class="card-icon-wrap">
+              <svg><use href="#icon-sii-bank"/></svg>
+            </div>
+            <div class="card-main">
+              <div class="card-header-line">
+                <h2 class="card-title" contenteditable="true" spellcheck="false">Cero Digitación Contable</h2>
+                <span class="card-metric-badge">Conciliación SII</span>
+              </div>
+              <p class="card-desc" contenteditable="true" spellcheck="false">
+                Descarga automática de facturas del SII y cruce directo con cartolas de Banco Santander, Chile o BCI sin tipear nada.
+              </p>
+            </div>
+          </article>
+
+          <!-- Tarjeta 3: Software Web a Medida -->
+          <article class="bento-card card-purple">
+            <div class="card-icon-wrap">
+              <svg><use href="#icon-web-stack"/></svg>
+            </div>
+            <div class="card-main">
+              <div class="card-header-line">
+                <h2 class="card-title" contenteditable="true" spellcheck="false">Sistemas Web a Medida</h2>
+                <span class="card-metric-badge">Sin Licencias USD</span>
+              </div>
+              <p class="card-desc" contenteditable="true" spellcheck="false">
+                Reemplazamos planillas de Excel lentas y bloqueadas por plataformas ágiles para operar desde el celular en bodega o ruta.
+              </p>
+            </div>
+          </article>
+
+        </div>
+
+        <!-- Footer Autoridad y Cercanía Vecinal -->
+        <footer class="front-footer">
+          <div class="founder-lockup">
+            <img src="assets/img/founder-franco.webp" alt="Franco Blanco" class="founder-photo" onerror="this.src='https://ui-avatars.com/api/?name=Franco+Blanco&background=0284C7&color=fff'">
+            <div class="founder-info">
+              <h4 contenteditable="true" spellcheck="false">Franco Blanco</h4>
+              <p contenteditable="true" spellcheck="false">Ingeniero en Informática · Magíster en Seguridad de la Información</p>
+            </div>
+          </div>
+          <div class="web-anchor">
+            efinnovation.cl
+            <span>Santiago, Chile</span>
+          </div>
+        </footer>
+      </div>
+    </section>
+
+    <!-- =========================================================
+         CARA B: DORSO DE ALTA CONVERSIÓN CON QR ESCANEABLE REAL
+         ========================================================= -->
+    <div class="page-indicator wrap-back">Cara B · Dorso de Conversión (Comparativa, Confianza y QR Real)</div>
+    <section class="a5-canvas wrap-back" aria-label="Cara Posterior A5">
+      <div class="crop-marks">
+        <span class="crop-mark crop-tl"></span>
+        <span class="crop-mark crop-tr"></span>
+        <span class="crop-mark crop-bl"></span>
+        <span class="crop-mark crop-br"></span>
+      </div>
+      <div class="bg-grid"></div>
+      <svg class="circuit-glow circuit-tr"><use href="#corner-circuit"/></svg>
+      <svg class="circuit-glow circuit-bl"><use href="#corner-circuit"/></svg>
+
+      <div class="content-layer">
+        <!-- Encabezado Dorso -->
+        <header class="back-header">
+          <h2 contenteditable="true" spellcheck="false">Tecnología de gran empresa, adaptada a la velocidad de tu negocio</h2>
+          <p contenteditable="true" spellcheck="false">// RESULTADOS OPERATIVOS DIRECTOS SIN PAGAR LICENCIAS MILLONARIAS</p>
+        </header>
+
+        <!-- Comparativa Antes vs Después -->
+        <div class="compare-section">
+          <table class="compare-table">
+            <tr>
+              <td class="compare-col col-bad">
+                <div class="compare-heading">✕ Tu operación actual</div>
+                <ul class="compare-list">
+                  <li>Empleados buscando precios en cuadernos o planillas que se cuelgan.</li>
+                  <li>Clientes que compran al lado porque nadie contestó el WhatsApp a tiempo.</li>
+                  <li>Cierre de mes estresante cuadrando el F29 del SII a última hora.</li>
+                </ul>
+              </td>
+              <td class="compare-col col-good">
+                <div class="compare-heading">✓ Con Efinnovation</div>
+                <ul class="compare-list">
+                  <li><strong>Cotizador automático:</strong> El cliente recibe precio y stock al instante.</li>
+                  <li><strong>Cuentas y bancos al día</strong> todas las mañanas sin digitación manual.</li>
+                  <li><strong>Soporte presencial:</strong> Atención de ingeniero vecino en Santiago Centro.</li>
+                </ul>
+              </td>
+            </tr>
+          </table>
+        </div>
+
+        <!-- Sello de Seguridad y Confidencialidad -->
+        <div class="security-bar">
+          <svg class="security-icon"><use href="#icon-shield-check"/></svg>
+          <div class="security-text" contenteditable="true" spellcheck="false">
+            <strong>Máxima Privacidad y Seguridad (Ley 19.628):</strong> Tus claves bancarias, clientes y facturas permanecen 100% seguros y cifrados en servidores privados, con supervisión de un Magíster en Ciberseguridad.
+          </div>
+        </div>
+
+        <!-- Gran Caja CTA con Código QR Real Escaneable -->
+        <div class="cta-card">
+          <div class="cta-info">
+            <h3 contenteditable="true" spellcheck="false">Diagnóstico Gratuito (20 min)</h3>
+            <p contenteditable="true" spellcheck="false">
+              Revisamos tus flujos de venta y administración en tu propio local u oficina técnica en Santiago Centro, sin costo ni compromiso.
+            </p>
+            <div class="cta-contacts">
+              <div class="contact-row wa">
+                <span>💬 WhatsApp: +56 9 7426 3408</span>
+              </div>
+              <div class="contact-row">
+                <span>🌐 efinnovation.cl · contacto@efinnovation.cl</span>
+              </div>
+              <div class="contact-row" style="color: var(--text-dim); font-size: 7.2pt;">
+                <span>📍 Av. Arturo Prat, Santiago Centro</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Código QR Real Escaneable -->
+          <div class="qr-container">
+            <img src="assets/img/qr-whatsapp-flyer.svg" alt="Escanear WhatsApp Efinnovation" class="qr-img">
+            <span class="qr-label">ESCANEA PARA AGENDAR</span>
+          </div>
+        </div>
+
+        <!-- Microfooter -->
+        <footer style="text-align: center; font-size: 6.8pt; color: var(--text-dim); padding-top: 2.5mm; border-top: 1px solid rgba(255, 255, 255, 0.05);">
+          © 2026 Efinnovation · Consultoría en Ingeniería, Automatización e IA · Santiago de Chile
+        </footer>
+      </div>
+    </section>
+
+  </main>
+
+  <script>
+    function setMode(mode, btn) {
+      document.body.classList.remove('show-only-front', 'show-only-back');
+      if (mode === 'front') document.body.classList.add('show-only-front');
+      if (mode === 'back') document.body.classList.add('show-only-back');
+
+      document.querySelectorAll('.toolbar-actions .btn:not(.btn-print):not(#bleed-toggle)').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+    }
+
+    function toggleBleed(btn) {
+      const isBleed = document.body.classList.toggle('bleed-mode');
+      btn.classList.toggle('active', isBleed);
+      btn.textContent = isBleed ? 'Sangrado Imprenta (3mm): ON' : 'Sangrado Imprenta (3mm): OFF';
+    }
+  </script>
+</body>
+</html>
