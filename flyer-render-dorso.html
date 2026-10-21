@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Flyer Dorso - EFINNOVATION</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600;700&family=Outfit:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg-black: #06080D;
+      --bg-surface: #101623;
+      --cyan: #38BDF8;
+      --cyan-light: #7DD3FC;
+      --emerald: #22C55E;
+      --purple: #A855F7;
+      --amber: #F59E0B;
+      --rose: #F43F5E;
+      --text-white: #F8FAFC;
+      --text-muted: #94A3B8;
+      --text-dim: #64748B;
+      --font-display: 'Outfit', sans-serif;
+      --font-body: 'Inter', sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html, body {
+      width: 100%;
+      height: 100%;
+      background-color: var(--bg-black);
+      color: var(--text-white);
+      font-family: var(--font-body);
+      overflow: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .canvas-wrap {
+      width: 100vw;
+      height: 100vh;
+      position: relative;
+      background-color: var(--bg-black);
+      background-image: 
+        radial-gradient(circle at 10% 20%, rgba(56, 189, 248, 0.16) 0%, transparent 50%),
+        radial-gradient(circle at 90% 80%, rgba(34, 197, 94, 0.14) 0%, transparent 50%),
+        linear-gradient(180deg, #05070B 0%, #0A0E17 50%, #05070B 100%);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 5.5vh 5.5vw;
+    }
+
+    .bg-grid {
+      position: absolute;
+      inset: 0;
+      background-image: 
+        linear-gradient(to right, rgba(56, 189, 248, 0.035) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(56, 189, 248, 0.035) 1px, transparent 1px);
+      background-size: 30px 30px;
+      mask-image: radial-gradient(circle at 50% 50%, black 40%, transparent 90%);
+      -webkit-mask-image: radial-gradient(circle at 50% 50%, black 40%, transparent 90%);
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .circuit-glow {
+      position: absolute;
+      top: -10px;
+      right: -10px;
+      width: 250px;
+      height: 250px;
+      pointer-events: none;
+      z-index: 1;
+      opacity: 0.5;
+    }
+
+    .content-layer {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 100%;
+      width: 100%;
+    }
+
+    header.back-top {
+      border-left: 5px solid var(--emerald);
+      padding-left: 14px;
+    }
+
+    header.back-top h2 {
+      font-family: var(--font-display);
+      font-size: 23px;
+      font-weight: 800;
+      color: var(--text-white);
+      line-height: 1.25;
+      letter-spacing: -0.01em;
+    }
+
+    header.back-top p {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      color: var(--cyan);
+      margin-top: 6px;
+      letter-spacing: 0.05em;
+    }
+
+    /* Comparativa */
+    .compare-wrap {
+      margin: 2vh 0;
+    }
+
+    .compare-table {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 14px 0;
+    }
+
+    .compare-col {
+      width: 50%;
+      border-radius: 12px;
+      padding: 2.2vh 18px;
+    }
+
+    .col-bad {
+      background: rgba(244, 63, 94, 0.05);
+      border: 1px solid rgba(244, 63, 94, 0.25);
+      border-top: 4px solid var(--rose);
+    }
+
+    .col-good {
+      background: rgba(34, 197, 94, 0.06);
+      border: 1px solid rgba(34, 197, 94, 0.25);
+      border-top: 4px solid var(--emerald);
+      box-shadow: 0 0 20px rgba(34, 197, 94, 0.12);
+    }
+
+    .compare-heading {
+      font-family: var(--font-display);
+      font-size: 14px;
+      font-weight: 800;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .col-bad .compare-heading { color: var(--rose); }
+    .col-good .compare-heading { color: var(--emerald); }
+
+    .compare-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .compare-list li {
+      font-size: 13px;
+      line-height: 1.4;
+      color: var(--text-muted);
+    }
+
+    .col-good .compare-list li strong {
+      color: var(--text-white);
+    }
+
+    /* Sello de Seguridad */
+    .security-bar {
+      background: rgba(34, 197, 94, 0.06);
+      border: 1px solid rgba(34, 197, 94, 0.3);
+      border-radius: 10px;
+      padding: 1.6vh 18px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin: 0.5vh 0 2vh;
+    }
+
+    .security-icon {
+      width: 30px;
+      height: 30px;
+      color: var(--emerald);
+      flex-shrink: 0;
+    }
+
+    .security-text {
+      font-size: 12.5px;
+      color: var(--text-white);
+      line-height: 1.35;
+    }
+
+    .security-text strong {
+      color: var(--emerald);
+    }
+
+    /* CTA Card con QR */
+    .cta-card {
+      background: linear-gradient(135deg, rgba(16, 22, 35, 0.95) 0%, rgba(10, 14, 23, 0.98) 100%);
+      border: 2px solid var(--cyan);
+      border-radius: 14px;
+      padding: 2.4vh 22px;
+      display: grid;
+      grid-template-columns: 1fr 140px;
+      gap: 20px;
+      align-items: center;
+      box-shadow: 0 10px 35px rgba(0,0,0,0.5), 0 0 25px rgba(56, 189, 248, 0.2);
+    }
+
+    .cta-card h3 {
+      font-family: var(--font-display);
+      font-size: 19px;
+      font-weight: 800;
+      color: var(--text-white);
+      text-transform: uppercase;
+      margin-bottom: 8px;
+      line-height: 1.2;
+    }
+
+    .cta-card p {
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.4;
+      margin-bottom: 12px;
+    }
+
+    .contact-lines {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      font-size: 12.5px;
+      font-family: var(--font-mono);
+    }
+
+    .contact-wa {
+      color: var(--emerald);
+      font-weight: 800;
+      font-size: 15px;
+    }
+
+    .qr-box {
+      background: #FFFFFF;
+      padding: 10px;
+      border-radius: 12px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.5);
+    }
+
+    .qr-box img {
+      width: 120px;
+      height: 120px;
+      display: block;
+    }
+
+    .qr-label {
+      font-family: var(--font-mono);
+      font-size: 9px;
+      font-weight: 800;
+      color: #0F172A;
+      text-align: center;
+      letter-spacing: 0.05em;
+    }
+
+    footer.back-foot {
+      text-align: center;
+      font-size: 11px;
+      color: var(--text-dim);
+      padding-top: 1.8vh;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+    }
+  </style>
+</head>
+<body>
+
+  <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+    <symbol id="corner-circuit" viewBox="0 0 160 160" fill="none">
+      <path d="M160 20H90L65 45H10" stroke="#38BDF8" stroke-width="1.6"/>
+      <circle cx="10" cy="45" r="3.2" fill="#38BDF8"/>
+      <path d="M160 50H110L80 80V130" stroke="#22C55E" stroke-width="1.6"/>
+      <circle cx="80" cy="130" r="3.2" fill="#22C55E"/>
+    </symbol>
+    
+    <symbol id="icon-shield-check" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+      <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="m9 12 2 2 4-4" stroke="#22C55E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    </symbol>
+  </svg>
+
+  <main class="canvas-wrap">
+    <div class="bg-grid"></div>
+    <svg class="circuit-glow"><use href="#corner-circuit"/></svg>
+
+    <div class="content-layer">
+      <header class="back-top">
+        <h2>Tecnología de gran empresa, adaptada a tu negocio local</h2>
+        <p>// RESULTADOS OPERATIVOS TANGIBLES EN SANTIAGO</p>
+      </header>
+
+      <!-- Comparativa -->
+      <div class="compare-wrap">
+        <table class="compare-table">
+          <tr>
+            <td class="compare-col col-bad">
+              <div class="compare-heading">✕ OPERACIÓN MANUAL HOY</div>
+              <ul class="compare-list">
+                <li>• Clientes que compran al lado porque no contestaron su WhatsApp.</li>
+                <li>• Empleados buscando precios en cuadernos o planillas bloqueadas.</li>
+                <li>• Cierre mensual estresante cuadrando el F29 a última hora.</li>
+              </ul>
+            </td>
+            <td class="compare-col col-good">
+              <div class="compare-heading">✓ CON EFINNOVATION</div>
+              <ul class="compare-list">
+                <li>• <strong>Cotizador 24/7:</strong> Precio y stock entregado en 3 segundos.</li>
+                <li>• <strong>Cuentas y bancos al día</strong> todas las mañanas automáticamente.</li>
+                <li>• <strong>Atención presencial:</strong> Ingeniero vecino en Santiago Centro.</li>
+              </ul>
+            </td>
+          </tr>
+        </table>
+      </div>
+
+      <!-- Sello de Seguridad -->
+      <div class="security-bar">
+        <svg class="security-icon"><use href="#icon-shield-check"/></svg>
+        <div class="security-text">
+          <strong>Máxima Seguridad y Confidencialidad (Ley 19.628):</strong> Tus claves bancarias y datos de clientes permanecen cifrados en tus servidores propios, auditados por Magíster en Ciberseguridad.
+        </div>
+      </div>
+
+      <!-- Gran Caja CTA con Código QR Real Escaneable -->
+      <div class="cta-card">
+        <div>
+          <h3>Diagnóstico Gratuito (20 min)</h3>
+          <p>
+            Revisamos tus procesos en tu propio local u oficina en Santiago Centro, sin costo ni compromiso.
+          </p>
+          <div class="contact-lines">
+            <div class="contact-wa">💬 WhatsApp: +56 9 7426 3408</div>
+            <div style="color: var(--text-white);">🌐 efinnovation.cl · contacto@efinnovation.cl</div>
+            <div style="color: var(--text-dim); font-size: 11px;">📍 Av. Arturo Prat, Santiago Centro</div>
+          </div>
+        </div>
+
+        <div class="qr-box">
+          <img src="assets/img/qr-whatsapp-flyer.svg" alt="Escanear WhatsApp Efinnovation">
+          <span class="qr-label">ESCANEA PARA AGENDAR</span>
+        </div>
+      </div>
+
+      <footer class="back-foot">
+        © 2026 Efinnovation · Consultoría en Ingeniería, Automatización e IA · Santiago de Chile
+      </footer>
+    </div>
+  </main>
+
+</body>
+</html>
