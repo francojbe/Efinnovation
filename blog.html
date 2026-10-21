@@ -4,17 +4,49 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blog & Insights | Efinnovation</title>
+    <title>Blog & Estrategia B2B | Efinnovation Chile</title>
     <meta name="description"
-        content="Análisis estratégicos sobre Inteligencia Artificial, automatización de procesos y el futuro del trabajo en Chile.">
+        content="Artículos y análisis estratégicos sobre Automatización de Procesos (n8n), Agentes de Inteligencia Artificial sin alucinaciones y Desarrollo Web para empresas en Chile.">
+    <link rel="canonical" href="https://efinnovation.cl/blog.html">
 
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="assets/img/hero-logo.png">
 
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Efinnovation">
+    <meta property="og:title" content="Blog & Estrategia B2B | Automatización, IA y Software en Chile">
+    <meta property="og:description"
+        content="Análisis técnicos y gerenciales para optimizar procesos operativos, reducir costos en USD y adoptar IA de forma segura.">
+    <meta property="og:url" content="https://efinnovation.cl/blog.html">
+    <meta property="og:image" content="https://efinnovation.cl/assets/og-image.jpg">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Blog & Estrategia B2B | Efinnovation Chile">
+    <meta name="twitter:description" content="Artículos de ingeniería y automatización empresarial en Chile.">
+    <meta name="twitter:image" content="https://efinnovation.cl/assets/og-image.jpg">
+
+    <!-- Content Security Policy -->
+    <meta http-equiv="Content-Security-Policy"
+        content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://kit.fontawesome.com https://www.googletagmanager.com https://www.google-analytics.com https://ssl.google-analytics.com https://googleads.g.doubleclick.net https://www.googleadservices.com https://cdnjs.cloudflare.com https://static.cloudflareinsights.com https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://ka-p.fontawesome.com https://cdnjs.cloudflare.com https://cdn.jsdelivr.net; font-src 'self' data: https://fonts.gstatic.com https://ka-p.fontawesome.com https://cdnjs.cloudflare.com; img-src 'self' data: https:; connect-src 'self' https://ka-p.fontawesome.com https://auto.efinnovation.cl https://www.google-analytics.com https://analytics.google.com https://region1.google-analytics.com https://stats.g.doubleclick.net https://www.google.com https://www.google.cl https://www.googletagmanager.com https://static.cloudflareinsights.com https://cloudflareinsights.com;">
+
+    <!-- Google Tag Manager -->
+    <script>(function (w, d, s, l, i) {
+            w[l] = w[l] || []; w[l].push({
+                'gtm.start':
+                    new Date().getTime(), event: 'gtm.js'
+            }); var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+                    'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-5RBKKPMJ');</script>
+    <!-- End Google Tag Manager -->
+
     <!-- Fonts & Icons -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
     <!-- Base Styles -->
@@ -22,257 +54,514 @@
 
     <style>
         body {
-            background-image: none;
-            background-color: #050508;
-            height: auto;
+            background-color: #0B0F17;
+            color: #E2E8F0;
+            font-family: 'Inter', sans-serif;
             min-height: 100vh;
+            margin: 0;
+            padding: 0;
         }
 
-        .blog-header {
-            padding: 120px 20px 60px;
+        .blog-hero {
+            padding: 130px 20px 60px;
             text-align: center;
-            background: radial-gradient(circle at top, rgba(0, 120, 212, 0.1) 0%, transparent 70%);
+            background: radial-gradient(circle at 50% 20%, rgba(56, 189, 248, 0.12) 0%, transparent 70%);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        .blog-hero-badge {
+            display: inline-block;
+            background: rgba(56, 189, 248, 0.12);
+            color: #38BDF8;
+            padding: 6px 16px;
+            border-radius: 999px;
+            font-size: 0.82rem;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+            border: 1px solid rgba(56, 189, 248, 0.3);
+        }
+
+        .blog-hero h1 {
+            font-family: 'Outfit', sans-serif;
+            font-size: clamp(2.2rem, 5vw, 3.5rem);
+            font-weight: 800;
+            line-height: 1.2;
+            color: #F8FAFC;
+            max-width: 900px;
+            margin: 0 auto 16px;
+        }
+
+        .blog-hero p {
+            color: #94A3B8;
+            font-size: 1.15rem;
+            max-width: 680px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        .blog-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 20px 80px;
         }
 
         .blog-grid {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 40px 20px;
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-            gap: 30px;
+            grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+            gap: 32px;
         }
 
         .blog-card {
-            background: rgba(255, 255, 255, 0.02);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            border-radius: 12px;
+            background: #111827;
+            border: 1px solid #1E293B;
+            border-radius: 16px;
             overflow: hidden;
-            transition: all 0.3s ease;
             display: flex;
             flex-direction: column;
-            backdrop-filter: blur(10px);
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            position: relative;
         }
 
         .blog-card:hover {
-            transform: translateY(-5px);
-            border-color: var(--accent);
-            background: rgba(255, 255, 255, 0.04);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            transform: translateY(-6px);
+            border-color: #38BDF8;
+            box-shadow: 0 16px 36px rgba(0, 0, 0, 0.4);
         }
 
-        .blog-card-content {
-            padding: 25px;
-            flex-grow: 1;
-        }
-
-        .blog-card-tag {
-            background: rgba(96, 205, 255, 0.1);
-            color: var(--accent);
-            padding: 4px 12px;
-            border-radius: 20px;
-            font-size: 0.75rem;
-            font-weight: 600;
-            display: inline-block;
-            margin-bottom: 15px;
-        }
-
-        .blog-card-title {
-            font-size: 1.4rem;
-            color: white;
-            margin-bottom: 15px;
-            line-height: 1.3;
-        }
-
-        .blog-card-excerpt {
-            color: var(--text-muted);
-            font-size: 0.95rem;
-            line-height: 1.6;
-            margin-bottom: 20px;
-        }
-
-        .blog-card-footer {
-            padding: 20px 25px;
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
-            font-size: 0.85rem;
-            color: var(--text-muted);
+        .blog-card-header {
+            padding: 24px 28px 12px;
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
 
-        .read-more {
-            color: var(--accent);
-            text-decoration: none;
-            font-weight: 600;
-            display: flex;
-            align-items: center;
-            gap: 5px;
+        .blog-card-tag {
+            background: rgba(56, 189, 248, 0.1);
+            color: #38BDF8;
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
         }
 
-        .read-more:hover {
-            gap: 8px;
+        .blog-card-readtime {
+            font-size: 0.8rem;
+            color: #64748B;
+        }
+
+        .blog-card-body {
+            padding: 0 28px 24px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .blog-card-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: #F8FAFC;
+            margin: 0 0 14px;
+            line-height: 1.35;
+        }
+
+        .blog-card-title a {
+            color: inherit;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .blog-card-title a:hover {
+            color: #38BDF8;
+        }
+
+        .blog-card-excerpt {
+            color: #94A3B8;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin: 0 0 20px;
+            flex-grow: 1;
+        }
+
+        .blog-card-cta {
+            color: #38BDF8;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            transition: gap 0.2s;
+            margin-top: auto;
+        }
+
+        .blog-card:hover .blog-card-cta {
+            gap: 10px;
+        }
+
+        .blog-card-footer {
+            padding: 16px 28px;
+            background: rgba(15, 23, 42, 0.5);
+            border-top: 1px solid #1E293B;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.82rem;
+            color: #64748B;
+        }
+
+        /* Author Spotlight */
+        .founder-spotlight {
+            background: linear-gradient(135deg, #111827 0%, #0F172A 100%);
+            border: 1px solid #1E293B;
+            border-radius: 16px;
+            padding: 36px;
+            margin-top: 60px;
+            display: flex;
+            align-items: center;
+            gap: 30px;
+        }
+
+        .founder-spotlight img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            border: 3px solid #38BDF8;
+            object-fit: cover;
+            flex-shrink: 0;
+        }
+
+        .founder-spotlight-content h3 {
+            font-family: 'Outfit', sans-serif;
+            color: #F8FAFC;
+            font-size: 1.4rem;
+            margin: 0 0 6px;
+        }
+
+        .founder-spotlight-content .sub {
+            color: #38BDF8;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 12px;
+            display: block;
+        }
+
+        .founder-spotlight-content p {
+            color: #94A3B8;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin: 0 0 16px;
+        }
+
+        .founder-spotlight-content .links {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .founder-spotlight-content .links a {
+            color: #38BDF8;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .founder-spotlight-content .links a:hover {
+            text-decoration: underline;
+        }
+
+        /* Banner CTA Bottom */
+        .blog-bottom-cta {
+            background: radial-gradient(circle at 50% 50%, rgba(2, 132, 199, 0.15) 0%, rgba(15, 23, 42, 0.8) 100%);
+            border: 1px solid rgba(56, 189, 248, 0.3);
+            border-radius: 16px;
+            padding: 50px 30px;
+            text-align: center;
+            margin-top: 60px;
+        }
+
+        .blog-bottom-cta h2 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 2rem;
+            color: #F8FAFC;
+            margin: 0 0 12px;
+        }
+
+        .blog-bottom-cta p {
+            color: #94A3B8;
+            max-width: 600px;
+            margin: 0 auto 28px;
+            font-size: 1.05rem;
+        }
+
+        .cta-btn-group {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        @media (max-width: 768px) {
+            .founder-spotlight {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .founder-spotlight-content .links {
+                justify-content: center;
+            }
+
+            .blog-grid {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
 
 <body>
-    <nav class="navbar-glass">
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5RBKKPMJ" height="0" width="0"
+            style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
+    <!-- Navbar -->
+    <nav class="navbar-glass" aria-label="Navegación principal">
         <div class="nav-container">
             <a href="index.html" class="nav-logo">
-                <img src="assets/img/hero-logo.png" alt="Efinnovation Logo">
+                <img src="assets/img/hero-logo.png" alt="Efinnovation Logo" width="150" height="40">
+                <div class="logo-text">
+                    <span class="logo-main-text">EFINNOVATION</span>
+                    <span class="logo-sub-text">Consultoría, Automatización e IA</span>
+                </div>
             </a>
-            <div class="nav-links">
-                <a href="index.html">Inicio</a>
-                <a href="blog.html" class="active">Blog</a>
-                <a href="efi-chat.html" style="color: var(--accent); font-weight: bold;"><i class="fas fa-sparkles"></i>
-                    Probar EFI</a>
-                <a href="index.html#contacto" class="nav-btn">Contacto</a>
-            </div>
-            <button class="nav-toggle" aria-label="Abrir menú">
-                <i class="fas fa-bars"></i>
-            </button>
+            <ul class="nav-links">
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="index.html#servicios">Servicios</a></li>
+                <li><a href="index.html#segmentos">Empresas</a></li>
+                <li><a href="blog.html" class="active">Blog</a></li>
+                <li><a href="index.html#diagnostico" class="nav-cta-btn">Solicitar diagnóstico</a></li>
+            </ul>
         </div>
     </nav>
 
-    <header class="blog-header">
-        <h1 class="title-accent" style="font-size: 3.5rem;">Insights & Estrategia</h1>
-        <p style="color: var(--text-muted); font-size: 1.2rem; max-width: 600px; margin: 20px auto 0;">
-            Análisis profundo sobre el impacto de la IA en el mercado chileno y global.
+    <!-- Botón Flotante Único de WhatsApp -->
+    <a href="https://wa.me/56974263408?text=Hola%20Efinnovation,%20estoy%20revisando%20su%20blog%20y%20me%20gustar%C3%ADa%20hacer%20una%20consulta%20técnica."
+        class="whatsapp-float" data-cta-location="blog_home_whatsapp_float" target="_blank"
+        title="Conversar por WhatsApp" rel="noopener noreferrer" aria-label="Contactar a Efinnovation por WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- Header Hero -->
+    <header class="blog-hero">
+        <span class="blog-hero-badge"><i class="fas fa-brain"></i> Conocimiento & Estrategia B2B</span>
+        <h1>Automatización, Inteligencia Artificial y Software en Chile</h1>
+        <p>
+            Análisis técnicos y estratégicos sin rodeos ni promesas irreales. Diseñados para gerentes generales, finanzas y operaciones que buscan optimizar su negocio con seguridad.
         </p>
     </header>
 
-    <main class="blog-grid" id="posts-container">
-        <!-- POSTS_START -->
-        <article class="blog-card">
-            <div class="blog-card-image">
-                <img src="assets/img/hero-bg-premium.webp"
-                    alt="La Revolución de los Agentes de IA en la Gestión de ERPs Blog">
+    <!-- Main Grid -->
+    <main class="blog-container">
+        <section class="blog-grid" id="articulos-principales">
+
+            <!-- Card 1: n8n vs Zapier -->
+            <article class="blog-card">
+                <div class="blog-card-header">
+                    <span class="blog-card-tag">Automatización B2B</span>
+                    <span class="blog-card-readtime"><i class="far fa-clock"></i> 7 min</span>
+                </div>
+                <div class="blog-card-body">
+                    <h2 class="blog-card-title">
+                        <a href="blog/posts/n8n-vs-zapier-automatizacion-empresas-chile.html">
+                            n8n vs. Zapier en Chile: Cómo automatizar procesos sin pagar miles de dólares en licencias
+                        </a>
+                    </h2>
+                    <p class="blog-card-excerpt">
+                        Por qué las empresas chilenas están migrando de plataformas SaaS propietarias a n8n autoalojado: costos fijos de servidor, tareas ilimitadas y estricto cumplimiento con la Ley 19.628 de protección de datos.
+                    </p>
+                    <a href="blog/posts/n8n-vs-zapier-automatizacion-empresas-chile.html" class="blog-card-cta">
+                        Leer análisis completo <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+                <div class="blog-card-footer">
+                    <span><i class="far fa-user"></i> Franco Blanco</span>
+                    <span><i class="far fa-calendar"></i> Octubre 2026</span>
+                </div>
+            </article>
+
+            <!-- Card 2: Agentes de IA -->
+            <article class="blog-card">
+                <div class="blog-card-header">
+                    <span class="blog-card-tag" style="background: rgba(168, 85, 247, 0.1); color: #C084FC;">Inteligencia Artificial</span>
+                    <span class="blog-card-readtime"><i class="far fa-clock"></i> 8 min</span>
+                </div>
+                <div class="blog-card-body">
+                    <h2 class="blog-card-title">
+                        <a href="blog/posts/agentes-de-ia-para-empresas-sin-alucinaciones.html">
+                            Agentes de IA para Empresas: Cómo implementarlos sin alucinaciones ni fugas de datos
+                        </a>
+                    </h2>
+                    <p class="blog-card-excerpt">
+                        Arquitecturas RAG, anclaje estricto en fuentes de verdad, control de respuestas corporativas y supervisión humana para evitar que la IA invente precios o filtre secretos del negocio.
+                    </p>
+                    <a href="blog/posts/agentes-de-ia-para-empresas-sin-alucinaciones.html" class="blog-card-cta" style="color: #C084FC;">
+                        Leer análisis completo <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+                <div class="blog-card-footer">
+                    <span><i class="far fa-user"></i> Franco Blanco</span>
+                    <span><i class="far fa-calendar"></i> Octubre 2026</span>
+                </div>
+            </article>
+
+            <!-- Card 3: Automatización Contable SII -->
+            <article class="blog-card">
+                <div class="blog-card-header">
+                    <span class="blog-card-tag" style="background: rgba(34, 197, 94, 0.1); color: #22C55E;">Finanzas & Operaciones</span>
+                    <span class="blog-card-readtime"><i class="far fa-clock"></i> 8 min</span>
+                </div>
+                <div class="blog-card-body">
+                    <h2 class="blog-card-title">
+                        <a href="blog/posts/automatizacion-contable-sii-conciliacion-erp.html">
+                            Automatización Contable con el SII: Cómo sincronizar facturas, bancos y ERP
+                        </a>
+                    </h2>
+                    <p class="blog-card-excerpt">
+                        Cómo eliminar la digitación manual de los cierres mensuales cruzando el Registro de Compras y Ventas del SII con cartolas de Banco de Chile, Santander o BCI, e inyectando asientos en Softland o Defontana.
+                    </p>
+                    <a href="blog/posts/automatizacion-contable-sii-conciliacion-erp.html" class="blog-card-cta" style="color: #22C55E;">
+                        Leer análisis completo <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+                <div class="blog-card-footer">
+                    <span><i class="far fa-user"></i> Franco Blanco</span>
+                    <span><i class="far fa-calendar"></i> Octubre 2026</span>
+                </div>
+            </article>
+
+            <!-- Card 4: Reemplazar Excel -->
+            <article class="blog-card">
+                <div class="blog-card-header">
+                    <span class="blog-card-tag" style="background: rgba(245, 158, 11, 0.1); color: #F59E0B;">Ingeniería de Software</span>
+                    <span class="blog-card-readtime"><i class="far fa-clock"></i> 7 min</span>
+                </div>
+                <div class="blog-card-body">
+                    <h2 class="blog-card-title">
+                        <a href="blog/posts/cuando-reemplazar-excel-por-aplicacion-web-a-medida.html">
+                            ¿Cuándo tu empresa superó Excel? 5 señales de que necesitas una aplicación web a medida
+                        </a>
+                    </h2>
+                    <p class="blog-card-excerpt">
+                        Conflictos de versiones, macros que se rompen, falta de permisos por rol y pérdida de trazabilidad. Cómo migrar hacia un software interno ágil en 4 a 6 semanas sin gastar una fortuna en licencias.
+                    </p>
+                    <a href="blog/posts/cuando-reemplazar-excel-por-aplicacion-web-a-medida.html" class="blog-card-cta" style="color: #F59E0B;">
+                        Leer análisis completo <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+                <div class="blog-card-footer">
+                    <span><i class="far fa-user"></i> Franco Blanco</span>
+                    <span><i class="far fa-calendar"></i> Octubre 2026</span>
+                </div>
+            </article>
+
+        </section>
+
+        <!-- Founder Spotlight -->
+        <section class="founder-spotlight">
+            <img src="assets/img/founder-franco.webp" alt="Franco Blanco - Fundador de Efinnovation">
+            <div class="founder-spotlight-content">
+                <h3>Franco Blanco</h3>
+                <span class="sub">Fundador & Lead Engineer en Efinnovation · Santiago de Chile</span>
+                <p>
+                    Ingeniero en Informática y Magíster en Seguridad de la Información. Cuenta con experiencia directa en diseño de arquitecturas de software corporativo, automatización de procesos críticos mediante n8n e implementación de agentes de Inteligencia Artificial que respetan la privacidad y la regulación chilena.
+                </p>
+                <div class="links">
+                    <a href="https://www.linkedin.com/in/francojbe/" target="_blank" rel="noopener noreferrer">
+                        <i class="fab fa-linkedin"></i> Ver perfil en LinkedIn
+                    </a>
+                    <a href="https://wa.me/56974263408?text=Hola%20Franco,%20me%20gustar%C3%ADa%20hacerte%20una%20consulta%20técnica%20sobre%20un%20proyecto."
+                        target="_blank" rel="noopener noreferrer" style="color: #22C55E;">
+                        <i class="fab fa-whatsapp"></i> Conversar directamente
+                    </a>
+                </div>
             </div>
-            <div class="blog-card-content">
-                <span class="blog-card-tag">ANÁLISIS ESTRATÉGICO</span>
-                <h3 class="blog-card-title">La Revolución de los Agentes de IA en la Gestión de ERPs Blog</h3>
-                <p class="blog-card-excerpt">Los agentes de IA están transformando la gestión de sistemas de
-                    planificación de recursos empresariales (ERPs) con capacidades avanzadas de automatización y
-                    análisis de datos. Descubre cómo esta tecnología puede mejorar la eficiencia y reducir costos en tu
-                    empresa.</p>
-                <a href="blog/posts/agentes-de-ia-en-erps.html" class="read-more">Leer Análisis <i
-                        class="fas fa-chevron-right"></i></a>
+        </section>
+
+        <!-- Bottom CTA -->
+        <section class="blog-bottom-cta">
+            <h2>¿Quieres evaluar la automatización de tus procesos?</h2>
+            <p>
+                Analizamos sin costo tus flujos actuales y te entregamos un plan de trabajo claro con cálculo de retorno de inversión.
+            </p>
+            <div class="cta-btn-group">
+                <a href="index.html#diagnostico" class="btn-corp-primary"
+                    style="display: inline-flex; align-items: center; gap: 8px; text-decoration: none;">
+                    <span>Solicitar diagnóstico inicial</span>
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+                <a href="https://wa.me/56974263408?text=Hola%20Efinnovation,%20quiero%20coordinar%20una%20evaluación%20técnica."
+                    class="btn-whatsapp-outline" data-cta-location="blog_bottom_cta" target="_blank"
+                    rel="noopener noreferrer" style="display: inline-flex; align-items: center; gap: 8px; text-decoration: none;">
+                    <i class="fab fa-whatsapp"></i>
+                    <span>Escribir por WhatsApp</span>
+                </a>
             </div>
-            <div class="blog-card-footer">
-                <span><i class="far fa-calendar"></i> Feb 2026</span>
-                <span>5 min lectura</span>
-            </div>
-        </article>
-        <article class="blog-card">
-            <div class="blog-card-image">
-                <img src="assets/img/hero-bg-premium.webp"
-                    alt="Revolutionizando la Minería con IA Generativa: Optimización de Procesos Críticos Blog">
-            </div>
-            <div class="blog-card-content">
-                <span class="blog-card-tag">ANÁLISIS ESTRATÉGICO</span>
-                <h3 class="blog-card-title">Revolutionizando la Minería con IA Generativa: Optimización de Procesos
-                    Críticos Blog</h3>
-                <p class="blog-card-excerpt">La inteligencia artificial generativa está transformando la industria
-                    minera al optimizar procesos críticos y mejorar la eficiencia. Descubre cómo esta tecnología puede
-                    revolucionar la minería en Chile y aumentar el ROI de tus operaciones.</p>
-                <a href="blog/posts/ia-generativa-en-mineria-optimizacion-de-procesos-criticos.html"
-                    class="read-more">Leer Análisis <i class="fas fa-chevron-right"></i></a>
-            </div>
-            <div class="blog-card-footer">
-                <span><i class="far fa-calendar"></i> Feb 2026</span>
-                <span>5 min lectura</span>
-            </div>
-        </article>
-        <article class="blog-card">
-            <div class="blog-card-image">
-                <img src="assets/img/hero-bg-premium.webp"
-                    alt="La Revolución de la Contabilidad Automatizada: Cómo los LLMs están Cambiando el Juego Blog">
-            </div>
-            <div class="blog-card-content">
-                <span class="blog-card-tag">ANÁLISIS ESTRATÉGICO</span>
-                <h3 class="blog-card-title">La Revolución de la Contabilidad Automatizada: Cómo los LLMs están Cambiando
-                    el Juego Blog</h3>
-                <p class="blog-card-excerpt">La automatización de la contabilidad y las finanzas con LLMs (Modelos de
-                    Lenguaje Grande) está revolucionando la forma en que las empresas gestionan sus finanzas. Descubre
-                    cómo esta tecnología puede mejorar la eficiencia y reducir costos en tu empresa.</p>
-                <a href="blog/posts/la-revolucion-de-la-contabilidad-automatizada.html" class="read-more">Leer Análisis
-                    <i class="fas fa-chevron-right"></i></a>
-            </div>
-            <div class="blog-card-footer">
-                <span><i class="far fa-calendar"></i> Feb 2026</span>
-                <span>5 min lectura</span>
-            </div>
-        </article>
-        <article class="blog-card">
-            <div class="blog-card-image">
-                <img src="assets/img/hero-bg-premium.webp"
-                    alt="La Revolución de la Contabilidad: Cómo los LLMs Están Cambiando el Juego Blog">
-            </div>
-            <div class="blog-card-content">
-                <span class="blog-card-tag">ANÁLISIS ESTRATÉGICO</span>
-                <h3 class="blog-card-title">La Revolución de la Contabilidad: Cómo los LLMs Están Cambiando el Juego
-                    Blog</h3>
-                <p class="blog-card-excerpt">La automatización de la contabilidad y las finanzas con LLMs está
-                    revolucionando la forma en que las empresas gestionan sus operaciones financieras. Descubre cómo
-                    esta tecnología puede mejorar la eficiencia y reducir costos en tu negocio.</p>
-                <a href="blog/posts/la-revolucion-de-la-contabilidad-con-llms.html" class="read-more">Leer Análisis <i
-                        class="fas fa-chevron-right"></i></a>
-            </div>
-            <div class="blog-card-footer">
-                <span><i class="far fa-calendar"></i> Feb 2026</span>
-                <span>5 min lectura</span>
-            </div>
-        </article>
-        <article class="blog-card">
-            <div class="blog-card-image">
-                <img src="assets/img/hero-bg-premium.webp"
-                    alt="La Revolución de la Eficiencia: Cómo los Agentes de IA Están Transformando los Sistemas ERP Blog">
-            </div>
-            <div class="blog-card-content">
-                <span class="blog-card-tag">ANÁLISIS ESTRATÉGICO</span>
-                <h3 class="blog-card-title">La Revolución de la Eficiencia: Cómo los Agentes de IA Están Transformando
-                    los Sistemas ERP Blog</h3>
-                <p class="blog-card-excerpt">Los agentes de IA están revolucionando la gestión de los sistemas ERP,
-                    permitiendo una mayor eficiencia y automatización en las tareas empresariales. Descubre cómo esta
-                    tecnología puede beneficiar a tu negocio en Chile.</p>
-                <a href="blog/posts/la-revolucion-de-la-eficiencia-agentes-de-ia-en-erp.html" class="read-more">Leer
-                    Análisis <i class="fas fa-chevron-right"></i></a>
-            </div>
-            <div class="blog-card-footer">
-                <span><i class="far fa-calendar"></i> Feb 2026</span>
-                <span>5 min lectura</span>
-            </div>
-        </article>
-        <article class="blog-card">
-            <div class="blog-card-image">
-                <img src="assets/img/hero-bg-premium.webp"
-                    alt="La Revolución de la Eficiencia: Cómo los Agentes de IA Están Transformando la Gestión de ERPs Blog">
-            </div>
-            <div class="blog-card-content">
-                <span class="blog-card-tag">ANÁLISIS ESTRATÉGICO</span>
-                <h3 class="blog-card-title">La Revolución de la Eficiencia: Cómo los Agentes de IA Están Transformando
-                    la Gestión de ERPs Blog</h3>
-                <p class="blog-card-excerpt">Descubre cómo los agentes de IA están revolucionando la gestión de sistemas
-                    de planificación de recursos empresariales (ERPs) y mejorando la eficiencia en las empresas. Aprende
-                    a aprovechar el potencial de la inteligencia artificial para impulsar el crecimiento y la innovación
-                    en tu organización.</p>
-                <a href="blog/posts/la-revolucion-de-la-eficiencia-agentes-de-ia-en-erps.html" class="read-more">Leer
-                    Análisis <i class="fas fa-chevron-right"></i></a>
-            </div>
-            <div class="blog-card-footer">
-                <span><i class="far fa-calendar"></i> Feb 2026</span>
-                <span>5 min lectura</span>
-            </div>
-        </article><!-- POSTS_END -->
+        </section>
     </main>
 
+    <!-- Footer -->
     <footer class="footer-modern">
+        <div class="footer-container">
+            <div class="footer-brand">
+                <img src="assets/img/hero-logo.png" alt="Efinnovation Logo" class="footer-logo" width="150" height="42">
+                <p>Consultoría e ingeniería en Automatización de Procesos (n8n), Inteligencia Artificial Aplicada, Desarrollo de Software a Medida y Seguridad de la Información para empresas en Chile.</p>
+            </div>
+            <div class="footer-info">
+                <h4>Contacto Directo</h4>
+                <p><i class="fas fa-envelope"></i> <a href="mailto:contacto@efinnovation.cl">contacto@efinnovation.cl</a></p>
+                <p><i class="fab fa-whatsapp"></i> <a href="https://wa.me/56974263408" target="_blank" rel="noopener noreferrer">+56 9 7426 3408</a></p>
+                <p><i class="fas fa-location-dot"></i> Santiago, Chile</p>
+            </div>
+            <div class="footer-social">
+                <h4>Enlaces y Soluciones</h4>
+                <div class="social-links" style="margin-bottom: 16px;">
+                    <a href="https://www.linkedin.com/in/francojbe/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn de Franco Blanco"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://www.instagram.com/efinnovation" target="_blank" rel="noopener noreferrer" aria-label="Instagram de Efinnovation"><i class="fab fa-instagram"></i></a>
+                </div>
+                <p style="font-size: 0.85rem; color: #94A3B8;">
+                    <a href="retail.html" style="color: #94A3B8; text-decoration: none;">Retail</a> · 
+                    <a href="logistica.html" style="color: #94A3B8; text-decoration: none;">Logística</a> · 
+                    <a href="contabilidad.html" style="color: #94A3B8; text-decoration: none;">Contabilidad SII</a>
+                </p>
+            </div>
+        </div>
         <div class="footer-bottom">
-            <p>&copy; 2023 Efinnovation | IA Automation Agency. Todos los derechos reservados.</p>
+            <p>&copy; 2026 Efinnovation · Consultoría en Ingeniería, Automatización e IA. Todos los derechos reservados. &nbsp;|&nbsp; <a href="privacidad.html" target="_blank" style="color: #94A3B8; text-decoration: underline;">Política de Privacidad</a></p>
         </div>
     </footer>
-    <script src="js/script.js?v=3.8" defer></script>
+
+    <!-- Tracking Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            document.querySelectorAll('a[href*="wa.me"]').forEach(function (btn) {
+                btn.addEventListener('click', function () {
+                    if (window.dataLayer) {
+                        window.dataLayer.push({
+                            event: 'click_whatsapp',
+                            cta_location: btn.getAttribute('data-cta-location') || 'blog_home'
+                        });
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 
 </html>
