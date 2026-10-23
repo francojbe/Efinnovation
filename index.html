@@ -94,7 +94,14 @@
       "serviceType": "Consultoría en IA, Automatización de Procesos y Desarrollo de Software",
       "provider": {
         "@type": "Organization",
-        "name": "Efinnovation"
+        "name": "Efinnovation",
+        "url": "https://efinnovation.cl",
+        "logo": "https://efinnovation.cl/assets/img/hero-logo.png",
+        "sameAs": [
+          "https://www.linkedin.com/in/francojbe/",
+          "https://www.linkedin.com/company/efinnovation",
+          "https://www.instagram.com/efinnovation"
+        ]
       },
       "areaServed": {
         "@type": "Country",
@@ -105,46 +112,34 @@
         "name": "Líneas de Servicio Efinnovation",
         "itemListElement": [
           {
-            "@type": "Offer",
-            "itemOffered": {
-              "@type": "Service",
-              "name": "Automatización de procesos e integración de herramientas (n8n y APIs)"
-            }
+            "@type": "Service",
+            "name": "Automatización de procesos e integración de herramientas (n8n y APIs)",
+            "description": "Flujos de trabajo automatizados para conectar ERPs, CRMs, WhatsApp y planillas sin errores."
           },
           {
-            "@type": "Offer",
-            "itemOffered": {
-              "@type": "Service",
-              "name": "Agentes y asistentes de IA con control documental"
-            }
+            "@type": "Service",
+            "name": "Agentes y asistentes de IA con control documental",
+            "description": "Asistentes conversacionales corporativos con consulta documental segura RAG sin alucinaciones."
           },
           {
-            "@type": "Offer",
-            "itemOffered": {
-              "@type": "Service",
-              "name": "Desarrollo de aplicaciones web y software a medida"
-            }
+            "@type": "Service",
+            "name": "Desarrollo de aplicaciones web y software a medida",
+            "description": "Plataformas web privadas, portales de clientes y dashboards operativos sin licencias mensuales en USD."
           },
           {
-            "@type": "Offer",
-            "itemOffered": {
-              "@type": "Service",
-              "name": "Sitios web y landing pages conectadas a procesos comerciales"
-            }
+            "@type": "Service",
+            "name": "Sitios web y landing pages conectadas a procesos comerciales",
+            "description": "Páginas corporativas de alta conversión conectadas directamente al CRM y WhatsApp de ventas."
           },
           {
-            "@type": "Offer",
-            "itemOffered": {
-              "@type": "Service",
-              "name": "Consultoría y diagnóstico de oportunidades de IA"
-            }
+            "@type": "Service",
+            "name": "Consultoría y diagnóstico de oportunidades de IA",
+            "description": "Evaluación técnica de viabilidad, arquitectura de soluciones y cálculo de retorno de inversión (ROI)."
           },
           {
-            "@type": "Offer",
-            "itemOffered": {
-              "@type": "Service",
-              "name": "Capacitación y acompañamiento para la adopción de IA"
-            }
+            "@type": "Service",
+            "name": "Capacitación y acompañamiento para la adopción de IA",
+            "description": "Talleres prácticos y formación para equipos en uso responsable y productivo de modelos de IA."
           }
         ]
       }
@@ -270,6 +265,7 @@
 
                     <!-- Diagrama de Arquitectura Real de Trabajo -->
                     <aside class="arch-card" aria-label="Arquitectura de integración e IA de Efinnovation">
+                        <h2 class="sr-only">Arquitectura de Integración y Flujo Operativo</h2>
                         <div class="arch-header">
                             <span class="arch-title">Arquitectura de Solución B2B</span>
                             <span class="arch-status"><i class="fas fa-lock"></i> Diseño Seguro</span>
@@ -917,6 +913,7 @@
                                         <option value="otro">Otro desafío (Especificar...)</option>
                                     </select>
                                     <input type="text" id="diag-pain-custom" name="pain_custom"
+                                        aria-label="Cuéntanos cuál es tu prioridad"
                                         placeholder="Cuéntanos cuál es tu prioridad..." style="display: none; margin-top: 8px;">
                                 </div>
 
@@ -931,6 +928,7 @@
                                         <option value="otro">Otro (Especificar...)</option>
                                     </select>
                                     <input type="text" id="diag-industry-custom" name="industry_custom"
+                                        aria-label="Especifica tu rubro o tamaño de empresa"
                                         placeholder="Especifica tu rubro o tamaño..." style="display: none; margin-top: 8px;">
                                 </div>
                             </div>

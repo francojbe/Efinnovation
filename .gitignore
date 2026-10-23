@@ -4,3 +4,14 @@ node_modules/
 .env
 cro_audit_efinnovation.md
 *.md
+!agents.md
+.agents/
+test_chrome_profile/
+claude-seo-ai/
+efinnovation.cl-Performance-on-Search-*/
+meli_*.json
+meli_*.png
+mercadolibre_*.json
+test_reverse_api/
+prospeccion-*.html
+

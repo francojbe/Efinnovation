@@ -1,0 +1,23 @@
+# Efinnovation
+
+> Consultoría, Automatización de Procesos de Negocio e Inteligencia Artificial en Chile.
+
+## Servicios Principales
+
+- [Automatización con n8n](https://efinnovation.cl/#servicios): Flujos de trabajo entre sistemas, ERPs y WhatsApp sin licencias abusivas.
+- [Agentes de IA Corporativos](https://efinnovation.cl/#servicios): Respuestas contextuales y soporte automatizado 24/7 sin alucinaciones.
+- [Desarrollo de Software a Medida](https://efinnovation.cl/#servicios): Aplicaciones web privadas, dashboards y plataformas operativas.
+- [Soluciones para Retail](https://efinnovation.cl/retail.html): Control de inventario, POS y conexión con boletas y facturas SII.
+- [Soluciones para Logística y Terreno](https://efinnovation.cl/logistica.html): Seguimiento de entregas, partes de trabajo y control de flota.
+- [Soluciones para Contabilidad](https://efinnovation.cl/contabilidad.html): Conciliación bancaria y automatización contable con el SII.
+
+## Recursos y Blog
+
+- [Blog y Artículos Técnicos](https://efinnovation.cl/blog.html): Guías sobre automatización, n8n y ciberseguridad empresarial en Chile.
+- [Comparativa n8n vs Zapier](https://efinnovation.cl/blog/posts/n8n-vs-zapier-automatizacion-empresas-chile.html): Análisis de costos y privacidad de datos.
+- [Agentes de IA sin Alucinaciones](https://efinnovation.cl/blog/posts/agentes-de-ia-para-empresas-sin-alucinaciones.html): Arquitectura RAG empresarial.
+
+## Contacto y Diagnóstico
+
+- [Diagnóstico Operativo Gratuito](https://efinnovation.cl/#diagnostico): Agenda una sesión de evaluación para tu empresa en Santiago o remoto.
+- [Contacto WhatsApp](https://wa.me/56974263408): Comunicación directa con ingeniería de Efinnovation.
