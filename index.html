@@ -210,9 +210,9 @@
                 <li><a href="#servicios">Servicios</a></li>
                 <li><a href="#segmentos">Empresas</a></li>
                 <li><a href="#metodologia">Cómo trabajamos</a></li>
-                <li><a href="#liderazgo">Liderazgo y Seguridad</a></li>
-                <li><a href="#faq">Preguntas</a></li>
-                <li><a href="/blog.html">Blog</a></li>
+                <li><a href="liderazgo.html">Liderazgo y Seguridad</a></li>
+                <li><a href="preguntas.html">Preguntas</a></li>
+                <li><a href="blog.html">Blog</a></li>
                 <li><a href="#diagnostico" class="nav-cta-btn">Solicitar diagnóstico</a></li>
             </ul>
             <button class="nav-toggle" aria-label="Abrir menú de navegación" aria-expanded="false">
@@ -382,137 +382,239 @@
             </section>
 
             <!-- ==============================================================
-                 BLOQUE 3: SERVICIOS ORGANIZADOS CON JERARQUÍA CLARA
+                 BLOQUE 3: CÓMO PODEMOS AYUDAR A TU EMPRESA (PESTAÑAS INTERACTIVAS)
                  ============================================================== -->
             <section id="servicios" class="section-block section-elevated">
                 <div class="section-header">
-                    <span class="eyebrow"><i class="fas fa-cubes"></i> Oferta Integrada</span>
+                    <span class="eyebrow"><i class="fas fa-cubes"></i> Oferta Integrada & Diagnóstico</span>
                     <h2 class="section-title">Cómo podemos ayudar a tu empresa</h2>
                     <p class="section-subtitle">
-                        Organizamos nuestras capacidades para que puedas partir por una necesidad puntual —como automatizar un flujo crítico o evaluar oportunidades— y escalar hacia agentes de IA o software a medida cuando tu operación lo requiera.
+                        ¿Qué cuello de botella frena hoy a tu operación? Selecciona tu desafío más urgente para ver la arquitectura exacta, beneficios y flujo automatizado que desplegamos.
                     </p>
                 </div>
 
-                <!-- GRUPO 1: CORE (AUTOMATIZACIÓN E IA) -->
-                <div class="services-group-block">
-                    <div class="group-label">
-                        <span class="group-badge">Núcleo Operativo</span>
-                        <span class="group-title">Automatización de Procesos e Inteligencia Artificial Aplicada</span>
+                <div class="services-tabs-container">
+                    <div class="services-nav-tabs">
+                        <button type="button" class="services-tab-btn active" data-target="tab-whatsapp">
+                            <i class="fab fa-whatsapp" style="color: var(--accent-green);"></i>
+                            <span>Ventas por WhatsApp</span>
+                        </button>
+                        <button type="button" class="services-tab-btn" data-target="tab-sii">
+                            <i class="fas fa-file-invoice-dollar" style="color: var(--accent);"></i>
+                            <span>Facturación SII & Bancos</span>
+                        </button>
+                        <button type="button" class="services-tab-btn" data-target="tab-software">
+                            <i class="fas fa-laptop-code" style="color: #a78bfa;"></i>
+                            <span>De Excel a Software Privado</span>
+                        </button>
+                        <button type="button" class="services-tab-btn" data-target="tab-rag">
+                            <i class="fas fa-shield-halved" style="color: #f59e0b;"></i>
+                            <span>Asistente IA sin Alucinaciones</span>
+                        </button>
                     </div>
-                    <div class="services-grid">
-                        <article class="service-card featured">
-                            <div class="service-top">
-                                <div class="service-icon-row">
-                                    <div class="service-icon"><i class="fas fa-diagram-project"></i></div>
-                                    <span class="service-num">LÍNEA 01 · PRINCIPAL</span>
-                                </div>
-                                <h3>Automatización de procesos e integración de herramientas</h3>
-                                <p>Diseñamos e implementamos flujos automatizados (especialmente con <strong>n8n</strong> y conexiones API) para que tus sistemas actuales trabajen coordinados sin intervención manual repetitiva.</p>
-                            </div>
-                            <ul class="service-deliverables">
-                                <li><i class="fas fa-check"></i> Conexión entre correo, Google Workspace / Microsoft 365, CRM, ERP y WhatsApp.</li>
-                                <li><i class="fas fa-check"></i> Extracción y cruce automatizado de documentos, órdenes, facturas o reportes.</li>
-                                <li><i class="fas fa-check"></i> Alertas operativas, manejo de errores y trazabilidad de cada ejecución.</li>
-                            </ul>
-                        </article>
 
-                        <article class="service-card featured">
-                            <div class="service-top">
-                                <div class="service-icon-row">
-                                    <div class="service-icon"><i class="fas fa-robot"></i></div>
-                                    <span class="service-num">LÍNEA 02 · IA APLICADA</span>
-                                </div>
-                                <h3>Agentes y asistentes de IA con control documental</h3>
-                                <p>Implementamos asistentes basados en modelos de <strong>OpenAI, Anthropic (Claude) y Google Gemini</strong> conectados de forma segura al conocimiento, catálogos o flujos de tu empresa.</p>
+                    <!-- Panel 1: WhatsApp -->
+                    <div class="services-tab-panel active" id="tab-whatsapp">
+                        <div class="panel-grid-split">
+                            <div class="panel-desc-col">
+                                <span class="badge-corp" style="margin-bottom: 8px; font-size: 0.68rem;"><i class="fas fa-robot"></i> Atención & Ventas 24/7</span>
+                                <h3>WhatsApp de Ventas & Atención Comercial Inmediata</h3>
+                                <p>Cuando los clientes escriben fuera de horario o tus ejecutivos están saturados, las cotizaciones se atrasan y las ventas se pierden. Diseñamos agentes conversacionales conectados a tu catálogo, lista de precios y stock en tiempo real.</p>
+                                <ul class="panel-feature-list">
+                                    <li><i class="fas fa-circle-check"></i> <strong>Cotizaciones inmediatas en PDF:</strong> Envío automático de presupuestos en menos de 3 segundos directo al chat.</li>
+                                    <li><i class="fas fa-circle-check"></i> <strong>Derivación inteligente a vendedor humano:</strong> Traspaso inmediato de la conversación cuando el cliente solicita negociación o cierre.</li>
+                                    <li><i class="fas fa-circle-check"></i> <strong>Registro automático en tu CRM:</strong> Cada conversación, número y lead queda sincronizado en tu base de datos o planilla sin copiar a mano.</li>
+                                </ul>
+                                <a href="#diagnostico" class="btn-corp-primary" style="padding: 10px 22px; font-size: 0.9rem;">
+                                    <span>Evaluar automatización de WhatsApp</span>
+                                    <i class="fas fa-arrow-right"></i>
+                                </a>
                             </div>
-                            <ul class="service-deliverables">
-                                <li><i class="fas fa-check"></i> Asistentes internos para consulta rápida de procedimientos, contratos o bases técnicas.</li>
-                                <li><i class="fas fa-check"></i> Agentes de atención comercial y pre-calificación en web o WhatsApp con derivación a humanos.</li>
-                                <li><i class="fas fa-check"></i> Clasificación, resumen y extracción de datos desde documentos no estructurados.</li>
-                            </ul>
-                        </article>
+                            <div class="panel-preview-col">
+                                <div class="preview-top-bar">
+                                    <span><i class="fas fa-terminal"></i> Flujo Operativo n8n</span>
+                                    <span style="color: var(--accent-green);">● En Ejecución</span>
+                                </div>
+                                <div class="flow-step-card">
+                                    <span class="flow-step-num">01</span>
+                                    <div class="flow-step-text">
+                                        <strong>Mensaje Entrante de Prospecto</strong>
+                                        <span>Consulta por medidas, disponibilidad o valor</span>
+                                    </div>
+                                </div>
+                                <div class="flow-step-card">
+                                    <span class="flow-step-num">02</span>
+                                    <div class="flow-step-text">
+                                        <strong>Consulta de Stock & Precios en Tiempo Real</strong>
+                                        <span>Conexión directa a ERP o Base de Datos</span>
+                                    </div>
+                                </div>
+                                <div class="flow-step-card">
+                                    <span class="flow-step-num">03</span>
+                                    <div class="flow-step-text">
+                                        <strong>Envío de Cotización o Derivación a Vendedor</strong>
+                                        <span>Trazabilidad completa con notificación push</span>
+                                    </div>
+                                </div>
+                                <div class="flow-kpi-badge">
+                                    <span>Tiempo de Respuesta:</span>
+                                    <strong>&lt; 3 Segundos</strong>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                </div>
 
-                <!-- GRUPO 2: DESARROLLO A MEDIDA Y WEB COMERCIAL -->
-                <div class="services-group-block">
-                    <div class="group-label">
-                        <span class="group-badge">Construcción Digital</span>
-                        <span class="group-title">Desarrollo de Software a Medida y Sitios Conectados</span>
+                    <!-- Panel 2: SII & Bancos -->
+                    <div class="services-tab-panel" id="tab-sii">
+                        <div class="panel-grid-split">
+                            <div class="panel-desc-col">
+                                <span class="badge-corp" style="margin-bottom: 8px; font-size: 0.68rem;"><i class="fas fa-file-invoice"></i> Cero Digitación Manual</span>
+                                <h3>Sincronización Directa de Facturas SII y Bancos</h3>
+                                <p>Descargar DTEs a mano desde el portal del SII y transcribir montos a planillas genera desajustes al cierre de mes y multas innecesarias. Automatizamos la descarga, validación con órdenes de compra y conciliación bancaria.</p>
+                                <ul class="panel-feature-list">
+                                    <li><i class="fas fa-circle-check"></i> <strong>Descarga y lectura automática de DTEs:</strong> Procesamiento de facturas de compra y venta en XML y PDF sin intervención humana.</li>
+                                    <li><i class="fas fa-circle-check"></i> <strong>Cruce automático con órdenes y cartola bancaria:</strong> Emparejamiento de pagos, transferencias y alertas de facturas duplicadas.</li>
+                                    <li><i class="fas fa-circle-check"></i> <strong>Preparación para el F29:</strong> Cierres contables ordenados y auditables, entregando al contador reportes limpios y listos para declarar.</li>
+                                </ul>
+                                <a href="#diagnostico" class="btn-corp-primary" style="padding: 10px 22px; font-size: 0.9rem;">
+                                    <span>Automatizar integración SII</span>
+                                    <i class="fas fa-arrow-right"></i>
+                                </a>
+                            </div>
+                            <div class="panel-preview-col">
+                                <div class="preview-top-bar">
+                                    <span><i class="fas fa-terminal"></i> Motor Tributario & Pagos</span>
+                                    <span style="color: var(--accent);">● Sincronizado</span>
+                                </div>
+                                <div class="flow-step-card">
+                                    <span class="flow-step-num">01</span>
+                                    <div class="flow-step-text">
+                                        <strong>Captura de DTEs desde Portal SII</strong>
+                                        <span>Descarga programada de facturas emitidas y recibidas</span>
+                                    </div>
+                                </div>
+                                <div class="flow-step-card">
+                                    <span class="flow-step-num">02</span>
+                                    <div class="flow-step-text">
+                                        <strong>Validación contra Órdenes de Compra</strong>
+                                        <span>Control de recepción de bodega y montos aprobados</span>
+                                    </div>
+                                </div>
+                                <div class="flow-step-card">
+                                    <span class="flow-step-num">03</span>
+                                    <div class="flow-step-text">
+                                        <strong>Conciliación Bancaria y Alerta de Impagos</strong>
+                                        <span>Cruce con movimientos bancarios y ERP contable</span>
+                                    </div>
+                                </div>
+                                <div class="flow-kpi-badge">
+                                    <span>Control de Errores:</span>
+                                    <strong>100% Trazabilidad Sin Tipeo</strong>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="services-grid">
-                        <article class="service-card">
-                            <div class="service-top">
-                                <div class="service-icon-row">
-                                    <div class="service-icon"><i class="fas fa-code"></i></div>
-                                    <span class="service-num">LÍNEA 03 · SOFTWARE</span>
-                                </div>
-                                <h3>Desarrollo de aplicaciones web y software a medida</h3>
-                                <p>Cuando tus procesos requieren una interfaz propia, construimos aplicaciones web modernas, seguras y rápidas utilizando ingeniería de software asistida por IA.</p>
-                            </div>
-                            <ul class="service-deliverables">
-                                <li><i class="fas fa-check"></i> Paneles operativos internos, portales de clientes/proveedores y sistemas de gestión acotados.</li>
-                                <li><i class="fas fa-check"></i> Reemplazo de planillas críticas por bases de datos con control de usuarios y roles.</li>
-                                <li><i class="fas fa-check"></i> Conectado desde el inicio a tus flujos de automatización e infraestructura.</li>
-                            </ul>
-                        </article>
 
-                        <article class="service-card">
-                            <div class="service-top">
-                                <div class="service-icon-row">
-                                    <div class="service-icon"><i class="fas fa-globe"></i></div>
-                                    <span class="service-num">LÍNEA 04 · COMERCIAL</span>
-                                </div>
-                                <h3>Sitios web y landing pages conectadas a procesos comerciales</h3>
-                                <p>Desarrollamos sitios corporativos y páginas de aterrizaje rápidas, claras y conectadas directamente a tu flujo de ventas para que ningún contacto quede sin gestión.</p>
+                    <!-- Panel 3: Software a Medida -->
+                    <div class="services-tab-panel" id="tab-software">
+                        <div class="panel-grid-split">
+                            <div class="panel-desc-col">
+                                <span class="badge-corp" style="margin-bottom: 8px; font-size: 0.68rem;"><i class="fas fa-code"></i> Software Privado Propio</span>
+                                <h3>De Planillas Excel Compartidas a Software Privado</h3>
+                                <p>Las hojas de cálculo compartidas son frágiles: se borran fórmulas, se filtran datos confidenciales y nadie sabe quién modificó un registro. Desarrollamos plataformas web privadas y ágiles adaptadas exactamente al flujo operativo de tu empresa.</p>
+                                <ul class="panel-feature-list">
+                                    <li><i class="fas fa-circle-check"></i> <strong>Permisos por rol y auditoría completa:</strong> Cada colaborador ve y edita solo lo que le corresponde, registrando hora y autor de cada cambio.</li>
+                                    <li><i class="fas fa-circle-check"></i> <strong>Diseñado para terreno y bodega:</strong> Compatible con celulares, tablets y lectores de códigos de barra sin retrasos.</li>
+                                    <li><i class="fas fa-circle-check"></i> <strong>Sin suscripciones mensuales por usuario en USD:</strong> El software y la base de datos son propiedad de tu empresa, sin depender de licencias externas.</li>
+                                </ul>
+                                <a href="#diagnostico" class="btn-corp-primary" style="padding: 10px 22px; font-size: 0.9rem;">
+                                    <span>Cotizar desarrollo privado</span>
+                                    <i class="fas fa-arrow-right"></i>
+                                </a>
                             </div>
-                            <ul class="service-deliverables">
-                                <li><i class="fas fa-check"></i> Diseño orientado a conversión B2B, SEO técnico y medición analítica (GTM / GA4).</li>
-                                <li><i class="fas fa-check"></i> Registro automático de prospectos en tu CRM o planilla y notificación inmediata por WhatsApp/correo.</li>
-                                <li><i class="fas fa-check"></i> Integración con agenda de reuniones y seguimiento automatizado.</li>
-                            </ul>
-                        </article>
+                            <div class="panel-preview-col">
+                                <div class="preview-top-bar">
+                                    <span><i class="fas fa-terminal"></i> Infraestructura Dedicada</span>
+                                    <span style="color: #a78bfa;">● Servidor Seguro</span>
+                                </div>
+                                <div class="flow-step-card">
+                                    <span class="flow-step-num">01</span>
+                                    <div class="flow-step-text">
+                                        <strong>Base de Datos Relacional PostgreSQL</strong>
+                                        <span>Estructura formal con respaldos diarios cifrados</span>
+                                    </div>
+                                </div>
+                                <div class="flow-step-card">
+                                    <span class="flow-step-num">02</span>
+                                    <div class="flow-step-text">
+                                        <strong>Panel Web Responsivo y Rápido</strong>
+                                        <span>Interfaz ágil sin dependencias lentas</span>
+                                    </div>
+                                </div>
+                                <div class="flow-step-card">
+                                    <span class="flow-step-num">03</span>
+                                    <div class="flow-step-text">
+                                        <strong>Integración Directa con Flujos n8n</strong>
+                                        <span>Notificaciones automáticas ante eventos operativos</span>
+                                    </div>
+                                </div>
+                                <div class="flow-kpi-badge">
+                                    <span>Costo de Licenciamiento:</span>
+                                    <strong>$0 USD por Usuario / Mes</strong>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                </div>
 
-                <!-- GRUPO 3: CONSULTORÍA Y CAPACITACIÓN -->
-                <div class="services-group-block">
-                    <div class="group-label">
-                        <span class="group-badge">Estrategia y Adopción</span>
-                        <span class="group-title">Consultoría, Diagnóstico y Capacitación para Equipos</span>
-                    </div>
-                    <div class="services-grid">
-                        <article class="service-card">
-                            <div class="service-top">
-                                <div class="service-icon-row">
-                                    <div class="service-icon"><i class="fas fa-magnifying-glass-chart"></i></div>
-                                    <span class="service-num">LÍNEA 05 · CONSULTORÍA</span>
-                                </div>
-                                <h3>Consultoría y diagnóstico de oportunidades de IA</h3>
-                                <p>Para empresas que quieren incorporar IA y automatización con criterio financiero y técnico, evitando gastar en herramientas de moda que no resuelven el problema real.</p>
+                    <!-- Panel 4: RAG -->
+                    <div class="services-tab-panel" id="tab-rag">
+                        <div class="panel-grid-split">
+                            <div class="panel-desc-col">
+                                <span class="badge-corp" style="margin-bottom: 8px; font-size: 0.68rem;"><i class="fas fa-shield-halved"></i> IA Empresarial Segura</span>
+                                <h3>Asistentes de IA Contextuales con Cero Alucinaciones</h3>
+                                <p>Un modelo de lenguaje abierto inventa respuestas cuando no tiene límites claros. Implementamos arquitectura RAG (Generación Aumentada por Recuperación) donde el asistente responde estrictamente basado en tus manuales, políticas y procedimientos internos.</p>
+                                <ul class="panel-feature-list">
+                                    <li><i class="fas fa-circle-check"></i> <strong>Citas y fuentes verificadas:</strong> El asistente indica con precisión el manual y el párrafo del cual extrajo la información.</li>
+                                    <li><i class="fas fa-circle-check"></i> <strong>Protección de datos empresariales:</strong> Tu información no se utiliza para entrenar modelos públicos de terceros.</li>
+                                    <li><i class="fas fa-circle-check"></i> <strong>Supervisión humana:</strong> Respaldado por protocolos de seguridad de la información dirigidos por Franco Blanco (Magíster en Ciberseguridad).</li>
+                                </ul>
+                                <a href="#diagnostico" class="btn-corp-primary" style="padding: 10px 22px; font-size: 0.9rem;">
+                                    <span>Evaluar asistente de IA seguro</span>
+                                    <i class="fas fa-arrow-right"></i>
+                                </a>
                             </div>
-                            <ul class="service-deliverables">
-                                <li><i class="fas fa-check"></i> Levantamiento de procesos y detección de cuellos de botella con mayor retorno operativo.</li>
-                                <li><i class="fas fa-check"></i> Evaluación de arquitectura, costos de licencias/APIs y riesgos de seguridad de datos.</li>
-                                <li><i class="fas fa-check"></i> Hoja de ruta priorizada por impacto y factibilidad de implementación.</li>
-                            </ul>
-                        </article>
-
-                        <article class="service-card">
-                            <div class="service-top">
-                                <div class="service-icon-row">
-                                    <div class="service-icon"><i class="fas fa-chalkboard-user"></i></div>
-                                    <span class="service-num">LÍNEA 06 · ADOPCIÓN</span>
+                            <div class="panel-preview-col">
+                                <div class="preview-top-bar">
+                                    <span><i class="fas fa-terminal"></i> Pipeline RAG Privado</span>
+                                    <span style="color: #f59e0b;">● Documentos Autorizados</span>
                                 </div>
-                                <h3>Capacitación y acompañamiento para la adopción</h3>
-                                <p>La tecnología fracasa si el equipo no la adopta. Entrenamos a equipos directivos, administrativos y técnicos en el uso práctico y responsable de herramientas de IA.</p>
+                                <div class="flow-step-card">
+                                    <span class="flow-step-num">01</span>
+                                    <div class="flow-step-text">
+                                        <strong>Repositorio Documental Privado</strong>
+                                        <span>Manuales, contratos y fichas operativas cargadas</span>
+                                    </div>
+                                </div>
+                                <div class="flow-step-card">
+                                    <span class="flow-step-num">02</span>
+                                    <div class="flow-step-text">
+                                        <strong>Búsqueda Vectorial de Mínimo Privilegio</strong>
+                                        <span>Filtros de acceso departamental para evitar fugas</span>
+                                    </div>
+                                </div>
+                                <div class="flow-step-card">
+                                    <span class="flow-step-num">03</span>
+                                    <div class="flow-step-text">
+                                        <strong>Respuesta Verificada con Citas</strong>
+                                        <span>Si la información no existe, el asistente no inventa</span>
+                                    </div>
+                                </div>
+                                <div class="flow-kpi-badge">
+                                    <span>Confiabilidad de Respuestas:</span>
+                                    <strong>100% Basado en Evidencia</strong>
+                                </div>
                             </div>
-                            <ul class="service-deliverables">
-                                <li><i class="fas fa-check"></i> Talleres prácticos con casos reales de tu empresa (OpenAI, Claude, Gemini, automatizaciones).</li>
-                                <li><i class="fas fa-check"></i> Buenas prácticas de seguridad: qué información subir, cómo evitar filtraciones y cómo validar respuestas.</li>
-                                <li><i class="fas fa-check"></i> Acompañamiento posterior para asegurar que los nuevos flujos se mantengan en uso.</li>
-                            </ul>
-                        </article>
+                        </div>
                     </div>
                 </div>
             </section>
@@ -610,84 +712,7 @@
                 </div>
             </section>
 
-            <!-- ==============================================================
-                 BLOQUE 6 Y 7: PERFIL DEL FUNDADOR Y SEGURIDAD DE LA INFORMACIÓN
-                 ============================================================== -->
-            <section id="liderazgo" class="section-block section-elevated section-security-accent">
-                <div class="section-header">
-                    <span class="eyebrow security"><i class="fas fa-shield-halved"></i> Respaldo Profesional y Gobernanza</span>
-                    <h2 class="section-title">Quién está detrás de Efinnovation y cómo protegemos tu operación</h2>
-                    <p class="section-subtitle">
-                        El mayor riesgo al contratar automatización o IA es dejar datos críticos de tu negocio en manos de implementadores improvisados sin formación en arquitectura ni seguridad.
-                    </p>
-                </div>
 
-                <div class="founder-grid">
-                    <!-- Perfil Profesional del Fundador -->
-                    <div class="founder-profile-box">
-                        <div>
-                            <div class="founder-header-row">
-                                <img src="assets/img/founder-franco.webp" alt="Franco Blanco — Fundador de Efinnovation" class="founder-photo" width="96" height="96" loading="lazy" decoding="async">
-                                <div class="founder-title-group">
-                                    <span class="eyebrow" style="margin-bottom: 4px; padding: 3px 10px; font-size: 0.68rem;">Fundador y Director Técnico</span>
-                                    <h3>Franco Blanco</h3>
-                                    <p>Ing. en Informática · Magíster en Seguridad de la Información</p>
-                                </div>
-                            </div>
-                            <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.6;">
-                                En muchas agencias tecnológicas conversas con un vendedor y tu proyecto queda a cargo de perfiles sin experiencia en infraestructura ni seguridad. En <strong>Efinnovation</strong> trabajas directamente en Santiago de Chile con quien analiza tus procesos, diseña la arquitectura técnica y responde por la calidad de cada entrega.
-                            </p>
-
-                            <ul class="founder-credentials-list">
-                                <li>
-                                    <i class="fas fa-graduation-cap"></i>
-                                    <span><strong>Ingeniero en Informática:</strong> Base sólida en arquitectura de software, bases de datos e integración de sistemas.</span>
-                                </li>
-                                <li>
-                                    <i class="fas fa-lock"></i>
-                                    <span><strong>Magíster en Seguridad de la Información:</strong> Gestión de riesgos, control de accesos, privacidad y protección de activos digitales.</span>
-                                </li>
-                                <li>
-                                    <i class="fas fa-server"></i>
-                                    <span><strong>Infraestructura, Automatización e IA:</strong> Experiencia en servidores, desarrollo web/aplicaciones e integración con modelos de OpenAI, Anthropic y Google.</span>
-                                </li>
-                            </ul>
-                        </div>
-
-                        <div class="founder-cta-row">
-                            <a href="https://www.linkedin.com/in/francojbe/" target="_blank" rel="noopener noreferrer" class="btn-corp-secondary founder-btn">
-                                <i class="fab fa-linkedin" style="color: var(--accent);"></i> Conectar en LinkedIn
-                            </a>
-                            <a href="#diagnostico" class="btn-corp-primary founder-btn">
-                                Conversar directamente <i class="fas fa-arrow-right"></i>
-                            </a>
-                        </div>
-                    </div>
-
-                    <!-- 4 Pilares de Seguridad y Responsabilidad en IA -->
-                    <div class="security-pillars-grid">
-                        <article class="security-card">
-                            <h3><i class="fas fa-file-shield"></i> Consulta documental sin entrenar modelos públicos</h3>
-                            <p>Cuando conectamos un asistente de IA a tus documentos o bases de datos (arquitectura RAG), la información se consulta de forma acotada para responder a tu equipo o clientes; no entregamos tus datos privados para entrenar modelos públicos de terceros.</p>
-                        </article>
-
-                        <article class="security-card">
-                            <h3><i class="fas fa-cloud-lock"></i> Opción de infraestructura bajo tu control</h3>
-                            <p>Si tu política interna lo requiere, podemos desplegar los motores de automatización (como n8n) y las bases de datos directamente en tu propia infraestructura cloud o servidores privados, manteniendo la soberanía de tu información.</p>
-                        </article>
-
-                        <article class="security-card">
-                            <h3><i class="fas fa-key"></i> Mínimo privilegio y trazabilidad</h3>
-                            <p>Cada conexión API o credencial se configura únicamente con los permisos indispensables para cumplir su función específica, registrando bitácoras (logs) de ejecución para auditoría y diagnóstico rápido ante cambios externos.</p>
-                        </article>
-
-                        <article class="security-card">
-                            <h3><i class="fas fa-user-check"></i> Supervisión humana en decisiones sensibles</h3>
-                            <p>No prometemos sistemas infalibles sin control. Diseñamos flujos donde la IA clasifica, extrae datos o prepara borradores, y una persona responsable de tu equipo valida y aprueba cualquier operación financiera, tributaria o crítica.</p>
-                        </article>
-                    </div>
-                </div>
-            </section>
 
             <!-- ==============================================================
                  BLOQUE 8: ESCENARIOS DE APLICACIÓN Y STACK TECNOLÓGICO REAL
@@ -794,40 +819,7 @@
                 </div>
             </section>
 
-            <!-- ==============================================================
-                 BLOQUE 9: PREGUNTAS FRECUENTES (FAQ)
-                 ============================================================== -->
-            <section id="faq" class="section-block section-open">
-                <div class="section-header">
-                    <span class="eyebrow"><i class="fas fa-circle-question"></i> Preguntas Frecuentes</span>
-                    <h2 class="section-title">Respuestas claras antes de conversar</h2>
-                    <p class="section-subtitle">
-                        Resolvemos las dudas más habituales de gerencias, dueños de empresas y líderes de área al evaluar proyectos de automatización e IA.
-                    </p>
-                </div>
 
-                <div class="faq-grid">
-                    <article class="faq-item">
-                        <h3>¿Necesito tener un área de informática o saber de tecnología para trabajar con ustedes?</h3>
-                        <p>No. Traducimos tus objetivos y problemas operativos a lenguaje claro de negocio. Si no tienes equipo de TI, nos encargamos de toda la configuración e implementación; si ya cuentas con un área de sistemas, trabajamos en conjunto respetando sus políticas de infraestructura y seguridad.</p>
-                    </article>
-
-                    <article class="faq-item">
-                        <h3>¿Tengo que cambiar los programas o el sistema que ya usa mi empresa?</h3>
-                        <p>En la mayoría de los casos, no. Priorizamos conectar y aprovechar las herramientas que ya utilizas (Google Workspace, Microsoft 365, tu CRM, tu ERP, facturación electrónica o WhatsApp) mediante integraciones seguras con n8n y APIs. Solo proponemos desarrollar software nuevo cuando realmente te falta una herramienta para operar.</p>
-                    </article>
-
-                    <article class="faq-item">
-                        <h3>¿Qué pasa si la Inteligencia Artificial se equivoca o recibe una consulta compleja?</h3>
-                        <p>Ningún modelo de IA es infalible en todos los escenarios. Por eso diseñamos flujos con reglas de validación, consulta acotada a documentos oficiales de tu empresa y supervisión humana (<em>Human-in-the-Loop</em>) para aprobar acciones críticas o derivar casos sensibles a tu equipo.</p>
-                    </article>
-
-                    <article class="faq-item">
-                        <h3>¿Cuánto toma implementar un proyecto y cómo se define el valor?</h3>
-                        <p>Depende del alcance. Una automatización puntual o un sitio web conectado a tu flujo comercial suele estar operativo en <strong>2 a 4 semanas</strong>. Proyectos de integración entre varios sistemas o aplicaciones a medida toman entre <strong>4 y 8 semanas</strong> por fases. Tras una conversación inicial de diagnóstico sin costo, entregamos una propuesta cerrada con entregables, plazos y valores claros.</p>
-                    </article>
-                </div>
-            </section>
 
             <!-- ==============================================================
                  BLOQUE 10: CONTACTO Y DIAGNÓSTICO INICIAL UNIFICADO
@@ -957,7 +949,7 @@
         </div>
     </main>
 
-    <!-- Footer Corporativo -->
+    <!-- Footer Corporativo Unificado -->
     <footer class="footer-modern">
         <div class="footer-container">
             <div class="footer-brand">
@@ -977,15 +969,17 @@
                     <a href="https://www.instagram.com/efinnovation" target="_blank" rel="noopener noreferrer" aria-label="Instagram de Efinnovation"><i class="fab fa-instagram"></i></a>
                 </div>
                 <p style="font-size: 0.85rem; color: var(--text-muted);">
-                    <a href="/blog.html" style="color: var(--accent); text-decoration: none; font-weight: 600;">Blog B2B</a> · 
-                    <a href="/retail.html" style="color: var(--text-muted); text-decoration: none;">Retail</a> · 
-                    <a href="/logistica.html" style="color: var(--text-muted); text-decoration: none;">Logística</a> · 
-                    <a href="/contabilidad.html" style="color: var(--text-muted); text-decoration: none;">Contabilidad SII</a>
+                    <a href="blog.html" style="color: var(--accent); text-decoration: none; font-weight: 600;">Blog B2B</a> · 
+                    <a href="liderazgo.html" style="color: var(--text-muted); text-decoration: none;">Liderazgo</a> · 
+                    <a href="preguntas.html" style="color: var(--text-muted); text-decoration: none;">Preguntas</a> · 
+                    <a href="retail.html" style="color: var(--text-muted); text-decoration: none;">Retail</a> · 
+                    <a href="logistica.html" style="color: var(--text-muted); text-decoration: none;">Logística</a> · 
+                    <a href="contabilidad.html" style="color: var(--text-muted); text-decoration: none;">Contabilidad SII</a>
                 </p>
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2026 Efinnovation · Consultoría en Ingeniería, Automatización e IA. Todos los derechos reservados. &nbsp;|&nbsp; <a href="/privacidad.html" target="_blank" style="color: var(--text-muted); text-decoration: underline;">Política de Privacidad</a></p>
+            <p>&copy; 2026 Efinnovation · Consultoría en Ingeniería, Automatización e IA. Todos los derechos reservados. &nbsp;|&nbsp; <a href="privacidad.html" style="color: var(--text-muted); text-decoration: underline;">Política de Privacidad</a></p>
         </div>
     </footer>
 

@@ -10,6 +10,8 @@
 - [Soluciones para Retail](https://efinnovation.cl/retail.html): Control de inventario, POS y conexión con boletas y facturas SII.
 - [Soluciones para Logística y Terreno](https://efinnovation.cl/logistica.html): Seguimiento de entregas, partes de trabajo y control de flota.
 - [Soluciones para Contabilidad](https://efinnovation.cl/contabilidad.html): Conciliación bancaria y automatización contable con el SII.
+- [Liderazgo y Seguridad](https://efinnovation.cl/liderazgo.html): Dirección técnica por Franco Blanco, Magíster en Seguridad de la Información, y protocolos de protección de datos.
+- [Preguntas Frecuentes](https://efinnovation.cl/preguntas.html): Respuestas directas sobre costos, tiempos, confidencialidad, garantías y soporte.
 
 ## Recursos y Blog
 

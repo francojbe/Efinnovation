@@ -198,6 +198,29 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     };
 
+    // 5. Interactive Services / Scenarios Tab Switcher
+    const initServiceTabs = () => {
+        const tabBtns = document.querySelectorAll('.services-tab-btn');
+        const tabPanels = document.querySelectorAll('.services-tab-panel');
+
+        if (!tabBtns.length || !tabPanels.length) return;
+
+        tabBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const targetId = btn.getAttribute('data-target');
+                tabBtns.forEach(b => b.classList.remove('active'));
+                tabPanels.forEach(p => p.classList.remove('active'));
+
+                btn.classList.add('active');
+                const targetPanel = document.getElementById(targetId);
+                if (targetPanel) {
+                    targetPanel.classList.add('active');
+                }
+            });
+        });
+    };
+
     initLeadForm();
     initTracking();
+    initServiceTabs();
 });
