@@ -1,0 +1,1042 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <!-- Google Tag Manager -->
+    <script>(function (w, d, s, l, i) {
+            w[l] = w[l] || []; w[l].push({
+                'gtm.start':
+                    new Date().getTime(), event: 'gtm.js'
+            }); var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+                    'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-5RBKKPMJ');</script>
+    <!-- End Google Tag Manager -->
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Validador y Generador CSV Libro de Remuneraciones Electrónico (LRE DT) | Efinnovation</title>
+    <meta name="description"
+        content="Convierte tu planilla de sueldos de Excel al formato CSV oficial exigido por la Dirección del Trabajo (DT). Valida RUTs, calcula totales y genera el archivo sin errores para Mi DT. 100% gratuito y privado.">
+    <link rel="canonical" href="https://efinnovation.cl/lre-dt.html">
+
+    <!-- CSS & Fonts -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="icon" type="image/png" href="assets/img/hero-logo.png">
+
+    <!-- SheetJS CDN para procesamiento local de Excel en el navegador -->
+    <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+
+    <style>
+        .tool-header-hero {
+            padding: 120px 20px 40px;
+            text-align: center;
+            background: radial-gradient(circle at 50% 20%, rgba(14, 165, 233, 0.12) 0%, transparent 60%);
+        }
+
+        .tool-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(56, 189, 248, 0.12);
+            color: var(--accent);
+            padding: 6px 14px;
+            border-radius: 999px;
+            font-size: 0.82rem;
+            font-weight: 600;
+            margin-bottom: 16px;
+            border: 1px solid rgba(56, 189, 248, 0.25);
+        }
+
+        .tool-trust-box {
+            max-width: 860px;
+            margin: 0 auto 36px;
+            background: rgba(16, 185, 129, 0.08);
+            border: 1px solid rgba(16, 185, 129, 0.25);
+            border-radius: var(--radius-sm);
+            padding: 14px 20px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-align: left;
+        }
+
+        .tool-trust-box i {
+            color: var(--accent-green);
+            font-size: 1.4rem;
+            flex-shrink: 0;
+        }
+
+        .tool-trust-box p {
+            margin: 0;
+            font-size: 0.88rem;
+            color: #e2e8f0;
+            line-height: 1.5;
+        }
+
+        .tool-container {
+            max-width: 1080px;
+            margin: 0 auto 80px;
+            padding: 0 20px;
+        }
+
+        .tool-card {
+            background: rgba(15, 23, 42, 0.75);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-md);
+            padding: 32px;
+            box-shadow: 0 16px 36px rgba(0, 0, 0, 0.4);
+            margin-bottom: 28px;
+        }
+
+        .step-title {
+            font-size: 1.15rem;
+            color: #ffffff;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 20px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .step-num {
+            background: var(--accent);
+            color: #0f172a;
+            width: 26px;
+            height: 26px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.85rem;
+            font-weight: 800;
+        }
+
+        .form-grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .input-group label {
+            display: block;
+            font-size: 0.86rem;
+            color: #cbd5e1;
+            font-weight: 600;
+            margin-bottom: 6px;
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 12px 14px;
+            background: rgba(11, 15, 23, 0.85);
+            border: 1px solid var(--border-subtle);
+            border-radius: 6px;
+            color: #ffffff;
+            font-family: inherit;
+            font-size: 0.95rem;
+            transition: border 0.2s ease;
+        }
+
+        .input-group input:focus {
+            outline: none;
+            border-color: var(--accent);
+        }
+
+        .file-dropzone {
+            border: 2px dashed rgba(56, 189, 248, 0.35);
+            border-radius: var(--radius-sm);
+            background: rgba(11, 15, 23, 0.6);
+            padding: 40px 20px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .file-dropzone:hover,
+        .file-dropzone.dragover {
+            border-color: var(--accent);
+            background: rgba(14, 165, 233, 0.08);
+        }
+
+        .file-dropzone i {
+            font-size: 2.5rem;
+            color: var(--accent);
+            margin-bottom: 14px;
+        }
+
+        .file-dropzone h4 {
+            color: #ffffff;
+            font-size: 1.05rem;
+            margin-bottom: 6px;
+        }
+
+        .file-dropzone p {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            margin: 0;
+        }
+
+        .download-template-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.07);
+            padding: 14px 18px;
+            border-radius: 6px;
+            margin-bottom: 20px;
+        }
+
+        .btn-download-tpl {
+            background: rgba(56, 189, 248, 0.15);
+            color: var(--accent);
+            border: 1px solid var(--accent);
+            padding: 8px 16px;
+            border-radius: 4px;
+            font-weight: 600;
+            font-size: 0.85rem;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.2s ease;
+        }
+
+        .btn-download-tpl:hover {
+            background: var(--accent);
+            color: #0f172a;
+        }
+
+        .validation-table-wrap {
+            overflow-x: auto;
+            margin-top: 20px;
+            border-radius: 6px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .validation-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.85rem;
+            text-align: left;
+        }
+
+        .validation-table th {
+            background: #0B0F17;
+            color: var(--accent);
+            padding: 12px 14px;
+            font-weight: 600;
+            white-space: nowrap;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .validation-table td {
+            padding: 10px 14px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            color: #cbd5e1;
+            white-space: nowrap;
+        }
+
+        .validation-table tr:hover {
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        .status-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 700;
+        }
+
+        .status-badge.ok {
+            background: rgba(16, 185, 129, 0.15);
+            color: #34d399;
+            border: 1px solid rgba(16, 185, 129, 0.3);
+        }
+
+        .status-badge.err {
+            background: rgba(239, 68, 68, 0.15);
+            color: #f87171;
+            border: 1px solid rgba(239, 68, 68, 0.3);
+        }
+
+        .kpi-summary-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+            margin-top: 20px;
+        }
+
+        .kpi-card {
+            background: #0B0F17;
+            border: 1px solid var(--border-subtle);
+            border-radius: 6px;
+            padding: 16px;
+            text-align: center;
+        }
+
+        .kpi-card span {
+            display: block;
+            font-size: 0.78rem;
+            color: var(--text-muted);
+            margin-bottom: 4px;
+        }
+
+        .kpi-card strong {
+            font-family: var(--font-mono);
+            font-size: 1.25rem;
+            color: #ffffff;
+        }
+
+        .btn-action-generate {
+            display: block;
+            width: 100%;
+            background: var(--corporate-blue);
+            color: #ffffff;
+            font-family: inherit;
+            font-size: 1.05rem;
+            font-weight: 700;
+            padding: 16px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            margin-top: 24px;
+            text-align: center;
+            transition: all 0.2s ease;
+            box-shadow: 0 4px 14px rgba(14, 165, 233, 0.3);
+        }
+
+        .btn-action-generate:hover {
+            background: var(--corporate-blue-hover);
+            transform: translateY(-2px);
+        }
+
+        .btn-action-generate:disabled {
+            background: #334155;
+            color: #94a3b8;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+
+        .expert-support-cta {
+            background: linear-gradient(145deg, rgba(15, 23, 42, 0.9), rgba(11, 15, 23, 0.95));
+            border: 1px solid rgba(56, 189, 248, 0.25);
+            border-radius: var(--radius-md);
+            padding: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 24px;
+            margin-top: 40px;
+        }
+
+        .expert-support-info h3 {
+            color: #ffffff;
+            font-size: 1.25rem;
+            margin-bottom: 8px;
+        }
+
+        .expert-support-info p {
+            color: var(--text-muted);
+            font-size: 0.92rem;
+            margin: 0;
+            line-height: 1.5;
+        }
+
+        .btn-expert-wa {
+            background: #25D366;
+            color: #0B0F17;
+            font-weight: 700;
+            font-size: 0.95rem;
+            padding: 12px 20px;
+            border-radius: 6px;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            white-space: nowrap;
+            transition: opacity 0.2s ease;
+        }
+
+        .btn-expert-wa:hover {
+            opacity: 0.9;
+        }
+
+        @media (max-width: 768px) {
+            .form-grid-2 {
+                grid-template-columns: 1fr;
+            }
+
+            .kpi-summary-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .expert-support-cta {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5RBKKPMJ" height="0" width="0"
+            style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
+    <!-- Navbar Corporativa -->
+    <nav class="navbar-glass" aria-label="Navegación principal">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">
+                <img src="assets/img/hero-logo.png" alt="Efinnovation Logo" width="150" height="40">
+                <div class="logo-text">
+                    <span class="logo-main-text">EFINNOVATION</span>
+                    <span class="logo-sub-text">Consultoría, Automatización e IA</span>
+                </div>
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="index.html#servicios">Servicios</a></li>
+                <li><a href="contabilidad.html">Solución Contable</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="index.html#diagnostico" class="nav-cta-btn">Diagnóstico gratuito</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Header Hero -->
+    <header class="tool-header-hero">
+        <span class="tool-badge"><i class="fas fa-bolt"></i> Herramienta Gratuita para Estudios Contables</span>
+        <h1 style="color: #ffffff; font-size: clamp(1.8rem, 3.5vw, 2.6rem); font-weight: 800; margin-bottom: 16px;">
+            Generador y Validador CSV para el LRE (Dirección del Trabajo)
+        </h1>
+        <p style="color: var(--text-muted); max-width: 780px; margin: 0 auto; font-size: 1.05rem; line-height: 1.6;">
+            Convierte tu planilla de sueldos en Excel al formato CSV oficial exigido por la DT. Corrige automáticamente
+            RUTs, delimitadores (<code style="color:var(--accent); font-weight:bold;">;</code>), codificación UTF-8 y
+            cuadra los totales para evitar rechazos en el portal <strong>Mi DT</strong>.
+        </p>
+    </header>
+
+    <!-- Caja de Privacidad & Ciberseguridad -->
+    <div class="tool-container">
+        <div class="tool-trust-box">
+            <i class="fas fa-shield-halved"></i>
+            <p>
+                <strong>100% Privado y Seguro:</strong> Esta herramienta procesa tu archivo directamente en la memoria
+                de tu navegador web. Los sueldos, RUTs y nóminas de tus clientes <strong>nunca salen de tu
+                    computador</strong> ni se envían a ningún servidor externo.
+            </p>
+        </div>
+
+        <!-- Card Principal -->
+        <div class="tool-card">
+            <!-- Paso 1 -->
+            <div class="step-title">
+                <span class="step-num">1</span> Parámetros del Empleador y Período
+            </div>
+            <div class="form-grid-2">
+                <div class="input-group">
+                    <label for="emp-rut">RUT Empleador (Empresa):</label>
+                    <input type="text" id="emp-rut" placeholder="Ej: 76.123.456-7" value="76123456-7"
+                        autocomplete="off">
+                    <small style="color:var(--text-muted); font-size:0.75rem; margin-top:4px; display:block;">Se
+                        formatea automáticamente sin puntos ni guion para el nombre oficial.</small>
+                </div>
+                <div class="input-group">
+                    <label for="emp-period">Período de Remuneraciones:</label>
+                    <input type="month" id="emp-period" value="2026-10">
+                    <small style="color:var(--text-muted); font-size:0.75rem; margin-top:4px; display:block;">Nombre del
+                        archivo resultante: <strong id="preview-filename"
+                            style="color:var(--accent);">761234567_202610.csv</strong></small>
+                </div>
+            </div>
+
+            <!-- Paso 2 -->
+            <div class="step-title" style="margin-top: 36px;">
+                <span class="step-num">2</span> Carga de Planilla de Sueldos
+            </div>
+
+            <!-- Descarga de plantilla base -->
+            <div class="download-template-bar">
+                <div>
+                    <strong style="color:#ffffff; font-size:0.92rem; display:block;">¿Aún no tienes la planilla
+                        ordenada?</strong>
+                    <span style="color:var(--text-muted); font-size:0.8rem;">Descarga nuestra plantilla modelo con las
+                        columnas estándar preconfiguradas.</span>
+                </div>
+                <a href="assets/docs/plantilla_lre_dt_efinnovation.xlsx" download class="btn-download-tpl">
+                    <i class="fas fa-file-excel"></i> Descargar Plantilla Modelo (.xlsx)
+                </a>
+            </div>
+
+            <!-- Zona de arrastre / selector -->
+            <div class="file-dropzone" id="dropzone">
+                <i class="fas fa-cloud-arrow-up"></i>
+                <h4>Arrastra aquí tu archivo Excel o CSV</h4>
+                <p>Soporta formatos <strong>.xlsx, .xls o .csv</strong>. Haz clic para seleccionar desde tu equipo.</p>
+                <input type="file" id="file-input" accept=".xlsx, .xls, .csv" style="display: none;">
+            </div>
+
+            <!-- Paso 3: Diagnóstico en Vivo -->
+            <div id="diagnostico-section" style="display: none; margin-top: 36px;">
+                <div class="step-title">
+                    <span class="step-num">3</span> Diagnóstico de Datos y Cuadratura
+                </div>
+
+                <div class="kpi-summary-grid">
+                    <div class="kpi-card">
+                        <span>Trabajadores</span>
+                        <strong id="kpi-trabajadores">0</strong>
+                    </div>
+                    <div class="kpi-card">
+                        <span>Total Imponible</span>
+                        <strong id="kpi-imponible" style="color:var(--accent);">$0</strong>
+                    </div>
+                    <div class="kpi-card">
+                        <span>Total Descuentos</span>
+                        <strong id="kpi-descuentos" style="color:#f87171;">$0</strong>
+                    </div>
+                    <div class="kpi-card">
+                        <span>Líquido a Pagar</span>
+                        <strong id="kpi-liquido" style="color:var(--accent-green);">$0</strong>
+                    </div>
+                </div>
+
+                <div class="validation-table-wrap">
+                    <table class="validation-table">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>RUT Trabajador [1101]</th>
+                                <th>Validación RUT</th>
+                                <th>Fecha Inicio [1102]</th>
+                                <th>Sueldo Base [2101]</th>
+                                <th>Total Haberes [6111]</th>
+                                <th>Total Dctos [6117]</th>
+                                <th>Líquido [6118]</th>
+                                <th>Estado DT</th>
+                            </tr>
+                        </thead>
+                        <tbody id="table-body">
+                            <!-- Filas dinámicas -->
+                        </tbody>
+                    </table>
+                </div>
+
+                <div id="global-alert-box" style="margin-top: 20px;"></div>
+
+                <!-- Paso 4: Botón de Exportación -->
+                <button type="button" id="btn-export" class="btn-action-generate">
+                    <i class="fas fa-file-export" style="margin-right: 8px;"></i> Descargar CSV Oficial para Mi DT (<span
+                        id="btn-filename">archivo.csv</span>)
+                </button>
+            </div>
+        </div>
+
+        <!-- Banner de Contacto / Soporte Profesional -->
+        <div class="expert-support-cta">
+            <div class="expert-support-info">
+                <h3>¿Necesitas automatizar procesos contables complejos o conectar tu ERP al SII?</h3>
+                <p>
+                    En Efinnovation diseñamos software privado a medida, agentes de IA sin alucinaciones y flujos en
+                    Python/n8n para estudios contables y empresas en Chile. Habla directamente con Franco Blanco
+                    (Ingeniero en Informática y Magíster en Seguridad de la Información).
+                </p>
+            </div>
+            <a href="https://wa.me/56974263408?text=Hola%20Franco,%20usé%20el%20validador%20LRE%20y%20me%20gustaría%20consultarte%20por%20automatizaciones%20para%20mi%20estudio%20contable."
+                target="_blank" rel="noopener noreferrer" class="btn-expert-wa">
+                <i class="fab fa-whatsapp"></i> Hablar por WhatsApp
+            </a>
+        </div>
+    </div>
+
+    <!-- Footer Corporativo Unificado -->
+    <footer class="footer-modern">
+        <div class="footer-container">
+            <div class="footer-brand">
+                <img src="assets/img/hero-logo.png" alt="Efinnovation Logo" class="footer-logo" loading="lazy"
+                    decoding="async" width="150" height="42">
+                <p>Consultoría e ingeniería en Automatización de Procesos (n8n), Inteligencia Artificial Aplicada,
+                    Desarrollo de Software a Medida y Seguridad de la Información para empresas en Chile.</p>
+            </div>
+            <div class="footer-info">
+                <h4>Contacto Directo</h4>
+                <p><i class="fas fa-envelope"></i> <a
+                        href="mailto:contacto@efinnovation.cl">contacto@efinnovation.cl</a></p>
+                <p><i class="fab fa-whatsapp"></i> <a href="https://wa.me/56974263408" target="_blank"
+                        rel="noopener noreferrer">+56 9 7426 3408</a></p>
+                <p><i class="fas fa-location-dot"></i> Santiago, Chile</p>
+            </div>
+            <div class="footer-social">
+                <h4>Enlaces y Redes</h4>
+                <div class="social-links" style="margin-bottom: 16px;">
+                    <a href="https://www.linkedin.com/in/francojbe/" target="_blank" rel="noopener noreferrer"
+                        aria-label="LinkedIn de Franco Blanco"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://www.instagram.com/efinnovation" target="_blank" rel="noopener noreferrer"
+                        aria-label="Instagram de Efinnovation"><i class="fab fa-instagram"></i></a>
+                </div>
+                <p style="font-size: 0.85rem; color: var(--text-muted);">
+                    <a href="blog.html" style="color: var(--accent); text-decoration: none; font-weight: 600;">Blog
+                        B2B</a> ·
+                    <a href="liderazgo.html" style="color: var(--text-muted); text-decoration: none;">Liderazgo</a> ·
+                    <a href="preguntas.html" style="color: var(--text-muted); text-decoration: none;">Preguntas</a> ·
+                    <a href="retail.html" style="color: var(--text-muted); text-decoration: none;">Retail</a> ·
+                    <a href="logistica.html" style="color: var(--text-muted); text-decoration: none;">Logística</a> ·
+                    <a href="contabilidad.html" style="color: var(--text-muted); text-decoration: none;">Contabilidad
+                        SII</a>
+                </p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Efinnovation · Consultoría en Ingeniería, Automatización e IA. Todos los derechos reservados.
+                &nbsp;|&nbsp; <a href="privacidad.html"
+                    style="color: var(--text-muted); text-decoration: underline;">Política de Privacidad</a></p>
+        </div>
+    </footer>
+
+    <!-- Lógica de Procesamiento y Validación Local (JavaScript) -->
+    <script>
+        (function () {
+            // Algoritmo de Módulo 11 (Chile)
+            function validarRut(rutCompleto) {
+                if (!rutCompleto) return false;
+                var clean = String(rutCompleto).replace(/[^0-9kK]/g, '').toUpperCase();
+                if (clean.length < 2) return false;
+                var cuerpo = clean.slice(0, -1);
+                var dv = clean.slice(-1);
+
+                var suma = 0;
+                var multiplo = 2;
+                for (var i = cuerpo.length - 1; i >= 0; i--) {
+                    suma += multiplo * parseInt(cuerpo.charAt(i), 10);
+                    multiplo = (multiplo < 7) ? multiplo + 1 : 2;
+                }
+                var dvEsperado = 11 - (suma % 11);
+                var dvCalculado = '0';
+                if (dvEsperado === 11) dvCalculado = '0';
+                else if (dvEsperado === 10) dvCalculado = 'K';
+                else dvCalculado = String(dvEsperado);
+
+                return dv === dvCalculado;
+            }
+
+            function formatearRutDT(rut) {
+                if (!rut) return '';
+                var clean = String(rut).replace(/[^0-9kK]/g, '').toUpperCase();
+                if (clean.length < 2) return clean;
+                var cuerpo = clean.slice(0, -1);
+                var dv = clean.slice(-1);
+                return cuerpo + '-' + dv;
+            }
+
+            function limpiarRutSinGuion(rut) {
+                if (!rut) return '';
+                return String(rut).replace(/[^0-9kK]/g, '').toUpperCase();
+            }
+
+            function formatCurrency(val) {
+                return '$' + Math.round(Number(val) || 0).toLocaleString('es-CL');
+            }
+
+            function normalizarFecha(val) {
+                if (!val) return '';
+                if (val instanceof Date) {
+                    var d = String(val.getDate()).padStart(2, '0');
+                    var m = String(val.getMonth() + 1).padStart(2, '0');
+                    var y = val.getFullYear();
+                    return d + '/' + m + '/' + y;
+                }
+                var str = String(val).trim();
+                // Si es DD-MM-AAAA
+                if (/^\d{2}-\d{2}-\d{4}$/.test(str)) {
+                    return str.replace(/-/g, '/');
+                }
+                // Si es AAAA-MM-DD
+                if (/^\d{4}-\d{2}-\d{2}$/.test(str)) {
+                    var parts = str.split('-');
+                    return parts[2] + '/' + parts[1] + '/' + parts[0];
+                }
+                return str;
+            }
+
+            var rutEmpInput = document.getElementById('emp-rut');
+            var periodInput = document.getElementById('emp-period');
+            var previewFilename = document.getElementById('preview-filename');
+            var btnFilename = document.getElementById('btn-filename');
+            var dropzone = document.getElementById('dropzone');
+            var fileInput = document.getElementById('file-input');
+            var diagSection = document.getElementById('diagnostico-section');
+            var tableBody = document.getElementById('table-body');
+            var btnExport = document.getElementById('btn-export');
+            var alertBox = document.getElementById('global-alert-box');
+
+            var parsedRows = [];
+            var hasErrors = false;
+
+            function updateFilename() {
+                var rutClean = limpiarRutSinGuion(rutEmpInput.value);
+                var periodVal = periodInput.value.replace('-', '');
+                if (!periodVal) periodVal = '202610';
+                if (!rutClean) rutClean = '761234567';
+                var fname = rutClean + '_' + periodVal + '.csv';
+                previewFilename.textContent = fname;
+                btnFilename.textContent = fname;
+                return fname;
+            }
+
+            rutEmpInput.addEventListener('input', updateFilename);
+            periodInput.addEventListener('change', updateFilename);
+
+            // Drag and drop events
+            dropzone.addEventListener('click', function () { fileInput.click(); });
+            dropzone.addEventListener('dragover', function (e) {
+                e.preventDefault();
+                dropzone.classList.add('dragover');
+            });
+            dropzone.addEventListener('dragleave', function () {
+                dropzone.classList.remove('dragover');
+            });
+            dropzone.addEventListener('drop', function (e) {
+                e.preventDefault();
+                dropzone.classList.remove('dragover');
+                if (e.dataTransfer.files.length) {
+                    processFile(e.dataTransfer.files[0]);
+                }
+            });
+            fileInput.addEventListener('change', function (e) {
+                if (e.target.files.length) {
+                    processFile(e.target.files[0]);
+                }
+            });
+
+            function processFile(file) {
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    var data = new Uint8Array(e.target.result);
+                    var workbook = XLSX.read(data, { type: 'array', cellDates: true });
+                    var firstSheetName = workbook.SheetNames[0];
+                    var worksheet = workbook.Sheets[firstSheetName];
+                    var json = XLSX.utils.sheet_to_json(worksheet, { header: 1 });
+
+                    if (json.length < 2) {
+                        alert('La planilla seleccionada no contiene registros suficientes.');
+                        return;
+                    }
+
+                    parseAndValidate(json);
+                };
+                reader.readAsArrayBuffer(file);
+            }
+
+            function parseAndValidate(rows) {
+                parsedRows = [];
+                hasErrors = false;
+                tableBody.innerHTML = '';
+
+                var headerRow = rows[0];
+                var dataRows = rows.slice(1);
+
+                var totalTrabajadores = 0;
+                var sumImponible = 0;
+                var sumDescuentos = 0;
+                var sumLiquido = 0;
+
+                dataRows.forEach(function (row, idx) {
+                    if (!row || row.length === 0 || !row[0]) return; // saltar vacíos
+
+                    var rawRut = String(row[0] || '').trim();
+                    var rutFormateado = formatearRutDT(rawRut);
+                    var rutValido = validarRut(rutFormateado);
+
+                    var rawFecha = normalizarFecha(row[1]);
+                    var fechaValida = /^\d{2}\/\d{2}\/\d{4}$/.test(rawFecha);
+
+                    var region = String(row[3] || '13').trim();
+                    var comuna = String(row[4] || '13101').trim();
+
+                    // Haberes
+                    var sueldoBase = Number(row[5]) || 0;
+                    var horasExtras = Number(row[6]) || 0;
+                    var gratificacion = Number(row[7]) || 0;
+                    var comisiones = Number(row[8]) || 0;
+
+                    var colacion = Number(row[9]) || 0;
+                    var movilizacion = Number(row[10]) || 0;
+                    var asignacionFamiliar = Number(row[11]) || 0;
+
+                    // Descuentos
+                    var afp = Number(row[12]) || 0;
+                    var salud = Number(row[13]) || 0;
+                    var cesantia = Number(row[14]) || 0;
+                    var impuestoUnico = Number(row[15]) || 0;
+                    var otrosDescuentos = Number(row[16]) || 0;
+
+                    // Aportes Empleador
+                    var cesantiaEmp = Number(row[17]) || 0;
+                    var sisEmp = Number(row[18]) || 0;
+                    var mutual = Number(row[19]) || 0;
+
+                    // Totales de control
+                    var totImponible = sueldoBase + horasExtras + gratificacion + comisiones;
+                    var totNoImponible = colacion + movilizacion + asignacionFamiliar;
+                    var totHaberes = totImponible + totNoImponible;
+                    var totDctosLegales = afp + salud + cesantia + impuestoUnico;
+                    var totDescuentos = totDctosLegales + otrosDescuentos;
+                    var alcanceLiquido = totHaberes - totDescuentos;
+                    var totAportesEmp = cesantiaEmp + sisEmp + mutual;
+
+                    if (!rutValido || !fechaValida) {
+                        hasErrors = true;
+                    }
+
+                    totalTrabajadores++;
+                    sumImponible += totImponible;
+                    sumDescuentos += totDescuentos;
+                    sumLiquido += alcanceLiquido;
+
+                    var rowObj = {
+                        rut: rutFormateado,
+                        rutValido: rutValido,
+                        fechaInicio: rawFecha,
+                        fechaValida: fechaValida,
+                        fechaTermino: normalizarFecha(row[2]),
+                        causalTermino: '',
+                        region: region,
+                        comuna: comuna,
+                        sueldoBase: sueldoBase,
+                        horasExtras: horasExtras,
+                        gratificacion: gratificacion,
+                        comisiones: comisiones,
+                        colacion: colacion,
+                        movilizacion: movilizacion,
+                        asigFam: asignacionFamiliar,
+                        afp: afp,
+                        salud: salud,
+                        cesantia: cesantia,
+                        impuestoUnico: impuestoUnico,
+                        otrosDescuentos: otrosDescuentos,
+                        cesantiaEmp: cesantiaEmp,
+                        sisEmp: sisEmp,
+                        mutual: mutual,
+                        totImponible: totImponible,
+                        totNoImponible: totNoImponible,
+                        totHaberes: totHaberes,
+                        totDctosLegales: totDctosLegales,
+                        totDescuentos: totDescuentos,
+                        alcanceLiquido: alcanceLiquido,
+                        totAportesEmp: totAportesEmp
+                    };
+
+                    parsedRows.push(rowObj);
+
+                    // Render fila
+                    var tr = document.createElement('tr');
+                    tr.innerHTML =
+                        '<td>' + (idx + 1) + '</td>' +
+                        '<td><strong>' + rutFormateado + '</strong></td>' +
+                        '<td>' + (rutValido ? '<span class="status-badge ok"><i class="fas fa-check"></i> Válido</span>' : '<span class="status-badge err"><i class="fas fa-xmark"></i> Inválido</span>') + '</td>' +
+                        '<td>' + rawFecha + '</td>' +
+                        '<td>' + formatCurrency(sueldoBase) + '</td>' +
+                        '<td>' + formatCurrency(totHaberes) + '</td>' +
+                        '<td>' + formatCurrency(totDescuentos) + '</td>' +
+                        '<td><strong style="color:var(--accent-green);">' + formatCurrency(alcanceLiquido) + '</strong></td>' +
+                        '<td>' + (rutValido && fechaValida ? '<span class="status-badge ok">Listo</span>' : '<span class="status-badge err">Revisar</span>') + '</td>';
+                    tableBody.appendChild(tr);
+                });
+
+                document.getElementById('kpi-trabajadores').textContent = totalTrabajadores;
+                document.getElementById('kpi-imponible').textContent = formatCurrency(sumImponible);
+                document.getElementById('kpi-descuentos').textContent = formatCurrency(sumDescuentos);
+                document.getElementById('kpi-liquido').textContent = formatCurrency(sumLiquido);
+
+                diagSection.style.display = 'block';
+
+                if (hasErrors) {
+                    alertBox.innerHTML =
+                        '<div style="background:rgba(239, 68, 68, 0.12); border:1px solid rgba(239, 68, 68, 0.3); border-radius:6px; padding:12px 16px; color:#fca5a5; font-size:0.88rem;">' +
+                        '<i class="fas fa-triangle-exclamation" style="margin-right:8px;"></i>' +
+                        '<strong>Atención:</strong> Se detectaron RUTs o fechas inválidas en las filas marcadas en rojo. La DT rechazará el archivo si lo subes con esos errores. Corrige la planilla antes de subirlo.' +
+                        '</div>';
+                    btnExport.disabled = false; // permite descargar pero advertido
+                } else {
+                    alertBox.innerHTML =
+                        '<div style="background:rgba(16, 185, 129, 0.12); border:1px solid rgba(16, 185, 129, 0.3); border-radius:6px; padding:12px 16px; color:#6ee7b7; font-size:0.88rem;">' +
+                        '<i class="fas fa-circle-check" style="margin-right:8px;"></i>' +
+                        '<strong>¡Todo en orden!</strong> Los ' + totalTrabajadores + ' trabajadores tienen RUTs y fechas válidas, y los totales cuadran con exactitud al peso.' +
+                        '</div>';
+                    btnExport.disabled = false;
+                }
+            }
+
+            // 147 Encabezados oficiales de la Dirección del Trabajo (LRE DT)
+            var OFFICIAL_HEADERS_147 = [
+                "Rut trabajador(1101)", "Fecha inicio contrato(1102)", "Fecha término de contrato(1103)", "Causal término de contrato(1104)",
+                "Región prestación de servicios(1105)", "Comuna prestación de servicios(1106)", "Tipo impuesto a la renta(1170)",
+                "Técnico extranjero exención cot. previsionales(1146)", "Código tipo de jornada(1107)",
+                "Persona con Discapacidad - Pensionado por Invalidez(1108)", "Pensionado por vejez(1109)", "AFP(1141)",
+                "IPS (ExINP)(1142)", "FONASA - ISAPRE(1143)", "AFC(1151)", "CCAF(1110)", "Org. administrador ley 16.744(1152)",
+                "Nro cargas familiares legales autorizadas(1111)", "Nro de cargas familiares maternales(1112)",
+                "Nro de cargas familiares invalidez(1113)", "Tramo asignación familiar(1114)", "Rut org sindical 1(1171)",
+                "Rut org sindical 2(1172)", "Rut org sindical 3(1173)", "Rut org sindical 4(1174)", "Rut org sindical 5(1175)",
+                "Rut org sindical 6(1176)", "Rut org sindical 7(1177)", "Rut org sindical 8(1178)", "Rut org sindical 9(1179)",
+                "Rut org sindical 10(1180)", "Nro días trabajados en el mes(1115)", "Nro días de licencia médica en el mes(1116)",
+                "Nro días de vacaciones en el mes(1117)", "Subsidio trabajador joven(1118)", "Puesto Trabajo Pesado(1154)",
+                "APVI(1155)", "APVC(1157)", "Indemnización a todo evento(1131)", "Tasa indemnización a todo evento(1132)",
+                "Sueldo(2101)", "Sobresueldo(2102)", "Comisiones(2103)", "Semana corrida(2104)", "Participación(2105)",
+                "Gratificación(2106)", "Recargo 30% día domingo(2107)", "Remun. variable pagada en vacaciones(2108)",
+                "Remun. variable pagada en clausura(2109)", "Aguinaldo(2110)", "Bonos u otras remun. fijas mensuales(2111)",
+                "Tratos(2112)", "Bonos u otras remun. variables mensuales o superiores a un mes(2113)",
+                "Ejercicio opción no pactada en contrato(2114)", "Beneficios en especie constitutivos de remun(2115)",
+                "Remuneraciones bimestrales(2116)", "Remuneraciones trimestrales(2117)", "Remuneraciones cuatrimestral(2118)",
+                "Remuneraciones semestrales(2119)", "Remuneraciones anuales(2120)", "Participación anual(2121)",
+                "Gratificación anual(2122)", "Otras remuneraciones superiores a un mes(2123)", "Pago por horas de trabajo sindical(2124)",
+                "Sueldo empresarial (2161)", "Subsidio por incapacidad laboral por licencia médica(2201)", "Beca de estudio(2202)",
+                "Gratificaciones de zona(2203)", "Otros ingresos no constitutivos de renta(2204)", "Colación(2301)",
+                "Movilización(2302)", "Viáticos(2303)", "Asignación de pérdida de caja(2304)", "Asignación de desgaste herramienta(2305)",
+                "Asignación familiar legal(2311)", "Gastos por causa del trabajo(2306)", "Gastos por cambio de residencia(2307)",
+                "Sala cuna(2308)", "Asignación trabajo a distancia o teletrabajo(2309)", "Depósito convenido hasta UF 900(2347)",
+                "Alojamiento por razones de trabajo(2310)", "Asignación de traslación(2312)", "Indemnización por feriado legal(2313)",
+                "Indemnización años de servicio(2314)", "Indemnización sustitutiva del aviso previo(2315)",
+                "Indemnización fuero maternal(2316)", "Pago indemnización a todo evento(2331)",
+                "Indemnizaciones voluntarias tributables(2417)", "Indemnizaciones contractuales tributables(2418)",
+                "Cotización obligatoria previsional (AFP o IPS)(3141)", "Cotización obligatoria salud 7%(3143)",
+                "Cotización voluntaria para salud(3144)", "Cotización AFC - trabajador(3151)",
+                "Cotizaciones técnico extranjero para seguridad social fuera de Chile(3146)",
+                "Descuento depósito convenido hasta UF 900 anual(3147)", "Cotización APVi Mod A(3155)",
+                "Cotización APVi Mod B hasta UF50(3156)", "Cotización APVc Mod A(3157)", "Cotización APVc Mod B hasta UF50(3158)",
+                "Impuesto retenido por remuneraciones(3161)", "Impuesto retenido por indemnizaciones(3162)",
+                "Mayor retención de impuestos solicitada por el trabajador(3163)",
+                "Impuesto retenido por reliquidación remun. devengadas otros períodos(3164)",
+                "Diferencia impuesto reliquidación remun. devengadas en este período(3165)",
+                "Retención préstamo clase media 2020 (Ley 21.252) (3166)", "Rebaja zona extrema DL 889 (3167)",
+                "Cuota sindical 1(3171)", "Cuota sindical 2(3172)", "Cuota sindical 3(3173)", "Cuota sindical 4(3174)",
+                "Cuota sindical 5(3175)", "Cuota sindical 6(3176)", "Cuota sindical 7(3177)", "Cuota sindical 8(3178)",
+                "Cuota sindical 9(3179)", "Cuota sindical 10(3180)", "Crédito social CCAF(3110)", "Cuota vivienda o educación(3181)",
+                "Crédito cooperativas de ahorro(3182)", "Otros descuentos autorizados y solicitados por el trabajador(3183)",
+                "Cotización adicional trabajo pesado - trabajador(3154)", "Donaciones culturales y de reconstrucción(3184)",
+                "Otros descuentos(3185)", "Pensiones de alimentos(3186)", "Descuento mujer casada(3187)",
+                "Descuentos por anticipos y préstamos(3188)", "AFC - Aporte empleador(4151)",
+                "Aporte empleador seguro accidentes del trabajo y Ley SANNA(4152)", "Aporte empleador indemnización a todo evento(4131)",
+                "Aporte adicional trabajo pesado - empleador(4154)", "Aporte empleador seguro invalidez y sobrevivencia(4155)",
+                "APVC - Aporte Empleador(4157)", "Total haberes(5201)", "Total haberes imponibles y tributables(5210)",
+                "Total haberes imponibles no tributables(5220)", "Total haberes no imponibles y no tributables(5230)",
+                "Total haberes no imponibles y tributables(5240)", "Total descuentos(5301)",
+                "Total descuentos impuestos a las remuneraciones(5361)", "Total descuentos impuestos por indemnizaciones(5362)",
+                "Total descuentos por cotizaciones del trabajador(5341)", "Total otros descuentos(5302)",
+                "Total aportes empleador(5410)", "Total líquido(5501)", "Total indemnizaciones(5502)",
+                "Total indemnizaciones tributables(5564)", "Total indemnizaciones no tributables(5565)"
+            ];
+
+            // Generador de CSV oficial para Mi DT
+            btnExport.addEventListener('click', function () {
+                if (!parsedRows.length) return;
+
+                var csvLines = [];
+                csvLines.push(OFFICIAL_HEADERS_147.join(';'));
+
+                parsedRows.forEach(function (r) {
+                    var line = new Array(147).fill('0');
+
+                    // Campos de texto opcionales vacíos
+                    line[2] = r.fechaTermino ? r.fechaTermino.replace(/\//g, '-') : '';
+                    line[3] = r.causalTermino || '';
+                    for (var s = 21; s <= 30; s++) {
+                        line[s] = '';
+                    }
+
+                    // Datos de trabajador
+                    line[0] = r.rut;
+                    line[1] = r.fechaInicio ? r.fechaInicio.replace(/\//g, '-') : '';
+                    line[4] = r.region || '13';
+                    line[5] = r.comuna || '13123';
+                    line[6] = '1';  // Tipo impuesto
+                    line[7] = '0';
+                    line[8] = '101'; // Jornada completa
+                    line[9] = '0';
+                    line[10] = '0';
+                    line[11] = '103'; // AFP default
+                    line[12] = '0';
+                    line[13] = '4';   // Fonasa default
+                    line[14] = r.cesantia > 0 ? '1' : '0';
+                    line[15] = '1';   // CCAF
+                    line[16] = '1';   // Mutual
+                    line[20] = 'S';   // Tramo Asig Familiar (S)
+                    line[31] = '30';  // Días trabajados
+
+                    // Haberes
+                    line[40] = String(Math.round(r.sueldoBase || 0));
+                    line[41] = String(Math.round(r.horasExtras || 0));
+                    line[42] = String(Math.round(r.comisiones || 0));
+                    line[45] = String(Math.round(r.gratificacion || 0));
+                    line[69] = String(Math.round(r.colacion || 0));
+                    line[70] = String(Math.round(r.movilizacion || 0));
+                    line[73] = String(Math.round(r.asigFam || 0));
+
+                    // Descuentos
+                    line[89] = String(Math.round(r.afp || 0));
+                    line[90] = String(Math.round(r.salud || 0));
+                    line[92] = String(Math.round(r.cesantia || 0));
+                    line[99] = String(Math.round(r.impuestoUnico || 0));
+                    line[125] = String(Math.round(r.otrosDescuentos || 0));
+
+                    // Aportes Empleador
+                    line[126] = String(Math.round(r.cesantiaEmp || 0));
+                    line[127] = String(Math.round(r.mutual || 0));
+                    line[130] = String(Math.round(r.sisEmp || 0));
+
+                    // Totales de Control LRE DT
+                    line[132] = String(Math.round(r.totHaberes));
+                    line[133] = String(Math.round(r.totImponible));
+                    line[134] = '0';
+                    line[135] = String(Math.round(r.totNoImponible));
+                    line[136] = '0';
+                    line[137] = String(Math.round(r.totDescuentos));
+                    line[138] = String(Math.round(r.impuestoUnico || 0));
+                    line[139] = '0';
+                    line[140] = String(Math.round(r.totDctosLegales - (r.impuestoUnico || 0)));
+                    line[141] = String(Math.round(r.otrosDescuentos || 0));
+                    line[142] = String(Math.round(r.totAportesEmp));
+                    line[143] = String(Math.round(r.alcanceLiquido));
+                    line[144] = '0';
+                    line[145] = '0';
+                    line[146] = '0';
+
+                    csvLines.push(line.join(';'));
+                });
+
+                var csvContent = csvLines.join('\r\n');
+                var blob = new Blob(['\ufeff' + csvContent], { type: 'text/csv;charset=utf-8;' });
+                var filename = updateFilename();
+
+                var link = document.createElement('a');
+                var url = URL.createObjectURL(blob);
+                link.setAttribute('href', url);
+                link.setAttribute('download', filename);
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+
+                // Evento en dataLayer
+                if (window.dataLayer) {
+                    window.dataLayer.push({
+                        'event': 'lre_csv_generated',
+                        'trabajadores_count': parsedRows.length
+                    });
+                }
+            });
+
+            updateFilename();
+        })();
+    </script>
+</body>
+
+</html>
