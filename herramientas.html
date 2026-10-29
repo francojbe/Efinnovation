@@ -37,11 +37,11 @@
             --tool-purple: #8B5CF6;
             --tool-border: rgba(255, 255, 255, 0.08);
             --tool-card-bg: rgba(17, 24, 39, 0.85);
-            --tool-input-bg: rgba(11, 15, 23, 0.9);
+            --tool-input-bg: rgba(11, 15, 23, 0.95);
         }
 
         .tools-hero {
-            padding: 130px 20px 40px;
+            padding: 120px 20px 30px;
             text-align: center;
             background: radial-gradient(circle at 50% 15%, rgba(14, 165, 233, 0.15) 0%, transparent 65%);
         }
@@ -56,17 +56,17 @@
             border-radius: 999px;
             font-size: 0.85rem;
             font-weight: 600;
-            margin-bottom: 18px;
+            margin-bottom: 16px;
             border: 1px solid rgba(56, 189, 248, 0.3);
         }
 
         .tools-trust-bar {
-            max-width: 960px;
-            margin: 0 auto 36px;
+            max-width: 980px;
+            margin: 0 auto 28px;
             background: rgba(16, 185, 129, 0.08);
             border: 1px solid rgba(16, 185, 129, 0.25);
             border-radius: var(--radius-sm);
-            padding: 14px 22px;
+            padding: 12px 20px;
             display: flex;
             align-items: center;
             gap: 14px;
@@ -75,265 +75,155 @@
 
         .tools-trust-bar i {
             color: var(--tool-green);
-            font-size: 1.5rem;
+            font-size: 1.4rem;
             flex-shrink: 0;
         }
 
         .tools-trust-bar p {
             margin: 0;
-            font-size: 0.9rem;
+            font-size: 0.88rem;
             color: #e2e8f0;
             line-height: 1.5;
         }
 
-        /* Filter Tabs */
-        .filter-nav-wrap {
+        /* Banner Destacado: Validador LRE DT */
+        .lre-cross-banner {
             max-width: 1140px;
-            margin: 0 auto 32px;
-            padding: 0 20px;
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
-
-        .filter-btn {
-            background: rgba(255, 255, 255, 0.04);
-            border: 1px solid var(--tool-border);
-            color: var(--text-muted);
-            padding: 10px 18px;
-            border-radius: 999px;
-            font-size: 0.88rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .filter-btn:hover {
-            color: #ffffff;
-            border-color: rgba(56, 189, 248, 0.4);
-            background: rgba(56, 189, 248, 0.08);
-        }
-
-        .filter-btn.active {
-            background: var(--tool-accent);
-            color: #0b0f17;
-            border-color: var(--tool-accent);
-            box-shadow: 0 0 16px rgba(56, 189, 248, 0.35);
-        }
-
-        /* Catalog Grid */
-        .catalog-container {
-            max-width: 1180px;
-            margin: 0 auto 60px;
-            padding: 0 20px;
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
-            gap: 24px;
-        }
-
-        .tool-card-item {
-            background: var(--tool-card-bg);
-            border: 1px solid var(--tool-border);
+            margin: 0 auto 36px;
+            padding: 24px 28px;
+            background: linear-gradient(135deg, rgba(14, 165, 233, 0.15) 0%, rgba(16, 185, 129, 0.12) 100%);
+            border: 1px solid rgba(56, 189, 248, 0.4);
             border-radius: var(--radius-md);
-            padding: 26px;
             display: flex;
-            flex-direction: column;
-            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-            position: relative;
-            backdrop-filter: blur(10px);
-        }
-
-        .tool-card-item:hover {
-            transform: translateY(-4px);
-            border-color: rgba(56, 189, 248, 0.4);
-            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
-        }
-
-        .tool-card-item.featured {
-            border-color: rgba(56, 189, 248, 0.5);
-            background: linear-gradient(180deg, rgba(14, 165, 233, 0.08) 0%, rgba(17, 24, 39, 0.9) 100%);
-        }
-
-        .tool-card-header {
-            display: flex;
-            align-items: flex-start;
             justify-content: space-between;
-            margin-bottom: 14px;
-        }
-
-        .tool-icon-box {
-            width: 48px;
-            height: 48px;
-            border-radius: 10px;
-            display: flex;
             align-items: center;
-            justify-content: center;
-            font-size: 1.3rem;
-            flex-shrink: 0;
+            gap: 20px;
+            flex-wrap: wrap;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
         }
 
-        .tool-icon-blue { background: rgba(56, 189, 248, 0.15); color: var(--tool-accent); border: 1px solid rgba(56, 189, 248, 0.3); }
-        .tool-icon-green { background: rgba(16, 185, 129, 0.15); color: var(--tool-green); border: 1px solid rgba(16, 185, 129, 0.3); }
-        .tool-icon-amber { background: rgba(245, 158, 11, 0.15); color: var(--tool-amber); border: 1px solid rgba(245, 158, 11, 0.3); }
-        .tool-icon-purple { background: rgba(139, 92, 246, 0.15); color: var(--tool-purple); border: 1px solid rgba(139, 92, 246, 0.3); }
-
-        .tool-tag {
-            font-size: 0.72rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            padding: 4px 10px;
-            border-radius: 999px;
-        }
-        .tag-laboral { background: rgba(16, 185, 129, 0.15); color: #6ee7b7; border: 1px solid rgba(16, 185, 129, 0.3); }
-        .tag-tributario { background: rgba(56, 189, 248, 0.15); color: #7dd3fc; border: 1px solid rgba(56, 189, 248, 0.3); }
-        .tag-gestion { background: rgba(245, 158, 11, 0.15); color: #fcd34d; border: 1px solid rgba(245, 158, 11, 0.3); }
-        .tag-featured { background: rgba(244, 63, 94, 0.15); color: #fda4af; border: 1px solid rgba(244, 63, 94, 0.3); }
-
-        .tool-card-item h3 {
-            font-size: 1.18rem;
+        .lre-cross-info h3 {
             color: #ffffff;
+            font-size: 1.25rem;
+            margin: 6px 0 6px;
             font-weight: 700;
-            margin-bottom: 10px;
-            line-height: 1.35;
         }
 
-        .tool-card-item p {
-            color: var(--text-muted);
-            font-size: 0.88rem;
-            line-height: 1.55;
-            margin-bottom: 20px;
-            flex-grow: 1;
-        }
-
-        .tool-features-list {
-            list-style: none;
-            padding: 0;
-            margin: 0 0 22px 0;
-            border-top: 1px solid rgba(255, 255, 255, 0.06);
-            padding-top: 14px;
-        }
-
-        .tool-features-list li {
-            font-size: 0.8rem;
+        .lre-cross-info p {
             color: #cbd5e1;
-            margin-bottom: 6px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .tool-features-list li i {
-            color: var(--tool-accent);
-            font-size: 0.75rem;
-        }
-
-        .btn-launch-tool {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            background: rgba(56, 189, 248, 0.12);
-            color: var(--tool-accent);
-            border: 1px solid rgba(56, 189, 248, 0.35);
-            padding: 10px 18px;
-            border-radius: var(--radius-sm);
-            font-weight: 600;
             font-size: 0.9rem;
-            text-decoration: none;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            width: 100%;
+            line-height: 1.5;
+            max-width: 720px;
+            margin: 0;
         }
 
-        .btn-launch-tool:hover {
+        .btn-lre-special {
             background: var(--tool-accent);
             color: #0b0f17;
-            box-shadow: 0 4px 14px rgba(56, 189, 248, 0.3);
-        }
-
-        /* Workstation Area (Modal or inline viewer) */
-        .workstation-overlay {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(11, 15, 23, 0.88);
-            backdrop-filter: blur(8px);
-            z-index: 1000;
-            overflow-y: auto;
-            padding: 30px 16px;
-        }
-
-        .workstation-box {
-            max-width: 980px;
-            margin: 40px auto;
-            background: #111827;
-            border: 1px solid rgba(56, 189, 248, 0.3);
-            border-radius: var(--radius-md);
-            padding: 36px;
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
-            position: relative;
-        }
-
-        .btn-close-workstation {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            background: rgba(255, 255, 255, 0.06);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            color: #e2e8f0;
-            width: 36px;
-            height: 36px;
-            border-radius: 50%;
-            display: flex;
+            padding: 12px 22px;
+            border-radius: 6px;
+            font-weight: 800;
+            text-decoration: none;
+            display: inline-flex;
             align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            font-size: 1.1rem;
+            gap: 10px;
+            white-space: nowrap;
             transition: all 0.2s ease;
         }
 
-        .btn-close-workstation:hover {
-            background: #ef4444;
+        .btn-lre-special:hover {
+            background: #ffffff;
+            box-shadow: 0 6px 20px rgba(56, 189, 248, 0.4);
+        }
+
+        /* WORKSPACE INTERACTIVO PRINCIPAL (EMBEDDED) */
+        .workspace-section {
+            max-width: 1140px;
+            margin: 0 auto 50px;
+            padding: 0 20px;
+        }
+
+        .workspace-card {
+            background: #111827;
+            border: 1px solid rgba(56, 189, 248, 0.35);
+            border-radius: var(--radius-md);
+            box-shadow: 0 16px 45px rgba(0, 0, 0, 0.5);
+            overflow: hidden;
+        }
+
+        /* Tool Switcher Tabs */
+        .tool-switcher-nav {
+            display: flex;
+            background: rgba(15, 23, 42, 0.95);
+            border-bottom: 1px solid var(--tool-border);
+            overflow-x: auto;
+            scrollbar-width: thin;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .switcher-tab {
+            background: transparent;
+            border: none;
+            border-bottom: 3px solid transparent;
+            color: var(--text-muted);
+            padding: 16px 20px;
+            font-size: 0.88rem;
+            font-weight: 600;
+            white-space: nowrap;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-family: inherit;
+        }
+
+        .switcher-tab:hover {
             color: #ffffff;
-            border-color: #ef4444;
+            background: rgba(255, 255, 255, 0.03);
+        }
+
+        .switcher-tab.active {
+            color: var(--tool-accent);
+            border-bottom-color: var(--tool-accent);
+            background: rgba(56, 189, 248, 0.08);
+            font-weight: 700;
+        }
+
+        .workspace-body {
+            padding: 32px 28px;
         }
 
         .workstation-header {
-            margin-bottom: 28px;
-            padding-bottom: 18px;
+            margin-bottom: 24px;
+            padding-bottom: 16px;
             border-bottom: 1px solid var(--tool-border);
         }
 
         .workstation-header h2 {
-            font-size: 1.6rem;
+            font-size: 1.5rem;
             color: #ffffff;
             font-weight: 800;
             display: flex;
             align-items: center;
             gap: 12px;
-            margin-bottom: 8px;
+            margin-bottom: 6px;
+            flex-wrap: wrap;
         }
 
         .workstation-header p {
             color: var(--text-muted);
-            font-size: 0.92rem;
+            font-size: 0.9rem;
             margin: 0;
+            line-height: 1.5;
         }
 
         /* Form Controls */
         .tool-form-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 20px;
-            margin-bottom: 26px;
+            gap: 18px;
+            margin-bottom: 24px;
         }
 
         .tool-field {
@@ -343,7 +233,7 @@
         }
 
         .tool-field label {
-            font-size: 0.85rem;
+            font-size: 0.84rem;
             color: #cbd5e1;
             font-weight: 600;
         }
@@ -354,12 +244,12 @@
             width: 100%;
             padding: 11px 14px;
             background: var(--tool-input-bg);
-            border: 1px solid var(--tool-border);
+            border: 1px solid rgba(255, 255, 255, 0.12);
             border-radius: 6px;
             color: #ffffff;
             font-family: inherit;
             font-size: 0.92rem;
-            transition: border 0.2s ease;
+            transition: all 0.2s ease;
         }
 
         .tool-field input:focus,
@@ -367,11 +257,12 @@
         .tool-field textarea:focus {
             outline: none;
             border-color: var(--tool-accent);
+            box-shadow: 0 0 10px rgba(56, 189, 248, 0.2);
         }
 
         /* Results Display Card */
         .results-card {
-            background: rgba(15, 23, 42, 0.7);
+            background: rgba(15, 23, 42, 0.75);
             border: 1px solid rgba(56, 189, 248, 0.25);
             border-radius: var(--radius-sm);
             padding: 24px;
@@ -385,10 +276,12 @@
             margin-bottom: 18px;
             padding-bottom: 10px;
             border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            flex-wrap: wrap;
+            gap: 10px;
         }
 
         .results-header h4 {
-            font-size: 1.1rem;
+            font-size: 1.05rem;
             color: #ffffff;
             margin: 0;
             display: flex;
@@ -399,7 +292,7 @@
         .kpi-row {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-            gap: 16px;
+            gap: 14px;
             margin-bottom: 20px;
         }
 
@@ -412,7 +305,7 @@
         }
 
         .kpi-stat-box span {
-            font-size: 0.76rem;
+            font-size: 0.75rem;
             color: var(--text-muted);
             text-transform: uppercase;
             font-weight: 600;
@@ -431,28 +324,31 @@
             border-color: rgba(56, 189, 248, 0.4);
             background: rgba(56, 189, 248, 0.08);
         }
-        .kpi-stat-box.highlight strong {
-            color: var(--tool-accent);
-        }
+        .kpi-stat-box.highlight strong { color: var(--tool-accent); }
 
         .kpi-stat-box.success {
             border-color: rgba(16, 185, 129, 0.4);
             background: rgba(16, 185, 129, 0.08);
         }
-        .kpi-stat-box.success strong {
-            color: var(--tool-green);
+        .kpi-stat-box.success strong { color: var(--tool-green); }
+
+        .table-responsive {
+            width: 100%;
+            overflow-x: auto;
+            margin-bottom: 16px;
+            border-radius: 6px;
         }
 
         .breakdown-table {
             width: 100%;
             border-collapse: collapse;
             font-size: 0.88rem;
-            margin-bottom: 16px;
+            white-space: nowrap;
         }
 
         .breakdown-table th {
             text-align: left;
-            padding: 10px 12px;
+            padding: 10px 14px;
             background: rgba(255, 255, 255, 0.04);
             color: #cbd5e1;
             font-weight: 600;
@@ -460,7 +356,7 @@
         }
 
         .breakdown-table td {
-            padding: 10px 12px;
+            padding: 10px 14px;
             border-bottom: 1px solid rgba(255, 255, 255, 0.04);
             color: #e2e8f0;
         }
@@ -488,6 +384,7 @@
             display: inline-flex;
             align-items: center;
             gap: 8px;
+            text-decoration: none;
             transition: all 0.2s ease;
         }
 
@@ -516,53 +413,145 @@
             border-color: rgba(255, 255, 255, 0.25);
         }
 
-        /* Banner de Integración con LRE DT */
-        .lre-cross-banner {
+        /* Filter Tabs below for the catalog */
+        .filter-nav-wrap {
             max-width: 1140px;
-            margin: 0 auto 50px;
-            padding: 28px 32px;
-            background: linear-gradient(135deg, rgba(14, 165, 233, 0.15) 0%, rgba(16, 185, 129, 0.12) 100%);
-            border: 1px solid rgba(56, 189, 248, 0.4);
-            border-radius: var(--radius-md);
+            margin: 0 auto 26px;
+            padding: 0 20px;
             display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 24px;
+            justify-content: center;
             flex-wrap: wrap;
+            gap: 10px;
         }
 
-        .lre-cross-info h3 {
-            color: #ffffff;
-            font-size: 1.3rem;
-            margin-bottom: 8px;
-            font-weight: 700;
-        }
-
-        .lre-cross-info p {
-            color: #cbd5e1;
-            font-size: 0.92rem;
-            line-height: 1.5;
-            max-width: 720px;
-            margin: 0;
-        }
-
-        .btn-lre-special {
-            background: var(--tool-accent);
-            color: #0b0f17;
-            padding: 12px 24px;
-            border-radius: 6px;
-            font-weight: 800;
-            text-decoration: none;
+        .filter-btn {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid var(--tool-border);
+            color: var(--text-muted);
+            padding: 8px 16px;
+            border-radius: 999px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
             display: inline-flex;
             align-items: center;
-            gap: 10px;
-            white-space: nowrap;
-            transition: all 0.2s ease;
+            gap: 8px;
         }
 
-        .btn-lre-special:hover {
-            background: #ffffff;
-            box-shadow: 0 6px 20px rgba(56, 189, 248, 0.4);
+        .filter-btn:hover {
+            color: #ffffff;
+            border-color: rgba(56, 189, 248, 0.4);
+            background: rgba(56, 189, 248, 0.08);
+        }
+
+        .filter-btn.active {
+            background: var(--tool-accent);
+            color: #0b0f17;
+            border-color: var(--tool-accent);
+            box-shadow: 0 0 16px rgba(56, 189, 248, 0.35);
+        }
+
+        /* Catalog Grid */
+        .catalog-container {
+            max-width: 1180px;
+            margin: 0 auto 60px;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 22px;
+        }
+
+        .tool-card-item {
+            background: var(--tool-card-bg);
+            border: 1px solid var(--tool-border);
+            border-radius: var(--radius-md);
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            transition: all 0.25s ease;
+            position: relative;
+            cursor: pointer;
+        }
+
+        .tool-card-item:hover {
+            transform: translateY(-4px);
+            border-color: rgba(56, 189, 248, 0.5);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
+            background: rgba(23, 33, 53, 0.9);
+        }
+
+        .tool-card-item.featured {
+            border-color: rgba(56, 189, 248, 0.5);
+            background: linear-gradient(180deg, rgba(14, 165, 233, 0.08) 0%, rgba(17, 24, 39, 0.9) 100%);
+        }
+
+        .tool-card-header {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            margin-bottom: 14px;
+        }
+
+        .tool-icon-box {
+            width: 44px;
+            height: 44px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.25rem;
+            flex-shrink: 0;
+        }
+
+        .tool-icon-blue { background: rgba(56, 189, 248, 0.15); color: var(--tool-accent); border: 1px solid rgba(56, 189, 248, 0.3); }
+        .tool-icon-green { background: rgba(16, 185, 129, 0.15); color: var(--tool-green); border: 1px solid rgba(16, 185, 129, 0.3); }
+        .tool-icon-amber { background: rgba(245, 158, 11, 0.15); color: var(--tool-amber); border: 1px solid rgba(245, 158, 11, 0.3); }
+        .tool-icon-purple { background: rgba(139, 92, 246, 0.15); color: var(--tool-purple); border: 1px solid rgba(139, 92, 246, 0.3); }
+
+        .tool-tag {
+            font-size: 0.72rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            padding: 4px 10px;
+            border-radius: 999px;
+        }
+        .tag-laboral { background: rgba(16, 185, 129, 0.15); color: #6ee7b7; border: 1px solid rgba(16, 185, 129, 0.3); }
+        .tag-tributario { background: rgba(56, 189, 248, 0.15); color: #7dd3fc; border: 1px solid rgba(56, 189, 248, 0.3); }
+        .tag-gestion { background: rgba(245, 158, 11, 0.15); color: #fcd34d; border: 1px solid rgba(245, 158, 11, 0.3); }
+        .tag-featured { background: rgba(244, 63, 94, 0.15); color: #fda4af; border: 1px solid rgba(244, 63, 94, 0.3); }
+
+        .tool-card-item h3 {
+            font-size: 1.15rem;
+            color: #ffffff;
+            font-weight: 700;
+            margin-bottom: 8px;
+            line-height: 1.35;
+        }
+
+        .tool-card-item p {
+            color: var(--text-muted);
+            font-size: 0.86rem;
+            line-height: 1.5;
+            margin-bottom: 16px;
+            flex-grow: 1;
+        }
+
+        .tool-card-item .btn-card-action {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--tool-accent);
+            font-size: 0.86rem;
+            font-weight: 700;
+            margin-top: auto;
+        }
+
+        @media (max-width: 768px) {
+            .workspace-body { padding: 20px 16px; }
+            .tool-form-grid { grid-template-columns: 1fr; }
+            .kpi-row { grid-template-columns: 1fr 1fr; }
         }
 
         /* Print Style para Cotizador */
@@ -603,13 +592,13 @@
 
     <!-- Header Hero -->
     <header class="tools-hero">
-        <span class="tools-badge"><i class="fas fa-toolbox"></i> Suite Gratuita de Ingeniería Contable, Tributaria y Laboral</span>
-        <h1 style="color: #ffffff; font-size: clamp(2rem, 4vw, 2.9rem); font-weight: 800; margin-bottom: 16px;">
+        <span class="tools-badge"><i class="fas fa-toolbox"></i> Suite de Ingeniería Contable, Tributaria y Laboral</span>
+        <h1 style="color: #ffffff; font-size: clamp(1.9rem, 4vw, 2.8rem); font-weight: 800; margin-bottom: 14px;">
             Herramientas y Calculadoras para Contadores y PyMEs en Chile
         </h1>
-        <p style="color: var(--text-muted); max-width: 840px; margin: 0 auto; font-size: 1.05rem; line-height: 1.6;">
+        <p style="color: var(--text-muted); max-width: 840px; margin: 0 auto; font-size: 1.02rem; line-height: 1.6;">
             Automatiza tus cálculos diarios, valida nóminas y evita sanciones del <strong>SII</strong> y la <strong>Dirección del Trabajo (DT)</strong>. 
-            Sin registro obligatorio, 100% privadas, actualizadas al marco legal chileno 2026 y ejecutadas en tu propio navegador.
+            Sin registros obligatorios, 100% privadas, actualizadas a la normativa 2026 y ejecutadas directamente en tu navegador.
         </p>
     </header>
 
@@ -619,19 +608,63 @@
             <i class="fas fa-shield-halved"></i>
             <p>
                 <strong>100% Privado y Seguro (Arquitectura Zero-Knowledge):</strong> Todas estas herramientas procesan tus datos y cálculos 
-                directamente en la memoria de tu navegador web. Los sueldos, RUTs, compras y fórmulas <strong>nunca se transmiten a servidores externos ni se guardan en bases de datos</strong>.
+                directamente en la memoria de tu navegador web. Los sueldos, RUTs, compras y fórmulas <strong>nunca se envían a servidores externos ni se guardan en bases de datos</strong>.
             </p>
         </div>
     </div>
+
+    <!-- TALLER / WORKSPACE INTERACTIVO PRINCIPAL (DIRECTO EN LA PÁGINA) -->
+    <section class="workspace-section" id="workspace-container">
+        <div class="workspace-card">
+            <!-- Barra de Pestañas / Selector Rápido de Herramientas -->
+            <div class="tool-switcher-nav" id="switcher-tabs">
+                <button type="button" class="switcher-tab active" data-tool="sueldos" onclick="switchTool('sueldos')">
+                    <i class="fas fa-calculator" style="color:var(--tool-green);"></i> Sueldos & 40H
+                </button>
+                <button type="button" class="switcher-tab" data-tool="reliquidacion" onclick="switchTool('reliquidacion')">
+                    <i class="fas fa-history" style="color:var(--tool-purple);"></i> Reliquidador Impuesto Único
+                </button>
+                <button type="button" class="switcher-tab" data-tool="boletas" onclick="switchTool('boletas')">
+                    <i class="fas fa-receipt" style="color:var(--tool-accent);"></i> Boletas BHE
+                </button>
+                <button type="button" class="switcher-tab" data-tool="multas" onclick="switchTool('multas')">
+                    <i class="fas fa-gavel" style="color:var(--tool-amber);"></i> Multas SII
+                </button>
+                <button type="button" class="switcher-tab" data-tool="iva" onclick="switchTool('iva')">
+                    <i class="fas fa-percentage" style="color:var(--tool-accent);"></i> IVA & ILA
+                </button>
+                <button type="button" class="switcher-tab" data-tool="combustibles" onclick="switchTool('combustibles')">
+                    <i class="fas fa-gas-pump" style="color:var(--tool-amber);"></i> Combustibles F29
+                </button>
+                <button type="button" class="switcher-tab" data-tool="activofijo" onclick="switchTool('activofijo')">
+                    <i class="fas fa-boxes-stacked" style="color:var(--tool-purple);"></i> Activo Fijo SII
+                </button>
+                <button type="button" class="switcher-tab" data-tool="rentabilidad" onclick="switchTool('rentabilidad')">
+                    <i class="fas fa-briefcase" style="color:var(--tool-green);"></i> Rentabilidad Estudio
+                </button>
+                <button type="button" class="switcher-tab" data-tool="cotizador" onclick="switchTool('cotizador')">
+                    <i class="fas fa-file-invoice-dollar" style="color:var(--tool-accent);"></i> Cotizador PDF
+                </button>
+                <a href="lre-dt.html" class="switcher-tab" style="color: #fda4af; text-decoration: none;">
+                    <i class="fas fa-file-excel"></i> Validador LRE DT &rarr;
+                </a>
+            </div>
+
+            <!-- Contenedor de la Herramienta Activa -->
+            <div class="workspace-body" id="tool-viewport">
+                <!-- Se inyecta la herramienta activa -->
+            </div>
+        </div>
+    </section>
 
     <!-- Banner Destacado: Validador LRE DT -->
     <div style="padding: 0 20px;">
         <div class="lre-cross-banner">
             <div class="lre-cross-info">
                 <span style="background:rgba(56, 189, 248, 0.2); color:var(--tool-accent); font-size:0.75rem; font-weight:800; padding:4px 10px; border-radius:999px; text-transform:uppercase;">Herramienta Insignia</span>
-                <h3 style="margin-top:8px;">Validador y Generador CSV Libro de Remuneraciones Electrónico (LRE DT)</h3>
+                <h3>Validador y Generador CSV Libro de Remuneraciones Electrónico (LRE DT)</h3>
                 <p>
-                    Convierte tu planilla de sueldos de Excel al formato CSV oficial de 147 columnas exigido por la DT. Valida RUTs con Módulo 11, formatea fechas y cuadra totales para evitar rechazos en el portal <strong>Mi DT</strong>.
+                    Convierte tu planilla de sueldos de Excel al formato CSV oficial de 147 columnas exigido por la Dirección del Trabajo. Valida RUTs con Módulo 11, formatea fechas y cuadra totales para evitar rechazos en el portal <strong>Mi DT</strong>.
                 </p>
             </div>
             <a href="lre-dt.html" class="btn-lre-special">
@@ -640,208 +673,134 @@
         </div>
     </div>
 
-    <!-- Filtros de Categorías -->
-    <div class="filter-nav-wrap">
-        <button type="button" class="filter-btn active" onclick="filterCatalog('all', this)"><i class="fas fa-border-all"></i> Todas las Herramientas (10)</button>
-        <button type="button" class="filter-btn" onclick="filterCatalog('laboral', this)"><i class="fas fa-user-tie"></i> Laboral y Nómina (3)</button>
-        <button type="button" class="filter-btn" onclick="filterCatalog('tributario', this)"><i class="fas fa-scale-balanced"></i> Tributario y SII (5)</button>
-        <button type="button" class="filter-btn" onclick="filterCatalog('gestion', this)"><i class="fas fa-chart-line"></i> Gestión y Estudio Contable (2)</button>
+    <!-- Título del Catálogo de la Suite -->
+    <div style="max-width:1140px; margin: 0 auto 20px; padding: 0 20px; text-align: center;">
+        <h2 style="color: #ffffff; font-size: 1.6rem; font-weight: 800;">Catálogo Completo de Herramientas</h2>
+        <p style="color: var(--text-muted); font-size: 0.92rem; margin-top: 4px;">Haz clic en cualquier herramienta para cargarla en el taller superior.</p>
     </div>
 
-    <!-- Catálogo de Herramientas -->
+    <!-- Filtros de Categorías del Catálogo -->
+    <div class="filter-nav-wrap">
+        <button type="button" class="filter-btn active" onclick="filterCatalog('all', this)"><i class="fas fa-border-all"></i> Todas (10)</button>
+        <button type="button" class="filter-btn" onclick="filterCatalog('laboral', this)"><i class="fas fa-user-tie"></i> Laboral y Nómina (3)</button>
+        <button type="button" class="filter-btn" onclick="filterCatalog('tributario', this)"><i class="fas fa-scale-balanced"></i> Tributario y SII (5)</button>
+        <button type="button" class="filter-btn" onclick="filterCatalog('gestion', this)"><i class="fas fa-chart-line"></i> Gestión y Estudio (2)</button>
+    </div>
+
+    <!-- Catálogo de Herramientas (100% Clickable Cards) -->
     <main class="catalog-container" id="catalog-grid">
 
         <!-- Card 1: LRE DT -->
-        <article class="tool-card-item featured" data-category="laboral">
+        <article class="tool-card-item featured" data-category="laboral" onclick="window.location.href='lre-dt.html'">
             <div class="tool-card-header">
                 <div class="tool-icon-box tool-icon-blue"><i class="fas fa-file-excel"></i></div>
                 <span class="tool-tag tag-featured">Oficial DT</span>
             </div>
             <h3>Generador CSV LRE DT (147 Columnas)</h3>
             <p>Convierte y valida planillas de nómina en Excel al estándar oficial exigido por la Dirección del Trabajo, evitando rechazos por delimitadores o totales descuadrados.</p>
-            <ul class="tool-features-list">
-                <li><i class="fas fa-check"></i> 147 columnas oficiales según glosas DT</li>
-                <li><i class="fas fa-check"></i> Validación de RUT con Módulo 11 en vivo</li>
-                <li><i class="fas fa-check"></i> Exportación CSV con delimitador punto y coma</li>
-            </ul>
-            <a href="lre-dt.html" class="btn-launch-tool">
-                <i class="fas fa-arrow-up-right-from-square"></i> Usar Validador LRE DT
-            </a>
+            <span class="btn-card-action">Usar Validador LRE DT <i class="fas fa-arrow-right"></i></span>
         </article>
 
         <!-- Card 2: Simulador Sueldos 40h & Semana Corrida -->
-        <article class="tool-card-item" data-category="laboral">
+        <article class="tool-card-item" data-category="laboral" onclick="switchTool('sueldos', true)">
             <div class="tool-card-header">
                 <div class="tool-icon-box tool-icon-green"><i class="fas fa-calculator"></i></div>
                 <span class="tool-tag tag-laboral">Laboral</span>
             </div>
             <h3>Simulador de Sueldos, Costo Empresa & Ley 40 Horas</h3>
             <p>Calcula la liquidación completa de un trabajador dependiente y el costo real de contratación para la empresa (SIS, Mutual, AFC patronal) considerando la Ley 40 Horas y semana corrida.</p>
-            <ul class="tool-features-list">
-                <li><i class="fas fa-check"></i> AFPs oficiales 2026 y escalafón Impuesto Único en UTM</li>
-                <li><i class="fas fa-check"></i> Cálculo automático de Semana Corrida (Art. 45)</li>
-                <li><i class="fas fa-check"></i> Tarjeta de Costo Total Empleador y leyes sociales</li>
-            </ul>
-            <button type="button" class="btn-launch-tool" onclick="openWorkstation('sueldos')">
-                <i class="fas fa-play"></i> Abrir Simulador de Sueldos
-            </button>
+            <span class="btn-card-action">Abrir en el Taller <i class="fas fa-arrow-right"></i></span>
         </article>
 
         <!-- Card 3: Reliquidador Impuesto Único -->
-        <article class="tool-card-item featured" data-category="laboral">
+        <article class="tool-card-item featured" data-category="laboral" onclick="switchTool('reliquidacion', true)">
             <div class="tool-card-header">
                 <div class="tool-icon-box tool-icon-purple"><i class="fas fa-history"></i></div>
                 <span class="tool-tag tag-featured">Exclusivo Efinnovation</span>
             </div>
             <h3>Reliquidador de Impuesto Único (Art. 45/46 LIR)</h3>
             <p>Calcula las diferencias tributarias al pagar bonos, gratificaciones anuales o remuneraciones devengadas en períodos anteriores, reliquidando con UTM histórica para el F29.</p>
-            <ul class="tool-features-list">
-                <li><i class="fas fa-check"></i> Distribución equitativa en meses de devengo</li>
-                <li><i class="fas fa-check"></i> Ahorro tributario para el trabajador vs pago en 1 mes</li>
-                <li><i class="fas fa-check"></i> Monto exacto a enterar en F29 y LRE DT (Cód. 3164)</li>
-            </ul>
-            <button type="button" class="btn-launch-tool" onclick="openWorkstation('reliquidacion')">
-                <i class="fas fa-play"></i> Abrir Reliquidador
-            </button>
+            <span class="btn-card-action">Abrir en el Taller <i class="fas fa-arrow-right"></i></span>
         </article>
 
         <!-- Card 4: Boletas de Honorarios BHE -->
-        <article class="tool-card-item" data-category="tributario">
+        <article class="tool-card-item" data-category="tributario" onclick="switchTool('boletas', true)">
             <div class="tool-card-header">
                 <div class="tool-icon-box tool-icon-blue"><i class="fas fa-receipt"></i></div>
                 <span class="tool-tag tag-tributario">Tributario</span>
             </div>
             <h3>Calculadora Boletas de Honorarios (15.25%)</h3>
             <p>Cálculo bidireccional instantáneo entre monto bruto y líquido para emisión de Boletas de Honorarios Electrónicas (BHE) con la tasa de retención legal vigente.</p>
-            <ul class="tool-features-list">
-                <li><i class="fas fa-check"></i> Tasa legal vigente 2026: 15.25%</li>
-                <li><i class="fas fa-check"></i> Proyección 2027 (16%) y 2028 (17%)</li>
-                <li><i class="fas fa-check"></i> Desglose formal para emitir en el SII</li>
-            </ul>
-            <button type="button" class="btn-launch-tool" onclick="openWorkstation('boletas')">
-                <i class="fas fa-play"></i> Abrir Calculadora
-            </button>
+            <span class="btn-card-action">Abrir en el Taller <i class="fas fa-arrow-right"></i></span>
         </article>
 
         <!-- Card 5: Multas e Intereses SII -->
-        <article class="tool-card-item" data-category="tributario">
+        <article class="tool-card-item" data-category="tributario" onclick="switchTool('multas', true)">
             <div class="tool-card-header">
                 <div class="tool-icon-box tool-icon-amber"><i class="fas fa-gavel"></i></div>
                 <span class="tool-tag tag-tributario">Tributario</span>
             </div>
             <h3>Calculadora de Multas e Intereses SII (Ley 21.713)</h3>
             <p>Cuantifica las sanciones por presentación o pago extemporáneo de impuestos (F29, F22 o DJ), aplicando la tasa de interés diaria del 0.022% y multas del Código Tributario.</p>
-            <ul class="tool-features-list">
-                <li><i class="fas fa-check"></i> Interés moratorio diario de 0.022% (Art. 53 actualizado)</li>
-                <li><i class="fas fa-check"></i> Multas Art. 97 N°11 (F29) y Art. 97 N°2 (Renta)</li>
-                <li><i class="fas fa-check"></i> Estimación de condonación aplicable (Formulario 2117)</li>
-            </ul>
-            <button type="button" class="btn-launch-tool" onclick="openWorkstation('multas')">
-                <i class="fas fa-play"></i> Calcular Multas e Intereses
-            </button>
+            <span class="btn-card-action">Abrir en el Taller <i class="fas fa-arrow-right"></i></span>
         </article>
 
         <!-- Card 6: Calculadora IVA & ILA -->
-        <article class="tool-card-item" data-category="tributario">
+        <article class="tool-card-item" data-category="tributario" onclick="switchTool('iva', true)">
             <div class="tool-card-header">
                 <div class="tool-icon-box tool-icon-blue"><i class="fas fa-percentage"></i></div>
                 <span class="tool-tag tag-tributario">Tributario</span>
             </div>
             <h3>Calculadora de IVA (19%), ILA y Cambio de Sujeto</h3>
             <p>Desglose de facturación comercial con IVA general, impuestos adicionales a bebidas analcohólicas (13%), vinos/cervezas (15%), destilados (27%) y retenciones especiales.</p>
-            <ul class="tool-features-list">
-                <li><i class="fas fa-check"></i> Conversión bidireccional (Neto a Total y Total a Neto)</li>
-                <li><i class="fas fa-check"></i> Impuestos ILA y artículos de lujo (Art. 37 y 42)</li>
-                <li><i class="fas fa-check"></i> Retenciones de cambio de sujeto (Carne, Trigo, Madera)</li>
-            </ul>
-            <button type="button" class="btn-launch-tool" onclick="openWorkstation('iva')">
-                <i class="fas fa-play"></i> Abrir Calculadora IVA
-            </button>
+            <span class="btn-card-action">Abrir en el Taller <i class="fas fa-arrow-right"></i></span>
         </article>
 
         <!-- Card 7: Combustibles & Recuperación F29 -->
-        <article class="tool-card-item" data-category="tributario">
+        <article class="tool-card-item" data-category="tributario" onclick="switchTool('combustibles', true)">
             <div class="tool-card-header">
                 <div class="tool-icon-box tool-icon-amber"><i class="fas fa-gas-pump"></i></div>
                 <span class="tool-tag tag-tributario">Tributario</span>
             </div>
             <h3>Calculadora de Combustibles (MEPCO & F29 Cód. 29)</h3>
             <p>Determina el Impuesto Específico a los Combustibles y calcula el porcentaje de recuperación tributaria como crédito fiscal en el F29 para empresas de transporte de carga.</p>
-            <ul class="tool-features-list">
-                <li><i class="fas fa-check"></i> Diésel, Gasolinas, GNC y GLP</li>
-                <li><i class="fas fa-check"></i> Componente Base + Variable MEPCO semanal</li>
-                <li><i class="fas fa-check"></i> Tramos de recuperación Ley 19.764 (80%, 70%, 52.5%, 31%)</li>
-            </ul>
-            <button type="button" class="btn-launch-tool" onclick="openWorkstation('combustibles')">
-                <i class="fas fa-play"></i> Calcular Recuperación F29
-            </button>
+            <span class="btn-card-action">Abrir en el Taller <i class="fas fa-arrow-right"></i></span>
         </article>
 
         <!-- Card 8: Activo Fijo SII -->
-        <article class="tool-card-item" data-category="tributario">
+        <article class="tool-card-item" data-category="tributario" onclick="switchTool('activofijo', true)">
             <div class="tool-card-header">
                 <div class="tool-icon-box tool-icon-purple"><i class="fas fa-boxes-stacked"></i></div>
                 <span class="tool-tag tag-tributario">Tributario</span>
             </div>
             <h3>Control y Proyección de Activo Fijo (SII)</h3>
             <p>Calcula la depreciación tributaria normal, acelerada e instantánea (Régimen 14D Pro Pyme) y alerta sobre el beneficio fiscal de crédito contra Primera Categoría (Art. 33 Bis).</p>
-            <ul class="tool-features-list">
-                <li><i class="fas fa-check"></i> Depreciación Acelerada legal: 1/3 de la vida útil</li>
-                <li><i class="fas fa-check"></i> Depreciación Instantánea 100% Pro Pyme (14D)</li>
-                <li><i class="fas fa-check"></i> Alerta de Crédito Tributario Art. 33 Bis (4% / 6% tope 500 UTM)</li>
-            </ul>
-            <button type="button" class="btn-launch-tool" onclick="openWorkstation('activofijo')">
-                <i class="fas fa-play"></i> Abrir Control Activo Fijo
-            </button>
+            <span class="btn-card-action">Abrir en el Taller <i class="fas fa-arrow-right"></i></span>
         </article>
 
         <!-- Card 9: Rentabilidad Estudio Contable -->
-        <article class="tool-card-item" data-category="gestion">
+        <article class="tool-card-item" data-category="gestion" onclick="switchTool('rentabilidad', true)">
             <div class="tool-card-header">
                 <div class="tool-icon-box tool-icon-green"><i class="fas fa-briefcase"></i></div>
                 <span class="tool-tag tag-gestion">Gestión</span>
             </div>
             <h3>Calculadora de Rentabilidad para Estudios Contables</h3>
             <p>Evalúa la estructura de costos de tu firma contable, calcula el punto de equilibrio en número de clientes y mide el margen neto entre ingresos recurrentes (MRR) y servicios spot.</p>
-            <ul class="tool-features-list">
-                <li><i class="fas fa-check"></i> Margen de contribución por cliente activo</li>
-                <li><i class="fas fa-check"></i> Meta mínima de clientes para pagar la infraestructura fija</li>
-                <li><i class="fas fa-check"></i> Indicador de estabilidad financiera y cobertura de gastos</li>
-            </ul>
-            <button type="button" class="btn-launch-tool" onclick="openWorkstation('rentabilidad')">
-                <i class="fas fa-play"></i> Abrir Simulador de Rentabilidad
-            </button>
+            <span class="btn-card-action">Abrir en el Taller <i class="fas fa-arrow-right"></i></span>
         </article>
 
         <!-- Card 10: Cotizador PDF de Honorarios -->
-        <article class="tool-card-item" data-category="gestion">
+        <article class="tool-card-item" data-category="gestion" onclick="switchTool('cotizador', true)">
             <div class="tool-card-header">
                 <div class="tool-icon-box tool-icon-blue"><i class="fas fa-file-invoice-dollar"></i></div>
                 <span class="tool-tag tag-gestion">Comercial</span>
             </div>
             <h3>Cotizador Profesional de Honorarios en PDF</h3>
             <p>Crea propuestas comerciales ejecutivas y estilizadas en UF o CLP con detalle de servicios, condiciones y descarga inmediata en PDF con membrete profesional.</p>
-            <ul class="tool-features-list">
-                <li><i class="fas fa-check"></i> Presupuestos en CLP o Unidades de Fomento (UF)</li>
-                <li><i class="fas fa-check"></i> Desglose de servicios contables, laborales y tributarios</li>
-                <li><i class="fas fa-check"></i> Previsualización y descarga en PDF A4 en 1 clic</li>
-            </ul>
-            <button type="button" class="btn-launch-tool" onclick="openWorkstation('cotizador')">
-                <i class="fas fa-play"></i> Abrir Cotizador PDF
-            </button>
+            <span class="btn-card-action">Abrir en el Taller <i class="fas fa-arrow-right"></i></span>
         </article>
 
     </main>
-
-    <!-- Modal / Workstation Interactivo -->
-    <div id="workstation-overlay" class="workstation-overlay">
-        <div class="workstation-box">
-            <button type="button" class="btn-close-workstation" onclick="closeWorkstation()"><i class="fas fa-times"></i></button>
-            <div id="workstation-content">
-                <!-- Se inyecta dinámicamente según la herramienta seleccionada -->
-            </div>
-        </div>
-    </div>
 
     <!-- Banner de Soporte Profesional / Consultoría -->
     <div style="max-width: 1140px; margin: 0 auto 80px; padding: 0 20px;">
@@ -933,7 +892,7 @@
             return (val || 0).toLocaleString('es-CL', { maximumFractionDigits: 2 });
         }
 
-        // Filtro de categorías
+        // Filtro de categorías del catálogo
         function filterCatalog(category, btn) {
             document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
             btn.classList.add('active');
@@ -948,16 +907,21 @@
             });
         }
 
-        // Cierre de Workstation
-        function closeWorkstation() {
-            document.getElementById('workstation-overlay').style.display = 'none';
-            history.pushState("", document.title, window.location.pathname + window.location.search);
-        }
+        // Cambio de Herramienta en el Taller
+        function switchTool(toolId, scrollToTop = false) {
+            // Actualizar pestañas del switcher
+            document.querySelectorAll('.switcher-tab').forEach(tab => {
+                if (tab.dataset.tool === toolId) {
+                    tab.classList.add('active');
+                } else {
+                    tab.classList.remove('active');
+                }
+            });
 
-        // Apertura de Workstation
-        function openWorkstation(toolId) {
-            const container = document.getElementById('workstation-content');
-            window.location.hash = toolId;
+            // Actualizar URL hash sin salto brusco
+            history.replaceState(null, null, '#' + toolId);
+
+            const container = document.getElementById('tool-viewport');
 
             switch(toolId) {
                 case 'sueldos':
@@ -988,29 +952,36 @@
                     renderCotizadorTool(container);
                     break;
                 default:
-                    return;
+                    renderSueldosTool(container);
+                    break;
             }
 
-            document.getElementById('workstation-overlay').style.display = 'block';
-            window.scrollTo({ top: 0, behavior: 'smooth' });
+            if (scrollToTop) {
+                const el = document.getElementById('workspace-container');
+                if (el) {
+                    el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            }
         }
 
-        // Escuchar hash al cargar
+        // Carga inicial según Hash o defecto 'sueldos'
         window.addEventListener('DOMContentLoaded', () => {
-            const hash = window.location.hash.replace('#', '');
-            if (hash) {
-                openWorkstation(hash);
+            let hash = window.location.hash.replace('#', '');
+            const validTools = ['sueldos', 'reliquidacion', 'boletas', 'multas', 'iva', 'combustibles', 'activofijo', 'rentabilidad', 'cotizador'];
+            if (!validTools.includes(hash)) {
+                hash = 'sueldos';
             }
+            switchTool(hash, false);
         });
 
         /* =========================================================================
-           TOOL 2: SIMULADOR DE SUELDOS & LEY 40 HORAS & SEMANA CORRIDA
+           TOOL 1: SIMULADOR DE SUELDOS & LEY 40 HORAS & SEMANA CORRIDA
            ========================================================================= */
         function renderSueldosTool(container) {
             container.innerHTML = `
                 <div class="workstation-header">
                     <h2><i class="fas fa-calculator" style="color:var(--tool-green);"></i> Simulador de Sueldos & Costo Empresa (Ley 40 Horas)</h2>
-                    <p>Calcula la liquidación neta del colaborador y el costo real para el empleador con leyes sociales oficiales chilenas.</p>
+                    <p>Calcula la liquidación neta del colaborador y el costo real para el empleador con leyes sociales oficiales chilenas vigentes.</p>
                 </div>
 
                 <div class="tool-form-grid">
@@ -1070,7 +1041,7 @@
                     </div>
                 </div>
 
-                <div class="tool-card" style="background:rgba(255,255,255,0.02); padding:16px 20px; border:1px solid rgba(255,255,255,0.06); margin-bottom:20px;">
+                <div style="background:rgba(255,255,255,0.02); padding:16px 20px; border:1px solid rgba(255,255,255,0.06); border-radius:6px; margin-bottom:20px;">
                     <details>
                         <summary style="color:var(--tool-accent); font-weight:600; cursor:pointer; font-size:0.9rem;">
                             <i class="fas fa-plus-circle"></i> Agregar Comisiones, Horas Extras o Semana Corrida (Art. 45)
@@ -1096,9 +1067,7 @@
                     </details>
                 </div>
 
-                <div class="results-card" id="s-results">
-                    <!-- Dinámico -->
-                </div>
+                <div class="results-card" id="s-results"></div>
             `;
             calcSueldos();
         }
@@ -1128,14 +1097,12 @@
                 semanaCorrida = Math.round((comisiones / diasHab) * diasDesc);
             }
 
-            // Horas extras 50%: Valor hora ordinaria * 1.5
-            // Factor 40h: (1/40) * (30/7) * (7/30) = 1/40 * 1.5 aprox
-            const factorHora = (1 / jornada) * (30 / 7) * 0.175 * 1.5; // fórmula legal estándar
-            const valorHoraExtra = (base * 0.007) * 1.5; // factor aprox oficial
+            // Horas extras 50%
+            const valorHoraExtra = (base * 0.007) * 1.5;
             const montoHE = Math.round(horasExtras * valorHoraExtra);
 
             // Gratificación
-            const topeGratMensual = Math.round((4.75 * VALORES_CHILE_2026.imm) / 12); // ~$213.354
+            const topeGratMensual = Math.round((4.75 * VALORES_CHILE_2026.imm) / 12);
             let gratificacion = 0;
             if (gratTipo === '25') {
                 gratificacion = Math.min(Math.round((base + comisiones + semanaCorrida + montoHE) * 0.25), topeGratMensual);
@@ -1227,30 +1194,32 @@
                     </div>
                 </div>
 
-                <table class="breakdown-table">
-                    <thead>
-                        <tr>
-                            <th>Concepto</th>
-                            <th>Abono Haberes</th>
-                            <th>Dcto. Trabajador</th>
-                            <th>Aporte Empleador</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr><td>Sueldo Base</td><td>${formatCLP(base)}</td><td>-</td><td>-</td></tr>
-                        ${gratificacion > 0 ? `<tr><td>Gratificación Legal (25%)</td><td>${formatCLP(gratificacion)}</td><td>-</td><td>-</td></tr>` : ''}
-                        ${comisiones > 0 ? `<tr><td>Comisiones Variables</td><td>${formatCLP(comisiones)}</td><td>-</td><td>-</td></tr>` : ''}
-                        ${semanaCorrida > 0 ? `<tr><td>Semana Corrida (Art. 45)</td><td>${formatCLP(semanaCorrida)}</td><td>-</td><td>-</td></tr>` : ''}
-                        ${montoHE > 0 ? `<tr><td>Horas Extras (${horasExtras} hrs)</td><td>${formatCLP(montoHE)}</td><td>-</td><td>-</td></tr>` : ''}
-                        ${noImp > 0 ? `<tr><td>No Imponibles (Colación/Movilización)</td><td>${formatCLP(noImp)}</td><td>-</td><td>-</td></tr>` : ''}
-                        <tr><td>Previsión AFP (${(tasaAfp * 100).toFixed(2)}%)</td><td>-</td><td style="color:#f87171;">-${formatCLP(dctoAfp)}</td><td>-</td></tr>
-                        <tr><td>Salud (${saludTipo === 'fonasa' ? '7%' : 'Isapre'})</td><td>-</td><td style="color:#f87171;">-${formatCLP(dctoSalud)}</td><td>-</td></tr>
-                        <tr><td>Seguro de Cesantía (AFC)</td><td>-</td><td style="color:#f87171;">-${formatCLP(dctoAfc)}</td><td style="color:var(--tool-accent);">${formatCLP(aporteAfc)}</td></tr>
-                        ${impuestoUnico > 0 ? `<tr><td>Impuesto Único 2da Categoría</td><td>-</td><td style="color:#f87171;">-${formatCLP(impuestoUnico)}</td><td>-</td></tr>` : '<tr><td>Impuesto Único 2da Categoría</td><td>-</td><td style="color:#10b981;">Exento ($0)</td><td>-</td></tr>'}
-                        <tr><td>Seguro Invalidez y Sobrevivencia (SIS 1.62%)</td><td>-</td><td>-</td><td style="color:var(--tool-accent);">${formatCLP(aporteSis)}</td></tr>
-                        <tr><td>Mutualidad Accidentes (0.93%)</td><td>-</td><td>-</td><td style="color:var(--tool-accent);">${formatCLP(aporteMutual)}</td></tr>
-                    </tbody>
-                </table>
+                <div class="table-responsive">
+                    <table class="breakdown-table">
+                        <thead>
+                            <tr>
+                                <th>Concepto</th>
+                                <th>Abono Haberes</th>
+                                <th>Dcto. Trabajador</th>
+                                <th>Aporte Empleador</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>Sueldo Base</td><td>${formatCLP(base)}</td><td>-</td><td>-</td></tr>
+                            ${gratificacion > 0 ? `<tr><td>Gratificación Legal (25%)</td><td>${formatCLP(gratificacion)}</td><td>-</td><td>-</td></tr>` : ''}
+                            ${comisiones > 0 ? `<tr><td>Comisiones Variables</td><td>${formatCLP(comisiones)}</td><td>-</td><td>-</td></tr>` : ''}
+                            ${semanaCorrida > 0 ? `<tr><td>Semana Corrida (Art. 45)</td><td>${formatCLP(semanaCorrida)}</td><td>-</td><td>-</td></tr>` : ''}
+                            ${montoHE > 0 ? `<tr><td>Horas Extras (${horasExtras} hrs)</td><td>${formatCLP(montoHE)}</td><td>-</td><td>-</td></tr>` : ''}
+                            ${noImp > 0 ? `<tr><td>No Imponibles (Colación/Movilización)</td><td>${formatCLP(noImp)}</td><td>-</td><td>-</td></tr>` : ''}
+                            <tr><td>Previsión AFP (${(tasaAfp * 100).toFixed(2)}%)</td><td>-</td><td style="color:#f87171;">-${formatCLP(dctoAfp)}</td><td>-</td></tr>
+                            <tr><td>Salud (${saludTipo === 'fonasa' ? '7%' : 'Isapre'})</td><td>-</td><td style="color:#f87171;">-${formatCLP(dctoSalud)}</td><td>-</td></tr>
+                            <tr><td>Seguro de Cesantía (AFC)</td><td>-</td><td style="color:#f87171;">-${formatCLP(dctoAfc)}</td><td style="color:var(--tool-accent);">${formatCLP(aporteAfc)}</td></tr>
+                            ${impuestoUnico > 0 ? `<tr><td>Impuesto Único 2da Categoría</td><td>-</td><td style="color:#f87171;">-${formatCLP(impuestoUnico)}</td><td>-</td></tr>` : '<tr><td>Impuesto Único 2da Categoría</td><td>-</td><td style="color:#10b981;">Exento ($0)</td><td>-</td></tr>'}
+                            <tr><td>Seguro Invalidez y Sobrevivencia (SIS 1.62%)</td><td>-</td><td>-</td><td style="color:var(--tool-accent);">${formatCLP(aporteSis)}</td></tr>
+                            <tr><td>Mutualidad Accidentes (0.93%)</td><td>-</td><td>-</td><td style="color:var(--tool-accent);">${formatCLP(aporteMutual)}</td></tr>
+                        </tbody>
+                    </table>
+                </div>
 
                 <div class="actions-bar">
                     <a href="lre-dt.html" class="btn-action-primary"><i class="fas fa-file-csv"></i> Validar en Planilla LRE DT (147 Col)</a>
@@ -1260,7 +1229,7 @@
         }
 
         /* =========================================================================
-           TOOL 3: RELIQUIDADOR DE IMPUESTO ÚNICO (ART. 45/46 LIR)
+           TOOL 2: RELIQUIDADOR DE IMPUESTO ÚNICO (ART. 45/46 LIR)
            ========================================================================= */
         function renderReliquidacionTool(container) {
             container.innerHTML = `
@@ -1321,20 +1290,17 @@
             const sueldoMensual = parseFloat(document.getElementById('rq-sueldo').value) || 0;
             const utm = VALORES_CHILE_2026.utm;
 
-            // 1. Escenario SIN reliquidación (Pagar todo el bono en un solo mes)
             const sueldoMesUnico = sueldoMensual + bono;
             const impMesNormal = calcularImpuestoUnicoMes(sueldoMensual, utm);
             const impMesConBonoTodo = calcularImpuestoUnicoMes(sueldoMesUnico, utm);
             const impTotalSinReliquidar = impMesConBonoTodo - impMesNormal;
 
-            // 2. Escenario CON reliquidación oficial (Art. 45/46 LIR)
             const cuotaMensual = bono / meses;
             const nuevoSueldoMes = sueldoMensual + cuotaMensual;
             const nuevoImpMes = calcularImpuestoUnicoMes(nuevoSueldoMes, utm);
             const deltaImpMes = nuevoImpMes - impMesNormal;
             const impTotalReliquidado = deltaImpMes * meses;
 
-            // Ahorro legal
             const ahorro = Math.max(0, impTotalSinReliquidar - impTotalReliquidado);
             const porcentajeAhorro = impTotalSinReliquidar > 0 ? ((ahorro / impTotalSinReliquidar) * 100).toFixed(1) : 0;
 
@@ -1365,36 +1331,38 @@
                     El trabajador ahorra <strong>${formatCLP(ahorro)}</strong> líquidos y la empresa cumple estrictamente la normativa del SII y la DT.
                 </div>
 
-                <table class="breakdown-table">
-                    <thead>
-                        <tr>
-                            <th>Período Devengo</th>
-                            <th>Sueldo Base</th>
-                            <th>Cuota Bono Devengada</th>
-                            <th>Impuesto Original</th>
-                            <th>Nuevo Impuesto</th>
-                            <th>Diferencia F29</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        ${Array.from({length: Math.min(meses, 6)}, (_, i) => `
+                <div class="table-responsive">
+                    <table class="breakdown-table">
+                        <thead>
                             <tr>
-                                <td>Mes ${i+1} de ${meses}</td>
-                                <td>${formatCLP(sueldoMensual)}</td>
-                                <td>${formatCLP(cuotaMensual)}</td>
-                                <td>${formatCLP(impMesNormal)}</td>
-                                <td>${formatCLP(nuevoImpMes)}</td>
-                                <td style="color:var(--tool-accent); font-weight:700;">+${formatCLP(deltaImpMes)}</td>
+                                <th>Período Devengo</th>
+                                <th>Sueldo Base</th>
+                                <th>Cuota Bono Devengada</th>
+                                <th>Impuesto Original</th>
+                                <th>Nuevo Impuesto</th>
+                                <th>Diferencia F29</th>
                             </tr>
-                        `).join('')}
-                    </tbody>
-                </table>
+                        </thead>
+                        <tbody>
+                            ${Array.from({length: Math.min(meses, 6)}, (_, i) => `
+                                <tr>
+                                    <td>Mes ${i+1} de ${meses}</td>
+                                    <td>${formatCLP(sueldoMensual)}</td>
+                                    <td>${formatCLP(cuotaMensual)}</td>
+                                    <td>${formatCLP(impMesNormal)}</td>
+                                    <td>${formatCLP(nuevoImpMes)}</td>
+                                    <td style="color:var(--tool-accent); font-weight:700;">+${formatCLP(deltaImpMes)}</td>
+                                </tr>
+                            `).join('')}
+                        </tbody>
+                    </table>
+                </div>
                 ${meses > 6 ? `<p style="font-size:0.75rem; color:var(--text-muted); text-align:center;">Mostrando 6 de ${meses} meses con idéntica cuota y reliquidación.</p>` : ''}
             `;
         }
 
         /* =========================================================================
-           TOOL 4: BOLETAS DE HONORARIOS BHE (15.25%)
+           TOOL 3: BOLETAS DE HONORARIOS BHE (15.25%)
            ========================================================================= */
         function renderBoletasTool(container) {
             container.innerHTML = `
@@ -1480,7 +1448,7 @@
         }
 
         /* =========================================================================
-           TOOL 5: MULTAS E INTERESES SII (LEY 21.713)
+           TOOL 4: MULTAS E INTERESES SII (LEY 21.713)
            ========================================================================= */
         function renderMultasTool(container) {
             container.innerHTML = `
@@ -1512,7 +1480,7 @@
                     </div>
                 </div>
 
-                <div class="tool-card" style="background:rgba(255,255,255,0.02); padding:12px 18px; border:1px solid rgba(255,255,255,0.06); margin-bottom:18px;">
+                <div style="background:rgba(255,255,255,0.02); padding:12px 18px; border:1px solid rgba(255,255,255,0.06); border-radius:6px; margin-bottom:18px;">
                     <label style="display:flex; align-items:center; gap:10px; color:#cbd5e1; font-size:0.88rem; cursor:pointer;">
                         <input type="checkbox" id="m-fiscalizado" onchange="calcMultas()">
                         Infracción notificada en fiscalización del SII (Aumenta la multa base del 10%-30% al 20%-60%)
@@ -1540,7 +1508,7 @@
             const diasMora = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
             const mesesMora = Math.max(1, Math.ceil(diasMora / 30));
 
-            // Reajuste IPC (aprox 0.35% mensual)
+            // Reajuste IPC
             const tasaIpc = mesesMora * 0.0035;
             const reajusteIpc = Math.round(monto * tasaIpc);
             const baseReajustada = monto + reajusteIpc;
@@ -1565,7 +1533,7 @@
             }
 
             const totalPagar = baseReajustada + interesMoratorio + multa;
-            const condonacionEstimada = Math.round((interesMoratorio + multa) * 0.70); // 70% condonación habitual
+            const condonacionEstimada = Math.round((interesMoratorio + multa) * 0.70);
             const totalConCondonacion = totalPagar - condonacionEstimada;
 
             document.getElementById('m-results').innerHTML = `
@@ -1593,20 +1561,22 @@
                     </div>
                 </div>
 
-                <table class="breakdown-table">
-                    <tbody>
-                        <tr><td>Impuesto Original Adeudado</td><td style="text-align:right;">${formatCLP(monto)}</td></tr>
-                        <tr><td>Reajuste IPC (Art. 53 Código Tributario)</td><td style="text-align:right;">+${formatCLP(reajusteIpc)}</td></tr>
-                        <tr><td><strong>Base Imponible Reajustada</strong></td><td style="text-align:right; font-weight:700;">${formatCLP(baseReajustada)}</td></tr>
-                        <tr><td>Interés Moratorio (${diasMora} días x 0.022%)</td><td style="text-align:right;">+${formatCLP(interesMoratorio)}</td></tr>
-                        <tr><td>Multa Legal Art. 97 (${(tasaMulta*100).toFixed(0)}%)</td><td style="text-align:right;">+${formatCLP(multa)}</td></tr>
-                    </tbody>
-                </table>
+                <div class="table-responsive">
+                    <table class="breakdown-table">
+                        <tbody>
+                            <tr><td>Impuesto Original Adeudado</td><td style="text-align:right;">${formatCLP(monto)}</td></tr>
+                            <tr><td>Reajuste IPC (Art. 53 Código Tributario)</td><td style="text-align:right;">+${formatCLP(reajusteIpc)}</td></tr>
+                            <tr><td><strong>Base Imponible Reajustada</strong></td><td style="text-align:right; font-weight:700;">${formatCLP(baseReajustada)}</td></tr>
+                            <tr><td>Interés Moratorio (${diasMora} días x 0.022%)</td><td style="text-align:right;">+${formatCLP(interesMoratorio)}</td></tr>
+                            <tr><td>Multa Legal Art. 97 (${(tasaMulta*100).toFixed(0)}%)</td><td style="text-align:right;">+${formatCLP(multa)}</td></tr>
+                        </tbody>
+                    </table>
+                </div>
             `;
         }
 
         /* =========================================================================
-           TOOL 6: CALCULADORA DE IVA (19%), ILA Y RETENCIONES
+           TOOL 5: CALCULADORA DE IVA (19%), ILA Y RETENCIONES
            ========================================================================= */
         function renderIvaTool(container) {
             container.innerHTML = `
@@ -1706,7 +1676,7 @@
         }
 
         /* =========================================================================
-           TOOL 7: COMBUSTIBLES (MEPCO & F29 RECUPERACIÓN TRANSPORTISTAS)
+           TOOL 6: COMBUSTIBLES (MEPCO & F29 RECUPERACIÓN TRANSPORTISTAS)
            ========================================================================= */
         function renderCombustiblesTool(container) {
             container.innerHTML = `
@@ -1761,7 +1731,6 @@
             const tasaEfectivaUtm = Math.max(0, baseUtm + mepco);
             const impuestoTotal = Math.round(m3 * tasaEfectivaUtm * utm);
 
-            // Recuperación transportistas aplica sobre componente diésel
             let recuperacionF29 = 0;
             if (tipo === 'diesel') {
                 recuperacionF29 = Math.round(impuestoTotal * tramo);
@@ -1799,7 +1768,7 @@
         }
 
         /* =========================================================================
-           TOOL 8: CONTROL DE ACTIVO FIJO (SII)
+           TOOL 7: CONTROL DE ACTIVO FIJO (SII)
            ========================================================================= */
         function renderActivoFijoTool(container) {
             container.innerHTML = `
@@ -1849,19 +1818,13 @@
             const condicion = document.getElementById('af-condicion').value;
             const utm = VALORES_CHILE_2026.utm;
 
-            // Vida útil acelerada Art. 31 N° 5 bis LIR: 1/3 vida normal
             const vidaAcelerada = Math.max(1, Math.floor(vidaNormal / 3));
-
-            // Cuota anual normal y acelerada
             const cuotaNormal = Math.round(monto / vidaNormal);
             const cuotaAcelerada = Math.round(monto / vidaAcelerada);
-
-            // Depreciación instantánea 14D: 100% año 1 menos $1 valor residual
             const cuotaInstantanea = monto - 1;
 
-            // Beneficio Art. 33 Bis (4% o 6% con tope 500 UTM)
             let credito33Bis = 0;
-            const tope500Utm = 500 * utm; // ~$35.800.000
+            const tope500Utm = 500 * utm;
             if (condicion === 'nuevo') {
                 credito33Bis = Math.min(Math.round(monto * 0.06), tope500Utm);
             }
@@ -1894,21 +1857,23 @@
                     </div>
                 ` : ''}
 
-                <table class="breakdown-table">
-                    <thead>
-                        <tr><th>Régimen</th><th>Año 1 (Gasto Aceptado)</th><th>Valor Libro Residual</th><th>Ventaja Tributaria</th></tr>
-                    </thead>
-                    <tbody>
-                        <tr><td>Pro Pyme (14D N°3 / N°8)</td><td style="color:var(--tool-green); font-weight:700;">${formatCLP(cuotaInstantanea)}</td><td>$1</td><td>Rebaja el 100% de la utilidad de inmediato</td></tr>
-                        <tr><td>Régimen 14A (Acelerada)</td><td style="color:var(--tool-purple); font-weight:700;">${formatCLP(cuotaAcelerada)}</td><td>${formatCLP(monto - cuotaAcelerada)}</td><td>Amortiza en ${vidaAcelerada} años</td></tr>
-                        <tr><td>Régimen 14A (Normal)</td><td>${formatCLP(cuotaNormal)}</td><td>${formatCLP(monto - cuotaNormal)}</td><td>Amortiza en ${vidaNormal} años</td></tr>
-                    </tbody>
-                </table>
+                <div class="table-responsive">
+                    <table class="breakdown-table">
+                        <thead>
+                            <tr><th>Régimen</th><th>Año 1 (Gasto Aceptado)</th><th>Valor Libro Residual</th><th>Ventaja Tributaria</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>Pro Pyme (14D N°3 / N°8)</td><td style="color:var(--tool-green); font-weight:700;">${formatCLP(cuotaInstantanea)}</td><td>$1</td><td>Rebaja el 100% de la utilidad de inmediato</td></tr>
+                            <tr><td>Régimen 14A (Acelerada)</td><td style="color:var(--tool-purple); font-weight:700;">${formatCLP(cuotaAcelerada)}</td><td>${formatCLP(monto - cuotaAcelerada)}</td><td>Amortiza en ${vidaAcelerada} años</td></tr>
+                            <tr><td>Régimen 14A (Normal)</td><td>${formatCLP(cuotaNormal)}</td><td>${formatCLP(monto - cuotaNormal)}</td><td>Amortiza en ${vidaNormal} años</td></tr>
+                        </tbody>
+                    </table>
+                </div>
             `;
         }
 
         /* =========================================================================
-           TOOL 9: RENTABILIDAD ESTUDIO CONTABLE
+           TOOL 8: RENTABILIDAD ESTUDIO CONTABLE
            ========================================================================= */
         function renderRentabilidadTool(container) {
             container.innerHTML = `
@@ -1954,7 +1919,6 @@
             const margenContribucionUnitario = ticket - variable;
             const margenContribucionTotal = mrr - totalVariables;
 
-            // Punto de equilibrio en clientes
             const clientesEquilibrio = margenContribucionUnitario > 0 ? Math.ceil(fijos / margenContribucionUnitario) : 0;
             const utilidadNeta = margenContribucionTotal - fijos;
             const margenPorcentaje = mrr > 0 ? ((utilidadNeta / mrr) * 100).toFixed(1) : 0;
@@ -1998,7 +1962,7 @@
         }
 
         /* =========================================================================
-           TOOL 10: COTIZADOR PROFESIONAL DE HONORARIOS EN PDF
+           TOOL 9: COTIZADOR PROFESIONAL DE HONORARIOS EN PDF
            ========================================================================= */
         function renderCotizadorTool(container) {
             container.innerHTML = `
@@ -2010,15 +1974,15 @@
                 <div class="tool-form-grid">
                     <div class="tool-field">
                         <label>Nombre de tu Estudio / Contador:</label>
-                        <input type="text" id="q-emisor" value="Asesorías & Consultoría Contable SpA">
+                        <input type="text" id="q-emisor" value="Asesorías & Consultoría Contable SpA" oninput="renderQuotePreview()">
                     </div>
                     <div class="tool-field">
                         <label>RUT y Teléfono de Contacto:</label>
-                        <input type="text" id="q-contacto" value="77.123.456-K · +56 9 7426 3408">
+                        <input type="text" id="q-contacto" value="77.123.456-K · +56 9 7426 3408" oninput="renderQuotePreview()">
                     </div>
                     <div class="tool-field">
                         <label>Nombre del Cliente / Empresa Prospecto:</label>
-                        <input type="text" id="q-cliente" value="Transportes & Servicios del Norte SpA">
+                        <input type="text" id="q-cliente" value="Transportes & Servicios del Norte SpA" oninput="renderQuotePreview()">
                     </div>
                     <div class="tool-field">
                         <label>Moneda:</label>
@@ -2029,11 +1993,11 @@
                     </div>
                 </div>
 
-                <div class="results-card" style="background:#ffffff; color:#0f172a; padding:32px; border-radius:8px;" id="printable-quote">
+                <div class="results-card" style="background:#ffffff; color:#0f172a; padding:28px; border-radius:8px;" id="printable-quote">
                     <!-- Cotización con membrete profesional para imprimir -->
-                    <div style="display:flex; justify-content:space-between; align-items:flex-start; border-bottom:2px solid #0284c7; padding-bottom:16px; margin-bottom:20px;">
+                    <div style="display:flex; justify-content:space-between; align-items:flex-start; border-bottom:2px solid #0284c7; padding-bottom:14px; margin-bottom:18px; flex-wrap:wrap; gap:12px;">
                         <div>
-                            <h2 style="margin:0; color:#0f172a; font-size:1.4rem;" id="pq-emisor">Asesorías & Consultoría Contable SpA</h2>
+                            <h2 style="margin:0; color:#0f172a; font-size:1.35rem;" id="pq-emisor">Asesorías & Consultoría Contable SpA</h2>
                             <p style="margin:4px 0 0 0; color:#64748b; font-size:0.85rem;" id="pq-contacto">77.123.456-K · +56 9 7426 3408</p>
                         </div>
                         <div style="text-align:right;">
@@ -2043,36 +2007,38 @@
                         </div>
                     </div>
 
-                    <div style="margin-bottom:20px; font-size:0.9rem;">
+                    <div style="margin-bottom:18px; font-size:0.9rem;">
                         <strong>Para:</strong> <span id="pq-cliente">Transportes & Servicios del Norte SpA</span><br>
                         <strong>Validez de la oferta:</strong> 15 días corridos.
                     </div>
 
-                    <table style="width:100%; border-collapse:collapse; font-size:0.88rem; margin-bottom:20px;">
-                        <thead>
-                            <tr style="background:#f1f5f9; text-align:left;">
-                                <th style="padding:10px; border-bottom:1px solid #cbd5e1; color:#334155;">Servicio</th>
-                                <th style="padding:10px; border-bottom:1px solid #cbd5e1; color:#334155;">Alcance</th>
-                                <th style="padding:10px; text-align:right; border-bottom:1px solid #cbd5e1; color:#334155;">Total</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td style="padding:10px; border-bottom:1px solid #e2e8f0; font-weight:600;">Contabilidad & F29 Mensual</td>
-                                <td style="padding:10px; border-bottom:1px solid #e2e8f0; color:#64748b;">Conciliación RCV, compras/ventas, cálculo F29 e informe financiero.</td>
-                                <td style="padding:10px; text-align:right; border-bottom:1px solid #e2e8f0; font-weight:700;" id="pq-val1">$180.000</td>
-                            </tr>
-                            <tr>
-                                <td style="padding:10px; border-bottom:1px solid #e2e8f0; font-weight:600;">Gestión de Nómina & LRE DT</td>
-                                <td style="padding:10px; border-bottom:1px solid #e2e8f0; color:#64748b;">Liquidaciones hasta 10 trabajadores, Previred y subida de CSV al LRE DT.</td>
-                                <td style="padding:10px; text-align:right; border-bottom:1px solid #e2e8f0; font-weight:700;" id="pq-val2">$90.000</td>
-                            </tr>
-                            <tr style="background:#f8fafc; font-weight:800; font-size:1.05rem;">
-                                <td colspan="2" style="padding:12px; text-align:right;">TOTAL MENSUAL NETO:</td>
-                                <td style="padding:12px; text-align:right; color:#0284c7;" id="pq-total">$270.000 / mes</td>
-                            </tr>
-                        </tbody>
-                    </table>
+                    <div class="table-responsive">
+                        <table style="width:100%; border-collapse:collapse; font-size:0.88rem; margin-bottom:18px;">
+                            <thead>
+                                <tr style="background:#f1f5f9; text-align:left;">
+                                    <th style="padding:10px; border-bottom:1px solid #cbd5e1; color:#334155;">Servicio</th>
+                                    <th style="padding:10px; border-bottom:1px solid #cbd5e1; color:#334155;">Alcance</th>
+                                    <th style="padding:10px; text-align:right; border-bottom:1px solid #cbd5e1; color:#334155;">Total</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td style="padding:10px; border-bottom:1px solid #e2e8f0; font-weight:600;">Contabilidad & F29 Mensual</td>
+                                    <td style="padding:10px; border-bottom:1px solid #e2e8f0; color:#64748b;">Conciliación RCV, compras/ventas, cálculo F29 e informe financiero.</td>
+                                    <td style="padding:10px; text-align:right; border-bottom:1px solid #e2e8f0; font-weight:700;" id="pq-val1">$180.000</td>
+                                </tr>
+                                <tr>
+                                    <td style="padding:10px; border-bottom:1px solid #e2e8f0; font-weight:600;">Gestión de Nómina & LRE DT</td>
+                                    <td style="padding:10px; border-bottom:1px solid #e2e8f0; color:#64748b;">Liquidaciones hasta 10 trabajadores, Previred y subida de CSV al LRE DT.</td>
+                                    <td style="padding:10px; text-align:right; border-bottom:1px solid #e2e8f0; font-weight:700;" id="pq-val2">$90.000</td>
+                                </tr>
+                                <tr style="background:#f8fafc; font-weight:800; font-size:1.05rem;">
+                                    <td colspan="2" style="padding:12px; text-align:right;">TOTAL MENSUAL NETO:</td>
+                                    <td style="padding:12px; text-align:right; color:#0284c7;" id="pq-total">$270.000 / mes</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
 
                     <div style="font-size:0.8rem; color:#64748b; border-top:1px solid #e2e8f0; padding-top:12px;">
                         <em>Notas: Los honorarios no incluyen trámites notariales ni pago de tasas del SII. Incluye soporte continuo vía WhatsApp y correo electrónico.</em>
@@ -2087,23 +2053,30 @@
         }
 
         function renderQuotePreview() {
-            const emisor = document.getElementById('q-emisor').value || 'Estudio Contable';
-            const contacto = document.getElementById('q-contacto').value || '';
-            const cliente = document.getElementById('q-cliente').value || 'Cliente Prospecto';
-            const moneda = document.getElementById('q-moneda').value;
+            const emisor = document.getElementById('q-emisor')?.value || 'Estudio Contable';
+            const contacto = document.getElementById('q-contacto')?.value || '';
+            const cliente = document.getElementById('q-cliente')?.value || 'Cliente Prospecto';
+            const moneda = document.getElementById('q-moneda')?.value || 'CLP';
 
-            document.getElementById('pq-emisor').textContent = emisor;
-            document.getElementById('pq-contacto').textContent = contacto;
-            document.getElementById('pq-cliente').textContent = cliente;
+            const elEmisor = document.getElementById('pq-emisor');
+            const elContacto = document.getElementById('pq-contacto');
+            const elCliente = document.getElementById('pq-cliente');
+            if (elEmisor) elEmisor.textContent = emisor;
+            if (elContacto) elContacto.textContent = contacto;
+            if (elCliente) elCliente.textContent = cliente;
+
+            const elVal1 = document.getElementById('pq-val1');
+            const elVal2 = document.getElementById('pq-val2');
+            const elTotal = document.getElementById('pq-total');
 
             if (moneda === 'UF') {
-                document.getElementById('pq-val1').textContent = '4.5 UF';
-                document.getElementById('pq-val2').textContent = '2.2 UF';
-                document.getElementById('pq-total').textContent = '6.7 UF / mes';
+                if (elVal1) elVal1.textContent = '4.5 UF';
+                if (elVal2) elVal2.textContent = '2.2 UF';
+                if (elTotal) elTotal.textContent = '6.7 UF / mes';
             } else {
-                document.getElementById('pq-val1').textContent = '$180.000';
-                document.getElementById('pq-val2').textContent = '$90.000';
-                document.getElementById('pq-total').textContent = '$270.000 / mes';
+                if (elVal1) elVal1.textContent = '$180.000';
+                if (elVal2) elVal2.textContent = '$90.000';
+                if (elTotal) elTotal.textContent = '$270.000 / mes';
             }
         }
     </script>
