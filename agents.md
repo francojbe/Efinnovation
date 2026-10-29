@@ -12,6 +12,8 @@ Efinnovation es una firma de consultoría e ingeniería de software con sede en 
 
 ## Soluciones y URLs Clave
 - Portada y Diagnóstico: https://efinnovation.cl/
+- Suite de Herramientas Contables y Tributarias: https://efinnovation.cl/herramientas.html
+- Herramienta Gratuita LRE DT: https://efinnovation.cl/lre-dt.html
 - Soluciones Retail: https://efinnovation.cl/retail.html
 - Soluciones Logística y Terreno: https://efinnovation.cl/logistica.html
 - Soluciones Contables y Tributarias: https://efinnovation.cl/contabilidad.html
